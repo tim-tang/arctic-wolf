@@ -10,3 +10,8 @@ Arctic font-end with Sea.js and Backbone.js
 - Use Bootstrap and JQuery to implement responsive UI.
 - GruntJS to structure code.
 - ...
+
+
+## Start web server
+    
+    $ make server
