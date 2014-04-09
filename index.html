@@ -24,7 +24,7 @@
 <script type="text/javascript">
     seajs.config({
         paths: {
-            "wolf-app": "./wolf-app"
+            "wolf-app": "http://localhost:3000/wolf-app"
         },
         alias: {
             "$": "jquery/jquery/1.10.1/jquery.js",
@@ -76,7 +76,7 @@
     seajs.use(['$', 'app-main'], function($, app_main){
         $(document).ready(function() {
             app_main.init();
-            $("#cl-wrapper").css({opacity: 1,'margin-left':0});
+            $("#main-body").css({opacity: 1,'margin-left':0});
         });
     });
 </script>

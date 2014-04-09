@@ -1,13 +1,17 @@
 define(function(require, exports, module) {
 
+    var $ = require('$');
+    var Backbone = require('backbone');
+    var securityApp = require('../security/security-app');
+
     var appRouter = Backbone.Router.extend({
         initialize: function() {
             // setup the ajax links for the html5 push navigation
-            $("#main-menu").on("click", "a:not(a[data-bypass])", function(e) {
+            $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
                 e.preventDefault();
                 $('#loading').remove();
-                var parent = $('#main-content');
+                var parent = $('#main-body');
                 var loading = $('<div id="loading" class="loading"><i class="fa fa-spinner"></i></div>');
                 loading.appendTo(parent);
                 loading.fadeIn(0);
@@ -27,4 +31,27 @@ define(function(require, exports, module) {
                 }
             });
         },
+
+        // set the backbone routes
+        routes: {
+            '': 'security_login',
+            'forgot-password': 'forgot_password',
+            'reset-password': 'reset_password'
+        },
+
+        security_login: function(){
+            securityApp.render();
+        },
+
+        forgot_password: function() {
+            securityApp.removeView('');
+        },
+
+        reset_password: function() {
+            alert('333');
+        }
+
+    });
+
+    module.exports = appRouter;
 });

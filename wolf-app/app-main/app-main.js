@@ -13,7 +13,7 @@ define(function(require, exports, module) {
         // Set the prefix to where your templates live on the server, but keep in
         // mind that this prefix needs to match what your production paths will be.
         // Typically those are relative.  So we'll add the leading `/` in `fetch`.
-        prefix: "static/templates/",
+        prefix: "wolf-app/",
 
         // This method will check for prebuilt templates first and fall back to
         // loading in via AJAX.
@@ -40,10 +40,22 @@ define(function(require, exports, module) {
         }
     });
 
+
+    var appRouter = require('./app-router');
+
     module.exports = {
         init: function(){
-
+            // Set the app namespace instancing the router
+            var WolfApp = {
+                ROOT: "/",
+                router: new appRouter()
+            };
+            // Start the Backbone push navigation
+            Backbone.history.start({
+                root: WolfApp.ROOT,
+                pushState: true,
+                hashChange: true
+            });
         }
     };
-
 });
