@@ -44,11 +44,11 @@ define(function(require, exports, module) {
         },
 
         forgot_password: function() {
-            securityApp.removeView('');
+            securityApp.render_forgot_password();
         },
 
         reset_password: function() {
-            alert('333');
+            securityApp.render_reset_password();
         }
 
     });
