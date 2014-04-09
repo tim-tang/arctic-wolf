@@ -1,0 +1,63 @@
+<!-- Nifty Modal -->
+<div id="vehicle-new-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
+    aria-hidden="false">
+    <div class="modal-dialog colored-header custom-width">
+        <div class="md-content">
+            <div class="modal-header">
+                <h3>Create Vehicle</h3>
+                <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body form">
+                <div class="form-group">
+                    <label class="control-label">Vehicle Name</label>
+                    <input id="vehicle-name" type="email" class="form-control" placeholder="Vehilce Name" value="<%= vehicle['vehicle_name'] %>">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Vehicle Price</label>
+                    <input id="vehicle-price" type="text" name="vehicle-price" value="<%= vehicle['vehicle_price'] %>"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea class="form-control"
+                        placeholder="This is the description" id="vehicle-desc" value="<%- vehicle['vehicle_desc']%>"></textarea>
+                </div>
+                <!--
+                    <div class="row">
+                        <div class="form-group col-md-12 no-margin">
+                            <label>Attributes</label>
+                        </div>
+                    </div>
+                    <div class="row no-margin-y">
+                        <div class="form-group col-md-4 col-sm-4 col-xs-4 no-margin">
+                            <select id="brand" class="select2">
+                                <option>--- Brand ---</option>
+                                <option>Benz</option>
+                                <option>BMW</option>
+                                <option>Audi</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4 col-xs-4 no-margin">
+                            <select id="brand" class="select2">
+                                <option>--- Category ---</option>
+                                <option>SUV</option>
+                                <option>Car</option>
+                                <option>Bus</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4 col-sm-4 col-xs-4 no-margin">
+                            <select id="brand" class="select2">
+                                <option>--- Color ---</option>
+                                <option>Red</option>
+                                <option>Sliver</option>
+                                <option>Black</option>
+                            </select>
+                        </div>
+                        -->
+            </div>
+            <div class="modal-footer">
+                <button id="vehicle-create-action" class="btn btn-primary btn-flat md-close" data-dismiss="modal" type="button">Create</button>
+                <button class="btn btn-default btn-flat md-close" data-dismiss="modal" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

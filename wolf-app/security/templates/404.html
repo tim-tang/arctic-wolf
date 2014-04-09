@@ -1,0 +1,13 @@
+{% extends "security/security-container.html" %}
+
+{% block main %}
+<div id="cl-wrapper" class="error-container">
+    <div class="page-error">
+        <h1 class="number text-center">404</h1>
+        <h2 class="description text-center">Sorry, but this page doesn't exists!</h2>
+        <h3 class="text-center">Would you like to go <a href="{{url_for("demo_handler.product_search")}}">Home</a>?</h3>
+    </div>
+    {% include "layout/layout-footer.html"%}
+</div>
+
+{% endblock %}

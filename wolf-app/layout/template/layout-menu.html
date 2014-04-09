@@ -1,0 +1,14 @@
+<ul class="cl-vnavigation" id="main-menu">
+    <li><a href="{{ url_for('demo_handler.dashboard')}}"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+    <li><a href="{{ url_for('demo_handler.product_search')}}"><i class="fa fa-search-minus"></i><span>Product Search</span></a></li>
+    <li><a href="#" data-bypass ><i class="fa fa-gears open"></i><span>System Management</span></a>
+        <ul class="sub-menu" id="sub-menu" sytle="display: block">
+            <li><a href="{{url_for('demo_handler.user_mgmt')}}"><i class="fa fa-user"></i>User Mannagement</a></li>
+            <li><a href="{{url_for('demo_handler.user_group_mgmt')}}"><i class="fa fa-users"></i>User Group Mannagement</a></li>
+            <li><a href="{{url_for('demo_handler.role_mgmt')}}"><i class="fa fa-sitemap"></i>Role Management</a></li>
+            <li><a href="{{url_for('demo_handler.privilege_mgmt')}}"><i class="fa fa-puzzle-piece"></i>Privilege Management</a></li>
+            <li><a href="{{url_for('demo_handler.criteria_mgmt')}}"><i class="fa fa-filter"></i>Criteria Management</a></li>
+        </ul>
+    </li>
+    <li><a href="{{url_for('demo_handler.vehicle_mgmt')}}"><i class="fa fa-truck"></i><span>Vehicle Management</span></a></li>
+</ul>

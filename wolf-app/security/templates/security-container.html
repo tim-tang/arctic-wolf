@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" type="image/x-icon" href="{{ static_url('arctic/common/images/favicon.ico') }}">
+        <title>{% block title %}{% block subtitle %}{% endblock %} — {{ config.SITE_TITLE }}{% endblock %} </title>
+        {% include "layout/layout-include-css.html"%}
+    </head>
+
+    <body class="texture" id="curity-body" style="opacity:0">
+      {% block main %}{% endblock %} 
+
+    <script src="{{ static_url('sea-modules/seajs/2.2.1/sea.js') }}" id="seajsnode"></script>
+
+<script type="text/javascript">
+    seajs.config({
+        paths: {
+            "arctic": "http://localhost:5000/static/arctic"
+        },
+        alias: {
+            // -- JS General
+            "$": "jquery/jquery/1.10.1/jquery.js", 
+            "parsley": "jquery.parsley/parsley.js",
+
+            // -- CSS General
+            "css-general": "arctic/common/style.css",
+            "css-bootstrap": "bootstrap/dist/css/bootstrap.css",
+            "css-gritter": "jquery.gritter/css/jquery.gritter.css",
+            "css-font-awesome": "arctic/common/fonts/font-awesome-4/css/font-awesome.min.css",
+            "css-nanoscroller": "jquery.nanoscroller/nanoscroller.css"
+        }
+    });
+
+    seajs.use(["$", "parsley", "arctic/security/security-main"], function($){
+        $("#security-body").css({opacity: 1,'margin-left':0});
+    });
+</script>
+</body>
+</html>

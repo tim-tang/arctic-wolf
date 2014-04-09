@@ -1,0 +1,68 @@
+<script src="{{ static_url('sea-modules/seajs/2.2.1/sea-debug.js') }}"></script>
+<script type="text/javascript">
+seajs.config({
+    paths: {
+        "arctic": "http://localhost:5000/static/arctic"
+    },
+    alias: {
+        // -- JS General
+        "$": "jquery/jquery/1.10.1/jquery.js",
+        "underscore": "underscore/1.4.4/underscore-debug.js",
+        "backbone": "backbone/1.0.0/backbone-debug.js",
+        "layoutmanager": "backbone.layoutmanager/0.9.5/backbone.layoutmanager.js",
+        "jcookie": "jquery.cookie/jquery.cookie.js",
+        "nanoscroller": "jquery.nanoscroller/jquery.nanoscroller.js",
+        "sparkline": "jquery.sparkline/jquery.sparkline.min.js",
+        "jquery-ui": "jquery.ui/jquery-ui.js",
+        "gritter": "jquery.gritter/js/jquery.gritter.js",
+        "behavior-core": "behaviour/core.js",
+        "history": "jquery.history/jquery.history.js",
+        "moment": "bootstrap.daterangepicker/moment.min.js",
+        "daterangepicker": "bootstrap.daterangepicker/daterangepicker.js",
+        "datetimepicker": "bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js",
+        "select2": "jquery.select2/select2.min.js",
+        "bootstrap-slider": "bootstrap.slider/js/bootstrap-slider.js", 
+        "modalEffects": "jquery.niftymodals/js/jquery.modalEffects.js",
+        "jquery-datatables": "jquery.datatables/jquery.datatables.min.js",
+        "datatables": "jquery.datatables/bootstrap-adapter/js/datatables.js",
+        "jasny": "jasny.bootstrap/extend/js/jasny-bootstrap.min.js",
+        "parsley": "jquery.parsley/parsley.js",
+        "switch": "bootstrap.switch/bootstrap-switch.min.js",
+        "quicksearch": "jquery.quicksearch/jquery.quicksearch.js",
+        "multi-select": "jquery.multiselect/js/jquery.multi-select.js",
+        "bootstrap": "bootstrap/dist/js/bootstrap.min.js",
+        "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js",
+        "layout-app": "arctic/layout/layout-app.js",
+        
+        // -- CSS General 
+        "css-general": "arctic/common/style.css",
+        "css-bootstrap": "bootstrap/dist/css/bootstrap.css",
+        "css-gritter": "jquery.gritter/css/jquery.gritter.css",
+        "css-font-awesome": "arctic/common/fonts/font-awesome-4/css/font-awesome.min.css",
+        "css-nanoscroller": "jquery.nanoscroller/nanoscroller.css",
+        "css-bt-datetime-picker": "bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css",
+        "css-select2": "jquery.select2/select2.css",
+        "css-slider": "bootstrap.slider/css/slider.css",
+        "css-daterangepicker": "bootstrap.daterangepicker/daterangepicker-bs3.css",
+        "css-component": "jquery.niftymodals/css/component.css",
+        "css-datatables": "jquery.datatables/bootstrap-adapter/css/datatables.css",
+        "css-jasny": "jasny.bootstrap/extend/css/jasny-bootstrap.min.css",
+        "css-multi-select": "jquery.multiselect/css/multi-select.css",
+        "css-bt-switch": "bootstrap.switch/bootstrap-switch.css"
+    },
+    //map: [
+    //    ['http://example.com/js/app/', 'http://localhost:5000/static/arctic']
+    //],
+    //vars: {
+    //    'locale': 'en-us'
+    //},
+    charset: 'utf-8'
+});
+
+seajs.use(['$', 'layout-app'], function($, layout_app){
+    $(document).ready(function() {
+        layout_app.init();
+        $("#cl-wrapper").css({opacity: 1,'margin-left':0});
+    });
+});
+</script>
