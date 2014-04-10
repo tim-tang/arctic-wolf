@@ -26,4 +26,4 @@ build/Release
 node_modules
 
 # Unkwon
-#.idea
+.idea
