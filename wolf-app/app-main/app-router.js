@@ -19,6 +19,7 @@ define(function(require, exports, module) {
 
                 // take the href of the link clicked
                 var href = $(this).attr("href");
+                //var protocol = this.protocol + "//";
                 //var prev_href = window.location.pathname + window.location.search;
                 var prev_href = '/' + Backbone.history.fragment;
                 // pass this link to Backbone
@@ -38,7 +39,8 @@ define(function(require, exports, module) {
             '': 'security_login',
             'forgot-password': 'forgot_password',
             'reset-password': 'reset_password',
-            'dashboard': 'dashboard'
+            'dashboard': 'dashboard',
+            '*error': 'not_found'
         },
 
         security_login: function(){
@@ -54,8 +56,11 @@ define(function(require, exports, module) {
         },
 
         dashboard: function() {
-            //securityApp.remove();
             layoutApp.render();
+        },
+
+        not_found: function() {
+            alert('NO Kidding Not Found!');
         }
 
     });

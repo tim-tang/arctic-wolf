@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
-    require('css-bt-switch');
+    require('css-bootstrap');
+    require('css-general');
 
     //- Import dependency js
     require('jcookie');
@@ -8,7 +9,6 @@ define(function(require, exports, module) {
     require('sparkline');
     require('jquery-ui');
     require('gritter');
-    require('behavior-core');
     require('bootstrap');
 
 
@@ -27,6 +27,10 @@ define(function(require, exports, module) {
 
         views: {
             '': new layout()
+        },
+
+        afterRender: function(){
+            //TODO:
         }
     });
 
