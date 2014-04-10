@@ -36,14 +36,14 @@ define(function(require, exports, module) {
 
         // set the backbone routes
         routes: {
-            '': 'security_login',
+            '': 'home',
             'forgot-password': 'forgot_password',
             'reset-password': 'reset_password',
             'dashboard': 'dashboard',
             '*error': 'not_found'
         },
 
-        security_login: function(){
+        home: function(){
             securityApp.render();
         },
 
