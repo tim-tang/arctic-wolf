@@ -6,6 +6,7 @@ define(function(require, exports, module) {
     require('css-nanoscroller');
     require('css-general');
 
+    var $ = require('$');
     var Backbone = require('backbone');
     var securityLogin = require('./view/security-login');
     var forgotPassword = require('./view/forgot-password');
@@ -14,6 +15,11 @@ define(function(require, exports, module) {
     var securityApp =new Backbone.Layout({
 
         el: '#main-body',
+
+
+        beforeRender: function(){
+            $('#main-body').addClass('texture');
+        },
 
         views: {
             '': new securityLogin()

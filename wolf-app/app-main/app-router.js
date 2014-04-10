@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
+    var layoutApp = require('../layout/layout-app');
 
     var appRouter = Backbone.Router.extend({
         initialize: function() {
@@ -26,7 +27,7 @@ define(function(require, exports, module) {
                 } else {
                     Backbone.history.navigate(href, {
                         trigger: true,
-                        replace: true
+                        replace: false
                     });
                 }
             });
@@ -36,7 +37,8 @@ define(function(require, exports, module) {
         routes: {
             '': 'security_login',
             'forgot-password': 'forgot_password',
-            'reset-password': 'reset_password'
+            'reset-password': 'reset_password',
+            'dashboard': 'dashboard'
         },
 
         security_login: function(){
@@ -49,6 +51,11 @@ define(function(require, exports, module) {
 
         reset_password: function() {
             securityApp.render_reset_password();
+        },
+
+        dashboard: function() {
+            //securityApp.remove();
+            layoutApp.render();
         }
 
     });
