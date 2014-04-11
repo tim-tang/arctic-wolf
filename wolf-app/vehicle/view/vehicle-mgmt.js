@@ -7,16 +7,12 @@ define(function(require, exports, module) {
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
 
-        el: '#vehicle-home',
-        template: 'vehicle/vehicle-mgmt.html',
+        template: 'vehicle/templates/vehicle-mgmt.html',
 
         initialize: function() {
-        },
 
-        render: function() {
-            this.$el.html(this.template());
-            return this;
         }
+
     });
 
     module.exports = vehicleMgmt;

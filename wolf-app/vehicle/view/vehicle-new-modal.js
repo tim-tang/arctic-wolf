@@ -1,4 +1,6 @@
  define(function(require, exports, module) {
+
+     require('modalEffects');
      require('bt-touchspin');
 
      var $ = require('$');
@@ -17,7 +19,7 @@
          model: new vehicleModel(),
 
          //template: _.template($('#vehicle-template').html()),
-         template: 'vehicle/modal/vehicle-new-modal.html',
+         template: 'vehicle/templates/vehicle-new-modal.html',
 
          //events: {
          //    'click #vehicle-create-action': 'create_vehicle'
@@ -30,6 +32,16 @@
 
          serialize: function() {
              return { vehicle: this.model};
+         },
+
+         afterRender: function() {
+            $("#vehicle-price").TouchSpin({
+                min: -1000000000,
+                max: 1000000000,
+                stepinterval: 8,
+                maxboostedstep: 10000000,
+                prefix: '$'
+             });
          }
 
          //render: function() {

@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     require('layoutmanager');
     var layoutApp = require('../layout-app');
+    var vehicleApp = require('../../vehicle/vehicle-app');
 
     var appRouter = Backbone.Router.extend({
         initialize: function() {
@@ -54,11 +55,8 @@ define(function(require, exports, module) {
         },
 
         vehicle_mgmt: function() {
-            //var vehicleApp = require('../../vehicle/vehicle-app');
-            //vehicleApp = new vehicleApp();
-            //vehicleApp.render();
-            //$('#loading').remove();
-            alert('vehicle mgmt..');
+            //layoutApp.render();
+            vehicleApp.render();
         }
     });
 

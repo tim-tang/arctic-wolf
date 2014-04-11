@@ -1,23 +1,25 @@
  define(function(require, exports, module) {
 
-     require('bt-touchspin');
 
      var $ = require('$');
      var _ = require('underscore');
      var Backbone = require('backbone');
-     var vehicleMgmt= require('./view/vehicle-mgmt-view');
-     var vehicleModal = require('./view/vehicle-modal-view');
+     var vehicleContainer = require('./view/vehicle-container');
      //var vehicleRouter = require('./router/vehicle-router');
      //var vehicleColl = require('./collection/vehicle-coll');
      //var vehicleHeaderColl = require('./collection/vehicle-header-coll');
      //var vehicleView = require('./view/vehicle-view');
      //var common = require('../common/common');
 
-     var datatable;
+     //var datatable;
 
-     var vehicleApp = Backbone.Layout.extend({
+     var vehicleApp = new Backbone.Layout({
+
          el: '#main-content',
-         template: 'vehicle/vehicle-container.html',
+
+         views: {
+            '': new vehicleContainer()
+         },
 
          events: {
              //'click #vehicle-new-action': 'show_vehicle_modal',
@@ -37,18 +39,18 @@
              //vehicleHeaderColl.fetch();
          },
 
-         render: function(template, context) {
-            return template(context);
-            //this.$el.html(this.template());
-            //var vehicleMgmtView = new vehicleMgmt();
-            //this.$el.find('#vehicle-home').append(vehicleMgmtView.el);
-            //return this;
-        },
+        // render: function(template, context) {
+        //    return template(context);
+        //    //this.$el.html(this.template());
+        //    //var vehicleMgmtView = new vehicleMgmt();
+        //    //this.$el.find('#vehicle-home').append(vehicleMgmtView.el);
+        //    //return this;
+        //},
 
-        afterRender: function(){
-            this.insertView(new vehicleMgmt()).render();
-            this.insertView(new vehicleModal()).render();
-        }
+        //afterRender: function(){
+        //    this.insertView(new vehicleMgmt()).render();
+        //    this.insertView(new vehicleModal()).render();
+        //}
 
 
 
