@@ -41,14 +41,18 @@ define(function(require, exports, module) {
     });
 
 
-    var appRouter = require('./app-router');
+    var securityRouter = require('../security/router/security-router');
+    var layoutRouter = require('../layout/router/layout-router');
 
     module.exports = {
         init: function(){
             // Set the app namespace instancing the router
             var WolfApp = {
                 ROOT: "/",
-                router: new appRouter()
+                APP_ROUTERS: [
+                    new securityRouter(),
+                    new layoutRouter()
+                ]
             };
             // Start the Backbone push navigation
             Backbone.history.start({

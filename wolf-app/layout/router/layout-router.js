@@ -4,37 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
-
-    Backbone.Layout.configure({
-        // Set the prefix to where your templates live on the server, but keep in
-        // mind that this prefix needs to match what your production paths will be.
-        // Typically those are relative.  So we'll add the leading `/` in `fetch`.
-        prefix: "static/templates/",
-
-        // This method will check for prebuilt templates first and fall back to
-        // loading in via AJAX.
-        fetchTemplate: function(path) {
-            // Check for a global JST object.  When you build your templates for
-            // production, ensure they are all attached here.
-            var JST = window.JST || {};
-
-            // If the path exists in the object, use it instead of fetching remotely.
-            if (JST[path]) {
-                return JST[path];
-            }
-
-            // If it does not exist in the JST object, mark this function as
-            // asynchronous.
-            var done = this.async();
-
-            // Fetch via jQuery's GET.  The third argument specifies the dataType.
-            $.get(path, function(contents) {
-                // Assuming you're using underscore templates, the compile step here is
-                // `_.template`.
-                done(_.template(contents));
-            }, "text");
-        }
-    });
+    var layoutApp = require('../layout-app');
 
     var appRouter = Backbone.Router.extend({
         initialize: function() {
@@ -51,7 +21,7 @@ define(function(require, exports, module) {
                 // take the href of the link clicked
                 var href = $(this).attr("href");
                 //var prev_href = window.location.pathname + window.location.search;
-                var prev_href = '/' + Backbone.history.fragment;
+                var prev_href = '#' + Backbone.history.fragment;
                 // pass this link to Backbone
                 if (href == prev_href) {
                     Backbone.history.loadUrl(prev_href);
@@ -72,7 +42,7 @@ define(function(require, exports, module) {
         },
 
         dashboard: function() {
-            $('#loading').remove();
+            layoutApp.render();
         },
 
         product_search: function() {
@@ -80,14 +50,15 @@ define(function(require, exports, module) {
             //$('#main-content').fadeIn();
             //var newTitle = $(msg).filter('title').text();
             //$('title').text(newTitle);
-            $('#loading').remove();
+            alert('In product search.');
         },
 
         vehicle_mgmt: function() {
-            var vehicleApp = require('../../vehicle/vehicle-app');
-            vehicleApp = new vehicleApp();
-            vehicleApp.render();
-            $('#loading').remove();
+            //var vehicleApp = require('../../vehicle/vehicle-app');
+            //vehicleApp = new vehicleApp();
+            //vehicleApp.render();
+            //$('#loading').remove();
+            alert('vehicle mgmt..');
         }
     });
 
