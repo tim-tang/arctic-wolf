@@ -13,14 +13,21 @@ define(function(require, exports, module) {
         template: 'vehicle/templates/vehicle-mgmt.html',
 
         initialize: function() {
-            //this.listenTo(vehicleHeaderColl, 'sync', this.load_vehicle_records);
-            //this.listenTo(vehicleColl, 'sync', this.render);
+            this.listenTo(vehicleHeaderColl, 'sync', this.after_load_vehicle_headers);
+            this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
             vehicleHeaderColl.fetch();
+        },
+
+        after_load_vehicle_headers: function() {
             vehicleColl.fetch();
         },
 
-        afterRender: function() {
+        after_load_vehicles: function(){
             this.datatable = commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable');
+        },
+
+        afterRender: function() {
+            //TODO:
         }
 
     });

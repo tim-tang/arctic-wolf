@@ -8,7 +8,7 @@
      vehicleHeaderColl = Backbone.Collection.extend({
 
          model: vehicleHeaderModel,
-         url: '/vehicle-headers'
+         url: 'http://localhost:5000/vehicle-headers'
 
          //TODO:
      });
