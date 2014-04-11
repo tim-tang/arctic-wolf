@@ -1,8 +1,10 @@
  define(function(require, exports, module){
 
     var Backbone = require('backbone');
+    var BaseModel = require('../../common/model/base-model');
 
-    var vehicleModel= Backbone.Model.extend({
+    var vehicleModel= BaseModel.extend({
+
         defaults: {
             vehicle_name: '',
             vehicle_price: '168',

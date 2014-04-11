@@ -15,12 +15,12 @@ define(function(require, exports, module) {
         initialize: function() {
             //this.listenTo(vehicleHeaderColl, 'sync', this.load_vehicle_records);
             //this.listenTo(vehicleColl, 'sync', this.render);
-            //vehicleHeaderColl.fetch();
-            //vehicleColl.fetch();
+            vehicleHeaderColl.fetch();
+            vehicleColl.fetch();
         },
 
         afterRender: function() {
-            //this.datatable = commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable');
+            this.datatable = commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable');
         }
 
     });
