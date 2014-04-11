@@ -21,7 +21,7 @@ define(function(require, exports, module) {
 
         el: '#main-body',
 
-        beforeRender: function(){
+        beforeRender: function() {
             $('#main-body').removeClass('texture');
         },
 
@@ -29,8 +29,44 @@ define(function(require, exports, module) {
             '': new layout()
         },
 
-        afterRender: function(){
+        afterRender: function() {
             //TODO:
+        },
+
+        switch_view: function() {
+            switch (Backbone.history.fragment) {
+            case "dashboard":
+                alert('dashboard');
+                break;
+            case "product-search":
+                alert('product search');
+                break;
+            case "user-mgmt":
+                break;
+            case "user-group-mgmt":
+                break;
+            case "role-mgmt":
+                break;
+            case "role-details":
+                break;
+            case "privilege-mgmt":
+                break;
+            case "privilege-details":
+                break;
+            case "criteria-mgmt":
+                break;
+            case "criteria-details":
+                break;
+            case "vehicle-mgmt":
+                var vehicleApp = require('../vehicle/vehicle-app');
+                this.do_switch(vehicleApp);
+                break;
+            }
+        },
+
+        do_switch: function(activeApp) {
+            this.removeView('#main-content');
+            this.insertView('#main-content', activeApp).render();
         }
     });
 

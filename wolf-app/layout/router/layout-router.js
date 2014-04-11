@@ -43,8 +43,7 @@ define(function(require, exports, module) {
         },
 
         dashboard: function() {
-            this.layoutApp = require('../layout-app');
-            this.layoutApp.render();
+            this.predict_layout_existence();
         },
 
         product_search: function() {
@@ -56,18 +55,17 @@ define(function(require, exports, module) {
         },
 
         vehicle_mgmt: function() {
-            var vehicleApp= require('../../vehicle/vehicle-app');
-            this.switch_view(vehicleApp);
+            this.predict_layout_existence();
+            this.layoutApp.switch_view();
         },
 
-        switch_view: function(activeApp){
-            if(!this.layoutApp){
+        predict_layout_existence: function() {
+            if (!this.layoutApp) {
                 this.layoutApp = require('../layout-app');
                 this.layoutApp.render();
             }
-            this.layoutApp.removeView('#main-content');
-            this.layoutApp.insertView('#main-content', activeApp).render();
         }
+
     });
 
     module.exports = appRouter;
