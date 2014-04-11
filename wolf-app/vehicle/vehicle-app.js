@@ -6,8 +6,6 @@
      var vehicleMgmt = require('./view/vehicle-mgmt');
      var vehicleModal = require('./view/vehicle-new-modal');
      //var vehicleRouter = require('./router/vehicle-router');
-     //var vehicleColl = require('./collection/vehicle-coll');
-     //var vehicleHeaderColl = require('./collection/vehicle-header-coll');
      //var vehicleView = require('./view/vehicle-view');
      //var common = require('../common/common');
 
@@ -39,9 +37,6 @@
          //    //   self.template = contents;
          //    //   self.render();
          //    //});
-         //    //this.listenTo(vehicleHeaderColl, 'sync', this.load_vehicle_records);
-         //    //this.listenTo(vehicleColl, 'sync', this.render);
-         //    //vehicleHeaderColl.fetch();
          //},
 
 
