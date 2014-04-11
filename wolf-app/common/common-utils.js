@@ -20,7 +20,7 @@ define(function(require, exports, module) {
          * Generate generic table for backbone view.
          *
          */
-        generate_datatable: function(header, data, datatable_id) {
+        generate_datatable: function(header, data, datatable_id, fnDatatableCallback) {
              var datatable_div = datatable_id + '-div';
              $("#" + datatable_div).html('<table class="table table-bordered" id="' + datatable_id + '"></table>');
              datatable_id = "#" + datatable_id;
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
              // Search input style
              $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
              $('.dataTables_length select').addClass('form-control');
-             return datatable;
+            fnDatatableCallback(datatable);
         },
 
         remove_selected_row: function(datatable) {

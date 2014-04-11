@@ -7,6 +7,7 @@ define(function(require, exports, module) {
     var vehicleColl = require('../collection/vehicle-coll');
     var vehicleHeaderColl = require('../collection/vehicle-header-coll');
     var commonUtils = require('../../common/common-utils');
+    var commonLoading = require('../../common/common-loading');
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
 
@@ -22,8 +23,19 @@ define(function(require, exports, module) {
             vehicleColl.fetch();
         },
 
-        after_load_vehicles: function(){
-            this.datatable = commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable');
+        after_load_vehicles: function() {
+            commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
+                this.datatable = datatable;
+                $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
+                    $(this).toggleClass('row_selected');
+                    var selected_vehicle_id = $(this).find("td:first").html().trim();
+                    var vehicle_model = vehicleColl.findWhere({
+                        id: parseInt(selected_vehicle_id)
+                    });
+                    vehicle_model.toggle_select();
+                });
+                commonLoading.destroy();
+            });
         },
 
         afterRender: function() {

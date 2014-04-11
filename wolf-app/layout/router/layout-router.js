@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
-    var naviSwitcher = require('../../common/navi-switcher');
+    var commonLoading = require('../../common/common-loading');
 
     var appRouter = Backbone.Router.extend({
         initialize: function() {
@@ -13,11 +13,6 @@ define(function(require, exports, module) {
             $("#main-menu").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
                 e.preventDefault();
-                $('#loading').remove();
-                var parent = $('#main-content');
-                var loading = $('<div id="loading" class="loading"><i class="fa fa-spinner"></i></div>');
-                loading.appendTo(parent);
-                loading.fadeIn(0);
 
                 // take the href of the link clicked
                 var href = $(this).attr("href");
@@ -56,6 +51,7 @@ define(function(require, exports, module) {
 
         vehicle_mgmt: function() {
             this.predict_layout_existence();
+            commonLoading.init('#main-content');
             this.layoutApp.switch_view();
         },
 
