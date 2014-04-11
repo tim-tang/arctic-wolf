@@ -5,10 +5,9 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
 
     var vehicleMgmt= require('./vehicle-mgmt');
-    var vehicleModal = require('./vehicle-new-modal');
-    var vehicleContainer = Backbone.View.extend({
 
         manage: true,
+
 
         template: 'vehicle/templates/vehicle-container.html',
 

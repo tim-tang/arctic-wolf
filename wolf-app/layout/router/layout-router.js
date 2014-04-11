@@ -4,11 +4,11 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
-    var layoutApp = require('../layout-app');
-    var vehicleApp = require('../../vehicle/vehicle-app');
+    var naviSwitcher = require('../../common/navi-switcher');
 
     var appRouter = Backbone.Router.extend({
         initialize: function() {
+
             // setup the ajax links for the html5 push navigation
             $("#main-menu").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -43,7 +43,8 @@ define(function(require, exports, module) {
         },
 
         dashboard: function() {
-            layoutApp.render();
+            this.layoutApp = require('../layout-app');
+            this.layoutApp.render();
         },
 
         product_search: function() {
@@ -55,8 +56,17 @@ define(function(require, exports, module) {
         },
 
         vehicle_mgmt: function() {
-            //layoutApp.render();
-            vehicleApp.render();
+            var vehicleApp= require('../../vehicle/vehicle-app');
+            this.switch_view(vehicleApp);
+        },
+
+        switch_view: function(activeApp){
+            if(!this.layoutApp){
+                this.layoutApp = require('../layout-app');
+                this.layoutApp.render();
+            }
+            this.layoutApp.removeView('#main-content');
+            this.layoutApp.insertView('#main-content', activeApp).render();
         }
     });
 

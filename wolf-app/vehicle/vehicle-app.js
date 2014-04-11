@@ -1,10 +1,10 @@
  define(function(require, exports, module) {
 
-
      var $ = require('$');
      var _ = require('underscore');
      var Backbone = require('backbone');
-     var vehicleContainer = require('./view/vehicle-container');
+     var vehicleMgmt = require('./view/vehicle-mgmt');
+     var vehicleModal = require('./view/vehicle-new-modal');
      //var vehicleRouter = require('./router/vehicle-router');
      //var vehicleColl = require('./collection/vehicle-coll');
      //var vehicleHeaderColl = require('./collection/vehicle-header-coll');
@@ -15,43 +15,44 @@
 
      var vehicleApp = new Backbone.Layout({
 
-         el: '#main-content',
+        manage: true,
 
-         views: {
-            '': new vehicleContainer()
-         },
+        keep: true,
 
-         events: {
+        template: 'vehicle/templates/vehicle-container.html',
+
+        events: {
              //'click #vehicle-new-action': 'show_vehicle_modal',
              //'click #vehicle-mgmt-delete': 'delete_vehicle'
          },
 
-         initialize: function() {
-             //this.render();
-             //var self = this;
-             //templateMgmt.fetch_template('vehicle/vehicle-container', function(contents){
-             //    console.log(contents);
-             //   self.template = contents;
-             //   self.render();
-             //});
-             //this.listenTo(vehicleHeaderColl, 'sync', this.load_vehicle_records);
-             //this.listenTo(vehicleColl, 'sync', this.render);
-             //vehicleHeaderColl.fetch();
-         },
+        afterRender: function(){
+            this.insertView('#vehicle-home', new vehicleMgmt()).render();
+            this.insertView('#vehicle-home', new vehicleModal()).render();
+        },
+
+         //initialize: function() {
+         //    //this.render();
+         //    //var self = this;
+         //    //templateMgmt.fetch_template('vehicle/vehicle-container', function(contents){
+         //    //    console.log(contents);
+         //    //   self.template = contents;
+         //    //   self.render();
+         //    //});
+         //    //this.listenTo(vehicleHeaderColl, 'sync', this.load_vehicle_records);
+         //    //this.listenTo(vehicleColl, 'sync', this.render);
+         //    //vehicleHeaderColl.fetch();
+         //},
+
 
         // render: function(template, context) {
-        //    return template(context);
+        //     alert('in process..');
+        //   // return template(context);
         //    //this.$el.html(this.template());
         //    //var vehicleMgmtView = new vehicleMgmt();
         //    //this.$el.find('#vehicle-home').append(vehicleMgmtView.el);
         //    //return this;
         //},
-
-        //afterRender: function(){
-        //    this.insertView(new vehicleMgmt()).render();
-        //    this.insertView(new vehicleModal()).render();
-        //}
-
 
 
          //show_vehicle_modal: function() {
