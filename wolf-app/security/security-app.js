@@ -10,7 +10,6 @@ define(function(require, exports, module) {
 
         el: '#main-body',
 
-
         beforeRender: function(){
             $('#main-body').addClass('texture');
         },

@@ -13,13 +13,19 @@ define(function(require, exports, module) {
             this.insertView('.middle-login', new layoutFooter()).render();
         },
 
-        events:{
-            "click #login": "loginBtnClick"
+        events: {
+            'submit form': 'authenticate'
         },
 
-        loginBtnClick: function() {
-            console.log("Click login button!");
-            layoutApp.render();
+        authenticate: function(e) {
+            e.preventDefault();
+
+            //this.collection.create({
+            //    username: this.$('input[id=username]').val(),
+            //    password: this.$('input[id=password]').val()
+            //});
+
+            Backbone.history.navigate('dashboard', true);
         }
     });
 

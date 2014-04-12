@@ -1,4 +1,6 @@
 define(function(require, exports, module) {
+
+    var $ = require('$');
     var Backbone = require('backbone');
     var layoutFooter = require('../../layout/view/layout-footer');
 
@@ -6,6 +8,10 @@ define(function(require, exports, module) {
 
         manage: true,
         template: 'security/templates/reset-password.html',
+
+        beforeRender: function(){
+            $('#main-body').addClass('texture');
+        },
 
         afterRender: function() {
             this.insertView('.middle', new layoutFooter()).render();
