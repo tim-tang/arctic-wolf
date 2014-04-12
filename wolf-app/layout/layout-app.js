@@ -13,6 +13,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var layout = require('./view/layout');
+    var commonUtils = require('../common/common-utils');
 
     var layoutApp = new Backbone.Layout({
 
@@ -30,10 +31,12 @@ define(function(require, exports, module) {
             //TODO:
         },
 
+        /**
+         * TODO: extract uri to constants.
+         */
         switch_view: function() {
             switch (Backbone.history.fragment) {
             case "dashboard":
-                alert('dashboard');
                 break;
             case "product-search":
                 alert('product search');
@@ -62,6 +65,7 @@ define(function(require, exports, module) {
         },
 
         do_switch: function(activeApp) {
+            commonUtils.active_menu_item();
             this.removeView('#main-content');
             this.insertView('#main-content', activeApp).render();
         }

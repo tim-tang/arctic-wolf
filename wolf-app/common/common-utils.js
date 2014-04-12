@@ -16,10 +16,6 @@ define(function(require, exports, module) {
 
     module.exports = {
 
-        /*
-         * Generate generic table for backbone view.
-         *
-         */
         generate_datatable: function(header, data, datatable_id, fnDatatableCallback) {
              var datatable_div = datatable_id + '-div';
              $("#" + datatable_div).html('<table class="table table-bordered" id="' + datatable_id + '"></table>');
@@ -95,6 +91,21 @@ define(function(require, exports, module) {
                 afterDeselect: function() {
                     this.qs1.cache();
                     this.qs2.cache();
+                }
+            });
+        },
+
+        active_menu_item: function(){
+            $('ul.cl-vnavigation li').each(function(index, li) {
+                //var sub_menus = $(li).find('ul');
+                //if (sub_menus.length > 0) {
+                //    return;
+                //}
+                var $clink = li.children[0];
+                if ($clink.href == String(window.location)) {
+                    $(this).addClass('active');
+                } else{
+                    $(this).removeClass('active');
                 }
             });
         }

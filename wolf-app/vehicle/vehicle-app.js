@@ -5,11 +5,6 @@
      var Backbone = require('backbone');
      var vehicleMgmt = require('./view/vehicle-mgmt');
      var vehicleModal = require('./view/vehicle-new-modal');
-     //var vehicleRouter = require('./router/vehicle-router');
-     //var vehicleView = require('./view/vehicle-view');
-     //var common = require('../common/common');
-
-     //var datatable;
 
      var vehicleApp = new Backbone.Layout({
 
@@ -20,56 +15,13 @@
         template: 'vehicle/templates/vehicle-container.html',
 
         events: {
-             //'click #vehicle-new-action': 'show_vehicle_modal',
-             //'click #vehicle-mgmt-delete': 'delete_vehicle'
+            //TODO:
          },
 
         afterRender: function(){
             this.insertView('#vehicle-home', new vehicleMgmt()).render();
             this.insertView('#vehicle-home', new vehicleModal()).render();
-        },
-
-         //initialize: function() {
-         //    //this.render();
-         //    //var self = this;
-         //    //templateMgmt.fetch_template('vehicle/vehicle-container', function(contents){
-         //    //    console.log(contents);
-         //    //   self.template = contents;
-         //    //   self.render();
-         //    //});
-         //},
-
-
-        // render: function(template, context) {
-        //     alert('in process..');
-        //   // return template(context);
-        //    //this.$el.html(this.template());
-        //    //var vehicleMgmtView = new vehicleMgmt();
-        //    //this.$el.find('#vehicle-home').append(vehicleMgmtView.el);
-        //    //return this;
-        //},
-
-
-         //show_vehicle_modal: function() {
-         //    vehicleView.render();
-         //},
-
-         //load_vehicle_records: function() {
-         //    vehicleColl.fetch();
-         //},
-
-         //render: function() {
-         //    datatable = common.populate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable');
-         //    $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
-         //        $(this).toggleClass('row_selected');
-         //        var selected_vehicle_id = $(this).find("td:first").html().trim();
-         //        var vehicle_model = vehicleColl.findWhere({
-         //            id: parseInt(selected_vehicle_id)
-         //        });
-         //        vehicle_model.toggle_select();
-         //    });
-         //},
-
+        }
      });
      module.exports = vehicleApp;
  });
