@@ -1,8 +1,5 @@
 define(function(require, exports, module) {
 
-    //- Import dependency css
-    require('css-bootstrap');
-
     //- Import dependency js
     var $ = require('$');
     var _ = require('underscore');

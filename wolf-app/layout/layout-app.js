@@ -1,8 +1,5 @@
 define(function(require, exports, module) {
 
-    require('css-bootstrap');
-    require('css-general');
-
     //- Import dependency js
     require('jcookie');
     require('nanoscroller');

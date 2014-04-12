@@ -1,10 +1,4 @@
 define(function(require, exports, module) {
-    //- Import dependency css
-    require('css-bootstrap');
-    require('css-gritter');
-    require('css-font-awesome');
-    require('css-nanoscroller');
-    require('css-general');
 
     var $ = require('$');
     var Backbone = require('backbone');

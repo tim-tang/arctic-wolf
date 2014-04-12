@@ -70,14 +70,6 @@
          //    });
          //},
 
-
-         ///**
-         // * Handling vehicle instance deletion.
-         // */
-         //delete_vehicle: function() {
-         //    _.invoke(vehicleColl.selected(), 'destroy');
-         //    common.remove_selected_row(datatable);
-         //}
      });
      module.exports = vehicleApp;
  });
