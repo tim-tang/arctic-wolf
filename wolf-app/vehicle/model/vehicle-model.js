@@ -5,7 +5,7 @@
 
     var vehicleModel= Backbone.Model.extend({
 
-        urlRoot: 'http://localhost:5000/vehicles',
+        urlRoot: App.WS_HOST + '/vehicles',
 
         defaults: {
             vehicle_name: '',

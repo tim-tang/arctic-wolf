@@ -8,7 +8,8 @@
      vehicleColl = Backbone.Collection.extend({
 
          model: vehicleModel,
-         url: 'http://localhost:5000/vehicles',
+         //url: 'http://localhost:5000/vehicles',
+          url: App.WS_HOST + '/vehicles',
 
          // filter out selected vehicle recrods.
          selected: function() {

@@ -43,6 +43,7 @@ define(function(require, exports, module) {
 
     module.exports = {
         init: function(){
+            window.App = require('../common/global-constant');
             // Set the app namespace instancing the router
             var WolfApp = {
                 ROOT: "/",
