@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 
         init: function(selector) {
             var parent = $(selector);
-            var loading = $('<div id="loading" class="loading"><i class="fa fa-spinner"></i></div>');
+            var loading = $('<div id="loading" class="loading"><i class="fa fa-refresh fa-spin"></i></div>');
             loading.appendTo(parent);
             loading.fadeIn(0);
         },
