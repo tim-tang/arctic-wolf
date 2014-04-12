@@ -3,7 +3,9 @@
     var Backbone = require('backbone');
     var BaseModel = require('../../common/model/base-model');
 
-    var vehicleModel= BaseModel.extend({
+    var vehicleModel= Backbone.Model.extend({
+
+        urlRoot: 'http://localhost:5000/vehicles',
 
         defaults: {
             vehicle_name: '',

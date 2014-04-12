@@ -51,7 +51,6 @@ define(function(require, exports, module) {
 
         vehicle_mgmt: function() {
             this.predict_layout_existence();
-            commonLoading.init('#main-content');
             this.layoutApp.switch_view();
         },
 

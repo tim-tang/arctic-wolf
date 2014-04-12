@@ -31,7 +31,7 @@
         <title>Arctic System</title>
     </head>
 
-    <body id="main-body" style="opacity:0">
+    <body id="main-body">
 
     <script src="sea-modules/seajs/2.2.1/sea.js" id="seajsnode"></script>
 
@@ -90,7 +90,7 @@
     seajs.use(['$', 'app-main'], function($, app_main){
         $(document).ready(function() {
             app_main.init();
-            $("#main-body").css({opacity: 1,'margin-left':0});
+            //$("#main-body").css({opacity: 1,'margin-left':0});
         });
     });
 </script>

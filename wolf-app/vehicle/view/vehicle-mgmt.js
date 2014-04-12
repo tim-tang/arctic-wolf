@@ -20,6 +20,7 @@ define(function(require, exports, module) {
          },
 
         initialize: function() {
+            commonLoading.init('#main-content');
             this.listenTo(vehicleHeaderColl, 'sync', this.after_load_vehicle_headers);
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
             vehicleHeaderColl.fetch();
