@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var securityApp = require('../security-app');
+    var commonLoading = require('../../common/common-loading');
 
     var securityRouter = Backbone.Router.extend({
         initialize: function() {
@@ -10,12 +11,8 @@ define(function(require, exports, module) {
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
                 e.preventDefault();
-                $('#loading').remove();
-                var parent = $('#main-body');
-                var loading = $('<div id="loading" class="loading"><i class="fa fa-spinner"></i></div>');
-                loading.appendTo(parent);
-                loading.fadeIn(0);
 
+                commonLoading.init('#main-body');
                 // take the href of the link clicked
                 var href = $(this).attr("href");
                 //var protocol = this.protocol + "//";
