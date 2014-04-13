@@ -44,10 +44,10 @@ define(function(require, exports, module) {
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
                     $(this).toggleClass('row_selected');
                     var selected_vehicle_id = $(this).find("td:first").html().trim();
-                    var vehicle_model = vehicleColl.findWhere({
+                    var vehicleModel = vehicleColl.findWhere({
                         id: parseInt(selected_vehicle_id)
                     });
-                    vehicle_model.toggle_select();
+                    vehicleModel.toggle_select();
                 });
                 commonLoading.destroy();
             });

@@ -13,6 +13,9 @@
 
          columns: [],
 
+         /**
+          * Convert attributes data to model data.
+          */
          parse: function(resp) {
              var values = _.pluck(resp, 'values');
              var attributes = _.pluck(resp, 'mData');
