@@ -35,7 +35,7 @@ define(function(require, exports, module) {
             '': 'home',
             'forgot-password': 'forgot_password',
             'reset-password': 'reset_password',
-            //'*error': 'not_found'
+            '*error': 'not_found'
         },
 
         home: function(){

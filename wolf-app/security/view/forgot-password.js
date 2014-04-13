@@ -21,7 +21,7 @@ define(function(require, exports, module) {
             this.insertView('.middle', new layoutFooter()).render();
         },
 
-        send_email: function() {
+        send_email: function(e) {
             e.preventDefault();
             //TODO: send email.
             Backbone.history.navigate('reset-password', true);

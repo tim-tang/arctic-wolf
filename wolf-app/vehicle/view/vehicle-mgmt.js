@@ -16,7 +16,9 @@ define(function(require, exports, module) {
 
         events: {
              //'click #vehicle-new-action': 'show_vehicle_modal',
-             'click #vehicle-mgmt-delete': 'delete_vehicle'
+             'click #vehicle-mgmt-delete': 'delete_vehicle',
+             'click #vehicle-mgmt-edit': 'edit_vehicle',
+             'click #vehicle-mgmt-view': 'view_vehicle'
          },
 
         initialize: function() {
@@ -24,6 +26,10 @@ define(function(require, exports, module) {
             this.listenTo(vehicleHeaderColl, 'sync', this.after_load_vehicle_headers);
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
             vehicleHeaderColl.fetch();
+        },
+
+        afterRender: function() {
+            //TODO:
         },
 
         after_load_vehicle_headers: function() {
@@ -45,15 +51,21 @@ define(function(require, exports, module) {
             });
         },
 
-        delete_vehicle: function(){
-            _.invoke(vehicleColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(vehicleDatatable);
+        view_vehicle: function(e) {
+            e.preventDefault();
+            //TODO:
         },
 
-        afterRender: function() {
+       edit_vehicle: function(e) {
+            e.preventDefault();
             //TODO:
-        }
+       },
 
+        delete_vehicle: function(e){
+            e.preventDefault();
+            _.invoke(vehicleColl.selected(), 'destroy');
+            commonUtils.remove_selected_row(vehicleDatatable);
+        }
     });
 
     module.exports = vehicleMgmt;

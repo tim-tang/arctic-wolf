@@ -12,6 +12,10 @@ define(function(require, exports, module) {
              //'click ul.cl-vnavigation li': 'active_menu_item'
          },
 
+         active_menu_item: function(e){
+                console.log(e);
+         },
+
         afterRender: function(){
             //TODO: add behavior-core after loaded complete.
             require('behavior-core');
