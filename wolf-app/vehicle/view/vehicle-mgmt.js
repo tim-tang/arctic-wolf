@@ -5,7 +5,6 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
 
     var vehicleColl = require('../collection/vehicle-coll');
-    var vehicleHeaderColl = require('../collection/vehicle-header-coll');
     var commonUtils = require('../../common/common-utils');
     var commonLoading = require('../../common/common-loading');
     var vehicleDatatable;
@@ -15,29 +14,31 @@ define(function(require, exports, module) {
         template: 'vehicle/templates/vehicle-mgmt.html',
 
         events: {
-             //'click #vehicle-new-action': 'show_vehicle_modal',
              'click #vehicle-mgmt-delete': 'delete_vehicle',
              'click #vehicle-mgmt-edit': 'edit_vehicle',
              'click #vehicle-mgmt-view': 'view_vehicle'
          },
 
         initialize: function() {
-            commonLoading.init('#main-content');
-            this.listenTo(vehicleHeaderColl, 'sync', this.after_load_vehicle_headers);
+            this.listenTo(vehicleColl, 'request', this.show_loading)
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
-            vehicleHeaderColl.fetch();
+            vehicleColl.fetch();
         },
 
         afterRender: function() {
             //TODO:
         },
 
-        after_load_vehicle_headers: function() {
-            vehicleColl.fetch();
+        show_loading: function(){
+            commonLoading.init('#main-content');
+        },
+
+        hide_loading: function(){
+            commonLoading.destroy();
         },
 
         after_load_vehicles: function() {
-            commonUtils.generate_datatable(vehicleHeaderColl.toJSON(), vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
+            commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
                 vehicleDatatable = datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
                     $(this).toggleClass('row_selected');
