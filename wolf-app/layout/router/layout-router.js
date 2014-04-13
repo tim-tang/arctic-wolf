@@ -34,7 +34,8 @@ define(function(require, exports, module) {
         routes: {
             'dashboard': 'dashboard',
             'product-search': 'product_search',
-            'vehicle-mgmt': 'vehicle_mgmt'
+            'vehicle-mgmt': 'vehicle_mgmt',
+            'user-group-mgmt': 'user_group_mgmt'
         },
 
         dashboard: function() {
@@ -50,6 +51,11 @@ define(function(require, exports, module) {
         },
 
         vehicle_mgmt: function() {
+            this.predict_layout_existence();
+            this.layoutApp.switch_view();
+        },
+
+        user_group_mgmt: function() {
             this.predict_layout_existence();
             this.layoutApp.switch_view();
         },

@@ -44,6 +44,8 @@ define(function(require, exports, module) {
             case "user-mgmt":
                 break;
             case "user-group-mgmt":
+                var userGroupApp = require('../user-group/user-group-app');
+                this.do_switch(userGroupApp);
                 break;
             case "role-mgmt":
                 break;
