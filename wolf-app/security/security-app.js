@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var securityLogin = require('./view/security-login');
     var forgotPassword = require('./view/forgot-password');
     var resetPassword = require('./view/reset-password');
+    var notFound = require('./view/404');
 
     var securityApp =new Backbone.Layout({
 
@@ -14,8 +15,13 @@ define(function(require, exports, module) {
             $('#main-body').addClass('texture');
         },
 
-        views: {
-            '': new securityLogin()
+        afterRender: function() {
+            this.render_security_login();
+        },
+
+        render_security_login: function() {
+            this.removeView('');
+            this.insertView('', new securityLogin()).render();
         },
 
         render_forgot_password: function(){
@@ -24,8 +30,12 @@ define(function(require, exports, module) {
         },
 
         render_reset_password: function(){
-            this.removeView('');
             this.insertView('', new resetPassword()).render();
+        },
+
+        render_404: function() {
+            this.removeView('');
+            this.insertView('', new notFound()).render();
         }
     });
 

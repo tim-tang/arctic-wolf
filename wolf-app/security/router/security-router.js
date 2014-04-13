@@ -51,7 +51,7 @@ define(function(require, exports, module) {
         },
 
         not_found: function() {
-            alert('NO Kidding Not Found!');
+            securityApp.render_404();
         }
     });
 
