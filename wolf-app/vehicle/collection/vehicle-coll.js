@@ -26,9 +26,11 @@
                  this.push(vehicle);
              }
 
-             // remove values key pair
+             // clear columns array.
+             this.columns.length=0;
              var self_columns = this.columns;
              _.map(resp, function(column){
+                // remove values key pair then push to column array.
                 self_columns.push(_.omit(column, 'values'));
              });
 

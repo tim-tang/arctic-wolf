@@ -39,7 +39,6 @@ define(function(require, exports, module) {
         },
 
         after_load_vehicles: function() {
-            console.log(vehicleColl.toJSON());
             commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
                 vehicleDatatable = datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
