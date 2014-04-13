@@ -39,6 +39,7 @@ define(function(require, exports, module) {
         },
 
         home: function(){
+            securityApp.$el.html('');
             securityApp.render();
         },
 

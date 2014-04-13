@@ -20,7 +20,8 @@ define(function(require, exports, module) {
          },
 
         initialize: function() {
-            this.listenTo(vehicleColl, 'request', this.show_loading)
+            this.listenTo(vehicleColl, 'request', this.show_loading);
+            this.listenTo(vehicleColl, 'remove', this.hide_loading);
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
             vehicleColl.fetch();
         },
@@ -38,6 +39,7 @@ define(function(require, exports, module) {
         },
 
         after_load_vehicles: function() {
+            console.log(vehicleColl.toJSON());
             commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
                 vehicleDatatable = datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
