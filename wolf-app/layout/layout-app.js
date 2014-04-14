@@ -12,29 +12,35 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var layout = require('./view/layout');
     var commonUtils = require('../common/common-utils');
 
     var layoutApp = new Backbone.Layout({
 
         el: '#main-body',
 
+        template: 'layout/templates/layout.html',
+
         beforeRender: function() {
             $('#main-body').removeClass('texture');
         },
 
-        views: {
-            '': new layout()
-        },
-
         afterRender: function() {
-            //TODO:
+            var layoutLogo = require('./view/layout-logo');
+            var layoutUser = require('./view/layout-user');
+            var layoutMenu = require('./view/layout-menu');
+            var layoutProfile = require('./view/layout-profile');
+            this.insertView('#layout-logo-user-menu', new layoutLogo()).render();
+            this.insertView('#layout-logo-user-menu', new layoutUser()).render();
+            this.insertView('#layout-logo-user-menu', new layoutMenu()).render();
+            this.insertView('#layout-profile', new layoutProfile()).render();
         },
 
         /**
          * TODO: extract uri to constants.
          */
         switch_view: function() {
+            this.removeView('#main-content');
+
             switch (Backbone.history.fragment) {
             case "dashboard":
                 break;
@@ -68,7 +74,6 @@ define(function(require, exports, module) {
 
         do_switch: function(activeApp) {
             commonUtils.active_menu_item();
-            this.removeView('#main-content');
             this.insertView('#main-content', activeApp).render();
         }
     });
