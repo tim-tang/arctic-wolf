@@ -6,7 +6,8 @@ define(function(require, exports, module) {
 
     var layoutMenu = Backbone.View.extend({
         manage: true,
-        template: 'layout/templates/layout-menu.html',
+        prefix: "layout/templates/",
+        template: 'layout-menu.html',
 
         events: {
              //'click ul.cl-vnavigation li': 'active_menu_item'

@@ -4,7 +4,8 @@ define(function(require, exports, module) {
 
     var layoutLogo = Backbone.View.extend({
         manage: true,
-        template: 'layout/templates/layout-logo.html'
+        prefix: 'layout/templates/',
+        template: 'layout-logo.html'
     });
 
     module.exports = layoutLogo;

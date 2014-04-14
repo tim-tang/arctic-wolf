@@ -25,7 +25,7 @@ define(function(require, exports, module) {
             //    username: this.$('input[id=username]').val(),
             //    password: this.$('input[id=password]').val()
             //});
-            Backbone.history.loadUrl('dashboard', true);
+            Backbone.history.navigate('dashboard', true);
         }
     });
 

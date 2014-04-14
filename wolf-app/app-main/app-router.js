@@ -2,11 +2,15 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var securityApp = require('../security-app');
-    var commonLoading = require('../../common/common-loading');
+    var securityApp = require('../security/security-app');
+    var commonLoading = require('../common/common-loading');
+    var layoutRouter = require('../layout/router/layout-router');
 
-    var securityRouter = Backbone.Router.extend({
+    var AppRouter = {};
+    AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
+            // init layout route
+            AppRouter.layoutRouter = new layoutRouter();
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -35,10 +39,10 @@ define(function(require, exports, module) {
             '': 'home',
             'forgot-password': 'forgot_password',
             'reset-password': 'reset_password',
-            '*error': 'not_found'
+            '*error': 'not_found',
         },
 
-        home: function(){
+        home: function() {
             securityApp.$el.html('');
             securityApp.render();
         },
@@ -56,5 +60,6 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = securityRouter;
+    module.exports = AppRouter.Router;
+
 });

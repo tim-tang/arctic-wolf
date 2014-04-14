@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var userGroupColl= = require('../collection/user-group-coll');
+    var userGroupColl= require('../collection/user-group-coll');
     // var userGroupAttrsColl = require('../collection/user-group-attrs-coll');
     var commonUtils = require('../../common/common-utils');
     var commonLoading = require('../../common/common-loading');

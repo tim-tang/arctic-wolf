@@ -4,7 +4,8 @@ define(function(require, exports, module) {
 
     var layoutProfile = Backbone.View.extend({
         manage: true,
-        template: 'layout/templates/layout-profile.html'
+        prefix: "layout/templates/",
+        template: 'layout-profile.html'
     });
 
     module.exports = layoutProfile;

@@ -13,8 +13,8 @@
          manage: true,
          model: new vehicleModel(),
 
-         //template: _.template($('#vehicle-template').html()),
-         template: 'vehicle/templates/vehicle-new-modal.html',
+         prefix: "templates/",
+         template: 'vehicle-new-modal.html',
 
          events: {
              'click #vehicle-create-action': 'create_vehicle'

@@ -4,11 +4,12 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
+    //require('subroute');
     var commonLoading = require('../../common/common-loading');
 
-    var appRouter = Backbone.Router.extend({
+    var LayoutRouter = {};
+    LayoutRouter.Router = Backbone.Router.extend({
         initialize: function() {
-
             // setup the ajax links for the html5 push navigation
             $("#main-menu").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -34,9 +35,17 @@ define(function(require, exports, module) {
         routes: {
             'dashboard': 'dashboard',
             'product-search': 'product_search',
-            'vehicle-mgmt': 'vehicle_mgmt',
+            'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
             'user-group-mgmt': 'user_group_mgmt',
             'logout': 'logout'
+        },
+
+        invokeVehicleModule: function(subroute){
+            var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
+            this.predict_layout_existence();
+            if(!LayoutRouter.vehicleRouter){
+                LayoutRouter.vehicleRouter= new vehicleRouter('vehicle-mgmt/');
+            }
         },
 
         dashboard: function() {
@@ -74,5 +83,5 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = appRouter;
+    module.exports = LayoutRouter.Router;
 });

@@ -11,7 +11,9 @@ define(function(require, exports, module) {
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
 
-        template: 'vehicle/templates/vehicle-mgmt.html',
+        prefix: "templates/",
+
+        template: 'vehicle-mgmt.html',
 
         events: {
              'click #vehicle-mgmt-delete': 'delete_vehicle',

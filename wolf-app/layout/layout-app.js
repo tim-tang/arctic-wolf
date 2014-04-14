@@ -13,22 +13,23 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var commonUtils = require('../common/common-utils');
+    var layoutLogo = require('./view/layout-logo');
+    var layoutUser = require('./view/layout-user');
+    var layoutMenu = require('./view/layout-menu');
+    var layoutProfile = require('./view/layout-profile');
 
     var layoutApp = new Backbone.Layout({
 
         el: '#main-body',
+        prefix: "layout/templates/",
 
-        template: 'layout/templates/layout.html',
+        template: 'layout.html',
 
         beforeRender: function() {
             $('#main-body').removeClass('texture');
         },
 
         afterRender: function() {
-            var layoutLogo = require('./view/layout-logo');
-            var layoutUser = require('./view/layout-user');
-            var layoutMenu = require('./view/layout-menu');
-            var layoutProfile = require('./view/layout-profile');
             this.insertView('#layout-logo-user-menu', new layoutLogo()).render();
             this.insertView('#layout-logo-user-menu', new layoutUser()).render();
             this.insertView('#layout-logo-user-menu', new layoutMenu()).render();
@@ -66,7 +67,7 @@ define(function(require, exports, module) {
             case "criteria-details":
                 break;
             case "vehicle-mgmt":
-                var vehicleApp = require('../vehicle/vehicle-app');
+                var vehicleApp = require('../vehicle-mgmt/vehicle-app');
                 this.do_switch(vehicleApp);
                 break;
             }
