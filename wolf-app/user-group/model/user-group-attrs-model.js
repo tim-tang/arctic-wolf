@@ -3,6 +3,8 @@
      var Backbone = require('backbone');
 
      var userGroupAttrsModel = Backbone.Model.extend({
+        urlRoot: App.WS_HOST + '/user-group-attrs'
+
 
      });
 

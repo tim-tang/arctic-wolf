@@ -5,15 +5,11 @@
      var Backbone = require('backbone');
      var userGroupModel = require('../model/user-group-model');
 
-     userGroupColl = Backbone.Collection.extend({
+     var userGroupColl = Backbone.Collection.extend({
 
          model: userGroupModel,
-         url: '/user-groups',
 
-         // Fetch User Group
-         getUserGroup: function() {
-
-         }
+         url: App.WS_HOST + '/user-groups'
      });
 
      module.exports = new userGroupColl();

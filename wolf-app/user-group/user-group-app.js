@@ -20,7 +20,7 @@
 
         afterRender: function() {
             this.insertView('#user-group-home', new userGroupMgmt()).render();
-            this.insertView('#user-group-home', new userGroupModal()).render();
+            // this.insertView('#user-group-home', new userGroupModal()).render();
         }
      });
      module.exports = userGroupApp;

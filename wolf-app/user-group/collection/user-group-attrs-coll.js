@@ -8,7 +8,8 @@
      userGroupAttrsColl = Backbone.Collection.extend({
 
          model: userGroupAttrsModel,
-         url: '/user-group-attrs',
+
+         url: App.WS_HOST + '/user-group-attrs',
 
          // Fetch crieriable attributes
          getCriteriableAttrs: function() {
