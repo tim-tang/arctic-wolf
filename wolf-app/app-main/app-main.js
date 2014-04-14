@@ -46,7 +46,7 @@ define(function(require, exports, module) {
             window.App = require('../common/global-constant');
             // Set the app namespace instancing the router
             var WolfApp = {
-                ROOT: "/",
+                ROOT: "/#",
                 APP_ROUTERS: [
                     new securityRouter(),
                     new layoutRouter()
@@ -55,8 +55,8 @@ define(function(require, exports, module) {
             // Start the Backbone push navigation
             Backbone.history.start({
                 root: WolfApp.ROOT,
-                pushState: false,
-                hashChange: true
+                pushState: true,
+                hashChange: false
             });
         }
     };
