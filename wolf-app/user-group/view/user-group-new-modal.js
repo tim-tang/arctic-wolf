@@ -26,7 +26,7 @@
 
 
          serialize: function() {
-            return { user-group: _.clone(this.model.attributes) };
+            return { user_group: _.clone(this.model.attributes) };
 
          },
 

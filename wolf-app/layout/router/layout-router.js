@@ -35,7 +35,8 @@ define(function(require, exports, module) {
             'dashboard': 'dashboard',
             'product-search': 'product_search',
             'vehicle-mgmt': 'vehicle_mgmt',
-            'user-group-mgmt': 'user_group_mgmt'
+            'user-group-mgmt': 'user_group_mgmt',
+            'logout': 'logout'
         },
 
         dashboard: function() {
@@ -60,13 +61,17 @@ define(function(require, exports, module) {
             this.layoutApp.switch_view();
         },
 
+        logout: function() {
+            this.layoutApp = null;
+            Backbone.history.loadUrl('#');
+        },
+
         predict_layout_existence: function() {
             if (!this.layoutApp) {
                 this.layoutApp = require('../layout-app');
                 this.layoutApp.render();
             }
         }
-
     });
 
     module.exports = appRouter;

@@ -23,11 +23,12 @@ define(function(require, exports, module) {
             this.listenTo(vehicleColl, 'request', this.show_loading);
             this.listenTo(vehicleColl, 'remove', this.hide_loading);
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
-            vehicleColl.fetch();
         },
 
         afterRender: function() {
-            //TODO:
+            // waiting for all vehicle mgmt dom element ready.
+            // then build datatable.
+            vehicleColl.fetch();
         },
 
         show_loading: function(){
