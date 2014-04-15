@@ -44,8 +44,8 @@ define(function(require, exports, module) {
 
         after_load_vehicles: function() {
             self = this;
-            console.log(vehicleColl.columns);
-            console.log(vehicleColl.toJSON);
+            // console.log(vehicleColl.columns);
+            // console.log(vehicleColl.toJSON);
             commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
                 self.datatable= datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {

@@ -1,52 +1,60 @@
- define(function(require, exports, module) {
+define(function(require, exports, module) {
 
-     require('modalEffects');
-     require('bt-touchspin');
+    require('modalEffects');
+    require('bt-touchspin');
 
-     var $ = require('$');
-     var _ = require('underscore');
-     var Backbone = require('backbone');
-     var userGroupColl = require('../collection/user-group-coll');
-     var userGroupModel = require('../model/user-group-model');
+    var $ = require('$');
+    var _ = require('underscore');
+    var Backbone = require('backbone');
+    var commonUtils = require('../../common/common-utils');
+    var userGroupColl = require('../collection/user-group-coll');
+    var userGroupModel = require('../model/user-group-model');
 
-     var userGroupModal = Backbone.View.extend({
-         manage: true,
-         model: new userGroupModel(),
+    var userGroupModal = Backbone.View.extend({
+        manage: true,
 
-         //template: _.template($('#user-group-template').html()),
-         template: 'user-group/templates/user-group-new-modal.html',
+        model: new userGroupModel(),
 
-         events: {
-             'click #user-group-create-action': 'create_user_group'
-         },
+        prefix: 'user-group-mgmt/templates/',
 
-         initialize: function() {
-             //this.listenTo(this.model, 'change', this.test);
-         },
+        template: 'user-group-new-modal.html',
 
+        events: {
+            'click #user-group-new-action': 'create_user_group'
+        },
 
-         serialize: function() {
-            return { user_group: _.clone(this.model.attributes) };
+        initialize: function() {
+            //this.listenTo(this.model, 'change', this.test);
+        },
 
-         },
-
-         afterRender: function() {
-         },
-
-         new_attributes: function(){
+        serialize: function() {
             return {
-                user_group_name : this.$('#user-group-name').val().trim(),
-                user_group_desc : this.$('#user-group-desc').val().trim()
+                user_group: _.clone(this.model.attributes)
+            };
+        },
+
+        afterRender: function() {
+            commonUtils.init_switch();
+            commonUtils.init_multi_select();
+        },
+
+        new_attributes: function() {
+            return {
+                ug_name: this.$('#ug-name').val().trim(),
+                ug_desc: this.$('#ug-desc').val().trim(),
+                users: this.$('#users').val().trim(),
+                enabled: this.$('#enabled').val().trim()
             }
-         },
+        },
 
         /**
          * Handling user-group instance creation.
          */
-         create_user_group: function() {
-             userGroupColl.create(this.new_attributes());
-         }
-     });
+        create_user_group: function() {
+        	console.log(JSON.stringify(this.new_attributes));
+            userGroupColl.create(this.new_attributes());
+        }
+    });
 
-     module.exports = userGroupModal;
- });
+    module.exports = userGroupModal;
+});

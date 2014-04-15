@@ -11,17 +11,17 @@ define(function(require, exports, module) {
     var userGroupDatatable;
 
     var userGroupMgmt = Backbone.View.extend({
-    	
+
         manage: true,
-        
+
         prefix: "user-group-mgmt/templates/",
 
         template: 'user-group-mgmt.html',
 
 		events: {
-             'click #user-group-mgmt-delete': 'delete_user_group',
-             'click #user-group-mgmt-edit': 'edit_user_group',
-             'click #user-group-mgmt-view': 'view_user_group'
+            'click #user-group-mgmt-delete': 'delete_user_group',
+            'click #user-group-mgmt-edit': 'edit_user_group',
+            'click #user-group-mgmt-view': 'view_user_group'
          },
 
         initialize: function() {
@@ -43,9 +43,9 @@ define(function(require, exports, module) {
         },
 
         after_load_user_groups: function() {
-        	console.log(JSON.stringify(userGroupColl));
-        	console.log(JSON.stringify(userGroupColl.columns));
-        	console.log(JSON.stringify(userGroupColl.data));
+        	// console.log(JSON.stringify(userGroupColl));
+        	// console.log(JSON.stringify(userGroupColl.columns));
+        	// console.log(JSON.stringify(userGroupColl.data));
             commonUtils.generate_datatable(userGroupColl.columns, userGroupColl.toJSON(), 'user-group-mgmt-datatable', function(datatable) {
 	            userGroupDatatable = datatable;
 	            $('#user-group-mgmt-datatable').on('click', 'tbody tr', function(e) {

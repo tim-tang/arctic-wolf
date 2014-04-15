@@ -20,10 +20,10 @@ define(function(require, exports, module) {
             var datatable_div = datatable_id + '-div';
             $("#" + datatable_div).html('<table class="table table-bordered" id="' + datatable_id + '"></table>');
             datatable_id = "#" + datatable_id;
-            
-            console.log(JSON.stringify(header));
-            console.log(JSON.stringify(data));
-            
+
+            // console.log(JSON.stringify(header));
+            // console.log(JSON.stringify(data));
+
             /* Init the table with dynamic ajax loader.*/
             var datatable = $(datatable_id).dataTable({
                 "aaData": data,
@@ -33,7 +33,7 @@ define(function(require, exports, module) {
             // Search input style
             $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
             $('.dataTables_length select').addClass('form-control');
-			
+
 			fnDatatableCallback(datatable);
         },
 

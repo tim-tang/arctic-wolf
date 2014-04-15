@@ -1,5 +1,5 @@
 <!-- Nifty Modal -->
-<div id="userGroup-new-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
+<div id="user-group-new-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
      aria-hidden="false">
     <div class="modal-dialog colored-header custom-width">
         <div class="md-content">
@@ -9,17 +9,17 @@
             </div>
             <div class="modal-body form">
                 <div class="form-group">
-                    <label class="control-label">UserGroup Name</label>
-                    <input type="email" class="form-control" placeholder="UserGroup Name">
+                    <label class="control-label">User Group Name</label>
+                    <input id="ug_name" class="form-control" placeholder="User Group Name">
                 </div>
                 <div class="form-group">
                     <label class="control-label">Description</label>
-                    <textarea id="user-group-desc" class="form-control"
+                    <textarea id="ug-desc" class="form-control"
                               placeholder="This is the description"></textarea>
                 </div>
                 <div class="form-group">
                     <label class="control-label">Users</label>
-                    <select id='users' class="searchable" name="searchable[]" multiple='multiple'>
+                    <select id="users" class="searchable" name="searchable[]" multiple='multiple'>
                         <option value='elem_1' selected>Administrator</option>
                         <option value='elem_2'>User01</option>
                         <option value='elem_3'>User02</option>
