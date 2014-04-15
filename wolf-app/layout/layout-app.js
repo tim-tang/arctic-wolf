@@ -21,6 +21,7 @@ define(function(require, exports, module) {
     var layoutApp = new Backbone.Layout({
 
         el: '#main-body',
+
         prefix: "layout/templates/",
 
         template: 'layout.html',
@@ -31,8 +32,10 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             this.insertView('#layout-logo-user-menu', new layoutLogo()).render();
-            this.insertView('#layout-logo-user-menu', new layoutUser()).render();
-            this.insertView('#layout-logo-user-menu', new layoutMenu()).render();
+            var self = this;
+            this.insertView('#layout-logo-user-menu', new layoutUser()).render().promise().done(function(){
+                self.insertView('#layout-logo-user-menu', new layoutMenu()).render();
+            });
             this.insertView('#layout-profile', new layoutProfile()).render();
         },
 
@@ -66,7 +69,7 @@ define(function(require, exports, module) {
                 break;
             case "criteria-details":
                 break;
-            case "vehicle-mgmt":
+            case "vehicle-mgmt/":
                 var vehicleApp = require('../vehicle-mgmt/vehicle-app');
                 this.do_switch(vehicleApp);
                 break;

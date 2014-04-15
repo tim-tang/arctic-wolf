@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
 
-        prefix: "templates/",
+        prefix: "vehicle-mgmt/templates/",
 
         template: 'vehicle-mgmt.html',
 

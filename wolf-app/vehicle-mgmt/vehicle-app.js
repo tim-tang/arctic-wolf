@@ -8,13 +8,13 @@
 
      var vehicleApp = new Backbone.Layout({
 
-         el: '#main-content',
+         //el: '#main-content',
 
          manage: true,
 
          keep: true,
 
-         prefix: "templates/",
+         prefix: "vehicle-mgmt/templates/",
 
          template: 'vehicle-container.html',
 

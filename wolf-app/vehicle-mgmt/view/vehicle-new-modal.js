@@ -13,7 +13,7 @@
          manage: true,
          model: new vehicleModel(),
 
-         prefix: "templates/",
+         prefix: "vehicle-mgmt/templates/",
          template: 'vehicle-new-modal.html',
 
          events: {

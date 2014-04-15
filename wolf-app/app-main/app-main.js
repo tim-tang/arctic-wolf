@@ -53,8 +53,8 @@ define(function(require, exports, module) {
             // Start the Backbone push navigation
             Backbone.history.start({
                 root: WolfApp.ROOT,
-                pushState: true,
-                hashChange: false
+                pushState: false,
+                hashChange: true
             });
         }
     };

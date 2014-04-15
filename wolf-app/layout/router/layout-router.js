@@ -25,7 +25,7 @@ define(function(require, exports, module) {
                 } else {
                     Backbone.history.navigate(href, {
                         trigger: true,
-                        replace: true
+                        replace: false
                     });
                 }
             });
@@ -34,18 +34,20 @@ define(function(require, exports, module) {
         // set the Backbone routes
         routes: {
             'dashboard': 'dashboard',
-            'product-search': 'product_search',
             'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
+            //TODO: alter each module to subroute.
+            'product-search': 'product_search',
             'user-group-mgmt': 'user_group_mgmt',
             'logout': 'logout'
         },
 
         invokeVehicleModule: function(subroute){
             var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
-            this.predict_layout_existence();
-            if(!LayoutRouter.vehicleRouter){
-                LayoutRouter.vehicleRouter= new vehicleRouter('vehicle-mgmt/');
-            }
+            this.predict_layout_existence(function(layoutApp){
+                if(!LayoutRouter.vehicleRouter){
+                    LayoutRouter.vehicleRouter= new vehicleRouter('vehicle-mgmt/', {layoutApp: layoutApp});
+                }
+            });
         },
 
         dashboard: function() {
@@ -70,11 +72,15 @@ define(function(require, exports, module) {
             Backbone.history.loadUrl('#');
         },
 
-        predict_layout_existence: function() {
-            if (!this.layoutApp) {
-                this.layoutApp = require('../layout-app');
-                this.layoutApp.render();
+        predict_layout_existence: function(callback) {
+            if (this.layoutApp) {
+                return callback(this.layoutApp);
             }
+            this.layoutApp = require('../layout-app');
+            var self = this.layoutApp;
+            this.layoutApp.render().promise().done(function(){
+                callback(self);
+            });
         }
     });
 

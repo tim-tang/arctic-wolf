@@ -7,7 +7,7 @@ define(function(require, exports, module){
     var vehicleRouter = Backbone.SubRoute.extend({
 
         initialize: function(options) {
-            //TODO:
+            this.layoutApp = options.layoutApp;
         },
 
         routes: {
@@ -15,7 +15,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            vehicleApp.render();
+            this.layoutApp.switch_view();
         }
     });
 
