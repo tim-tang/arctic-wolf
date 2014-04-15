@@ -51,7 +51,9 @@ define(function(require, exports, module) {
         },
 
         dashboard: function() {
-            this.predict_layout_existence();
+            this.predict_layout_existence(function(layoutApp){
+                //TODO:
+            });
         },
 
         product_search: function() {
@@ -63,8 +65,10 @@ define(function(require, exports, module) {
         },
 
         user_group_mgmt: function() {
-            this.predict_layout_existence();
-            this.layoutApp.switch_view();
+            this.predict_layout_existence(function(layoutApp){
+                //TODO: follow the vehicle module, extract router into module.
+                this.layoutApp.switch_view();
+            });
         },
 
         logout: function() {
