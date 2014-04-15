@@ -26,6 +26,10 @@ define(function(require, exports, module) {
 
         template: 'layout.html',
 
+        initialize: function() {
+            this.on('switch-view', this.switch_view);
+        },
+
         beforeRender: function() {
             $('#main-body').removeClass('texture');
         },

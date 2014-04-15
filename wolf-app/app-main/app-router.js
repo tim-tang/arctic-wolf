@@ -48,15 +48,15 @@ define(function(require, exports, module) {
         },
 
         forgot_password: function() {
-            securityApp.render_forgot_password();
+            securityApp.trigger('render-forgot-password');
         },
 
         reset_password: function() {
-            securityApp.render_reset_password();
+            securityApp.trigger('render-reset-password');
         },
 
         not_found: function() {
-            securityApp.render_404();
+            securityApp.trigger('render-404');
         }
     });
 

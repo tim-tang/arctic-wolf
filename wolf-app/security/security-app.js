@@ -12,6 +12,14 @@ define(function(require, exports, module) {
 
         el: '#main-body',
 
+        initialize: function() {
+            this.on('render-forgot-password', this.render_forgot_password);
+            this.on('render-reset-password', this.render_reset_password);
+            this.on('render-security-login', this.render_security_login);
+            this.on('render-404', this.render_404);
+            this.on('render-500', this.render_500);
+        },
+
         beforeRender: function() {
             $('#main-body').addClass('texture');
         },
