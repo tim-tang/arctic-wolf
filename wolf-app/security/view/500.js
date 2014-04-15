@@ -6,7 +6,8 @@ define(function(require, exports, module) {
 
     var internalError = Backbone.View.extend({
         manage: true,
-        template: 'security/templates/500.html',
+        prefix: 'security/templates/',
+        template: '500.html',
 
         beforeRender: function() {
             $('#main-body').addClass('texture');

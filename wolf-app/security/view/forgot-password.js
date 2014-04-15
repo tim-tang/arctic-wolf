@@ -7,7 +7,8 @@ define(function(require, exports, module) {
     var forgotPassword = Backbone.View.extend({
 
         manage: true,
-        template: 'security/templates/forgot-password.html',
+        prefix: 'security/templates/',
+        template: 'forgot-password.html',
 
         events: {
             'submit form': 'send_email'

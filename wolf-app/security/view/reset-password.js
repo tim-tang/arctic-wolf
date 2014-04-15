@@ -7,7 +7,8 @@ define(function(require, exports, module) {
     var resetPassword = Backbone.View.extend({
 
         manage: true,
-        template: 'security/templates/reset-password.html',
+        prefix: 'security/templates/',
+        template: 'reset-password.html',
 
         beforeRender: function(){
             $('#main-body').addClass('texture');
