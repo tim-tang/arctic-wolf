@@ -6,7 +6,7 @@ define(function(require, exports, module) {
 
     var vehicleColl = require('../collection/vehicle-coll');
     var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
+    var eventBus = require('../../app-main/app-eventbus');
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
 
@@ -23,8 +23,8 @@ define(function(require, exports, module) {
          },
 
         initialize: function() {
-            this.listenTo(vehicleColl, 'request', this.show_loading);
-            this.listenTo(vehicleColl, 'remove', this.hide_loading);
+            this.listenTo(vehicleColl, 'request', eventBus.trigger('show-loading'));
+            this.listenTo(vehicleColl, 'remove', eventBus.trigger('hide-loading'));
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
         },
 
@@ -56,7 +56,7 @@ define(function(require, exports, module) {
                     });
                     vehicleModel.toggle_select();
                 });
-                commonLoading.destroy();
+                eventBus.trigger('hide-loading')
             });
         },
 
