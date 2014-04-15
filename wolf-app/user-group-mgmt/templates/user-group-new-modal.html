@@ -1,0 +1,54 @@
+<!-- Nifty Modal -->
+<div id="userGroup-new-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
+     aria-hidden="false">
+    <div class="modal-dialog colored-header custom-width">
+        <div class="md-content">
+            <div class="modal-header">
+                <h3>Create User Group</h3>
+                <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body form">
+                <div class="form-group">
+                    <label class="control-label">UserGroup Name</label>
+                    <input type="email" class="form-control" placeholder="UserGroup Name">
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    <textarea id="user-group-desc" class="form-control"
+                              placeholder="This is the description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Users</label>
+                    <select id='users' class="searchable" name="searchable[]" multiple='multiple'>
+                        <option value='elem_1' selected>Administrator</option>
+                        <option value='elem_2'>User01</option>
+                        <option value='elem_3'>User02</option>
+                        <option value='elem_4' selected>Johnny Lv</option>
+                        <option value='elem_5'>User04</option>
+                        <option value='elem_6'>User05</option>
+                        <option value='elem_7'>User06</option>
+                        <option value='elem_8'>User07</option>
+                        <option value='elem_9'>User08</option>
+                        <option value='elem_10'>User09</option>
+                    </select>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12 no-margin">
+                        <label>Active</label>
+                    </div>
+                </div>
+                <div class="row no-margin-y">
+                    <div class="form-group col-md-12 no-margin">
+                        <div class="switch">
+                            <input id="enabled" type="checkbox" checked>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="user-group-create-action" class="btn btn-primary btn-flat md-close" data-dismiss="modal" type="button">Create</button>
+                <button class="btn btn-default btn-flat md-close" data-dismiss="modal" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

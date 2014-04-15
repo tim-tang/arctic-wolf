@@ -17,19 +17,24 @@ define(function(require, exports, module) {
     module.exports = {
 
         generate_datatable: function(header, data, datatable_id, fnDatatableCallback) {
-             var datatable_div = datatable_id + '-div';
-             $("#" + datatable_div).html('<table class="table table-bordered" id="' + datatable_id + '"></table>');
-             datatable_id = "#" + datatable_id;
-             /* Init the table with dynamic ajax loader.*/
-             var datatable = $(datatable_id).dataTable({
-                 "aaData": data,
-                 "aoColumns": header
-             });
+            var datatable_div = datatable_id + '-div';
+            $("#" + datatable_div).html('<table class="table table-bordered" id="' + datatable_id + '"></table>');
+            datatable_id = "#" + datatable_id;
+            
+            console.log(JSON.stringify(header));
+            console.log(JSON.stringify(data));
+            
+            /* Init the table with dynamic ajax loader.*/
+            var datatable = $(datatable_id).dataTable({
+                "aaData": data,
+    			"aoColumns": header
+            });
 
-             // Search input style
-             $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
-             $('.dataTables_length select').addClass('form-control');
-            fnDatatableCallback(datatable);
+            // Search input style
+            $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
+            $('.dataTables_length select').addClass('form-control');
+			
+			fnDatatableCallback(datatable);
         },
 
         remove_selected_row: function(datatable) {

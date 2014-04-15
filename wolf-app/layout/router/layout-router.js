@@ -35,21 +35,30 @@ define(function(require, exports, module) {
         routes: {
             'dashboard': 'dashboard',
             'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
+            'user-group-mgmt/*subrouter': 'invokeUserGroupModule',
             //TODO: alter each module to subroute.
             'product-search': 'product_search',
-            'user-group-mgmt': 'user_group_mgmt',
             'logout': 'logout'
         },
 
-        invokeVehicleModule: function(subroute){
+        invokeVehicleModule: function(subroute) {
             var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
             this.predict_layout_existence(function(layoutApp){
                 if(!LayoutRouter.vehicleRouter){
-                    LayoutRouter.vehicleRouter= new vehicleRouter('vehicle-mgmt/', {layoutApp: layoutApp});
+                    LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {layoutApp: layoutApp});
                 }
             });
         },
 
+		invokeUserGroupModule: function(subroute) {
+            var userGroupRouter = require('../../user-group-mgmt/router/user-group-router');
+            this.predict_layout_existence(function(layoutApp){
+                if(!LayoutRouter.userGroupRouter){
+                    LayoutRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {layoutApp: layoutApp});
+                }
+            });
+        },
+        
         dashboard: function() {
             this.predict_layout_existence(function(layoutApp){
                 //TODO:
@@ -62,13 +71,6 @@ define(function(require, exports, module) {
             //var newTitle = $(msg).filter('title').text();
             //$('title').text(newTitle);
             alert('In product search.');
-        },
-
-        user_group_mgmt: function() {
-            this.predict_layout_existence(function(layoutApp){
-                //TODO: follow the vehicle module, extract router into module.
-                this.layoutApp.switch_view();
-            });
         },
 
         logout: function() {

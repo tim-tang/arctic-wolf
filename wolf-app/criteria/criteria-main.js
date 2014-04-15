@@ -44,7 +44,7 @@ define(function(require, exports, module) {
                 var master = $(this).parents("table.table");
                 // Get a new row based on the prototype row
                 var newCriteria = master.find("tr").last().clone();
-                newCriteria.attr("class", "")
+                newCriteria.attr("class", "");
                 newCriteria.find("#value").attr("value", criteriaCount);
 
                 master.find("tbody").append(newCriteria);
