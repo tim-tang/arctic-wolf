@@ -8,7 +8,8 @@ define(function(require, exports, module) {
 
         manage: true,
 
-        template: 'security/templates/security-login.html',
+        prefix: 'security/templates/',
+        template: 'security-login.html',
 
         afterRender: function() {
             this.insertView('.middle-login', new layoutFooter()).render();

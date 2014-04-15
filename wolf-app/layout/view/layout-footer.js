@@ -4,7 +4,8 @@ define(function(require, exports, module) {
 
     var layoutFooter = Backbone.View.extend({
         manage: true,
-        template: 'layout/templates/layout-footer.html'
+        prefix: 'layout/templates/',
+        template: 'layout-footer.html'
     });
 
     module.exports = layoutFooter;

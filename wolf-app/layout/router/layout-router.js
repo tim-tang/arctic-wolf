@@ -60,11 +60,6 @@ define(function(require, exports, module) {
             alert('In product search.');
         },
 
-        vehicle_mgmt: function() {
-            this.predict_layout_existence();
-            this.layoutApp.switch_view();
-        },
-
         user_group_mgmt: function() {
             this.predict_layout_existence();
             this.layoutApp.switch_view();

@@ -6,7 +6,8 @@ define(function(require, exports, module) {
 
     var notFound = Backbone.View.extend({
         manage: true,
-        template: 'security/templates/404.html',
+        prefix: 'security/templates/',
+        template: '404.html',
 
         beforeRender: function() {
             $('#main-body').addClass('texture');
