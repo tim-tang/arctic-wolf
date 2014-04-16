@@ -17,6 +17,7 @@ define(function(require, exports, module) {
     var layoutUser = require('./view/layout-user');
     var layoutMenu = require('./view/layout-menu');
     var layoutProfile = require('./view/layout-profile');
+    var eventBus = require('../app-main/app-eventbus');
 
     var layoutApp = new Backbone.Layout({
 
@@ -27,7 +28,7 @@ define(function(require, exports, module) {
         template: 'layout.html',
 
         initialize: function() {
-            this.on('switch-view', this.switch_view);
+            eventBus.on('switch-view', this.switch_view, this);
         },
 
         beforeRender: function() {

@@ -43,7 +43,7 @@ define(function(require, exports, module) {
             var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
             this.predict_layout_existence(function(layoutApp){
                 if(!LayoutRouter.vehicleRouter){
-                    LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true, layoutApp: layoutApp});
+                    LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true});
                 }
             });
         },

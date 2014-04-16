@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var securityApp = require('../security/security-app');
     var layoutRouter = require('../layout/router/layout-router');
 
+    var eventBus = require('./app-eventbus');
     var AppRouter = {};
     AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
@@ -41,20 +42,19 @@ define(function(require, exports, module) {
         },
 
         home: function() {
-            securityApp.$el.html('');
-            securityApp.render();
+            eventBus.trigger('render-security-login');
         },
 
         forgot_password: function() {
-            securityApp.trigger('render-forgot-password');
+            eventBus.trigger('render-forgot-password');
         },
 
         reset_password: function() {
-            securityApp.trigger('render-reset-password');
+            eventBus.trigger('render-reset-password');
         },
 
         not_found: function() {
-            securityApp.trigger('render-404');
+            eventBus.trigger('render-404');
         }
     });
 

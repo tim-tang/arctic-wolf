@@ -3,11 +3,12 @@ define(function(require, exports, module){
     var Backbone = require('backbone');
     require('subroute');
     var vehicleApp = require('../vehicle-app');
+    var eventBus = require('../../app-main/app-eventbus');
 
     var vehicleRouter = Backbone.SubRoute.extend({
 
         initialize: function(options) {
-            this.layoutApp = options.layoutApp;
+            //this.layoutApp = options.layoutApp;
         },
 
         routes: {
@@ -15,7 +16,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            this.layoutApp.trigger('switch-view');
+            eventBus.trigger('switch-view');
         }
     });
 
