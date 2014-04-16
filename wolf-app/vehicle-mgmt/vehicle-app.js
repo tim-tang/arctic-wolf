@@ -34,12 +34,10 @@
          },
 
         show_loading: function(){
-            alert('show...');
             commonLoading.init('#main-content');
         },
 
         hide_loading: function(){
-            alert('hide..');
             commonLoading.destroy();
         }
      });
