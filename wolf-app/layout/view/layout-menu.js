@@ -3,24 +3,40 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var commonUtils = require('../../common/common-utils');
+    var eventBus = require('../../app-main/app-eventbus');
 
     var layoutMenu = Backbone.View.extend({
         manage: true,
         prefix: "layout/templates/",
         template: 'layout-menu.html',
 
-        events: {
-             //'click ul.cl-vnavigation li': 'active_menu_item'
-         },
+        initialize: function(){
+            eventBus.on('active-menu-item', this.active_menu_item, this);
+        },
 
-         active_menu_item: function(e){
-                console.log(e);
+        events: {
+             'click ul.cl-vnavigation li': 'active_menu_item'
          },
 
         afterRender: function(){
             //TODO: add behavior-core after loaded complete.
             require('behavior-core');
-            commonUtils.active_menu_item();
+            this.active_menu_item();
+        },
+
+        active_menu_item: function(){
+            $('ul.cl-vnavigation li').each(function(index, li) {
+                //var sub_menus = $(li).find('ul');
+                //if (sub_menus.length > 0) {
+                //    return;
+                //}
+                var $clink = li.children[0];
+                if ($clink.href == String(window.location)) {
+                    $(this).addClass('active');
+                } else{
+                    $(this).removeClass('active');
+                }
+            });
         }
     });
 

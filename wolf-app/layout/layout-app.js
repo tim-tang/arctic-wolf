@@ -82,7 +82,7 @@ define(function(require, exports, module) {
         },
 
         do_switch: function(activeApp) {
-            commonUtils.active_menu_item();
+            eventBus.trigger('active-menu-item');
             this.insertView('#main-content', activeApp).render();
         }
     });

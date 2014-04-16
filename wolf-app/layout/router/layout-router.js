@@ -64,8 +64,6 @@ define(function(require, exports, module) {
         },
 
         product_search: function() {
-            //$('#main-content').html($(msg).find('#main-content').html());
-            //$('#main-content').fadeIn();
             //var newTitle = $(msg).filter('title').text();
             //$('title').text(newTitle);
             alert('In product search.');

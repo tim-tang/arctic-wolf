@@ -23,11 +23,11 @@ define(function(require, exports, module) {
         },
 
         beforeRender: function() {
-           // $('#main-body').addClass('texture');
+            //TODO:
         },
 
         afterRender: function() {
-            //this.render_security_login();
+            //TODO:
         },
 
         render_security_login: function() {
