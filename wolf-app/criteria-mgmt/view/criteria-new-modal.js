@@ -7,20 +7,20 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var commonUtils = require('../../common/common-utils');
-    var userGroupColl = require('../collection/user-group-coll');
-    var userGroupModel = require('../model/user-group-model');
+    var criteriaColl = require('../collection/criteria-coll');
+    var criteriaModel = require('../model/criteria-model');
 
-    var userGroupModal = Backbone.View.extend({
+    var criteriaModal = Backbone.View.extend({
         manage: true,
 
-        model: new userGroupModel(),
+        model: new criteriaModel(),
 
-        prefix: 'user-group-mgmt/templates/',
+        prefix: 'criteria-mgmt/templates/',
 
-        template: 'user-group-new-modal.html',
+        template: 'criteria-new-modal.html',
 
         events: {
-            'click #user-group-create-action': 'create_user_group'
+            'click #criteria-create-action': 'create_criteria'
         },
 
         initialize: function() {
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
         /*
         serialize: function() {
                     return {
-                        userGroup: _.clone(this.model.attributes)
+                        criteria: _.clone(this.model.attributes)
                     };
                 },*/
         
@@ -50,15 +50,15 @@ define(function(require, exports, module) {
         },
 
         /**
-         * Handling user-group instance creation.
+         * Handling criteria instance creation.
          */
-        create_user_group: function() {
+        create_criteria: function() {
         	// console.log(JSON.stringify(this.new_attributes()));
-            userGroupColl.create(this.new_attributes());
-            // userGroupColl.add(this.model.set(this.new_attributes()));
+            criteriaColl.create(this.new_attributes());
+            // criteriaColl.add(this.model.set(this.new_attributes()));
             // Backbone.sync("create", model);
         }
     });
 
-    module.exports = userGroupModal;
+    module.exports = criteriaModal;
 });

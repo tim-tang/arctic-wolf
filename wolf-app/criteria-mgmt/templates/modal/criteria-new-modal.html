@@ -1,0 +1,95 @@
+<div id="criteria-new-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
+     aria-hidden="false">
+    <div class="modal-dialog custom-width-3-5">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Create Criteria</h3>
+                <button class="close md-close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+            </div>
+            <form class="" style="border-radius: 0px;" action="#">
+                <div class="modal-body form">
+                    <div class="form-group">
+                        <label class="control-label">Criteria Name</label>
+                        <input id="cri-name" class="form-control" type="name" placeholder="Criteria">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Description</label>
+                        <textarea id="cri-desc" class="form-control" placeholder="This is the description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Object Type</label>
+                        <select id="obj-type" class="select2">
+                            <option>User</option>
+                            <option>User Group</option>
+                            <option>Vehicle</option>
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12 no-margin">
+                            <label class="control-label">Criteria</label>
+                            <input class='form-control datetime' type='text' value='' size='8' />
+                        </div>
+                    </div>
+                    <div id="criteriaTable" class="row no-margin-y">
+                        <div class="form-group col-md-12 no-margin">
+                            <table id="table" class="table table-bordered dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Attribute</th>
+                                    <th>Operator</th>
+                                    <th>Value</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="criteria">
+                                    <td class="col-md-4 col-sm-6">
+                                        <select id="attrs" class="select2">
+                                            <option>--- Attributes ---</option>
+                                        </select>
+                                    </td>
+                                    <td class="col-md-4 col-sm-6">
+                                        <select id="operator" class="form-control">
+                                        </select>
+                                    </td>
+                                    <td class="col-md-4 col-sm-6">
+                                        <div id="value-div">
+                                            <input id="value" type="value" class="form-control" parsley-type="value">
+                                        </div>
+                                    </td>
+                                    <td class="col-md-4 col-sm-6">
+                                        <a id="add" class="add" href="#">
+                                            <i class="fa fa-plus fa-fw"></i>
+                                        </a>
+                                        <a id="remove" class="remove" href="#">
+                                            <i class="fa fa-minus fa-fw"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12 no-margin">
+                            <label>Enabled</label>
+                        </div>
+                    </div>
+                    <div class="row no-margin-y">
+                        <div class="form-group col-md-12 no-margin">
+                            <div class="switch">
+                                <input id="enabled" type="checkbox" checked>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="cri-create-action" class="btn btn-primary btn-flat md-close" data-dismiss="modal"
+                            type="button">Create
+                    </button>
+                    <button class="btn btn-default btn-flat md-close" data-dismiss="modal" type="button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

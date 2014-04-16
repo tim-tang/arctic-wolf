@@ -1,0 +1,33 @@
+<div id="assign-privilege-modal" class="modal fade colored-header in" role="dialog" tabindex="-1" style="display: none;"
+     aria-hidden="false">
+    <div class="modal-dialog custom-width">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add Privileges</h3>
+                <button class="close md-close" aria-hidden="true" data-dismiss="modal" type="button">×</button>
+            </div>
+            <div class="modal-body form">
+                <div class="row">
+                    <label class="col-sm-6 control-label content">All Privileges</label>
+                    <label class="col-sm-6 control-label">Selected</label>
+                </div>
+                <div class="form-group content">
+                    <select id='custom-headers' class="searchable" name="searchable[]" multiple='multiple'>
+                        <option value='elem_1'>Create User</option>
+                        <option value='elem_2'>Read User</option>
+                        <option value='elem_3'>Modify User</option>
+                        <option value='elem_4'>Delete User</option>
+                        <option value='elem_5' selected>Read Cars</option>
+                        <option value='elem_6' selected>Create Cars</option>
+                        <option value='elem_7'>Modify Cars</option>
+                        <option value='elem_8'>Delete Cars</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btn-flat md-close" data-dismiss="modal" type="button">Add</button>
+                <button class="btn btn-default btn-flat md-close" data-dismiss="modal" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

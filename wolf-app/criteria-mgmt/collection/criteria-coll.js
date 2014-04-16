@@ -3,13 +3,13 @@
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var userGroupModel = require('../model/user-group-model');
+    var criteriaModel = require('../model/criteria-model');
 
-	var userGroupColl = Backbone.Collection.extend({
+	var criteriaColl = Backbone.Collection.extend({
 
-    	model: userGroupModel,
+    	model: criteriaModel,
 
-        url: App.WS_HOST + '/user-groups',
+        url: App.WS_HOST + '/criterias',
         
         columns: [],
         
@@ -30,13 +30,13 @@
 			//console.log(JSON.stringify(data));
 			
 			for(var i = 0; i < data.length; i++) {
-				var userGroup = new this.model();
+				var criteria = new this.model();
                 _.each(attributes, function(attr) {
                 	// console.log(attr +"---"+ data[i][attr]);
-                	userGroup.set(attr, data[i][attr]);
+                	criteria.set(attr, data[i][attr]);
                 });
                 //push the model object
-                this.push(userGroup);
+                this.push(criteria);
 			}
             
             return this.models;
@@ -44,11 +44,11 @@
 
 		// filter out selected vehicle recrods.
         selected: function() {
-            return this.filter(function(userGroup) {
-            	return userGroup.get('is_selected') === true;
+            return this.filter(function(criteria) {
+            	return criteria.get('is_selected') === true;
             });
         }
     });
 
-    module.exports = new userGroupColl();
+    module.exports = new criteriaColl();
  });

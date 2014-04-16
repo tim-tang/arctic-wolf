@@ -7,20 +7,20 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var commonUtils = require('../../common/common-utils');
-    var userGroupColl = require('../collection/user-group-coll');
-    var userGroupModel = require('../model/user-group-model');
+    var roleColl = require('../collection/role-coll');
+    var roleModel = require('../model/role-model');
 
-    var userGroupModal = Backbone.View.extend({
+    var roleModal = Backbone.View.extend({
         manage: true,
 
-        model: new userGroupModel(),
+        model: new roleModel(),
 
-        prefix: 'user-group-mgmt/templates/',
+        prefix: 'role-mgmt/templates/',
 
-        template: 'user-group-new-modal.html',
+        template: 'role-new-modal.html',
 
         events: {
-            'click #user-group-create-action': 'create_user_group'
+            'click #role-create-action': 'create_user_group'
         },
 
         initialize: function() {
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
         /*
         serialize: function() {
                     return {
-                        userGroup: _.clone(this.model.attributes)
+                        role: _.clone(this.model.attributes)
                     };
                 },*/
         
@@ -50,15 +50,15 @@ define(function(require, exports, module) {
         },
 
         /**
-         * Handling user-group instance creation.
+         * Handling role instance creation.
          */
         create_user_group: function() {
         	// console.log(JSON.stringify(this.new_attributes()));
-            userGroupColl.create(this.new_attributes());
-            // userGroupColl.add(this.model.set(this.new_attributes()));
+            roleColl.create(this.new_attributes());
+            // roleColl.add(this.model.set(this.new_attributes()));
             // Backbone.sync("create", model);
         }
     });
 
-    module.exports = userGroupModal;
+    module.exports = roleModal;
 });

@@ -7,20 +7,20 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var commonUtils = require('../../common/common-utils');
-    var userGroupColl = require('../collection/user-group-coll');
-    var userGroupModel = require('../model/user-group-model');
+    var privilegeColl = require('../collection/privilege-coll');
+    var privilegeModel = require('../model/privilege-model');
 
-    var userGroupModal = Backbone.View.extend({
+    var privilegeModal = Backbone.View.extend({
         manage: true,
 
-        model: new userGroupModel(),
+        model: new privilegeModel(),
 
-        prefix: 'user-group-mgmt/templates/',
+        prefix: 'privilege-mgmt/templates/',
 
-        template: 'user-group-new-modal.html',
+        template: 'privilege-new-modal.html',
 
         events: {
-            'click #user-group-create-action': 'create_user_group'
+            'click #privilege-create-action': 'create_privilege'
         },
 
         initialize: function() {
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
         /*
         serialize: function() {
                     return {
-                        userGroup: _.clone(this.model.attributes)
+                        privilege: _.clone(this.model.attributes)
                     };
                 },*/
         
@@ -50,15 +50,15 @@ define(function(require, exports, module) {
         },
 
         /**
-         * Handling user-group instance creation.
+         * Handling privilege instance creation.
          */
-        create_user_group: function() {
+        create_privilege: function() {
         	// console.log(JSON.stringify(this.new_attributes()));
-            userGroupColl.create(this.new_attributes());
-            // userGroupColl.add(this.model.set(this.new_attributes()));
+            privilegeColl.create(this.new_attributes());
+            // privilegeColl.add(this.model.set(this.new_attributes()));
             // Backbone.sync("create", model);
         }
     });
 
-    module.exports = userGroupModal;
+    module.exports = privilegeModal;
 });

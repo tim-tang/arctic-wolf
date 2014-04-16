@@ -3,13 +3,13 @@
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var userGroupModel = require('../model/user-group-model');
+    var roleModel = require('../model/role-model');
 
-	var userGroupColl = Backbone.Collection.extend({
+	var roleColl = Backbone.Collection.extend({
 
-    	model: userGroupModel,
+    	model: roleModel,
 
-        url: App.WS_HOST + '/user-groups',
+        url: App.WS_HOST + '/roles',
         
         columns: [],
         
@@ -30,13 +30,13 @@
 			//console.log(JSON.stringify(data));
 			
 			for(var i = 0; i < data.length; i++) {
-				var userGroup = new this.model();
+				var role = new this.model();
                 _.each(attributes, function(attr) {
                 	// console.log(attr +"---"+ data[i][attr]);
-                	userGroup.set(attr, data[i][attr]);
+                	role.set(attr, data[i][attr]);
                 });
                 //push the model object
-                this.push(userGroup);
+                this.push(role);
 			}
             
             return this.models;
@@ -44,11 +44,11 @@
 
 		// filter out selected vehicle recrods.
         selected: function() {
-            return this.filter(function(userGroup) {
-            	return userGroup.get('is_selected') === true;
+            return this.filter(function(role) {
+            	return role.get('is_selected') === true;
             });
         }
     });
 
-    module.exports = new userGroupColl();
+    module.exports = new roleColl();
  });

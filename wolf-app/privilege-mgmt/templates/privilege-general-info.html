@@ -1,0 +1,57 @@
+<div class="middle-sign-up">
+    <form action="index.html" class="form-horizontal group-border-dashed" parsley-validate novalidate>
+        <div class="header text-right">
+            <button class="btn btn-primary" type="submit">Edit</button>
+            <button class="btn btn-default" type="submit">Save</button>
+            <button class="btn btn-default" type="submit">Cancel</button>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-6">
+                <input class="form-control" type="text" value="Read User"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Description</label>
+            <div class="col-sm-6">
+                <textarea class="form-control">This is Description</textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Privilege Type</label>
+            <div class="col-sm-6">
+                <select class="form-control">
+                    <option>Read</option>
+                    <option>Create</option>
+                    <option>Modify</option>
+                    <option>Delete</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Criteria</label>
+            <div class="col-sm-6">
+                <select class="select2 select2-offscreen" tabindex="-1">
+                    <optgroup label="User">
+                        <option value="AK">All User</option>
+                        <option value="HI">All Administrator</option>
+                    </optgroup>
+                    <optgroup label="Vehicle">
+                        <option value="CA">All Vehicle</option>
+                        <option value="NV">Red Car</option>
+                        <option value="OR">Auto Car</option>
+                        <option value="WA">All SUV</option>
+                     </optgroup>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Enabled</label>
+            <div class="col-sm-6">
+                <div class="switch" data-on="success">
+                    <input type="checkbox" checked>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
