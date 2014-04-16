@@ -38,7 +38,7 @@ define(function(require, exports, module) {
         afterRender: function() {
             this.insertView('#layout-logo-user-menu', new layoutLogo()).render();
             var self = this;
-            this.insertView('#layout-logo-user-menu', new layoutUser()).render().promise().done(function(){
+            this.insertView('#layout-logo-user-menu', new layoutUser()).render().promise().done(function() {
                 self.insertView('#layout-logo-user-menu', new layoutMenu()).render();
             });
             this.insertView('#layout-profile', new layoutProfile()).render();
@@ -48,6 +48,7 @@ define(function(require, exports, module) {
          * TODO: extract uri to constants.
          */
         switch_view: function() {
+        	
             this.removeView('#main-content');
 
             switch (Backbone.history.fragment) {
@@ -56,21 +57,29 @@ define(function(require, exports, module) {
             case "product-search":
                 alert('product search');
                 break;
-            case "user-mgmt":
+            case "user-mgmt/":
+                var userApp = require('../user-mgmt/user-app');
+                this.do_switch(userGroupApp);
                 break;
             case "user-group-mgmt":
                 var userGroupApp = require('../user-group-mgmt/user-group-app');
                 this.do_switch(userGroupApp);
                 break;
-            case "role-mgmt":
+            case "role-mgmt/":
+                var roleApp = require('../role-mgmt/role-app');
+                this.do_switch(roleApp);
                 break;
             case "role-details":
                 break;
-            case "privilege-mgmt":
+            case "privilege-mgmt/":
+                var privilegeApp = require('../privilege-mgmt/privilege-app');
+                this.do_switch(privilegeApp);
                 break;
             case "privilege-details":
                 break;
-            case "criteria-mgmt":
+            case "criteria-mgmt/":
+                var criteriaApp = require('../criteria-mgmt/criteria-app');
+                this.do_switch(criteriaApp);
                 break;
             case "criteria-details":
                 break;

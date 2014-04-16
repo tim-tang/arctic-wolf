@@ -34,6 +34,10 @@ define(function(require, exports, module) {
             'dashboard': 'dashboard',
             'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
             'user-group-mgmt/*subrouter': 'invokeUserGroupModule',
+            'user-mgmt/*subrouter': 'invokeUserModule',
+            'role-mgmt/*subrouter': 'invokeRoleModule',
+            'privilege-mgmt/*subrouter': 'invokePrivilegeModule',
+            'criteria-mgmt/*subrouter': 'invokeCriteriaModule',
             //TODO: alter each module to subroute.
             'product-search': 'product_search',
             'logout': 'logout'
@@ -41,8 +45,8 @@ define(function(require, exports, module) {
 
         invokeVehicleModule: function(subroute) {
             var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
-            this.predict_layout_existence(function(layoutApp){
-                if(!LayoutRouter.vehicleRouter){
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.vehicleRouter) {
                     LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true});
                 }
             });
@@ -50,9 +54,45 @@ define(function(require, exports, module) {
 
 		invokeUserGroupModule: function(subroute) {
             var userGroupRouter = require('../../user-group-mgmt/router/user-group-router');
-            this.predict_layout_existence(function(layoutApp){
-                if(!LayoutRouter.userGroupRouter){
-                    LayoutRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {createTrailingSlashRoutes: true, layoutApp: layoutApp});
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.userGroupRouter) {
+                    LayoutRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeUserModule: function(subroute) {
+            var userRouter = require('../../user-mgmt/router/user-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.userRouter) {
+                    LayoutRouter.userRouter = new userRouter('user-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+        
+        invokeRoleModule: function(subroute) {
+            var roleRouter = require('../../role-mgmt/router/role-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.roleRouter) {
+                    LayoutRouter.roleRouter = new roleRouter('role-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+        
+        invokePrivilegeModule: function(subroute) {
+            var privilegeRouter = require('../../privilege-mgmt/router/privilege-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.privilegeRouter) {
+                    LayoutRouter.privilegeRouter = new privilegeRouter('privilege-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+        
+        invokeCriteriaModule: function(subroute) {
+            var criteriaRouter = require('../../criteria-mgmt/router/criteria-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!LayoutRouter.criteriaRouter) {
+                    LayoutRouter.criteriaRouter = new criteriaRouter('criteria-mgmt/', {createTrailingSlashRoutes: true});
                 }
             });
         },

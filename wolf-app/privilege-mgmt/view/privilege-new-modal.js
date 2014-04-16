@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
-    require('quicksearch');
-
+    
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
@@ -15,7 +14,7 @@ define(function(require, exports, module) {
 
         model: new privilegeModel(),
 
-        prefix: 'privilege-mgmt/templates/',
+        prefix: 'privilege-mgmt/templates/modal/',
 
         template: 'privilege-new-modal.html',
 
@@ -37,7 +36,7 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             commonUtils.init_switch();
-            commonUtils.init_multi_select();
+            commonUtils.init_select2();
         },
 
         new_attributes: function() {

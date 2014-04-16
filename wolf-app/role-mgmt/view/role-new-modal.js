@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
-    require('quicksearch');
 
     var $ = require('$');
     var _ = require('underscore');
@@ -15,7 +14,7 @@ define(function(require, exports, module) {
 
         model: new roleModel(),
 
-        prefix: 'role-mgmt/templates/',
+        prefix: 'role-mgmt/templates/modal/',
 
         template: 'role-new-modal.html',
 
@@ -37,8 +36,8 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             commonUtils.init_switch();
-            commonUtils.init_multi_select();
-        },
+			commonUtils.init_select2();
+		},
 
         new_attributes: function() {
             return {

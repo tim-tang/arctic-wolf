@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
-    require('quicksearch');
 
     var $ = require('$');
     var _ = require('underscore');
@@ -15,7 +14,7 @@ define(function(require, exports, module) {
 
         model: new criteriaModel(),
 
-        prefix: 'criteria-mgmt/templates/',
+        prefix: 'criteria-mgmt/templates/modal/',
 
         template: 'criteria-new-modal.html',
 
@@ -37,7 +36,7 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             commonUtils.init_switch();
-            commonUtils.init_multi_select();
+            commonUtils.init_select2();
         },
 
         new_attributes: function() {
