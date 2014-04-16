@@ -43,7 +43,7 @@ define(function(require, exports, module) {
             var vehicleRouter = require('../../vehicle-mgmt/router/vehicle-router');
             this.predict_layout_existence(function(layoutApp){
                 if(!LayoutRouter.vehicleRouter){
-                    LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {layoutApp: layoutApp});
+                    LayoutRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true, layoutApp: layoutApp});
                 }
             });
         },
@@ -52,7 +52,7 @@ define(function(require, exports, module) {
             var userGroupRouter = require('../../user-group-mgmt/router/user-group-router');
             this.predict_layout_existence(function(layoutApp){
                 if(!LayoutRouter.userGroupRouter){
-                    LayoutRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {layoutApp: layoutApp});
+                    LayoutRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {createTrailingSlashRoutes: true, layoutApp: layoutApp});
                 }
             });
         },

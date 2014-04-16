@@ -5,9 +5,14 @@
     var userGroupModel = Backbone.Model.extend({
 
         urlRoot: App.WS_HOST + '/user-groups',
+        //url: function(){
+        //    var origUrl = Backbone.Model.prototype.url.call(this);
+        //    var parsedUrl = origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
+        //    return parsedUrl;
+
+        //},
 
         defaults: {
-            id: '',
             ug_name: '',
             ug_desc: '',
             users: '',
