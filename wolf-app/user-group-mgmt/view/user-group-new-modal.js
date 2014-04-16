@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
-    require('bt-touchspin');
+    require('quicksearch');
 
     var $ = require('$');
     var _ = require('underscore');
@@ -20,7 +20,7 @@ define(function(require, exports, module) {
         template: 'user-group-new-modal.html',
 
         events: {
-            'click #user-group-new-action': 'create_user_group'
+            'click #user-group-create-action': 'create_user_group'
         },
 
         initialize: function() {
@@ -40,9 +40,9 @@ define(function(require, exports, module) {
 
         new_attributes: function() {
             return {
-                ug_name: this.$('#ug-name').val().trim(),
-                ug_desc: this.$('#ug-desc').val().trim(),
-                users: this.$('#users').val().trim(),
+                ug_name: this.$('#ug_name').val().trim(),
+                ug_desc: this.$('#ug_desc').val().trim(),
+                users: this.$('#users').val(),
                 enabled: this.$('#enabled').val().trim()
             }
         },
@@ -51,7 +51,7 @@ define(function(require, exports, module) {
          * Handling user-group instance creation.
          */
         create_user_group: function() {
-        	console.log(JSON.stringify(this.new_attributes));
+        	console.log(JSON.stringify(this.new_attributes()));
             userGroupColl.create(this.new_attributes());
         }
     });
