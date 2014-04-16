@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
-    var commonLoading = require('../common/common-loading');
     var layoutRouter = require('../layout/router/layout-router');
 
     var AppRouter = {};
@@ -16,7 +15,6 @@ define(function(require, exports, module) {
                 // block the default link behavior
                 e.preventDefault();
 
-                commonLoading.init('#main-body');
                 // take the href of the link clicked
                 var href = $(this).attr("href");
                 //var protocol = this.protocol + "//";

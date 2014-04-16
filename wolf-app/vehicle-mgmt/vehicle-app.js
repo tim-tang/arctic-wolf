@@ -20,8 +20,8 @@
          template: 'vehicle-container.html',
 
          initialize: function() {
-            eventBus.on('show-loading', this.show_loading);
-            eventBus.on('hide-loading', this.hide_loading);
+            eventBus.on('show-loading', this.show_loading, this);
+            eventBus.on('hide-loading', this.hide_loading, this);
          },
 
          events: {
@@ -34,10 +34,12 @@
          },
 
         show_loading: function(){
+            alert('show...');
             commonLoading.init('#main-content');
         },
 
         hide_loading: function(){
+            alert('hide..');
             commonLoading.destroy();
         }
      });

@@ -23,8 +23,8 @@ define(function(require, exports, module) {
          },
 
         initialize: function() {
-            this.listenTo(vehicleColl, 'request', eventBus.trigger('show-loading'));
-            this.listenTo(vehicleColl, 'remove', eventBus.trigger('hide-loading'));
+            this.listenTo(vehicleColl, 'request',this.show_loading);
+            this.listenTo(vehicleColl, 'remove', this.hide_loading);
             this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
         },
 
@@ -35,17 +35,15 @@ define(function(require, exports, module) {
         },
 
         show_loading: function(){
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function(){
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_vehicles: function() {
             self = this;
-            // console.log(vehicleColl.columns);
-            // console.log(vehicleColl.toJSON);
             commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
                 self.datatable= datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {

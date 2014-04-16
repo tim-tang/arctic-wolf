@@ -2,7 +2,6 @@
 
     var Backbone = require('backbone');
     var BaseModel = require('../../common/model/base-model');
-    var commonLoading = require('../../common/common-loading');
 
     var vehicleModel= Backbone.Model.extend({
 

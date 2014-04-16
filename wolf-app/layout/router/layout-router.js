@@ -4,8 +4,6 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
-    //require('subroute');
-    var commonLoading = require('../../common/common-loading');
 
     var LayoutRouter = {};
     LayoutRouter.Router = Backbone.Router.extend({
@@ -58,7 +56,7 @@ define(function(require, exports, module) {
                 }
             });
         },
-        
+
         dashboard: function() {
             this.predict_layout_existence(function(layoutApp){
                 //TODO:
