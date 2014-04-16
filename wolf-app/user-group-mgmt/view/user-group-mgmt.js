@@ -51,9 +51,7 @@ define(function(require, exports, module) {
 	            $('#user-group-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_user_group_id = $(this).find("td:first").html().trim();
-	                var userGroupModel = userGroupColl.findWhere({
-	                    id: parseInt(selected_user_group_id)
-	                });
+	                var userGroupModel = userGroupColl.get(selected_user_group_id);
 	                userGroupModel.toggle_select();
 	            });
             	commonLoading.destroy();
