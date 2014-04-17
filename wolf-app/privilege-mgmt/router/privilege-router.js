@@ -2,11 +2,12 @@ define(function(require, exports, module){
 
     var Backbone = require('backbone');
     var privilegeApp = require('../privilege-app');
+    var eventBus = require('../../app-main/app-eventbus');
 
 	require('subroute');
-	
+
 	var privilegeRouter = Backbone.SubRoute.extend({
-    	
+
     	initialize: function(options) {
             //TODO:
         },
@@ -16,7 +17,8 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            privilegeApp.render();
+            eventBus.trigger('switch-view');
+            //privilegeApp.render();
         }
     });
 

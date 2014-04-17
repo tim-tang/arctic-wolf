@@ -48,8 +48,8 @@ define(function(require, exports, module) {
          * TODO: extract uri to constants.
          */
         switch_view: function() {
-        	
-            this.removeView('#main-content');
+
+            //this.removeView('#main-content');
 
             switch (Backbone.history.fragment) {
             case "dashboard":
@@ -59,9 +59,9 @@ define(function(require, exports, module) {
                 break;
             case "user-mgmt/":
                 var userApp = require('../user-mgmt/user-app');
-                this.do_switch(userGroupApp);
+                this.do_switch(userApp);
                 break;
-            case "user-group-mgmt":
+            case "user-group-mgmt/":
                 var userGroupApp = require('../user-group-mgmt/user-group-app');
                 this.do_switch(userGroupApp);
                 break;
@@ -69,19 +69,13 @@ define(function(require, exports, module) {
                 var roleApp = require('../role-mgmt/role-app');
                 this.do_switch(roleApp);
                 break;
-            case "role-details":
-                break;
             case "privilege-mgmt/":
                 var privilegeApp = require('../privilege-mgmt/privilege-app');
                 this.do_switch(privilegeApp);
                 break;
-            case "privilege-details":
-                break;
             case "criteria-mgmt/":
                 var criteriaApp = require('../criteria-mgmt/criteria-app');
                 this.do_switch(criteriaApp);
-                break;
-            case "criteria-details":
                 break;
             case "vehicle-mgmt/":
                 var vehicleApp = require('../vehicle-mgmt/vehicle-app');

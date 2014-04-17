@@ -2,11 +2,12 @@ define(function(require, exports, module){
 
     var Backbone = require('backbone');
     var userApp = require('../user-app');
+    var eventBus = require('../../app-main/app-eventbus');
 
 	require('subroute');
-	
+
 	var userRouter = Backbone.SubRoute.extend({
-    	
+
     	initialize: function(options) {
             //TODO:
         },
@@ -16,7 +17,8 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            userApp.render();
+            eventBus.trigger('switch-view');
+            //userApp.render();
         }
     });
 
