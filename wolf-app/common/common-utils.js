@@ -99,7 +99,7 @@ define(function(require, exports, module) {
                 }
             });
         },
-        
+
         // Reset form
         // to call, use:
 		// resetForm($('#myform')); // by id, recommended

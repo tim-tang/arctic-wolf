@@ -6,6 +6,7 @@ define(function(require, exports, module) {
 
     var vehicleColl = require('../collection/vehicle-coll');
     var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
     var eventBus = require('../../app-main/app-eventbus');
     var vehicleMgmt = Backbone.View.extend({
         manage: true,
@@ -44,7 +45,7 @@ define(function(require, exports, module) {
 
         after_load_vehicles: function() {
             self = this;
-            commonUtils.generate_datatable(vehicleColl.columns, vehicleColl.toJSON(), 'vehicle-mgmt-datatable', function(datatable) {
+            componentFacade.init_datatable('vehicle-mgmt-datatable', {data: vehicleColl.toJSON(), header: vehicleColl.columns}, function(datatable){
                 self.datatable= datatable;
                 $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
                     $(this).toggleClass('row_selected');

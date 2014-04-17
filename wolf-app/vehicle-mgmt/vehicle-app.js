@@ -12,11 +12,8 @@
          //el: '#main-content',
 
          manage: true,
-
          keep: true,
-
          prefix: "vehicle-mgmt/templates/",
-
          template: 'vehicle-container.html',
 
          initialize: function() {

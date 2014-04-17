@@ -54,8 +54,9 @@ define(function(require, exports, module) {
             switch (Backbone.history.fragment) {
             case "dashboard":
                 break;
-            case "product-search":
-                alert('product search');
+            case "generic-filter/":
+                var genericFilterApp = require('../generic-filter/generic-filter-app');
+                this.do_switch(genericFilterApp);
                 break;
             case "user-mgmt/":
                 var userApp = require('../user-mgmt/user-app');
