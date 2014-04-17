@@ -4,11 +4,12 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
+    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
+
     var userColl = require('../collection/user-coll');
     var userModel = require('../model/user-model');
-    var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
-    var userDatatable;
 
     var userMgmt = Backbone.View.extend({
 
@@ -17,6 +18,8 @@ define(function(require, exports, module) {
         prefix: "user-mgmt/templates/",
 
         template: 'user-mgmt.html',
+        
+        datatable: null,
 
 		events: {
             'click #user-mgmt-delete': 'delete_user',
@@ -35,26 +38,25 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function() {
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_users: function() {
-        	// console.log(JSON.stringify(userColl));
-        	// console.log(JSON.stringify(userColl.columns));
-        	// console.log(JSON.stringify(userColl.data));
-            commonUtils.generate_datatable(userColl.columns, userColl.toJSON(), 'user-mgmt-datatable', function(datatable) {
-	            userDatatable = datatable;
+        	self = this;
+			// Inital Datatable
+            componentFacade.init_datatable('user-mgmt-datatable', {data: userColl.toJSON(), header: userColl.columns}, function(datatable) {
+	            self.datatable = datatable;
 	            $('#user-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_user_id = $(this).find("td:first").html().trim();
 	                var userModel = userColl.get(selected_user_id);
 	                userModel.toggle_select();
 	            });
-            	commonLoading.destroy();
+                eventBus.trigger('hide-loading');
 			});
         },
 
@@ -68,10 +70,10 @@ define(function(require, exports, module) {
             //TODO:
         },
 
-        delete_user: function(e){
+        delete_user: function(e) {
             e.preventDefault();
             _.invoke(userColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(userDatatable);
+            commonUtils.remove_selected_row(this.datatable);
         }
     });
 

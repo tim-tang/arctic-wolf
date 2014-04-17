@@ -3,11 +3,13 @@ define(function(require, exports, module) {
     require('modalEffects');
     
     var $ = require('$');
-    var _ = require('underscore');
+	var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../../common/common-utils');
+    
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');
+
+	var componentFacade = require('../../common/component-facade');
 
     var privilegeModal = Backbone.View.extend({
         manage: true,
@@ -35,8 +37,8 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            commonUtils.init_switch();
-            commonUtils.init_select2();
+            componentFacade.init_switch();
+            componentFacade.init_select2();
         },
 
         new_attributes: function() {

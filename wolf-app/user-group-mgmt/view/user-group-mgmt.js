@@ -4,12 +4,13 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
+	var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
+
     var userGroupColl = require('../collection/user-group-coll');
     var userGroupModel = require('../model/user-group-model');
-    var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
-    var userGroupDatatable;
-
+    
     var userGroupMgmt = Backbone.View.extend({
 
         manage: true,
@@ -17,6 +18,8 @@ define(function(require, exports, module) {
         prefix: "user-group-mgmt/templates/",
 
         template: 'user-group-mgmt.html',
+        
+        datatable: null,
 
 		events: {
             'click #user-group-mgmt-delete': 'delete_user_group',
@@ -35,26 +38,25 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function() {
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_user_groups: function() {
-        	// console.log(JSON.stringify(userGroupColl));
-        	// console.log(JSON.stringify(userGroupColl.columns));
-        	// console.log(JSON.stringify(userGroupColl.data));
-            commonUtils.generate_datatable(userGroupColl.columns, userGroupColl.toJSON(), 'user-group-mgmt-datatable', function(datatable) {
-	            userGroupDatatable = datatable;
+        	self = this;
+			// Inital Datatable
+            componentFacade.init_datatable('user-group-mgmt-datatable', {data: userGroupColl.toJSON(), header: userGroupColl.columns}, function(datatable) {
+	            self.datatable = datatable;
 	            $('#user-group-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_user_group_id = $(this).find("td:first").html().trim();
 	                var userGroupModel = userGroupColl.get(selected_user_group_id);
 	                userGroupModel.toggle_select();
 	            });
-            	commonLoading.destroy();
+            	eventBus.trigger('hide-loading');
 			});
         },
 
@@ -71,7 +73,7 @@ define(function(require, exports, module) {
         delete_user_group: function(e){
             e.preventDefault();
             _.invoke(userGroupColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(userGroupDatatable);
+            commonUtils.remove_selected_row(this.datatable);
         }
     });
 

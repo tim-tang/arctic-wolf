@@ -4,12 +4,13 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
+    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
+
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
-    var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
-    var criteriaDatatable;
-
+    
     var criteriaMgmt = Backbone.View.extend({
 
         manage: true,
@@ -17,6 +18,8 @@ define(function(require, exports, module) {
         prefix: "criteria-mgmt/templates/",
 
         template: 'criteria-mgmt.html',
+        
+        datatable: null,
 
 		events: {
             'click #criteria-mgmt-delete': 'delete_criteria',
@@ -35,26 +38,25 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function() {
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_criterias: function() {
-        	// console.log(JSON.stringify(criteriaColl));
-        	// console.log(JSON.stringify(criteriaColl.columns));
-        	// console.log(JSON.stringify(criteriaColl.data));
-            commonUtils.generate_datatable(criteriaColl.columns, criteriaColl.toJSON(), 'criteria-mgmt-datatable', function(datatable) {
-	            criteriaDatatable = datatable;
+        	self = this;
+			// Inital Datatable
+            componentFacade.init_datatable('criteria-mgmt-datatable', {data: criteriaColl.toJSON(), header: criteriaColl.columns}, function(datatable) {
+	            self.datatable = datatable;
 	            $('#criteria-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_criteria_id = $(this).find("td:first").html().trim();
 	                var criteriaModel = criteriaColl.get(selected_criteria_id);
 	                criteriaModel.toggle_select();
 	            });
-            	commonLoading.destroy();
+	            eventBus.trigger('hide-loading');
 			});
         },
 
@@ -71,7 +73,7 @@ define(function(require, exports, module) {
         delete_criteria: function(e){
             e.preventDefault();
             _.invoke(criteriaColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(criteriaDatatable);
+            commonUtils.remove_selected_row(this.datatable);
         }
     });
 

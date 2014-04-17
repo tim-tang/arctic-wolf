@@ -4,11 +4,12 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
+    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
+
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');
-    var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
-    var privilegeDatatable;
 
     var privilegeMgmt = Backbone.View.extend({
 
@@ -17,6 +18,8 @@ define(function(require, exports, module) {
         prefix: "privilege-mgmt/templates/",
 
         template: 'privilege-mgmt.html',
+        
+        datatable: null,
 
 		events: {
             'click #privilege-mgmt-delete': 'delete_privilege',
@@ -35,26 +38,25 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function() {
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_privileges: function() {
-        	// console.log(JSON.stringify(privilegeColl));
-        	// console.log(JSON.stringify(privilegeColl.columns));
-        	// console.log(JSON.stringify(privilegeColl.data));
-            commonUtils.generate_datatable(privilegeColl.columns, privilegeColl.toJSON(), 'privilege-mgmt-datatable', function(datatable) {
-	            privilegeDatatable = datatable;
+			self = this;
+			// Inital Datatable
+            componentFacade.init_datatable('privilege-mgmt-datatable', {data: privilegeColl.toJSON(), header: privilegeColl.columns}, function(datatable) {
+	            self.datatable = datatable;
 	            $('#privilege-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_privilege_id = $(this).find("td:first").html().trim();
 	                var privilegeModel = privilegeColl.get(selected_privilege_id);
 	                privilegeModel.toggle_select();
 	            });
-            	commonLoading.destroy();
+	            eventBus.trigger('hide-loading');
 			});
         },
 
@@ -71,7 +73,7 @@ define(function(require, exports, module) {
         delete_privilege: function(e){
             e.preventDefault();
             _.invoke(privilegeColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(privilegeDatatable);
+            commonUtils.remove_selected_row(this.datatable);
         }
     });
 

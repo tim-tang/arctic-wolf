@@ -5,9 +5,11 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../../common/common-utils');
+    
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
+    
+    var componentFacade = require('../../common/component-facade');
 
     var criteriaModal = Backbone.View.extend({
         manage: true,
@@ -35,8 +37,8 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            commonUtils.init_switch();
-            commonUtils.init_select2();
+            componentFacade.init_switch();
+            componentFacade.init_select2();
         },
 
         new_attributes: function() {

@@ -4,12 +4,13 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
+    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../common/common-utils');
+    var componentFacade = require('../../common/component-facade');
+
     var roleColl = require('../collection/role-coll');
     var roleModel = require('../model/role-model');
-    var commonUtils = require('../../common/common-utils');
-    var commonLoading = require('../../common/common-loading');
-    var roleDatatable;
-
+    
     var roleMgmt = Backbone.View.extend({
 
         manage: true,
@@ -17,6 +18,8 @@ define(function(require, exports, module) {
         prefix: "role-mgmt/templates/",
 
         template: 'role-mgmt.html',
+        
+        datatable: null,
 
 		events: {
             'click #role-mgmt-delete': 'delete_role',
@@ -35,26 +38,25 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-            commonLoading.init('#main-content');
+            eventBus.trigger('show-loading');
         },
 
         hide_loading: function() {
-            commonLoading.destroy();
+            eventBus.trigger('hide-loading');
         },
 
         after_load_roles: function() {
-        	// console.log(JSON.stringify(roleColl));
-        	// console.log(JSON.stringify(roleColl.columns));
-        	// console.log(JSON.stringify(roleColl.data));
-            commonUtils.generate_datatable(roleColl.columns, roleColl.toJSON(), 'role-mgmt-datatable', function(datatable) {
-	            roleDatatable = datatable;
+        	self = this;
+			// Inital Datatable
+            componentFacade.init_datatable('role-mgmt-datatable', {data: roleColl.toJSON(), header: roleColl.columns}, function(datatable) {
+	            self.datatable = datatable;
 	            $('#role-mgmt-datatable').on('click', 'tbody tr', function(e) {
 	                $(this).toggleClass('row_selected');
 	                var selected_role_id = $(this).find("td:first").html().trim();
 	                var roleModel = roleColl.get(selected_role_id);
 	                roleModel.toggle_select();
 	            });
-            	commonLoading.destroy();
+	            eventBus.trigger('hide-loading');
 			});
         },
 
@@ -72,7 +74,7 @@ define(function(require, exports, module) {
         delete_role: function(e){
             e.preventDefault();
             _.invoke(roleColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(roleDatatable);
+            commonUtils.remove_selected_row(this.datatable);
         }
     });
 
