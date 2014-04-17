@@ -98,6 +98,15 @@ define(function(require, exports, module) {
                     this.qs2.cache();
                 }
             });
-        }
+        },
+        
+        // Reset form
+        // to call, use:
+		// resetForm($('#myform')); // by id, recommended
+		// resetForm($('form[name=myName]')); // by name
+        resetForm: function($form) {
+		    $form.find('input:text, input:password, input:file, select, textarea').val('');
+		    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+		}
     };
 });

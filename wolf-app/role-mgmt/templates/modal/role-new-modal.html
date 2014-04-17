@@ -6,11 +6,11 @@
                 <h3>Create Role</h3>
                 <button class="close md-close" aria-hidden="true" data-dismiss="modal" type="button">x</button>
             </div>
-            <form class="" style="border-radius: 0px;" action="#">
+            <form id="new-modal" class="" style="border-radius: 0px;" action="#">
                 <div class="modal-body form">
                     <div class="form-group">
                         <label class="control-label">Role Name</label>
-                        <input id="role-name" class="form-control" type="name" placeholder="Role Name">
+                        <input id="role-name" class="form-control" type="text" placeholder="Role Name">
                     </div>
                     <div class="form-group">
                         <label class="control-label">Description</label>
@@ -18,7 +18,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Privilege</label>
-                        <select id="privilege-multiSelect" class="select2" multiple="multiple">
+                        <select id="privileges" class="select2" multiple="multiple">
                             <optgroup label="Read">
                                 <option>Read User</option>
                                 <option>Read Vehicle</option>

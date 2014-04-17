@@ -6,6 +6,7 @@ define(function(require, exports, module) {
 
     var roleColl = require('../collection/role-coll');
     var roleModel = require('../model/role-model');
+    var roleNewModal = require('../view/role-new-modal');
     var commonUtils = require('../../common/common-utils');
     var commonLoading = require('../../common/common-loading');
     var roleDatatable;

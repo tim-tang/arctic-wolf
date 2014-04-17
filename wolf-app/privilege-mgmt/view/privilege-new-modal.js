@@ -41,9 +41,10 @@ define(function(require, exports, module) {
 
         new_attributes: function() {
             return {
-                ug_name: this.$('#ug-name').val().trim(),
-                ug_desc: this.$('#ug-desc').val().trim(),
-                users: this.$('#users').val(),
+                priv_name: this.$('#priv-name').val().trim(),
+                priv_desc: this.$('#priv-desc').val().trim(),
+                priv_type: this.$('#priv-type').val().trim(),
+                criteria: this.$('#criteria').val().trim(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },

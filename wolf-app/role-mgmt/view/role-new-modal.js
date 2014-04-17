@@ -41,11 +41,18 @@ define(function(require, exports, module) {
 
         new_attributes: function() {
             return {
-                ug_name: this.$('#ug-name').val().trim(),
-                ug_desc: this.$('#ug-desc').val().trim(),
-                users: this.$('#users').val(),
+                role_name: this.$('#role-name').val().trim(),
+                role_desc: this.$('#role-desc').val().trim(),
+                privileges: this.$('#privileges').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
+        },
+        
+        clearValues: function() {
+        	this.$('#role-name').val('');
+			this.$('#role-desc').val('');
+			this.$('#privileges').val('');
+			this.$('#enabled').val('');
         },
 
         /**
@@ -56,6 +63,7 @@ define(function(require, exports, module) {
             roleColl.create(this.new_attributes());
             // roleColl.add(this.model.set(this.new_attributes()));
             // Backbone.sync("create", model);
+            commonUtils.resetForm($('#new-modal'));
         }
     });
 

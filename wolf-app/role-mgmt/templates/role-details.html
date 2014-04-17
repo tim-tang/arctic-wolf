@@ -1,0 +1,46 @@
+{% extends "layout/layout.html" %}
+
+{% block main %}
+
+<div class="cl-mcont">
+    <div class="row">
+        <div class="tab-container">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#generalInfo" data-toggle="tab"><i class="fa fa-bars"></i>General Information</a></li>
+                <li><a href="#privilege" data-toggle="tab"><i class="fa fa-puzzle-piece"></i>Privileges</a></li>
+                <li><a href="#userGroup" data-toggle="tab"><i class="fa fa-group"></i>User Group</a></li>
+                <li><a href="#user" data-toggle="tab"><i class="fa fa-user"></i>Users</a></li>
+                <li><a href="#history" data-toggle="tab"><i class="fa fa-road"></i>History</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active cont" id="generalInfo">
+                    {% include "role/role-general-info.html"%}
+                </div>
+                <div class="tab-pane cont" id="privilege">
+                    {% include "role/role-privilege.html"%}
+                </div>
+                <div class="tab-pane cont" id="userGroup">
+                    {% include "role/role-userGroup.html"%}
+                </div>
+                <div class="tab-pane cont" id="user">
+                    {% include "role/role-user.html"%}
+                </div>
+                <div class="tab-pane cont" id="history">
+                    {% include "role/role-history.html"%}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Assign Privilege -->
+{% include "role/modal/assign-privilege-modal.html"%}
+<!-- Modal Assign UserGroup -->
+{% include "role/modal/assign-userGroup-modal.html"%}
+<!-- Modal Assign User -->
+{% include "role/modal/assign-user-modal.html"%}
+
+<!-- Modal Info -->
+{% include "common/modal-warning.html"%}
+
+{% endblock %}

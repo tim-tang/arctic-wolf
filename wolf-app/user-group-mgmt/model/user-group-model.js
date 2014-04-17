@@ -16,7 +16,8 @@
             ug_name: '',
             ug_desc: '',
             users: '',
-            enabled: ''
+            enabled: '',
+            is_selected: false
         },
 
         // set is_selected attribute status.

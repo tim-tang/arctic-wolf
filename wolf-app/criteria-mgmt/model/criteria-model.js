@@ -13,10 +13,11 @@
         //},
 
         defaults: {
-            ug_name: '',
-            ug_desc: '',
-            users: '',
-            enabled: ''
+            cri_name: '',
+            cri_desc: '',
+            obj_type: '',
+            enabled: '',
+            is_selected: false
         },
 
         // set is_selected attribute status.
