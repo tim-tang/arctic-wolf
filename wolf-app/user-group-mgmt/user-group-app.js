@@ -8,7 +8,7 @@
 
 	var userGroupApp = new Backbone.Layout({
 
-		el: '#main-content',
+		//el: '#main-content',
 
         manage: true,
 

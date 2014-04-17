@@ -49,7 +49,7 @@ define(function(require, exports, module) {
          */
         switch_view: function() {
 
-            //this.removeView('#main-content');
+            this.removeView('#main-content');
 
             switch (Backbone.history.fragment) {
             case "dashboard":
