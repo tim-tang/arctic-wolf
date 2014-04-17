@@ -39,7 +39,7 @@ define(function(require, exports, module) {
             'privilege-mgmt/*subrouter': 'invokePrivilegeModule',
             'criteria-mgmt/*subrouter': 'invokeCriteriaModule',
             //TODO: alter each module to subroute.
-            'product-search': 'product_search',
+            'generic-filter': 'generic_filter',
             'logout': 'logout'
         },
 
@@ -69,7 +69,7 @@ define(function(require, exports, module) {
                 }
             });
         },
-        
+
         invokeRoleModule: function(subroute) {
             var roleRouter = require('../../role-mgmt/router/role-router');
             this.predict_layout_existence(function(layoutApp) {
@@ -78,7 +78,7 @@ define(function(require, exports, module) {
                 }
             });
         },
-        
+
         invokePrivilegeModule: function(subroute) {
             var privilegeRouter = require('../../privilege-mgmt/router/privilege-router');
             this.predict_layout_existence(function(layoutApp) {
@@ -87,7 +87,7 @@ define(function(require, exports, module) {
                 }
             });
         },
-        
+
         invokeCriteriaModule: function(subroute) {
             var criteriaRouter = require('../../criteria-mgmt/router/criteria-router');
             this.predict_layout_existence(function(layoutApp) {
@@ -103,7 +103,7 @@ define(function(require, exports, module) {
             });
         },
 
-        product_search: function() {
+        generic_filter: function() {
             //var newTitle = $(msg).filter('title').text();
             //$('title').text(newTitle);
             alert('In product search.');

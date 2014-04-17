@@ -1,0 +1,59 @@
+<div class="page-aside app filters">
+    <div>
+        <div class="content">
+            <button class="navbar-toggle" data-target=".app-nav" data-toggle="collapse" type="button">
+                <span class="fa fa-chevron-down"></span>
+            </button>          
+            <h2 class="page-title">Product Filters</h2>
+        </div>        
+        <div class="app-nav collapse">
+            <div class="content">
+                <div class="form-group">
+                    <label class="control-label">By date:</label>
+                    <div id="reportrange" style="background: #fff; cursor: pointer; padding: 8px 4px; border: 1px solid #ccc">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i> 
+                        <span></span> <b class="caret"></b>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">By zone:</label>
+                    <select class="select2">
+                        <optgroup label="Alaskan/Hawaiian Time Zone">
+                            <option value="AK">Alaska</option>
+                            <option value="HI">Hawaii</option>
+                        </optgroup>
+                        <optgroup label="Pacific Time Zone">
+                            <option value="CA">California</option>
+                            <option value="NV">Nevada</option>
+                            <option value="OR">Oregon</option>
+                            <option value="WA">Washington</option>
+                        </optgroup>
+                        <optgroup label="Mountain Time Zone">
+                            <option value="AZ">Arizona</option>
+                            <option value="CO">Colorado</option>
+                            <option value="ID">Idaho</option>
+                            <option value="MT">Montana</option><option value="NE">Nebraska</option>
+                            <option value="NM">New Mexico</option>
+                            <option value="ND">North Dakota</option>
+                            <option value="UT">Utah</option>
+                            <option value="WY">Wyoming</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Filter by:</label>
+                    <input class="tags" type="hidden" value="brown,blue,green" />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label">By price:</label>
+                    <p>Values between <strong id="price1">$250</strong> and <strong id="price2">$450</strong></p>
+                    <input id="price-range" class="bslider form-control" type="text" data-slider-tooltip="hide" data-slider-value="[250,450]" data-slider-step="5" data-slider-max="1000" data-slider-min="10" value="" />
+                </div>
+            </div>
+                <div class="search">
+                    <a class="btn btn-flat btn-primary">Find Product</a>
+                </div>
+        </div>
+    </div>
+</div> 
