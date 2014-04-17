@@ -17,7 +17,28 @@ define(function(require, exports, module) {
 
     var componentFacade = {
 
-        init_datatable: function(selector, options, fnDatatableCallback){
+        init_by_component_settings: function(componet_settings) {
+            var self = this;
+            _.each(componet_settings, function(setting) {
+                switch (setting.component) {
+                case "DATE_RANGE_PICKER":
+                    self.init_daterange_picker(setting.selector, setting.options);
+                    break;
+                case "SELECT2":
+                    self.init_select2(setting.selector, setting.options);
+                    break;
+                case "SELECT2TAG":
+                    self.init_select2_tag(setting.selector, setting.options);
+                    break;
+                case "SLIDER_RANGE":
+                    self.init_slider_range(setting.selector, setting.options);
+                    break;
+                    //TODO: more settings to build the ui component.
+                }
+            });
+        },
+
+        init_datatable: function(selector, options, fnDatatableCallback) {
             var datatable_div = selector + '-div';
             $("#" + datatable_div).html('<table class="table table-bordered" id="' + selector + '"></table>');
             datatable_id = "#" + selector;
@@ -25,14 +46,14 @@ define(function(require, exports, module) {
             /* Init the table with dynamic ajax loader.*/
             var datatable = $(datatable_id).dataTable({
                 "aaData": options.data,
-    			"aoColumns": options.header
+                "aoColumns": options.header
             });
 
             // Search input style
             $('.dataTables_filter input').addClass('form-control').attr('placeholder', 'Search');
             $('.dataTables_length select').addClass('form-control');
 
-			fnDatatableCallback(datatable);
+            fnDatatableCallback(datatable);
         },
 
         /**
@@ -40,18 +61,18 @@ define(function(require, exports, module) {
          *
          * @param selector
          */
-        init_daterange_picker: function(selector, options){
+        init_daterange_picker: function(selector, options) {
             /*Date Range Picker*/
             var cb = function(start, end) {
-                    $(selector+' span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+                    $(selector + ' span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
                     //alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + "]");
                 };
 
             var optionSet1 = {
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
-                minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                minDate: options.minDate,
+                maxDate: options.maxDate,
                 dateLimit: {
                     days: 60
                 },
@@ -86,7 +107,7 @@ define(function(require, exports, module) {
                 }
             };
 
-            $(selector+' span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+            $(selector + ' span').html(moment().subtract('days', 29).format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
             $(selector).daterangepicker(optionSet1, cb);
             $(selector).on('show', function() {
                 console.log("show event fired");
@@ -104,13 +125,16 @@ define(function(require, exports, module) {
 
         },
 
-        init_select2: function(selector, options){
-            $(selector).select2({
-                width: '100%'
-            });
+        init_select2: function(selector, options) {
+            var componentSelect2 = require('./view/component-select2');
+            (new componentSelect2({
+                el: $(selector + '-container'),
+                selector: selector,
+                attrs: options
+            })).render();
         },
 
-        init_select2_tag: function(selector, options){
+        init_select2_tag: function(selector, options) {
             /*Tags*/
             $(selector).select2({
                 tags: 0,
@@ -118,20 +142,20 @@ define(function(require, exports, module) {
             });
         },
 
-        init_slider_range: function(selector, options){
-             /*Slider update range*/
+        init_slider_range: function(selector, options) {
+            /*Slider update range*/
             $(selector).slider().on("slide", function(e) {
                 $(options.min).html("$" + e.value[0]);
                 $(options.max).html("$" + e.value[1]);
             });
         },
 
-        init_switch: function(selector, options){
+        init_switch: function(selector, options) {
             /*Switch*/
             $(selector).bootstrapSwitch();
         },
 
-        init_multi_select: function(selector, options){
+        init_multi_select: function(selector, options) {
             /*Multi-Select Search*/
             $('selector').multiSelect({
                 selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
@@ -168,14 +192,14 @@ define(function(require, exports, module) {
             });
         },
 
-        init_touchspine: function(selector, options){
+        init_touchspine: function(selector, options) {
             $(selector).TouchSpin({
                 min: options.min,
                 max: options.max,
                 stepinterval: options.interval,
                 maxboostedstep: 10000000,
                 prefix: options.prefix
-             });
+            });
         }
     };
     module.exports = componentFacade;

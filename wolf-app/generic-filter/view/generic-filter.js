@@ -4,7 +4,6 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
 
-    var componentFacade = require('../../common/component-facade');
     var genericFilterColl = require('../collection/generic-filter-coll');
     var genericFilter = Backbone.View.extend({
 
@@ -27,10 +26,6 @@ define(function(require, exports, module) {
 
         afterRender: function(){
             genericFilterColl.fetch();
-            //componentFacade.init_daterange_picker('#reportrange');
-            //componentFacade.init_select2('.select2');
-            //componentFacade.init_select2_tag('.tags');
-            //componentFacade.init_slider_range('#price-range', {min: '#price1', max: '#price2'})
         }
     });
 

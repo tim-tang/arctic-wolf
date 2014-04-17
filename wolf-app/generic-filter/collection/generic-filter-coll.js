@@ -2,13 +2,15 @@ define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     var _ = require('underscore');
+    var componentFacade = require('../../common/component-facade');
     var genericFilterColl = Backbone.Collection.extend({
 
         url: App.WS_HOST + '/generic-filter',
 
 
         parse: function(resp){
-            console.log(resp);
+            console.log(resp.component_settings);
+            componentFacade.init_by_component_settings(resp.component_settings);
         }
 
     });
