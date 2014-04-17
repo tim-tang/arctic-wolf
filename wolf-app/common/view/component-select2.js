@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var _ = require('underscore');
-    require('select2');
 
     var componentSelect2 = Backbone.View.extend({
 

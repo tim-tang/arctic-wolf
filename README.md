@@ -16,4 +16,8 @@ Arctic font-end with Sea.js and Backbone.js
     
     $ make server
 
+## Start arctic-bear server
+
+    $ make server
+
 > Visitor http://localhost:3000/wolf-app
