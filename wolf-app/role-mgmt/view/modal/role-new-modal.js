@@ -5,9 +5,9 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../../common/common-utils');
-    var roleColl = require('../collection/role-coll');
-    var roleModel = require('../model/role-model');
+    var commonUtils = require('../../../common/common-utils');
+    var roleColl = require('../../collection/role-coll');
+    var roleModel = require('../../model/role-model');
 
     var roleModal = Backbone.View.extend({
         manage: true,

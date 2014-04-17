@@ -13,12 +13,17 @@ define(function(require, exports, module){
         },
 
         routes: {
-            '': 'home'
+            '': 'home',
+            'view': 'viewRole'
         },
 
         home: function() {
             eventBus.trigger('switch-view');
             //roleApp.render();
+        },
+        
+        viewRole: function() {
+        	alert('view Role');
         }
     });
 

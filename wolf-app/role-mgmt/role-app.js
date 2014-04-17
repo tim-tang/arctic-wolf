@@ -4,7 +4,7 @@
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 	var roleMgmt = require('./view/role-mgmt');
-	var roleModal = require('./view/role-new-modal');
+	var roleModal = require('./view/modal/role-new-modal');
 
 	var roleApp = new Backbone.Layout({
 

@@ -6,7 +6,6 @@ define(function(require, exports, module) {
 
     var roleColl = require('../collection/role-coll');
     var roleModel = require('../model/role-model');
-    var roleNewModal = require('../view/role-new-modal');
     var commonUtils = require('../../common/common-utils');
     var commonLoading = require('../../common/common-loading');
     var roleDatatable;
@@ -60,8 +59,9 @@ define(function(require, exports, module) {
         },
 
         view_role: function(e) {
-            e.preventDefault();
-            //TODO:
+            e.preventDefault();            
+            this.roleDetailsApp = require('../role-details-app');
+            this.roleDetailsApp.render();
         },
 
         edit_role: function(e) {
