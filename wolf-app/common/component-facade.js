@@ -13,6 +13,7 @@ define(function(require, exports, module) {
     require('datetimepicker');
     require('bootstrap-slider');
     require('modalEffects');
+    require('bt-touchspin');
 
     var componentFacade = {
 
@@ -165,6 +166,16 @@ define(function(require, exports, module) {
                     this.qs2.cache();
                 }
             });
+        },
+
+        init_touchspine: function(selector, options){
+            $(selector).TouchSpin({
+                min: options.min,
+                max: options.max,
+                stepinterval: options.interval,
+                maxboostedstep: 10000000,
+                prefix: options.prefix
+             });
         }
     };
     module.exports = componentFacade;

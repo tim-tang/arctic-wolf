@@ -8,6 +8,7 @@
      var Backbone = require('backbone');
      var vehicleColl = require('../collection/vehicle-coll');
      var vehicleModel = require('../model/vehicle-model');
+     var componentFacade = require('../../common/component-facade');
 
      var vehicleModal = Backbone.View.extend({
          manage: true,
@@ -27,17 +28,10 @@
 
          serialize: function() {
             return { vehicle: _.clone(this.model.attributes) };
-
          },
 
          afterRender: function() {
-            $("#vehicle-price").TouchSpin({
-                min: -1000000000,
-                max: 1000000000,
-                stepinterval: 8,
-                maxboostedstep: 10000000,
-                prefix: '$'
-             });
+           componentFacade.init_touchspine('#vehicle-price', {min: 1, max: 1000000, interval: 1, prefix: '$'});
          },
 
          new_attributes: function(){
