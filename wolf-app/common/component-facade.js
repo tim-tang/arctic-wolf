@@ -128,10 +128,9 @@ define(function(require, exports, module) {
         init_select2: function(selector, options) {
             var componentSelect2 = require('./view/component-select2');
             (new componentSelect2({
-                el: $(selector + '-container'),
                 selector: selector,
                 attrs: options
-            })).render();
+            })).render().$el.appendTo(selector + '-container');
         },
 
         init_select2_tag: function(selector, options) {
