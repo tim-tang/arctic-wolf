@@ -11,12 +11,12 @@ define(function(require, exports, module) {
 
         manage: true,
         prefix: 'generic-filter/tpl/',
-        template: 'generic-filter-records.html',
+        template: 'generic-record-container.html',
 
         initialize: function(options){
             this.selector = options.el;
             this.listenTo(genericRecrodColl, 'request',this.show_loading);
-            this.listenTo(genericRecrodColl, 'sync', this.hide_loading);
+            this.listenTo(genericRecrodColl, 'sync', this.filter_complete);
         },
 
         afterRender: function(){
@@ -27,18 +27,10 @@ define(function(require, exports, module) {
             eventBus.trigger('show-loading', this.selector);
         },
 
-        hide_loading: function(){
-            //$('#generic-filter-records').html('xxxx');
-            //genericRecord = new genericRecord({ records: genericRecrodColl.records});
-            //self = this;
-            //genericRecord.render().promise().done(function(){
-            //    self.insertView('#generic-filter-records', genericRecord);
-            //});
-           //this.insertView(new genericRecord({el: '#generic-filter-records', records: genericRecrodColl.records})).render();
-            //(new genericRecord({el: '#generic-filter-records', records: genericRecrodColl.records})).render();
+        filter_complete: function(){
+           this.insertView(new genericRecord({el: '#generic-filter-records', records: genericRecrodColl.records})).render();
             eventBus.trigger('hide-loading');
         },
-
     });
 
     module.exports = genericFilterRecords;

@@ -9,7 +9,7 @@ define(function(require, exports, module) {
 
         manage: true,
         prefix: "generic-filter/tpl/",
-        tempalte: 'generic-record.html',
+        template: 'generic-record.html',
 
         initialize: function(options){
             this.records = options.records;

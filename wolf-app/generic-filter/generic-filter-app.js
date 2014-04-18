@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var commonLoading = require('../common/common-loading');
     var eventBus = require('../app-main/app-eventbus');
     var genericFilter = require('./view/generic-filter');
-    var genericFilterRecords = require('./view/generic-filter-records');
+    var genericFilterRecords = require('./view/generic-record-container');
 
     var genericFilterApp = new Backbone.Layout({
 
