@@ -25,7 +25,7 @@ define(function(require, exports, module) {
             'click #role-mgmt-delete': 'delete_role',
             'click #role-mgmt-edit': 'edit_role',
             'click #role-mgmt-view': 'view_role'
-         },
+        },
 
         initialize: function() {
             this.listenTo(roleColl, 'request', this.show_loading);
