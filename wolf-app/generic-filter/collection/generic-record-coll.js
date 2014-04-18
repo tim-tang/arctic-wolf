@@ -8,7 +8,7 @@ define(function(require, exports, module) {
         url: App.WS_HOST + '/filter-generic-records',
 
         parse: function(resp){
-            console.log(resp);
+            this.records = resp.filter_records;
         }
     });
 

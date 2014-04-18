@@ -23,8 +23,6 @@ define(function(require, exports, module) {
         afterRender: function() {
             this.insertView(new genericFilter({el: '#generic-filter-home'})).render();
             this.insertView(new genericFilterRecords({el: '#generic-records-home'})).render();
-            //this.insertView('#generic-filter-home', new genericFilter()).render();
-            //this.insertView('#generic-records-home', new genericFilterRecords()).render();
         },
 
         show_loading: function(selector){

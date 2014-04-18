@@ -28,6 +28,7 @@ define(function(require, exports, module) {
         afterRender: function(){
             genericFilterColl.fetch();
         }
+
     });
 
     module.exports = genericFilter;

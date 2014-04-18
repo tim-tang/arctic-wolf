@@ -1,11 +1,12 @@
+<% _.each(records, function(record){ %>
 <div class="item">
     <div>
         <a data-toggle="modal" data-target="#mod-product" href="#">
-            <span class="date pull-right price">¥25</span>
-            <img class="product-image" src="assets/images/placeholder50x50.gif">
-            <h4 class="from">Product 1</h4>
-            <p class="msg">This is the product description.</p>
+            <span class="date pull-right price"><%= record.price %></span>
+            <img class="product-image" src="<%= record.image%>">
+            <h4 class="from"><%= record.name%></h4>
+            <p class="msg"><%= record.desc %></p>
         </a>
     </div>
 </div>   
-
+<% });%>
