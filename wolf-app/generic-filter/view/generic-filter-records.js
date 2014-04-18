@@ -3,18 +3,18 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
+    var genericRecrodColl = require('../collection/generic-record-coll');
 
-    var genericFilterColl = require('../collection/generic-filter-coll');
-    var genericFilter = Backbone.View.extend({
+    var genericFilterRecords = Backbone.View.extend({
 
         manage: true,
-        prefix: "generic-filter/tpl/",
-        template: 'generic-filter.html',
+        prefix: 'generic-filter/tpl/',
+        template: 'generic-filter-records.html',
 
         initialize: function(options){
             this.selector = options.el;
-            this.listenTo(genericFilterColl, 'request',this.show_loading);
-            this.listenTo(genericFilterColl, 'sync', this.hide_loading);
+            this.listenTo(genericRecrodColl, 'request',this.show_loading);
+            this.listenTo(genericRecrodColl, 'sync', this.hide_loading);
         },
 
         show_loading: function(){
@@ -25,11 +25,7 @@ define(function(require, exports, module) {
             eventBus.trigger('hide-loading');
         },
 
-        afterRender: function(){
-            genericFilterColl.fetch();
-        }
     });
 
-    module.exports = genericFilter;
-
+    module.exports = genericFilterRecords;
 });

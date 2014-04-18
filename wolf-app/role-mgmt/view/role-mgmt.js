@@ -10,7 +10,7 @@ define(function(require, exports, module) {
 
     var roleColl = require('../collection/role-coll');
     var roleModel = require('../model/role-model');
-    
+
     var roleMgmt = Backbone.View.extend({
 
         manage: true,
@@ -18,7 +18,7 @@ define(function(require, exports, module) {
         prefix: "role-mgmt/templates/",
 
         template: 'role-mgmt.html',
-        
+
         datatable: null,
 
 		events: {
@@ -61,7 +61,7 @@ define(function(require, exports, module) {
         },
 
         view_role: function(e) {
-            e.preventDefault();            
+            e.preventDefault();
             this.roleDetailsApp = require('../role-details-app');
             this.roleDetailsApp.render();
         },

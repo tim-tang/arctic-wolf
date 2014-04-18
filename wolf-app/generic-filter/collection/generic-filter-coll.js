@@ -9,7 +9,6 @@ define(function(require, exports, module) {
 
 
         parse: function(resp){
-            console.log(resp.component_settings);
             componentFacade.init_by_component_settings(resp.component_settings);
         }
 
