@@ -2,79 +2,58 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    var Backbone = require('backbone');
-
+    //var Backbone = require('backbone');
+	var BaseMgmtView = require('../../base/view/base-mgmt-view');
+	
     var eventBus = require('../../app-main/app-eventbus');
     var commonUtils = require('../../common/common-utils');
     var componentFacade = require('../../common/component-facade');
 
     var roleColl = require('../collection/role-coll');
     var roleModel = require('../model/role-model');
-
-    var roleMgmt = Backbone.View.extend({
-
-        manage: true,
+    
+    var roleMgmt = BaseMgmtView.extend({
 
         prefix: "role-mgmt/templates/",
 
         template: 'role-mgmt.html',
-
-        datatable: null,
-
-		events: {
-            'click #role-mgmt-delete': 'delete_role',
-            'click #role-mgmt-edit': 'edit_role',
-            'click #role-mgmt-view': 'view_role'
-        },
+        
+        datatable_id: 'role-mgmt-datatable',
+        
+        collection: roleColl,
 
         initialize: function() {
             this.listenTo(roleColl, 'request', this.show_loading);
             this.listenTo(roleColl, 'remove', this.hide_loading);
-            this.listenTo(roleColl, 'sync', this.after_load_roles);
+            this.listenTo(roleColl, 'sync', this.load_objects);
         },
 
-        afterRender: function() {
-            roleColl.fetch();
-        },
-
-        show_loading: function() {
-            eventBus.trigger('show-loading');
-        },
-
-        hide_loading: function() {
-            eventBus.trigger('hide-loading');
-        },
-
-        after_load_roles: function() {
-        	self = this;
-			// Inital Datatable
-            componentFacade.init_datatable('role-mgmt-datatable', {data: roleColl.toJSON(), header: roleColl.columns}, function(datatable) {
-	            self.datatable = datatable;
-	            $('#role-mgmt-datatable').on('click', 'tbody tr', function(e) {
-	                $(this).toggleClass('row_selected');
-	                var selected_role_id = $(this).find("td:first").html().trim();
-	                var roleModel = roleColl.get(selected_role_id);
-	                roleModel.toggle_select();
-	            });
-	            eventBus.trigger('hide-loading');
-			});
-        },
-
-        view_role: function(e) {
-            e.preventDefault();
+		view_obj: function(e) {
+            this.view_obj(e);
             this.roleDetailsApp = require('../role-details-app');
             this.roleDetailsApp.render();
         },
-
-        edit_role: function(e) {
-            e.preventDefault();
-            //TODO:
+        
+        afterRender: function() {
+            roleColl.fetch();
         },
-
-        delete_role: function(e){
-            e.preventDefault();
-            _.invoke(roleColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(this.datatable);
+        
+        load_objects: function() {
+        	this.constructor.__super__.load_objects(this);
+        	/*
+			self = this;
+						// Inital Datatable
+						componentFacade.init_datatable(this.datatable_id, {data: roleColl.toJSON(), header: roleColl.columns}, function(datatable) {
+							self.datatable = datatable;
+							$(this.datatable_id).on('click', 'tbody tr', function(e) {
+								$(this).toggleClass('row_selected');
+								var selected_id = $(this).find("td:first").html().trim();
+								var model = roleColl.get(selected_id);
+								model.toggle_select();
+							});
+							eventBus.trigger('hide-loading');
+						});*/
+			
         }
     });
 

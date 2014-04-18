@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-
+    
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
@@ -34,7 +34,7 @@ define(function(require, exports, module) {
                         role: _.clone(this.model.attributes)
                     };
                 },*/
-
+        
 
         afterRender: function() {
             componentFacade.init_switch();
@@ -49,7 +49,7 @@ define(function(require, exports, module) {
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },
-
+        
         clearValues: function() {
         	this.$('#role-name').val('');
 			this.$('#role-desc').val('');
