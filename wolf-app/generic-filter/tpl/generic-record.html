@@ -1,7 +1,7 @@
 <% _.each(records, function(record){ %>
 <div class="item">
     <div>
-        <a data-toggle="modal" data-target="#mod-product" href="#">
+        <a data-toggle="modal" data-target="#mod-record" data-bypass href="">
             <span class="date pull-right price"><%= record.price %></span>
             <img class="product-image" src="<%= record.image%>">
             <h4 class="from"><%= record.name%></h4>

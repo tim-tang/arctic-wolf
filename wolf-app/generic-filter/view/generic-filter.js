@@ -11,6 +11,10 @@ define(function(require, exports, module) {
         prefix: "generic-filter/tpl/",
         template: 'generic-filter.html',
 
+        events:{
+            'click #generic-filter-btn': 'filter_records'
+        },
+
         initialize: function(options){
             this.selector = options.el;
             this.listenTo(genericFilterColl, 'request',this.show_loading);
@@ -27,6 +31,11 @@ define(function(require, exports, module) {
 
         afterRender: function(){
             genericFilterColl.fetch();
+        },
+
+        filter_records: function(e){
+            e.preventDefault();
+            alert('Ready to filter...');
         }
 
     });
