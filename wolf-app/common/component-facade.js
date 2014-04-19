@@ -144,8 +144,8 @@ define(function(require, exports, module) {
         init_slider_range: function(selector, options) {
             /*Slider update range*/
             $(selector).slider().on("slide", function(e) {
-                $(options.min).html("$" + e.value[0]);
-                $(options.max).html("$" + e.value[1]);
+                $(options.min).html(e.value[0]);
+                $(options.max).html(e.value[1]);
             });
         },
 
