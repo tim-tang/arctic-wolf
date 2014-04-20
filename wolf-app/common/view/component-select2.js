@@ -3,6 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var _ = require('underscore');
+    require('select2');
 
     var componentSelect2 = Backbone.View.extend({
 
@@ -16,9 +17,9 @@ define(function(require, exports, module) {
          },
 
          afterRender: function(){
-            $(this.selector).select2({
-                width: '100%'
-            });
+            //$(this.selector).select2({
+            //    width: '100%'
+            //});
          },
 
          serialize: function() {

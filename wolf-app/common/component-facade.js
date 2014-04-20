@@ -127,10 +127,15 @@ define(function(require, exports, module) {
 
         init_select2: function(selector, options) {
             var componentSelect2 = require('./view/component-select2');
-            (new componentSelect2({
+            var select2_view = (new componentSelect2({
                 selector: selector,
                 attrs: options
-            })).render().$el.appendTo(selector + '-container');
+            })).render().promise().done(function(select2_view){
+                select2_view.$el.appendTo(selector + '-container');
+                $(this.selector).select2({
+                    width: '100%'
+                });
+            });
         },
 
         init_select2_tag: function(selector, options) {
