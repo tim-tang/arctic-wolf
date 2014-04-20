@@ -2,31 +2,29 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    var Backbone = require('backbone');
+    // var Backbone = require('backbone');
+    var BaseMgmtView = require('../../base/view/base-mgmt-view');
 
-    var vehicleColl = require('../collection/vehicle-coll');
     var commonUtils = require('../../common/common-utils');
     var componentFacade = require('../../common/component-facade');
     var eventBus = require('../../app-main/app-eventbus');
-    var vehicleMgmt = Backbone.View.extend({
-        manage: true,
 
+	var vehicleColl = require('../collection/vehicle-coll');
+    
+    var vehicleMgmt = BaseMgmtView.extend({
+       	
         prefix: "vehicle-mgmt/templates/",
 
         template: 'vehicle-mgmt.html',
 
-        datatable: null,
-
-        events: {
-             'click #vehicle-mgmt-delete': 'delete_vehicle',
-             'click #vehicle-mgmt-edit': 'edit_vehicle',
-             'click #vehicle-mgmt-view': 'view_vehicle'
-         },
+        datatable_id: 'vehicle-mgmt-datatable',
+        
+        collection: vehicleColl,
 
         initialize: function() {
             this.listenTo(vehicleColl, 'request',this.show_loading);
             this.listenTo(vehicleColl, 'remove', this.hide_loading);
-            this.listenTo(vehicleColl, 'sync', this.after_load_vehicles);
+            this.listenTo(vehicleColl, 'sync', this.load_objects);
         },
 
         afterRender: function() {
@@ -35,45 +33,22 @@ define(function(require, exports, module) {
             vehicleColl.fetch();
         },
 
-        show_loading: function(){
-            eventBus.trigger('show-loading');
-        },
-
-        hide_loading: function(){
-            eventBus.trigger('hide-loading');
-        },
-
-        after_load_vehicles: function() {
-            self = this;
-            componentFacade.init_datatable('vehicle-mgmt-datatable', {data: vehicleColl.toJSON(), header: vehicleColl.columns}, function(datatable){
-                self.datatable= datatable;
-                $('#vehicle-mgmt-datatable').on('click', 'tbody tr', function(e) {
-                    $(this).toggleClass('row_selected');
-                    var selected_vehicle_id = $(this).find("td:first").html().trim();
-                    var vehicleModel = vehicleColl.findWhere({
-                        id: parseInt(selected_vehicle_id)
-                    });
-                    vehicleModel.toggle_select();
-                });
-                eventBus.trigger('hide-loading')
-            });
-        },
-
-        view_vehicle: function(e) {
-            e.preventDefault();
-            //TODO:
-        },
-
-       edit_vehicle: function(e) {
-            e.preventDefault();
-            //TODO:
-       },
-
-        delete_vehicle: function(e){
-            e.preventDefault();
-            _.invoke(vehicleColl.selected(), 'destroy');
-            commonUtils.remove_selected_row(this.datatable);
-        }
+        load_objects: function() {
+			//this.constructor.__super__.load_objects(this);
+        	
+			self = this;
+			// Inital Datatable
+			componentFacade.init_datatable(this.datatable_id, {data: vehicleColl.toJSON(), header: vehicleColl.columns}, function(datatable) {
+				self.datatable = datatable;
+				$(this.datatable_id).on('click', 'tbody tr', function(e) {
+					$(this).toggleClass('row_selected');
+					var selected_id = $(this).find("td:first").html().trim();
+					var model = vehicleColl.get(selected_id);
+					model.toggle_select();
+				});
+				eventBus.trigger('hide-loading');
+			});        
+		}
     });
 
     module.exports = vehicleMgmt;

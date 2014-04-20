@@ -65,7 +65,7 @@ define(function(require, exports, module) {
             roleColl.create(this.new_attributes());
             // roleColl.add(this.model.set(this.new_attributes()));
             // Backbone.sync("create", model);
-            commonUtils.resetForm($('#new-modal'));
+            //commonUtils.resetForm($('#new-modal'));
         }
     });
 

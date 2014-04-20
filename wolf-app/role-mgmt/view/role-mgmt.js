@@ -39,21 +39,20 @@ define(function(require, exports, module) {
         },
         
         load_objects: function() {
-        	this.constructor.__super__.load_objects(this);
-        	/*
+        	//this.constructor.__super__.load_objects(this);
+        	
 			self = this;
-						// Inital Datatable
-						componentFacade.init_datatable(this.datatable_id, {data: roleColl.toJSON(), header: roleColl.columns}, function(datatable) {
-							self.datatable = datatable;
-							$(this.datatable_id).on('click', 'tbody tr', function(e) {
-								$(this).toggleClass('row_selected');
-								var selected_id = $(this).find("td:first").html().trim();
-								var model = roleColl.get(selected_id);
-								model.toggle_select();
-							});
-							eventBus.trigger('hide-loading');
-						});*/
-			
+			// Inital Datatable
+			componentFacade.init_datatable(this.datatable_id, {data: roleColl.toJSON(), header: roleColl.columns}, function(datatable) {
+				self.datatable = datatable;
+				$(this.datatable_id).on('click', 'tbody tr', function(e) {
+					$(this).toggleClass('row_selected');
+					var selected_id = $(this).find("td:first").html().trim();
+					var model = roleColl.get(selected_id);
+					model.toggle_select();
+				});
+				eventBus.trigger('hide-loading');
+			});		
         }
     });
 
