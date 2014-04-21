@@ -18,6 +18,7 @@ define(function(require, exports, module) {
     var layoutMenu = require('./view/layout-menu');
     var layoutProfile = require('./view/layout-profile');
     var eventBus = require('../app-main/app-eventbus');
+    var viewManager = require('../app-main/app-view-manager');
 
     var layoutApp = new Backbone.Layout({
 
@@ -50,13 +51,13 @@ define(function(require, exports, module) {
         switch_view: function() {
 
             this.removeView('#main-content');
+            eventBus.trigger('active-menu-item');
 
             switch (Backbone.history.fragment) {
             case "dashboard":
                 break;
             case "generic-filter/":
-                var genericFilterApp = require('../generic-filter/generic-filter-app');
-                this.do_switch(genericFilterApp);
+                require('../generic-filter/generic-filter-app').run(viewManager);
                 break;
             case "user-mgmt/":
                 var userApp = require('../user-mgmt/user-app');
@@ -79,14 +80,12 @@ define(function(require, exports, module) {
                 this.do_switch(criteriaApp);
                 break;
             case "vehicle-mgmt/":
-                var vehicleApp = require('../vehicle-mgmt/vehicle-app');
-                this.do_switch(vehicleApp);
+                require('../vehicle-mgmt/vehicle-app').run(viewManager);
                 break;
             }
         },
 
         do_switch: function(activeApp) {
-            eventBus.trigger('active-menu-item');
             this.insertView('#main-content', activeApp).render();
         }
     });

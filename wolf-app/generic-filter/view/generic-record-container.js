@@ -13,22 +13,28 @@ define(function(require, exports, module) {
         prefix: 'generic-filter/tpl/',
         template: 'generic-record-container.html',
 
-        initialize: function(options){
+        initialize: function(options) {
+            this.subviews = [];
             this.selector = options.el;
-            this.listenTo(genericRecrodColl, 'request',this.show_loading);
+            this.listenTo(genericRecrodColl, 'request', this.show_loading);
             this.listenTo(genericRecrodColl, 'sync', this.filter_complete);
         },
 
-        afterRender: function(){
+        afterRender: function() {
             genericRecrodColl.fetch();
         },
 
-        show_loading: function(){
+        show_loading: function() {
             eventBus.trigger('show-loading', this.selector);
         },
 
-        filter_complete: function(){
-           this.insertView(new genericRecord({el: '#generic-filter-records', records: genericRecrodColl.records})).render();
+        filter_complete: function() {
+            var genericRecordView = new genericRecord({
+                el: '#generic-filter-records',
+                records: genericRecrodColl.records
+            });
+            this.insertView(genericRecordView).render();
+            this.subviews.push(genericRecordView);
             eventBus.trigger('hide-loading');
         },
     });

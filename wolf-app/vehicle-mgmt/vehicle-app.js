@@ -3,13 +3,12 @@
      var $ = require('$');
      var _ = require('underscore');
      var Backbone = require('backbone');
-     var vehicleMgmt = require('./view/vehicle-mgmt');
-     var vehicleModal = require('./view/vehicle-new-modal');
      var eventBus = require('../app-main/app-eventbus');
      var commonLoading = require('../common/common-loading');
-     var vehicleApp = new Backbone.Layout({
+     var vehicleMgmt = require('./view/vehicle-mgmt');
+     var vehicleModal = require('./view/vehicle-new-modal');
 
-         //el: '#main-content',
+     var vehicleApp = new Backbone.Layout({
 
          manage: true,
          keep: true,
@@ -17,8 +16,9 @@
          template: 'vehicle-container.html',
 
          initialize: function() {
-            eventBus.on('show-loading', this.show_loading, this);
-            eventBus.on('hide-loading', this.hide_loading, this);
+             this.subviews = [];
+             eventBus.on('show-loading', this.show_loading, this);
+             eventBus.on('hide-loading', this.hide_loading, this);
          },
 
          events: {
@@ -26,17 +26,26 @@
          },
 
          afterRender: function() {
-             this.insertView('#vehicle-home', new vehicleMgmt()).render();
-             this.insertView('#vehicle-home', new vehicleModal()).render();
+             var vehicleMgmtView = new vehicleMgmt();
+             this.insertView('#vehicle-home', vehicleMgmtView).render();
+             this.subviews.push(vehicleMgmtView);
+             var vehicleModalView = new vehicleModal();
+             this.insertView('#vehicle-home', vehicleModalView).render();
+             this.subviews.push(vehicleModalView);
          },
 
-        show_loading: function(){
-            commonLoading.init('#main-content');
-        },
+         show_loading: function() {
+             commonLoading.init('#main-content');
+         },
 
-        hide_loading: function(){
-            commonLoading.destroy();
-        }
+         hide_loading: function() {
+             commonLoading.destroy();
+         },
      });
-     module.exports = vehicleApp;
+
+     module.exports = {
+         run: function(viewManager) {
+            viewManager.show(vehicleApp);
+         }
+     };
  });
