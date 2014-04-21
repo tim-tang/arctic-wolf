@@ -1,11 +1,12 @@
 define(function(require, exports, module) {
     var $ = require('$');
+    var transition = require('./app-transition');
 
-    var viewManager = (function () {
+    var viewManager = (function() {
         var currentView;
 
         function showView(view) {
-            disposeView(currentView, function () {
+            disposeView(currentView, function() {
                 render(view);
             });
         }
@@ -15,11 +16,13 @@ define(function(require, exports, module) {
                 return callback();
             }
 
-            _disposeView(view);
-            return callback();
+            return transition.apply(view.$el, function() {
+                _disposeView(view);
+                return callback();
+            });
 
             function _disposeView(view) {
-                view.subviews && view.subviews.forEach(function (subview) {
+                view.subviews && view.subviews.forEach(function(subview) {
                     _disposeView(subview);
                 });
 

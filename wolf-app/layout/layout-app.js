@@ -47,10 +47,14 @@ define(function(require, exports, module) {
 
         /**
          * TODO: extract uri to constants.
+         *
+         * TODO: Refactor other modules to use view manager.
          */
         switch_view: function() {
 
+            //TODO: remove this line.
             this.removeView('#main-content');
+
             eventBus.trigger('active-menu-item');
 
             switch (Backbone.history.fragment) {
@@ -85,6 +89,9 @@ define(function(require, exports, module) {
             }
         },
 
+        /**
+         * TODO: remove this method after refactor.
+         */
         do_switch: function(activeApp) {
             this.insertView('#main-content', activeApp).render();
         }
