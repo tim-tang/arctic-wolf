@@ -22,11 +22,11 @@ define(function(require, exports, module) {
         },
 
         show_loading: function(){
-            eventBus.trigger('show-loading', this.selector);
+            //eventBus.trigger('show-loading', this.selector);
         },
 
         hide_loading: function(){
-            eventBus.trigger('hide-loading');
+            //eventBus.trigger('hide-loading');
         },
 
         afterRender: function(){
