@@ -32,14 +32,6 @@ define(function(require, exports, module) {
             privilegeColl.fetch();
         },
 
-        show_loading: function() {
-            eventBus.trigger('show-loading');
-        },
-
-        hide_loading: function() {
-            eventBus.trigger('hide-loading');
-        },
-
         load_objects: function() {
 			//this.constructor.__super__.load_objects(this);
         	

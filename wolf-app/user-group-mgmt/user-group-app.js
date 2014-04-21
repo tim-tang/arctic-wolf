@@ -3,6 +3,10 @@
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
+	
+	var eventBus = require('../app-main/app-eventbus');
+	var commonLoading = require('../common/common-loading');
+	
 	var userGroupMgmt = require('./view/user-group-mgmt');
 	var userGroupModal = require('./view/user-group-new-modal');
 
@@ -22,10 +26,34 @@
             //TODO:
         },
 
+        initialize: function() {
+            this.subviews = [];
+            eventBus.on('show-loading', this.show_loading, this);
+            eventBus.on('hide-loading', this.hide_loading, this);
+        },
+        
         afterRender: function() {
-            this.insertView('#user-group-home', new userGroupMgmt()).render();
-		 	this.insertView('#user-group-home', new userGroupModal()).render();
-        }
+			var userGroupMgmtView = new userGroupMgmt();
+            this.insertView('#user-group-home', userGroupMgmtView).render();
+            this.subviews.push(userGroupMgmtView);
+            
+			var userGroupModalView = new userGroupModal();
+            this.insertView('#user-group-home', userGroupModalView).render();
+            this.subviews.push(userGroupModalView);
+        },
+        
+		show_loading: function() {
+			commonLoading.init('#main-content');
+		},
+
+       	hide_loading: function() {
+       		commonLoading.destroy();
+		},
     });
-    module.exports = userGroupApp;
+    
+    module.exports = {
+        run: function(viewManager) {
+            viewManager.show(userGroupApp);
+        }
+    };
  });

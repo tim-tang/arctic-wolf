@@ -48,12 +48,8 @@ define(function(require, exports, module) {
         /**
          * TODO: extract uri to constants.
          *
-         * TODO: Refactor other modules to use view manager.
          */
         switch_view: function() {
-
-            //TODO: remove this line.
-            this.removeView('#main-content');
 
             eventBus.trigger('active-menu-item');
 
@@ -64,36 +60,24 @@ define(function(require, exports, module) {
                 require('../generic-filter/generic-filter-app').run(viewManager);
                 break;
             case "user-mgmt/":
-                var userApp = require('../user-mgmt/user-app');
-                this.do_switch(userApp);
+                require('../user-mgmt/user-app').run(viewManager);
                 break;
             case "user-group-mgmt/":
-                var userGroupApp = require('../user-group-mgmt/user-group-app');
-                this.do_switch(userGroupApp);
+                require('../user-group-mgmt/user-group-app').run(viewManager);
                 break;
             case "role-mgmt/":
-                var roleApp = require('../role-mgmt/role-app');
-                this.do_switch(roleApp);
+                require('../role-mgmt/role-app').run(viewManager);
                 break;
             case "privilege-mgmt/":
-                var privilegeApp = require('../privilege-mgmt/privilege-app');
-                this.do_switch(privilegeApp);
+                require('../privilege-mgmt/privilege-app').run(viewManager);
                 break;
             case "criteria-mgmt/":
-                var criteriaApp = require('../criteria-mgmt/criteria-app');
-                this.do_switch(criteriaApp);
+                require('../criteria-mgmt/criteria-app').run(viewManager);
                 break;
             case "vehicle-mgmt/":
                 require('../vehicle-mgmt/vehicle-app').run(viewManager);
                 break;
             }
-        },
-
-        /**
-         * TODO: remove this method after refactor.
-         */
-        do_switch: function(activeApp) {
-            this.insertView('#main-content', activeApp).render();
         }
     });
 
