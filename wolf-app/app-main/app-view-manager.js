@@ -17,10 +17,17 @@ define(function(require, exports, module) {
                 return callback();
             }
 
-            return transition.apply(view.$el, TRANSITION_TYPE, function() {
+            return applyTransition(view.$el, TRANSITION_TYPE, function() {
                 _disposeView(view);
                 return callback();
             });
+
+            function applyTransition(el, name, callback) {
+                if (!name) {
+                    return callback();
+                }
+                return transition.apply(el, name, callback);
+            }
 
             function _disposeView(view) {
                 view.subviews && view.subviews.forEach(function(subview) {
