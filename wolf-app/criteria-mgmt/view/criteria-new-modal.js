@@ -37,8 +37,8 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            componentFacade.init_switch();
-            componentFacade.init_select2();
+            componentFacade.init_switch('.switch');
+			componentFacade.init_select2('.select2');
         },
 
         new_attributes: function() {

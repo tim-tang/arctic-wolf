@@ -21,7 +21,7 @@ define(function(require, exports, module) {
         template: 'role-new-modal.html',
 
         events: {
-            'click #role-create-action': 'create_user_group'
+            'click #role-create-action': 'create_role'
         },
 
         initialize: function() {
@@ -37,8 +37,8 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            componentFacade.init_switch();
-			componentFacade.init_select2();
+            componentFacade.init_switch('.switch');
+			componentFacade.init_select2('.select2', {'a':'b', 'c':'d'});
 		},
 
         new_attributes: function() {
@@ -60,7 +60,7 @@ define(function(require, exports, module) {
         /**
          * Handling role instance creation.
          */
-        create_user_group: function() {
+        create_role: function() {
         	// console.log(JSON.stringify(this.new_attributes()));
             roleColl.create(this.new_attributes());
             // roleColl.add(this.model.set(this.new_attributes()));
