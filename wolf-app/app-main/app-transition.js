@@ -1,8 +1,12 @@
 define(function(require, exports, module) {
     var transition = {
 
-        apply: function(el, callback){
-            el.fadeIn(1, callback);
+        duration: 700,
+
+        apply: function(el, transitionType, callback){
+                var transitionClass = 'animated ' + transitionType;
+                el.addClass(transitionClass);
+                setTimeout(callback, this.duration);
         }
     }
 

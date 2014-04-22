@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 
     var viewManager = (function() {
         var currentView;
+        var TRANSITION_TYPE = 'fadeInRight';
 
         function showView(view) {
             disposeView(currentView, function() {
@@ -16,7 +17,7 @@ define(function(require, exports, module) {
                 return callback();
             }
 
-            return transition.apply(view.$el, function() {
+            return transition.apply(view.$el, TRANSITION_TYPE, function() {
                 _disposeView(view);
                 return callback();
             });
