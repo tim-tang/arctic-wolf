@@ -4,10 +4,11 @@ define(function(require, exports, module) {
 
     var viewManager = (function() {
         var currentView;
-        var TRANSITION_TYPE = 'fadeInRight';
+        var TRANSITION_TYPE = 'fadeOutRight';
 
         function showView(view) {
             disposeView(currentView, function() {
+                view.$el.removeClass('animated ' + TRANSITION_TYPE);
                 render(view);
             });
         }
