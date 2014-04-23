@@ -10,7 +10,7 @@ define(function(require, exports, module){
             //this.layoutApp = options.layoutApp;
         },
 
-        routers: {
+        routes: {
             '': 'home'
         },
 
