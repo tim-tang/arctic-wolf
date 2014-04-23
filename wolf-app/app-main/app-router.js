@@ -3,10 +3,9 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
-    //var layoutRouter = require('../layout/router/layout-router');
-
     var eventBus = require('./app-eventbus');
     var AppRouter = {};
+
     AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
             // init layout route
