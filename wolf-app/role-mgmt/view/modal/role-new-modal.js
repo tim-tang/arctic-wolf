@@ -20,12 +20,71 @@ define(function(require, exports, module) {
 
         template: 'role-new-modal.html',
 
+		privileges: null, 
+		
         events: {
             'click #role-create-action': 'create_role'
         },
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
+            privileges = {
+				"selector_id": "privileges",
+				"optgroups": [
+					{
+						"label": "Read",
+						"options": [
+							{
+								"value": "1", 
+								"label": "Read User"
+							},
+							{
+								"value": "2", 
+								"label": "Read Vehicle"
+							}
+						]
+					},
+					{
+						"label": "Create",
+						"options": [
+							{
+								"value": "3", 
+								"label": "Create User"
+							},
+							{
+								"value": "4", 
+								"label": "Create Vehicle"
+							}
+						]
+					},
+					{
+						"label": "Modify",
+						"options": [
+							{
+								"value": "5", 
+								"label": "Modify User"
+							},
+							{
+								"value": "6", 
+								"label": "Modify Vehicle"
+							}
+						]
+					},
+					{
+						"label": "Delete",
+						"options": [
+							{
+								"value": "7", 
+								"label": "Delete User"
+							},
+							{
+								"value": "8", 
+								"label": "Delete Vehicle"
+							}
+						]
+					}
+				]
+			}
         },
 
         /*
@@ -38,7 +97,7 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', {'a':'b', 'c':'d'});
+			componentFacade.init_select2('.select2', privileges);
 		},
 
         new_attributes: function() {
