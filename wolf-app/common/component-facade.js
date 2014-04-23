@@ -130,11 +130,8 @@ define(function(require, exports, module) {
             var select2_view = (new componentSelect2({
                 selector: selector,
                 attrs: options
-            })).render().promise().done(function(select2_view){
+            })).render().promise().done(function(select2_view) {
                 select2_view.$el.appendTo(selector + '-container');
-                $(this.selector).select2({
-                    width: '100%'
-                });
             });
         },
 

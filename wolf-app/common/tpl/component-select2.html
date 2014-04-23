@@ -1,11 +1,12 @@
-<select class="select2" id="generic-filter-select2">
-    <% _.each(options, function(option){ %>
-        <optgroup label="<%= option.label%>">
-            <% _.each(option.types, function(type){ %>
-                <option value="<%= type.value %>">
-                    <%= type.label%>
-                </option>
-                <% });%>
-        </optgroup>
-        <% });%>
+<select class="select2">
+    <% _.each(options.optgroups, function(optgroup) { %>
+	    <optgroup label="<%= optgroup.label%>">
+	    	<%= console.log(optgroup.options)%>
+	        <% _.each(optgroup.options, function(option) { %>
+	            <option value="<%= option.value%>">
+	                <%= option.label%>
+	            </option>
+	            <% });%>
+	    </optgroup>
+	    <% });%>
 </select>
