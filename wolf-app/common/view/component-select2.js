@@ -10,8 +10,6 @@ define(function(require, exports, module) {
 
         manage: true,
         
-        el: '.select2',
-        
         prefix: 'common/tpl/',
         
         template: 'component-select2.html',
@@ -19,12 +17,14 @@ define(function(require, exports, module) {
 		initialize: function(options) {
         	this.selector = options.selector;
             this.options = options.attrs;
-            
-            // Set selector id
-            this.$el.attr("id", this.options["selector_id"]);
         },
 
         afterRender: function() {
+        	// Set selector id
+            $(this.selector).attr("id", this.options["selector_id"]);
+            if(this.options["multiple"] === 'yes')
+            	$(this.selector).attr("multiple", "multiple");
+            	
             $(this.selector).select2({
                 width: '100%'
             });

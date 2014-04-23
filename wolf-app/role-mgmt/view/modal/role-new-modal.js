@@ -30,6 +30,7 @@ define(function(require, exports, module) {
             //this.listenTo(this.model, 'change', this.test);
             privileges = {
 				"selector_id": "privileges",
+				"multiple": "multiple",
 				"optgroups": [
 					{
 						"label": "Read",

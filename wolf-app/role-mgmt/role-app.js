@@ -58,7 +58,7 @@
 
     module.exports = {
         run: function(viewManager) {
-            viewManager.show('main-content', roleApp);
+            viewManager.show('#main-content', roleApp);
         }
     };
  });
