@@ -131,7 +131,7 @@ define(function(require, exports, module) {
                 selector: selector,
                 attrs: options
             })).render().promise().done(function(select2_view) {
-                select2_view.$el.appendTo(selector + '-container');
+                select2_view.$el.appendTo(options["selector_id"] + '-container');
             });
         },
 
