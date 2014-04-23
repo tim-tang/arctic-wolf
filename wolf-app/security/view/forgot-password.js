@@ -14,21 +14,31 @@ define(function(require, exports, module) {
             'submit form': 'send_email'
         },
 
+        initialize: function(){
+            this.subviews = [];
+        },
+
         beforeRender: function(){
             $('#main-body').addClass('texture');
         },
 
         afterRender: function() {
-            this.insertView('.middle', new layoutFooter()).render();
+            var layoutFooterView = new layoutFooter();
+            this.subviews.push(layoutFooterView);
+            this.insertView('.middle', layoutFooterView).render();
         },
 
         send_email: function(e) {
             e.preventDefault();
             //TODO: send email.
-            Backbone.history.navigate('reset-password', true);
+            Backbone.history.navigate('security/reset-password', true);
         }
 
     });
 
-    module.exports = forgotPassword;
+    module.exports = {
+        run: function(selector, viewManager) {
+            viewManager.show(selector, new forgotPassword());
+        }
+    };
 });

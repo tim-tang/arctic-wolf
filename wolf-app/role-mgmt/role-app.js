@@ -3,7 +3,7 @@
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
-	
+
 	var eventBus = require('../app-main/app-eventbus');
 	var commonLoading = require('../common/common-loading');
 
@@ -30,23 +30,23 @@
             this.insertView('#role-home', new roleMgmt()).render();
 		 	this.insertView('#role-home', new roleModal()).render();
         },
-        
+
         initialize: function() {
             this.subviews = [];
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
         },
-        
+
         afterRender: function() {
 			var roleMgmtView = new roleMgmt();
             this.insertView('#role-home', roleMgmtView).render();
             this.subviews.push(roleMgmtView);
-            
+
 			var roleModalView = new roleModal();
             this.insertView('#role-home', roleModalView).render();
             this.subviews.push(roleModalView);
         },
-        
+
 		show_loading: function() {
 			commonLoading.init('#main-content');
 		},
@@ -55,10 +55,10 @@
        		commonLoading.destroy();
 		},
     });
-    
+
     module.exports = {
         run: function(viewManager) {
-            viewManager.show(roleApp);
+            viewManager.show('main-content', roleApp);
         }
     };
  });

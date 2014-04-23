@@ -31,7 +31,7 @@ define(function(require, exports, module) {
 
         // set the Backbone routes
         routes: {
-            'dashboard': 'dashboard',
+            'dashboard/*subrouter': 'invokeDashboardModule',
             'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
             'user-group-mgmt/*subrouter': 'invokeUserGroupModule',
             'user-mgmt/*subrouter': 'invokeUserModule',
@@ -42,9 +42,12 @@ define(function(require, exports, module) {
             'logout': 'logout'
         },
 
-        dashboard: function() {
+        invokeDashboardModule: function() {
             this.predict_layout_existence(function(layoutApp){
-                //TODO:
+                if(!LayoutRouter.dashboardRouter){
+                    var dashboardRouter = require('../../dashboard/dashboard-router');
+                    LayoutRouter.dashboardRouter = new dashboardRouter('dashboard/', {createTrailingSlashRoutes: true});
+                }
             });
         },
 

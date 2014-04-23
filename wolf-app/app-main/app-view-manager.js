@@ -6,10 +6,10 @@ define(function(require, exports, module) {
         var currentView;
         var TRANSITION_TYPE = 'fadeOutRight';
 
-        function showView(view) {
+        function showView(selector, view) {
             disposeView(currentView, function() {
                 view.$el.removeClass('animated ' + TRANSITION_TYPE);
-                render(view);
+                render(selector, view);
             });
         }
 
@@ -39,9 +39,12 @@ define(function(require, exports, module) {
             }
         }
 
-        function render(view) {
+        function render(selector, view) {
             currentView = view;
-            $("#main-content").html(currentView.el);
+            if (selector == '#main-body'){
+                $(selector).addClass('texture');
+            }
+            $(selector).html(currentView.el);
             currentView.render();
         }
 

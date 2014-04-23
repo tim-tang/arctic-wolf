@@ -3,14 +3,13 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
-    var layoutRouter = require('../layout/router/layout-router');
+    //var layoutRouter = require('../layout/router/layout-router');
 
     var eventBus = require('./app-eventbus');
     var AppRouter = {};
     AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
             // init layout route
-            AppRouter.layoutRouter = new layoutRouter();
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -36,28 +35,122 @@ define(function(require, exports, module) {
         // set the backbone routes
         routes: {
             '': 'home',
-            'forgot-password': 'forgot_password',
-            'reset-password': 'reset_password',
+            'security/*subrouter': 'invokeSecurityModule',
+            'dashboard/*subrouter': 'invokeDashboardModule',
+            'vehicle-mgmt/*subrouter': 'invokeVehicleModule',
+            'user-group-mgmt/*subrouter': 'invokeUserGroupModule',
+            'user-mgmt/*subrouter': 'invokeUserModule',
+            'role-mgmt/*subrouter': 'invokeRoleModule',
+            'privilege-mgmt/*subrouter': 'invokePrivilegeModule',
+            'criteria-mgmt/*subrouter': 'invokeCriteriaModule',
+            'generic-filter/*subrouter': 'invokeGenericFilterModule',
+            'logout': 'logout',
             '*error': 'not_found',
         },
 
         home: function() {
-            eventBus.trigger('render-security-login');
+            Backbone.history.navigate('security/login', true);
         },
 
-        forgot_password: function() {
-            eventBus.trigger('render-forgot-password');
+        invokeSecurityModule: function(subroute){
+            if(!AppRouter.securityRouter) {
+                var securityRouter = require('../security/router/security-router');
+                AppRouter.securityRouter = new securityRouter('security/', {createTrailingSlashRoutes: true});
+            }
         },
 
-        reset_password: function() {
-            eventBus.trigger('render-reset-password');
+        invokeDashboardModule: function() {
+            this.predict_layout_existence(function(layoutApp){
+                if(!AppRouter.dashboardRouter){
+                    var dashboardRouter = require('../dashboard/router/dashboard-router');
+                    AppRouter.dashboardRouter = new dashboardRouter('dashboard/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeVehicleModule: function(subroute) {
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.vehicleRouter) {
+                    var vehicleRouter = require('../vehicle-mgmt/router/vehicle-router');
+                    AppRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+		invokeUserGroupModule: function(subroute) {
+            var userGroupRouter = require('../user-group-mgmt/router/user-group-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.userGroupRouter) {
+                    AppRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeUserModule: function(subroute) {
+            var userRouter = require('../user-mgmt/router/user-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.userRouter) {
+                    AppRouter.userRouter = new userRouter('user-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeRoleModule: function(subroute) {
+            var roleRouter = require('../role-mgmt/router/role-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.roleRouter) {
+                    AppRouter.roleRouter = new roleRouter('role-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokePrivilegeModule: function(subroute) {
+            var privilegeRouter = require('../privilege-mgmt/router/privilege-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.privilegeRouter) {
+                    AppRouter.privilegeRouter = new privilegeRouter('privilege-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeCriteriaModule: function(subroute) {
+            var criteriaRouter = require('../criteria-mgmt/router/criteria-router');
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.criteriaRouter) {
+                    AppRouter.criteriaRouter = new criteriaRouter('criteria-mgmt/', {createTrailingSlashRoutes: true});
+                }
+            });
+        },
+
+        invokeGenericFilterModule: function(subroute) {
+            this.predict_layout_existence(function(layoutApp) {
+                if(!AppRouter.genericFilterRouter){
+                    var genericFilterRouter = require('../generic-filter/router/generic-filter-router');
+                    AppRouter.genericFilterRouter = new genericFilterRouter('generic-filter/', {createTrailingSlashRoutes: true});
+                }
+            });
         },
 
         not_found: function() {
             eventBus.trigger('render-404');
+        },
+
+        logout: function() {
+            this.layoutApp = null;
+            Backbone.history.loadUrl('#');
+        },
+
+        predict_layout_existence: function(callback) {
+            if (this.layoutApp) {
+                return callback(this.layoutApp);
+            }
+            this.layoutApp = require('../layout/layout-app');
+            var self = this.layoutApp;
+            this.layoutApp.render().promise().done(function(){
+                callback(self);
+            });
         }
     });
 
     module.exports = AppRouter.Router;
-
 });

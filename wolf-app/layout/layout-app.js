@@ -54,7 +54,8 @@ define(function(require, exports, module) {
             eventBus.trigger('active-menu-item');
 
             switch (Backbone.history.fragment) {
-            case "dashboard":
+            case "dashboard/":
+                require('../dashboard/dashboard-app').run(viewManager);
                 break;
             case "generic-filter/":
                 require('../generic-filter/generic-filter-app').run(viewManager);

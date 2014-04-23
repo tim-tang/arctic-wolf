@@ -11,8 +11,14 @@ define(function(require, exports, module) {
         prefix: 'security/templates/',
         template: 'security-login.html',
 
+        initialize: function(){
+            this.subviews = [];
+        },
+
         afterRender: function() {
-            this.insertView('.middle-login', new layoutFooter()).render();
+            var layoutFooterView = new layoutFooter();
+            this.subviews.push(layoutFooterView);
+            this.insertView('.middle-login', layoutFooterView).render();
         },
 
         events: {
@@ -26,9 +32,13 @@ define(function(require, exports, module) {
             //    username: this.$('input[id=username]').val(),
             //    password: this.$('input[id=password]').val()
             //});
-            Backbone.history.navigate('#dashboard', true);
+            Backbone.history.navigate('#dashboard/', true);
         }
     });
 
-    module.exports = securityLogin;
+    module.exports = {
+        run: function(selector, viewManager) {
+            viewManager.show(selector, new securityLogin());
+        }
+    };
 });

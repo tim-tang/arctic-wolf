@@ -45,7 +45,7 @@ define(function(require, exports, module) {
 
     module.exports = {
         run: function(viewManager) {
-            viewManager.show(genericFilterApp);
+            viewManager.show('#main-content', genericFilterApp);
         }
     };
 });

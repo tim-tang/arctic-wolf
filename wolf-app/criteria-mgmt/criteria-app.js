@@ -3,7 +3,7 @@
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
-	
+
 	var eventBus = require('../app-main/app-eventbus');
 	var commonLoading = require('../common/common-loading');
 
@@ -31,17 +31,17 @@
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
         },
-        
+
         afterRender: function() {
 			var criteriaMgmtView = new criteriaMgmt();
             this.insertView('#criteria-home', criteriaMgmtView).render();
             this.subviews.push(criteriaMgmtView);
-            
+
 			var criteriaModalView = new criteriaModal();
             this.insertView('#criteria-home', criteriaModalView).render();
             this.subviews.push(criteriaModalView);
         },
-        
+
 		show_loading: function() {
 			commonLoading.init('#main-content');
 		},
@@ -50,10 +50,10 @@
        		commonLoading.destroy();
 		},
     });
-    
+
     module.exports = {
         run: function(viewManager) {
-            viewManager.show(criteriaApp);
+            viewManager.show('#main-content', criteriaApp);
         }
     };
  });

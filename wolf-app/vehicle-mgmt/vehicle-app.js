@@ -45,7 +45,7 @@
 
      module.exports = {
          run: function(viewManager) {
-            viewManager.show(vehicleApp);
+            viewManager.show('#main-content', vehicleApp);
          }
      };
  });
