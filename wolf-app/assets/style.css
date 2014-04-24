@@ -1456,11 +1456,12 @@ body.texture {
 }
 .login-container .middle-login {
   width: 430px;
-  left: 50%;
-  top: 50%;
+  margin: 70px auto 0 auto;
+  //left: 50%;
+  //top: 50%;
   //position: absolute;
-  margin-top: 170px;
-  margin-left: 215px;
+  //margin-top: -170px;
+  //margin-left: -215px;
 }
 .login-container .block-flat {
   padding: 0;
@@ -7650,7 +7651,7 @@ ul.timeline li > .date {
   }
   /*Buttons*/
   /*Login*/
-  .login-container .middle-login {
+ .login-container .middle-login {
     left: auto;
     width: 100%;
     padding: 0 15px;

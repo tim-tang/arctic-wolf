@@ -135,7 +135,7 @@ define(function(require, exports, module) {
         },
 
         logout: function() {
-            //AppRouter.layoutApp.remove();
+            //TODO: remove layout view while user logout.
             Backbone.history.navigate('security/login', true);
         },
 

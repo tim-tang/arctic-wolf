@@ -21,6 +21,7 @@ define(function(require, exports, module) {
         }
 
         function disposeView(view, callback) {
+            // view not exists or layout view render directly.
             if (!view || view.layout) {
                 return callback();
             }
