@@ -1091,7 +1091,7 @@ input::-webkit-input-speech-button {
   position: fixed;
   width: 280px;
   bottom: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 0px solid rgba(255, 255, 255, 0.04);
 }
 .cl-sidebar .collapse-button .search {
   width: 219px;
