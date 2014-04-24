@@ -98,16 +98,16 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
+            componentFacade.init_select2('.select2', criterias);
             componentFacade.init_switch('.switch');
 			componentFacade.init_select2('.select2', privilegeType);
-			componentFacade.init_select2('.select2', criterias);
         },
 
         new_attributes: function() {
             return {
-                priv_name: this.$('#priv-name').val().trim(),
-                priv_desc: this.$('#priv-desc').val().trim(),
-                priv_type: this.$('#priv-type').val().trim(),
+                priv_name: this.$('#privilege-name').val().trim(),
+                priv_desc: this.$('#privilege-desc').val().trim(),
+                priv_type: this.$('#privilege-type').val().trim(),
                 criteria: this.$('#criteria').val().trim(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }

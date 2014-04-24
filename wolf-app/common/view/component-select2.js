@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     var componentSelect2 = Backbone.View.extend({
 
         manage: true,
-        
+
         prefix: 'common/tpl/',
         
         template: 'component-select2.html',
@@ -20,14 +20,6 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-        	// Set selector id
-            $(this.selector).attr("id", this.options["selector_id"]);
-            if(this.options["multiple"] === 'yes')
-            	$(this.selector).attr("multiple", "multiple");
-            	
-            $(this.selector).select2({
-                width: '100%'
-            });
         },
 
         serialize: function() {
