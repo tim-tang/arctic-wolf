@@ -8,7 +8,6 @@ define(function(require, exports, module) {
 
     AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
-            // init layout route
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -135,18 +134,17 @@ define(function(require, exports, module) {
         },
 
         logout: function() {
-            this.layoutApp = null;
-            Backbone.history.loadUrl('#');
+            //AppRouter.layoutApp.remove();
+            Backbone.history.navigate('security/login', true);
         },
 
         predict_layout_existence: function(callback) {
-            if (this.layoutApp) {
-                return callback(this.layoutApp);
+            if (AppRouter.layoutApp) {
+                return callback(AppRouter.layoutApp);
             }
-            this.layoutApp = require('../layout/layout-app');
-            var self = this.layoutApp;
-            this.layoutApp.render().promise().done(function(){
-                callback(self);
+            AppRouter.layoutApp = require('../layout/layout-app');
+            AppRouter.layoutApp.render().promise().done(function(){
+                callback(AppRouter.layoutApp);
             });
         }
     });
