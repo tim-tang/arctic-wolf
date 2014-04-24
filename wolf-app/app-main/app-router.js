@@ -58,7 +58,7 @@ define(function(require, exports, module) {
         },
 
         invokeDashboardModule: function() {
-            this.predict_layout_existence(function(layoutApp){
+            this.predict_layout_existence(function(){
                 if(!AppRouter.dashboardRouter){
                     var dashboardRouter = require('../dashboard/router/dashboard-router');
                     AppRouter.dashboardRouter = new dashboardRouter('dashboard/', {createTrailingSlashRoutes: true});
@@ -67,7 +67,7 @@ define(function(require, exports, module) {
         },
 
         invokeVehicleModule: function(subroute) {
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.vehicleRouter) {
                     var vehicleRouter = require('../vehicle-mgmt/router/vehicle-router');
                     AppRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {createTrailingSlashRoutes: true});
@@ -75,9 +75,9 @@ define(function(require, exports, module) {
             });
         },
 
-		invokeUserGroupModule: function(subroute) {
+        invokeUserGroupModule: function(subroute) {
             var userGroupRouter = require('../user-group-mgmt/router/user-group-router');
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.userGroupRouter) {
                     AppRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {createTrailingSlashRoutes: true});
                 }
@@ -86,7 +86,7 @@ define(function(require, exports, module) {
 
         invokeUserModule: function(subroute) {
             var userRouter = require('../user-mgmt/router/user-router');
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.userRouter) {
                     AppRouter.userRouter = new userRouter('user-mgmt/', {createTrailingSlashRoutes: true});
                 }
@@ -95,7 +95,7 @@ define(function(require, exports, module) {
 
         invokeRoleModule: function(subroute) {
             var roleRouter = require('../role-mgmt/router/role-router');
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.roleRouter) {
                     AppRouter.roleRouter = new roleRouter('role-mgmt/', {createTrailingSlashRoutes: true});
                 }
@@ -104,7 +104,7 @@ define(function(require, exports, module) {
 
         invokePrivilegeModule: function(subroute) {
             var privilegeRouter = require('../privilege-mgmt/router/privilege-router');
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.privilegeRouter) {
                     AppRouter.privilegeRouter = new privilegeRouter('privilege-mgmt/', {createTrailingSlashRoutes: true});
                 }
@@ -113,7 +113,7 @@ define(function(require, exports, module) {
 
         invokeCriteriaModule: function(subroute) {
             var criteriaRouter = require('../criteria-mgmt/router/criteria-router');
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.criteriaRouter) {
                     AppRouter.criteriaRouter = new criteriaRouter('criteria-mgmt/', {createTrailingSlashRoutes: true});
                 }
@@ -121,7 +121,7 @@ define(function(require, exports, module) {
         },
 
         invokeGenericFilterModule: function(subroute) {
-            this.predict_layout_existence(function(layoutApp) {
+            this.predict_layout_existence(function() {
                 if(!AppRouter.genericFilterRouter){
                     var genericFilterRouter = require('../generic-filter/router/generic-filter-router');
                     AppRouter.genericFilterRouter = new genericFilterRouter('generic-filter/', {createTrailingSlashRoutes: true});
@@ -144,7 +144,7 @@ define(function(require, exports, module) {
             }
             AppRouter.layoutApp = require('../layout/layout-app');
             AppRouter.layoutApp.render().promise().done(function(){
-                callback(AppRouter.layoutApp);
+                callback();
             });
         }
     });
