@@ -53,7 +53,7 @@
 
     module.exports = {
         run: function(viewManager) {
-            viewManager.show('main-content', userGroupApp);
+            viewManager.show('#main-content', userGroupApp);
         }
     };
  });
