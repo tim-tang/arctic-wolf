@@ -7,7 +7,6 @@ define(function(require, exports, module) {
     var securityLogin = Backbone.View.extend({
 
         manage: true,
-
         prefix: 'security/templates/',
         template: 'security-login.html',
 

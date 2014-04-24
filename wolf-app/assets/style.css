@@ -1458,9 +1458,9 @@ body.texture {
   width: 430px;
   left: 50%;
   top: 50%;
-  position: absolute;
-  margin-top: -170px;
-  margin-left: -215px;
+  //position: absolute;
+  margin-top: 170px;
+  margin-left: 215px;
 }
 .login-container .block-flat {
   padding: 0;
