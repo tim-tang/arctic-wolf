@@ -16,8 +16,6 @@ define(function(require, exports, module) {
 
                 // take the href of the link clicked
                 var href = $(this).attr("href");
-                //var protocol = this.protocol + "//";
-                //var prev_href = window.location.pathname + window.location.search;
                 var prev_href = '#' + Backbone.history.fragment;
                 // pass this link to Backbone
                 if (href === prev_href) {
@@ -58,7 +56,6 @@ define(function(require, exports, module) {
         },
 
         invokeDashboardModule: function() {
-            alert('xxxx');
             this.predict_layout_existence(function(){
                 if(!AppRouter.dashboardRouter){
                     var dashboardRouter = require('../dashboard/router/dashboard-router');

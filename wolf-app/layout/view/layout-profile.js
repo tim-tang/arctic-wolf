@@ -13,8 +13,9 @@ define(function(require, exports, module) {
 
         sign_out: function(e) {
             e.preventDefault();
-            //TODO: remove layout view while user logout.
-            Backbone.history.navigate('security/login', true);
+            //TODO: Add logout business logic.
+            window.location.href = '';
+            //Backbone.history.navigate('security/login', true);
         }
     });
 
