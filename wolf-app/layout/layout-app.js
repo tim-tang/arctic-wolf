@@ -8,7 +8,6 @@ define(function(require, exports, module) {
     require('gritter');
     require('bootstrap');
 
-
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');

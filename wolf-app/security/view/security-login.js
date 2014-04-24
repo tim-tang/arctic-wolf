@@ -32,6 +32,7 @@ define(function(require, exports, module) {
             //    password: this.$('input[id=password]').val()
             //});
             Backbone.history.navigate('#dashboard/', true);
+            //Backbone.history.loadUrl('#dashboard/');
         }
     });
 

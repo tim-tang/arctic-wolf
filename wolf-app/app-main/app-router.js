@@ -43,7 +43,6 @@ define(function(require, exports, module) {
             'privilege-mgmt/*subrouter': 'invokePrivilegeModule',
             'criteria-mgmt/*subrouter': 'invokeCriteriaModule',
             'generic-filter/*subrouter': 'invokeGenericFilterModule',
-            'logout': 'logout',
             '*error': 'not_found',
         },
 
@@ -59,6 +58,7 @@ define(function(require, exports, module) {
         },
 
         invokeDashboardModule: function() {
+            alert('xxxx');
             this.predict_layout_existence(function(){
                 if(!AppRouter.dashboardRouter){
                     var dashboardRouter = require('../dashboard/router/dashboard-router');
@@ -134,14 +134,9 @@ define(function(require, exports, module) {
             eventBus.trigger('render-404');
         },
 
-        logout: function() {
-            //TODO: remove layout view while user logout.
-            Backbone.history.navigate('security/login', true);
-        },
-
         predict_layout_existence: function(callback) {
             if (AppRouter.layoutApp) {
-                return callback(AppRouter.layoutApp);
+                return callback();
             }
             AppRouter.layoutApp = require('../layout/layout-app');
             viewManager.showLayout('#main-body', AppRouter.layoutApp, function(){
