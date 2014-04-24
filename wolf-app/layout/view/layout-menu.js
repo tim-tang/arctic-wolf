@@ -23,7 +23,10 @@ define(function(require, exports, module) {
             this.active_menu_item();
         },
 
-        active_menu_item: function(){
+        active_menu_item: function(event){
+            if(event){
+                event.preventDefault();
+            }
             $('ul.cl-vnavigation li').each(function(index, li) {
                 var $clink = li.children[0];
                 if ($clink.href == String(window.location)) {
