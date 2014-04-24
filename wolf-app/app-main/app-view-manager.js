@@ -9,12 +9,19 @@ define(function(require, exports, module) {
         function showView(selector, view) {
             disposeView(currentView, function() {
                 view.$el.removeClass('animated ' + TRANSITION_TYPE);
-                render(selector, view);
+                render(selector, view, null);
+            });
+        }
+
+        function showLayoutView(selector, view, callback) {
+            disposeView(currentView, function() {
+                view.$el.removeClass('animated ' + TRANSITION_TYPE);
+                render(selector, view, callback);
             });
         }
 
         function disposeView(view, callback) {
-            if (!view) {
+            if (!view || view.layout) {
                 return callback();
             }
 
@@ -39,17 +46,23 @@ define(function(require, exports, module) {
             }
         }
 
-        function render(selector, view) {
+        function render(selector, view, callback) {
             currentView = view;
             if (selector == '#main-body'){
                 $(selector).addClass('texture');
             }
             $(selector).html(currentView.el);
-            currentView.render();
+            currentView.render().promise().done(function(){
+                if(!callback){
+                    return;
+                }
+                callback();
+            });
         }
 
         return {
-            show: showView
+            show: showView,
+            showLayout: showLayoutView
         };
     })();
 

@@ -24,12 +24,15 @@ define(function(require, exports, module) {
 
         el: '#main-body',
 
+        layout: true,
+
         prefix: "layout/templates/",
 
         template: 'layout.html',
 
         initialize: function() {
             eventBus.on('switch-view', this.switch_view, this);
+            this.subviews = [];
         },
 
         beforeRender: function() {
@@ -37,12 +40,26 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-            this.insertView('#layout-logo-user-menu', new layoutLogo()).render();
+            // -- insert layout logo view
+            var layoutLogoView = new layoutLogo();
+            this.insertView('#layout-logo-user-menu', layoutLogoView).render();
+            this.subviews.push(layoutLogoView);
+
+            // -- insert layout user view
             var self = this;
-            this.insertView('#layout-logo-user-menu', new layoutUser()).render().promise().done(function() {
-                self.insertView('#layout-logo-user-menu', new layoutMenu()).render();
+            var layoutUserView = new layoutUser();
+            this.insertView('#layout-logo-user-menu', layoutUserView).render().promise().done(function() {
+                // -- insert layout menu view
+                var layoutMenuView = new layoutMenu();
+                self.insertView('#layout-logo-user-menu', layoutMenuView).render();
+                self.subviews.push(layoutMenuView);
             });
-            this.insertView('#layout-profile', new layoutProfile()).render();
+            this.subviews.push(layoutUserView);
+
+            // -- insert layout profile view
+            var layoutProfileView = new layoutProfile();
+            this.insertView('#layout-profile', layoutProfileView).render();
+            this.subviews.push(layoutProfileView);
         },
 
         /**

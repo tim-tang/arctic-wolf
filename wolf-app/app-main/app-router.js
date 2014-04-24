@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
     var eventBus = require('./app-eventbus');
+    var viewManager = require('./app-view-manager');
     var AppRouter = {};
 
     AppRouter.Router = Backbone.Router.extend({
@@ -143,7 +144,7 @@ define(function(require, exports, module) {
                 return callback(AppRouter.layoutApp);
             }
             AppRouter.layoutApp = require('../layout/layout-app');
-            AppRouter.layoutApp.render().promise().done(function(){
+            viewManager.showLayout('#main-body', AppRouter.layoutApp, function(){
                 callback();
             });
         }
