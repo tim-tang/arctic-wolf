@@ -38,7 +38,7 @@ define(function(require, exports, module) {
 
     module.exports = {
         run: function(selector, viewManager) {
-            viewManager.show(selector, new securityLogin());
+            viewManager.showLogin(selector, new securityLogin());
         }
     };
 });

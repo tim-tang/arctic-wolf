@@ -9,6 +9,9 @@ define(function(require, exports, module) {
 
     AppRouter.Router = Backbone.Router.extend({
         initialize: function() {
+            eventBus.on('predict-layout-view', this.check_layout_view, this);
+            eventBus.on('logout-user', this.logout, this);
+
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
                 // block the default link behavior
@@ -42,6 +45,17 @@ define(function(require, exports, module) {
             'criteria-mgmt/*subrouter': 'invokeCriteriaModule',
             'generic-filter/*subrouter': 'invokeGenericFilterModule',
             '*error': 'not_found',
+        },
+
+        check_layout_view: function(){
+            this.predict_layout_existence(function(){
+                eventBus.trigger('switch-view');
+            });
+        },
+
+        logout: function(){
+             AppRouter.layoutApp = null;
+             viewManager.discardLayout();
         },
 
         home: function() {
@@ -136,7 +150,8 @@ define(function(require, exports, module) {
                 return callback();
             }
             AppRouter.layoutApp = require('../layout/layout-app');
-            viewManager.showLayout('#main-body', AppRouter.layoutApp, function(){
+            AppRouter.layoutApp.layout = true;
+            viewManager.showLayout('#layout-container', AppRouter.layoutApp, function(){
                 callback();
             });
         }

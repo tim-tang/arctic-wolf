@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
+    var eventBus = require('../../app-main/app-eventbus');
 
     var layoutProfile = Backbone.View.extend({
         manage: true,
@@ -13,9 +14,10 @@ define(function(require, exports, module) {
 
         sign_out: function(e) {
             e.preventDefault();
+            eventBus.trigger('logout-user');
             //TODO: Add logout business logic.
-            window.location.href = '';
-            //Backbone.history.navigate('security/login', true);
+            //window.location.href = '';
+            Backbone.history.navigate('security/login', true);
         }
     });
 

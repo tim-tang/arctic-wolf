@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 
     var viewManager = (function() {
         var currentView;
+        var layoutView;
         var TRANSITION_TYPE = 'bounceOutRight';
 
         function showView(selector, view) {
@@ -18,6 +19,19 @@ define(function(require, exports, module) {
                 view.$el.removeClass('animated ' + TRANSITION_TYPE);
                 render(selector, view, callback);
             });
+        }
+
+        function showLoginView(selector, view) {
+            disposeView(layoutView, function() {
+                view.$el.removeClass('animated ' + TRANSITION_TYPE);
+                render(selector, view, null);
+            });
+        }
+
+        function discardLayoutView(){
+            if(layoutView && layoutView.layout){
+                layoutView.layout=false;
+            }
         }
 
         function disposeView(view, callback) {
@@ -48,9 +62,21 @@ define(function(require, exports, module) {
         }
 
         function render(selector, view, callback) {
+            if(view.layout){
+                layoutView = view;
+            }
             currentView = view;
-            if (selector == '#main-body'){
-                $(selector).addClass('texture');
+            if (selector == '#security-container'){
+                if(!$(selector).exists()){
+                    $('<div id="security-container"></div>').appendTo('#main-body');
+                }
+                $('#main-body').addClass('texture');
+            }
+
+            if(selector == '#layout-container'){
+                if(!$(selector).exists()){
+                    $('<div id="layout-container"></div>').appendTo('#main-body');
+                }
             }
             $(selector).html(currentView.el);
             currentView.render().promise().done(function(){
@@ -63,7 +89,9 @@ define(function(require, exports, module) {
 
         return {
             show: showView,
-            showLayout: showLayoutView
+            showLayout: showLayoutView,
+            showLogin: showLoginView,
+            discardLayout: discardLayoutView
         };
     })();
 

@@ -26,23 +26,23 @@ define(function(require, exports, module) {
         },
 
         render_security_login: function() {
-            require('./view/security-login').run('#main-body', viewManager);
+            require('./view/security-login').run('#security-container', viewManager);
         },
 
         render_forgot_password: function() {
-            require('./view/forgot-password').run('#main-body', viewManager);
+            require('./view/forgot-password').run('#security-container', viewManager);
         },
 
         render_reset_password: function() {
-            require('./view/reset-password').run('#main-body', viewManager);
+            require('./view/reset-password').run('#security-container', viewManager);
         },
 
         render_404: function() {
-            require('./view/404').run('#main-body', viewManager);
+            require('./view/404').run('#security-container', viewManager);
         },
 
         render_500: function() {
-            require('./view/500').run('#main-body', viewManager);
+            require('./view/500').run('#security-container', viewManager);
         }
     });
 

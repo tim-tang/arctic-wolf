@@ -21,7 +21,7 @@ define(function(require, exports, module) {
 
     var layoutApp = new Backbone.Layout({
 
-        el: '#main-body',
+        //el: '#layout-container',
 
         layout: true,
 

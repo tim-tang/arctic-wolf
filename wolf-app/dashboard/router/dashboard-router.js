@@ -15,7 +15,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            eventBus.trigger('switch-view');
+                eventBus.trigger('predict-layout-view');
         }
     });
 
