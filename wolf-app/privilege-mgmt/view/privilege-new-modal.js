@@ -58,6 +58,7 @@ define(function(require, exports, module) {
 			
 			criterias = {
 				"selector_id": "criteria",
+				"multiple": "multiple",
 				"optgroups": [
 					{
 						"label": "Vehicle",

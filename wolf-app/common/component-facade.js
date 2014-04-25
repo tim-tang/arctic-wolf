@@ -136,7 +136,7 @@ define(function(require, exports, module) {
                 // Set selector attributes: id & multiple
             	select2_view.$el.find('select').attr("id", select2_view.options["selector_id"]);
             	if(select2_view.options["multiple"] === 'multiple')
-            		$(select2_view.selector).attr("multiple", "multiple");
+            		select2_view.$el.find('select').attr("multiple", "multiple");
 
 				console.log($(select2_view.selector));
 				console.log(select2_view.options["selector_id"]);

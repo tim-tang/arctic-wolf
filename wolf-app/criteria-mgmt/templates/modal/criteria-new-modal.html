@@ -18,16 +18,11 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Object Type</label>
-                        <select id="obj-type" class="select2">
-                            <option>User</option>
-                            <option>User Group</option>
-                            <option>Vehicle</option>
-                        </select>
+                        <div id="object-type-container"></div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-12 no-margin">
                             <label class="control-label">Criteria</label>
-                            <input class='form-control datetime' type='text' value='' size='8' />
                         </div>
                     </div>
                     <div id="criteriaTable" class="row no-margin-y">
@@ -44,9 +39,7 @@
                                 <tbody>
                                 <tr class="criteria">
                                     <td class="col-md-4 col-sm-6">
-                                        <select id="attrs" class="select2">
-                                            <option>--- Attributes ---</option>
-                                        </select>
+                                        <div id="attrs-container"></div>
                                     </td>
                                     <td class="col-md-4 col-sm-6">
                                         <select id="operator" class="form-control">
