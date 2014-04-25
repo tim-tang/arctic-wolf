@@ -19,7 +19,7 @@ define(function(require, exports, module) {
 
         afterRender: function(){
             //add layout behavior after loaded complete.
-            var layoutBehavior = require('../core/layout-behavior');
+            var layoutBehavior = require('../behavior/layout-behavior');
             layoutBehavior.init();
             this.active_menu_item();
         },
