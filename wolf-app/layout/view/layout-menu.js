@@ -18,8 +18,9 @@ define(function(require, exports, module) {
          },
 
         afterRender: function(){
-            //TODO: add behavior-core after loaded complete.
-            require('behavior-core');
+            //add layout behavior after loaded complete.
+            var layoutBehavior = require('../core/layout-behavior');
+            layoutBehavior.init();
             this.active_menu_item();
         },
 

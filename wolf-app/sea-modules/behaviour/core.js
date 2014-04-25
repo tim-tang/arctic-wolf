@@ -77,7 +77,6 @@ define(function(require){
 
             update_height();
             $("#cl-wrapper .nscroller").nanoScroller({ preventPageScrolling: true });
-
         }
 
         /*SubMenu hover */
