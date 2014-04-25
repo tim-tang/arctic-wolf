@@ -14,37 +14,7 @@ define(function(require){
                 $(".fa",b).removeClass("fa-angle-left").addClass("fa-angle-right");
                 w.addClass("sb-collapsed");
             }
-            //updateHeight();
         }
-
-        function updateHeight(){
-            if(!$("#cl-wrapper").hasClass("fixed-menu")){
-                var button = $("#cl-wrapper .collapse-button").outerHeight();
-                var navH = $("#head-nav").height();
-                //var document = $(document).height();
-                var cont = $("#pcont").height();
-                var sidebar = ($(window).width() > 755 && $(window).width() < 963)?0:$("#cl-wrapper .menu-space .content").height();
-                var windowH = $(window).height();
-
-                if(sidebar < windowH && cont < windowH){
-                    if(($(window).width() > 755 && $(window).width() < 963)){
-                        var height = windowH;
-                    }else{
-                        var height = windowH - button;
-                    }
-                }else if((sidebar < cont && sidebar > windowH) || (sidebar < windowH && sidebar < cont)){
-                    var height = cont + button;
-                }else if(sidebar > windowH && sidebar > cont){
-                    var height = sidebar + button;
-                }
-
-                // var height = ($("#pcont").height() < $(window).height())?$(window).height():$(document).height();
-                $("#cl-wrapper .menu-space").css("min-height",height);
-            }else{
-                $("#cl-wrapper .nscroller").nanoScroller({ preventPageScrolling: true });
-            }
-        }
-
 
         /*VERTICAL MENU*/
         $(".cl-vnavigation li ul").each(function(){
@@ -54,7 +24,6 @@ define(function(require){
         $(".cl-vnavigation li ul li.active").each(function(){
             $(this).parent().css({'display':'block'});
             $(this).parent().parent().addClass("open");
-            //setTimeout(function(){updateHeight();},200);
         });
 
         $(".cl-vnavigation").delegate(".parent > a","click",function(e){
@@ -70,9 +39,6 @@ define(function(require){
                 }else{
                     p.addClass("open");
                 }
-                //var menuH = $("#cl-wrapper .menu-space .content").height();
-                // var height = ($(document).height() < $(window).height())?$(window).height():menuH;
-                //updateHeight();
                 $("#cl-wrapper .nscroller").nanoScroller({ preventPageScrolling: true });
             });
             e.preventDefault();
@@ -112,13 +78,7 @@ define(function(require){
             update_height();
             $("#cl-wrapper .nscroller").nanoScroller({ preventPageScrolling: true });
 
-        }else{
-            $(window).resize(function(){
-                //updateHeight();
-            });
-            //updateHeight();
         }
-
 
         /*SubMenu hover */
         var tool = $("<div id='sub-menu-nav' style='position:fixed;z-index:9999;'></div>");
@@ -186,19 +146,11 @@ define(function(require){
             }
         });
 
-        $(".cl-vnavigation li").on('touchstart click', function(){
-            //alert($(window).width());
-        });
-
-        $(window).resize(function(){
-            //updateHeight();
-        });
 
         var domh = $("#pcont").height();
         $(document).bind('DOMSubtreeModified', function(){
             var h = $("#pcont").height();
             if(domh != h) {
-                //updateHeight();
             }
         });
 
@@ -221,9 +173,6 @@ define(function(require){
             jQuery('html, body').animate({scrollTop: 0}, duration);
             return false;
         });
-
-        /*Side Chat*/
-        //$('.toggle-menu').jPushMenu();
 
         /*Datepicker UI*/
         $( ".ui-datepicker" ).datepicker();
@@ -248,8 +197,6 @@ define(function(require){
         $('.nav-tabs').on('shown.bs.tab', function (e) {
             $(".nscroller").nanoScroller();
         });
-
-
     });
 
     $(function(){
