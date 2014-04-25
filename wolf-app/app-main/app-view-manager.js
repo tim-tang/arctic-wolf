@@ -28,15 +28,15 @@ define(function(require, exports, module) {
             });
         }
 
-        function discardLayoutView(){
-            if(layoutView && layoutView.layout){
-                layoutView.layout=false;
+        function discardLayoutView() {
+            if (layoutView && layoutView.retain) {
+                layoutView.retain = false;
             }
         }
 
         function disposeView(view, callback) {
             // view not exists or layout view render directly.
-            if (!view || view.layout) {
+            if (!view || view.retain) {
                 return callback();
             }
 
@@ -62,25 +62,25 @@ define(function(require, exports, module) {
         }
 
         function render(selector, view, callback) {
-            if(view.layout){
+            if (view.retain) {
                 layoutView = view;
             }
             currentView = view;
-            if (selector == '#security-container'){
-                if(!$(selector).exists()){
+            if (selector == '#security-container') {
+                if (!$(selector).exists()) {
                     $('<div id="security-container"></div>').appendTo('#main-body');
                 }
                 $('#main-body').addClass('texture');
             }
 
-            if(selector == '#layout-container'){
-                if(!$(selector).exists()){
+            if (selector == '#layout-container') {
+                if (!$(selector).exists()) {
                     $('<div id="layout-container"></div>').appendTo('#main-body');
                 }
             }
             $(selector).html(currentView.el);
-            currentView.render().promise().done(function(){
-                if(!callback){
+            currentView.render().promise().done(function() {
+                if (!callback) {
                     return;
                 }
                 callback();

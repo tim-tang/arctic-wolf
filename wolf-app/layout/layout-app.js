@@ -21,9 +21,7 @@ define(function(require, exports, module) {
 
     var layoutApp = new Backbone.Layout({
 
-        //el: '#layout-container',
-
-        layout: true,
+        retain: true,
 
         prefix: "layout/templates/",
 

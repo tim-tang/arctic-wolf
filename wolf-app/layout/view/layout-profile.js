@@ -14,9 +14,8 @@ define(function(require, exports, module) {
 
         sign_out: function(e) {
             e.preventDefault();
-            eventBus.trigger('logout-user');
+            eventBus.trigger('logout-action');
             //TODO: Add logout business logic.
-            //window.location.href = '';
             Backbone.history.navigate('security/login', true);
         }
     });
