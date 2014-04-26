@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
+    require('quicksearch');
 
     var $ = require('$');
     var _ = require('underscore');

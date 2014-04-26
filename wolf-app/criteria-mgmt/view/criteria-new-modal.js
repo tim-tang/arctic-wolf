@@ -22,7 +22,7 @@ define(function(require, exports, module) {
 
         events: {
             'click #criteria-create-action': 'create_criteria',
-            'change #object-type': 'changeObjectType'
+            'change .select2': 'changeObjectType'
         },
 
         initialize: function() {
@@ -119,7 +119,8 @@ define(function(require, exports, module) {
         },
 
 		changeObjectType: function() {
-            var objType = $("#object-type").val();
+			
+			var objType = $("#object-type-container").find('select').val();
 
             if(objType == '1') {
 				componentFacade.init_select2('.select2', userAttrs);

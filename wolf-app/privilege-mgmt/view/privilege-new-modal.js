@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     require('modalEffects');
+    require('quicksearch');
     
     var $ = require('$');
 	var _ = require('underscore');
@@ -58,7 +59,6 @@ define(function(require, exports, module) {
 			
 			criterias = {
 				"selector_id": "criteria",
-				"multiple": "multiple",
 				"optgroups": [
 					{
 						"label": "Vehicle",
