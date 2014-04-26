@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var viewManager = (function() {
         var currentView;
         var layoutView;
-        var TRANSITION_TYPE = 'bounceOutRight';
+        var TRANSITION_TYPE = 'fadeOutRight';
 
         function showView(selector, view) {
             disposeView(currentView, function() {

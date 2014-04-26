@@ -154,6 +154,7 @@ define(function(require, exports, module) {
                 if ((($("#cl-wrapper").hasClass("sb-collapsed") || ($(window).width() > 755 && $(window).width() < 963)) && $("ul", this).length > 0) && !($(window).width() < 755)) {
                     showMenu(this, e);
                     e.stopPropagation();
+                    e.preventDefault();
                 }
             });
         },
