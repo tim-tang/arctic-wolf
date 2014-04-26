@@ -26,14 +26,12 @@ define(function(require, exports, module) {
                 el: '#generic-filter-home'
             });
             this.insertView(genericFilterView).render();
-            //this.subviews.push(genericFilterView);
 
             // append generic filter records view.
             var genericFilterRecordsView = new genericFilterRecords({
                 el: '#generic-records-home'
             });
             this.insertView(genericFilterRecordsView).render();
-            //this.subviews.push(genericFilterRecordsView);
         },
 
         show_loading: function(selector) {

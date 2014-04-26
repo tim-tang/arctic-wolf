@@ -2,19 +2,20 @@ define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     var _ = require('underscore');
-    var FilterableColl = require('../../common/collection/filterable-coll');
+    //var FilterableColl = require('../../common/collection/filterable-coll');
     var genericRecord = require('../model/generic-record-model');
 
-    var genericRecordColl = FilterableColl.extend({
+    var genericRecordColl = Backbone.Collection.extend({
 
-        url: App.WS_HOST + '/generic-records',
+        url: function() {
+            return App.WS_HOST + '/generic-records/filter';
+        },
 
         model: genericRecord,
 
         //parse: function(resp){
         //    var records = resp.filter_records;
         //    _.each(records, function(record){
-
         //    });
         //}
     });

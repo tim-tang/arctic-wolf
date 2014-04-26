@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     var $ = require('$');
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
-
     var genericFilterColl = require('../collection/generic-filter-coll');
     var genericRecordColl = require('../collection/generic-record-coll');
 
@@ -35,10 +34,12 @@ define(function(require, exports, module) {
         },
 
         filter_records: function(e) {
-            eventBus.trigger('generic-filter:start');
             e.preventDefault();
-            genericRecordColl.constructor.search('mock-params').done(function(result) {
-                eventBus.trigger('generic-filter:complete', result.models);
+            //TODO: collect params.
+            genericRecordColl.fetch({
+                data: $.param({
+                    q: 'audi'
+                })
             });
         }
     });

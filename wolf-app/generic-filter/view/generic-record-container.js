@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
-    var genericRecrodColl = require('../collection/generic-record-coll');
+    var genericRecordColl = require('../collection/generic-record-coll');
     var genericRecords = require('./generic-records');
     var genericRecordView;
 
@@ -17,22 +17,23 @@ define(function(require, exports, module) {
         initialize: function(options) {
             _.bindAll(this, 'cleanup');
             this.selector = options.el;
-            eventBus.on('generic-filter:complete', this.filter_complete, this);
-            eventBus.on('generic-filter:start', this.show_loading, this);
+            this.listenTo(genericRecordColl, 'request', this.show_loading);
+            this.listenTo(genericRecordColl, 'sync', this.filter_complete);
         },
 
         afterRender: function() {
-            eventBus.trigger('generic-filter:start');
-            genericRecrodColl.constructor.search('mock-params').done(function(result) {
-                eventBus.trigger('generic-filter:complete', result.models);
+            genericRecordColl.fetch({
+                data: $.param({
+                    q: 'audi'
+                })
             });
         },
 
-        filter_complete: function(records) {
+        filter_complete: function() {
             // append generic record view.
             genericRecordView = new genericRecords({
                 el: '#generic-filter-records',
-                records: records
+                records: genericRecordColl.models
             });
             this.insertView(genericRecordView).render();
             // trigger hide loading.
@@ -47,11 +48,9 @@ define(function(require, exports, module) {
             eventBus.trigger('hide-loading', this.selector);
         },
 
-        cleanup: function(){
-             genericRecrodColl.reset();
-             genericRecordView.remove();
-             eventBus.off('generic-filter:complete');
-             eventBus.off('generic-filter:start');
+        cleanup: function() {
+            genericRecordColl.reset();
+            genericRecordView.remove();
         }
     });
 
