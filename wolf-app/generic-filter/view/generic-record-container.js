@@ -16,29 +16,36 @@ define(function(require, exports, module) {
         initialize: function(options) {
             this.subviews = [];
             this.selector = options.el;
-            this.listenTo(genericRecrodColl, 'request', this.show_loading);
-            this.listenTo(genericRecrodColl, 'sync', this.filter_complete);
+            eventBus.on('generic-filter:complete', this.filter_complete, this);
+            eventBus.on('generic-filter:start', this.show_loading, this);
         },
 
         afterRender: function() {
-            genericRecrodColl.fetch();
+            eventBus.trigger('generic-filter:start');
+            genericRecrodColl.constructor.search('mock-params').done(function(resp) {
+                eventBus.trigger('generic-filter:complete', resp.records);
+            });
         },
 
-        show_loading: function() {
-            eventBus.trigger('show-loading', this.selector);
-        },
-
-        filter_complete: function() {
+        filter_complete: function(records) {
             // append generic record view.
             var genericRecordView = new genericRecord({
                 el: '#generic-filter-records',
-                records: genericRecrodColl.records
+                records: records
             });
             this.insertView(genericRecordView).render();
             this.subviews.push(genericRecordView);
             // trigger hide loading.
             eventBus.trigger('hide-loading');
         },
+
+        show_loading: function() {
+            eventBus.trigger('show-loading', this.selector);
+        },
+
+        hide_loading: function() {
+            eventBus.trigger('hide-loading', this.selector);
+        }
     });
 
     module.exports = genericFilterRecords;
