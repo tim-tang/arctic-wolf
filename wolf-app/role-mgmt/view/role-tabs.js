@@ -6,11 +6,11 @@ define(function(require, exports, module) {
     var eventBus = require('../../app-main/app-eventbus');
 
     var roleDetails = Backbone.View.extend({
-    	
+
         manage: true,
-        
+
         prefix: "role-mgmt/templates/tab/",
-        
+
         template: 'role-tabs.html',
 
         initialize: function(){
@@ -22,8 +22,8 @@ define(function(require, exports, module) {
         },
 
         afterRender: function(){
-            //TODO: add behavior-core after loaded complete.
-            require('behavior-core');
+            // replace legacy behavior core with layout behavior.
+            require('../../layout/behavior/layout-behavior').init_layout_misc();
             this.active_tab();
         },
 

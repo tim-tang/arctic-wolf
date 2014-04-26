@@ -11,7 +11,6 @@ define(function(require, exports, module) {
         parse: function(resp){
             componentFacade.init_by_component_settings(resp.component_settings);
         }
-
     });
 
     module.exports = new genericFilterColl();

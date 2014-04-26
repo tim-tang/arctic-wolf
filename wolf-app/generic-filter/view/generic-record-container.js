@@ -29,12 +29,14 @@ define(function(require, exports, module) {
         },
 
         filter_complete: function() {
+            // append generic record view.
             var genericRecordView = new genericRecord({
                 el: '#generic-filter-records',
                 records: genericRecrodColl.records
             });
             this.insertView(genericRecordView).render();
             this.subviews.push(genericRecordView);
+            // trigger hide loading.
             eventBus.trigger('hide-loading');
         },
     });

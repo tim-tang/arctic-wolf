@@ -22,11 +22,14 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
+            // append generic filter view.
             var genericFilterView = new genericFilter({
                 el: '#generic-filter-home'
             });
             this.insertView(genericFilterView).render();
             this.subviews.push(genericFilterView);
+
+            // append generic filter records view.
             var genericFilterRecordsView = new genericFilterRecords({
                 el: '#generic-records-home'
             });

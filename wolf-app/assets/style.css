@@ -5349,7 +5349,29 @@ body.modal-open,
   margin-top: -13px;
   left: 50%;
   margin-left: -13px;
-  font-size: 26px;
+  font-size: 28px;
+}
+
+
+/* Customized Loading CSS For Generic Filter */
+#generic-records-home .loading{
+  display: none;
+  cursor: wait;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  top: 29%;
+  left: 36%;
+}
+
+#generic-records-home .loading i {
+  position: relative;
+  top: 30%;
+  margin-top: -13px;
+  left: 32%;
+  margin-left: -13px;
+  font-size: 28px;
 }
 
 /*Progress*/
