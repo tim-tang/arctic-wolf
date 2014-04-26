@@ -16,8 +16,6 @@
 
         manage: true,
 
-        keep: true,
-
         prefix: "criteria-mgmt/templates/",
 
         template: 'criteria-container.html',

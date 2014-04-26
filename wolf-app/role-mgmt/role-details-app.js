@@ -11,8 +11,6 @@
 
         manage: true,
 
-        keep: true,
-
         prefix: "role-mgmt/templates/",
 
         template: 'role-details.html',

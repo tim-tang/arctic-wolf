@@ -16,8 +16,6 @@
 
         manage: true,
 
-        keep: true,
-
         prefix: "privilege-mgmt/templates/",
 
         template: 'privilege-container.html',

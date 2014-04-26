@@ -10,12 +10,11 @@ define(function(require, exports, module) {
     var genericFilterApp = new Backbone.Layout({
 
         manage: true,
-        keep: true,
         prefix: "generic-filter/tpl/",
         template: 'generic-filter-container.html',
 
         initialize: function() {
-            this.subviews = [];
+            //this.subviews = [];
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
         },
@@ -27,14 +26,14 @@ define(function(require, exports, module) {
                 el: '#generic-filter-home'
             });
             this.insertView(genericFilterView).render();
-            this.subviews.push(genericFilterView);
+            //this.subviews.push(genericFilterView);
 
             // append generic filter records view.
             var genericFilterRecordsView = new genericFilterRecords({
                 el: '#generic-records-home'
             });
             this.insertView(genericFilterRecordsView).render();
-            this.subviews.push(genericFilterRecordsView);
+            //this.subviews.push(genericFilterRecordsView);
         },
 
         show_loading: function(selector) {

@@ -41,7 +41,8 @@ define(function(require, exports, module) {
             }
 
             return applyTransition(view.$el, TRANSITION_TYPE, function() {
-                _disposeView(view);
+                view.remove();
+                //_disposeView(view);
                 return callback();
             });
 
@@ -52,13 +53,15 @@ define(function(require, exports, module) {
                 return transition.apply(el, name, callback);
             }
 
+            /*
             function _disposeView(view) {
                 view.subviews && view.subviews.forEach(function(subview) {
+                    delete view.subviews[subview];
                     _disposeView(subview);
                 });
-
                 view.remove();
             }
+            */
         }
 
         function render(selector, view, callback) {

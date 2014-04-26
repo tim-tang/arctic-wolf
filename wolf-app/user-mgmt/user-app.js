@@ -16,8 +16,6 @@
 
         manage: true,
 
-        keep: true,
-
         prefix: "user-mgmt/templates/",
 
         template: 'user-container.html',

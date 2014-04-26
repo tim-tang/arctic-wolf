@@ -7,7 +7,6 @@ define(function(require, exports, module) {
     var dashboardApp = new Backbone.Layout({
 
         manage: true,
-        keep: true,
         prefix: 'dashboard/templates/',
         template: 'dashboard.html',
 

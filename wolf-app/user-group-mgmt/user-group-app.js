@@ -16,8 +16,6 @@
 
         manage: true,
 
-        keep: true,
-
         prefix: "user-group-mgmt/templates/",
 
         template: 'user-group-container.html',
