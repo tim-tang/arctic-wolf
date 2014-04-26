@@ -5,11 +5,12 @@ define(function(require, exports, module) {
     var securityApp = require('../security/security-app');
     var eventBus = require('./app-eventbus');
     var viewManager = require('./app-view-manager');
+    var AppBaseRouter = require('./app-base-router');
     var AppRouter = {};
 
-    AppRouter.Router = Backbone.Router.extend({
-        initialize: function() {
+    AppRouter.Router = AppBaseRouter.extend({
 
+        initialize: function() {
             // ---------------- Register Events -------------------//
             eventBus.on('check-layout-action', this.check_layout_action, this);
             eventBus.on('logout-action', this.logout_action, this);
@@ -32,6 +33,17 @@ define(function(require, exports, module) {
                     });
                 }
             });
+        },
+
+        // ------------ Before & After Router Interceptor ---------------//
+        before: function(params, next){
+            console.log('Before Router Interceptor....');
+            // everythin is fine go ahead.
+            return next();
+        },
+
+        after: function(){
+            console.log('After Router Interceptor....');
         },
 
         // ------------------ Event Actions ---------------------//
