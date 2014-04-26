@@ -37,8 +37,8 @@ define(function(require, exports, module) {
         filter_records: function(e) {
             eventBus.trigger('generic-filter:start');
             e.preventDefault();
-            genericRecordColl.constructor.search('mock-params').done(function(resp) {
-                eventBus.trigger('generic-filter:complete', resp.records);
+            genericRecordColl.constructor.search('mock-params').done(function(result) {
+                eventBus.trigger('generic-filter:complete', result.models);
             });
         }
     });

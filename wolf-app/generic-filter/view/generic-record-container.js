@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
     var genericRecrodColl = require('../collection/generic-record-coll');
-    var genericRecord = require('./generic-record');
+    var genericRecords = require('./generic-records');
     var genericRecordView;
 
     var genericFilterRecords = Backbone.View.extend({
@@ -23,14 +23,14 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             eventBus.trigger('generic-filter:start');
-            genericRecrodColl.constructor.search('mock-params').done(function(resp) {
-                eventBus.trigger('generic-filter:complete', resp.records);
+            genericRecrodColl.constructor.search('mock-params').done(function(result) {
+                eventBus.trigger('generic-filter:complete', result.models);
             });
         },
 
         filter_complete: function(records) {
             // append generic record view.
-            genericRecordView = new genericRecord({
+            genericRecordView = new genericRecords({
                 el: '#generic-filter-records',
                 records: records
             });

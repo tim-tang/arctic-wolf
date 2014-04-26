@@ -1,0 +1,12 @@
+<% records.each(function(record){ %>
+<div class="item">
+    <div>
+        <a data-toggle="modal" data-target="#mod-record" data-bypass href="">
+            <span class="date pull-right price"><%= record.get('price') %></span>
+            <img class="product-image" src="<%= record.get('image') %>">
+            <h4 class="from"><%= record.get('name')%></h4>
+            <p class="msg"><%= record.get('desc') %></p>
+        </a>
+    </div>
+</div>   
+<% });%>

@@ -5,24 +5,26 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var eventBus = require('../../app-main/app-eventbus');
 
-    var genericRecord = Backbone.View.extend({
+    var genericRecords = Backbone.View.extend({
 
         manage: true,
         prefix: "generic-filter/tpl/",
-        template: 'generic-record.html',
+        template: 'generic-records.html',
 
-        initialize: function(options){
+        initialize: function(options) {
             this.records = options.records;
         },
 
-        afterRender: function(){
+        afterRender: function() {
             //TODO:
         },
 
         serialize: function() {
-            return { records: _.clone(this.records)};
+            return {
+                records: _.chain(this.records)
+            };
         },
     });
 
-    module.exports = genericRecord;
+    module.exports = genericRecords;
 });
