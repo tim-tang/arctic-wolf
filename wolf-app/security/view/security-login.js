@@ -1,6 +1,8 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
+    var $ = require('$');
+    require('parsley');
     var layoutApp = require('../../layout/layout-app');
     var layoutFooter = require('../../layout/view/layout-footer');
 
@@ -24,15 +26,16 @@ define(function(require, exports, module) {
             'submit form': 'authenticate'
         },
 
-        authenticate: function(e) {
-            e.preventDefault();
-
-            //this.collection.create({
-            //    username: this.$('input[id=username]').val(),
-            //    password: this.$('input[id=password]').val()
-            //});
-            Backbone.history.navigate('#dashboard/', true);
-            //Backbone.history.loadUrl('#dashboard/');
+        authenticate: function(event) {
+            if(event) event.preventDefault();
+            if(this.$('#security-login-form').parsley().validate()){
+                console.log('Ready to do backend authentication!');
+                var username = $('#username').val();
+                var password = $('#password').val();
+            } else{
+                console.log('Client side validate error.');
+            }
+            //Backbone.history.navigate('#dashboard/', true);
         }
     });
 

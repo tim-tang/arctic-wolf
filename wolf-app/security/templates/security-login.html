@@ -3,13 +3,12 @@
         <div class="block-flat">
             <div class="header">
                 <h3 class="text-center">
-                    <img class="logo-img" src="assets/images/logo.png" alt="logo"
-                    />
+                    <img class="logo-img" src="assets/images/logo.png" alt="logo" />
                 </h3>
             </div>
             <div>
-                <form style="margin-bottom: 0px !important;" class="form-horizontal" action=""
-                parsley-validate novalidate>
+                <form style="margin-bottom: 0px !important;" class="form-horizontal" id="security-login-form"
+                action="" parsley-validate>
                     <div class="content">
                         <h5 class="title text-center">
                             <strong>Login User</strong>
@@ -21,8 +20,7 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-user"></i>
                                     </span>
-                                    <input type="text" placeholder="Username" id="username" class="form-control"
-                                    parsley-trigger="change" parsley-error-container="#username-error" required>
+                                    <input type="text" placeholder="Username" id="username" class="form-control" value="" parsley-trigger="change" parsley-error-container="#username-error" required>
                                 </div>
                                 <div id="username-error"></div>
                             </div>
@@ -33,8 +31,8 @@
                                     <span class="input-group-addon">
                                         <i class="fa fa-lock"></i>
                                     </span>
-                                    <input type="password" placeholder="Password" id="password" class="form-control"
-                                    parsley-trigger="change" parsley-error-container="#password-error" required>
+                                    <input type="password" placeholder="Password" id="password" class="form-control" value=""  parsley-trigger="change" data-rangelength="[5,25]"
+                                    parsley-error-container="#password-error" required>
                                 </div>
                                 <div id="password-error"></div>
                             </div>
@@ -43,7 +41,8 @@
                     <p class="spacer text-center">Don't remember your password?
                         <a href="#security/forgot-password">Forgot Password</a>.</p>
                     <div class="foot">
-                        <button id="user-login" class="btn btn-block btn-primary btn-rad btn-lg" type="submit">Log Me In</button>
+                        <button id="user-login" class="btn btn-block btn-primary btn-rad btn-lg"
+                        type="submit">Log Me In</button>
                     </div>
                 </form>
             </div>
