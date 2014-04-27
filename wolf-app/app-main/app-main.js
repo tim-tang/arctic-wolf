@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
+    var authenticationProvider = require('../security/authentication/authentication-provider');
 
     Backbone.Layout.configure({
         // Set the prefix to where your templates live on the server, but keep in
@@ -37,18 +38,44 @@ define(function(require, exports, module) {
         }
     });
 
+    /****************************************************
+     * Override original backbone sync.
+     ****************************************************/
+    var backboneSync = Backbone.sync;
+    Backbone.sync = function(method, model, options) {
+        /**
+         * The jQuery `ajax` method includes a 'headers' option
+         * which lets you set any headers you like
+         */
+        //var theUser = JSON.parse(.getItem("happuser"));
+        var securityUser = authenticationProvider.get('security-user');
+        if (securityUser) {
+            var cutomizedOptions = _.extend({
+                beforeSend: function(xhr) {
+                    var authToken = securityUser.authtoken;
+                    console.log('Authentication Token: >>', authToken);
+                    if (authToken) xhr.setRequestHeader('Authorization', authToken);
+                }
+            }, options)
+        }
+
+        /*
+         * Call the stored original Backbone.sync method with
+         * extra headers argument added
+         */
+        backboneSync(method, model, cutomizedOptions ? cutomizedOptions : options);
+    };
 
     var appRouter = require('./app-router');
 
     module.exports = {
-        init: function(){
+        init: function() {
             window.App = require('../common/global-constant');
             // Set the app namespace instancing the router
             var WolfApp = {
                 ROOT: "/wolf-app",
                 APP_ROUTERS: [
-                    new appRouter()
-                ]
+                new appRouter()]
             };
             // Start the Backbone push navigation
             Backbone.history.start({

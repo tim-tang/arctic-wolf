@@ -7,7 +7,7 @@ define(function(require, exports, module) {
 
     var authenticationProvider = Backbone.Model.extend({
 
-        url: APP.WS_HOST + '/security',
+        url: 'http://localhost:5000/security',
 
         initialize: function() {
             //check for sessionStorage support
@@ -66,15 +66,15 @@ define(function(require, exports, module) {
 
             authenticate.done(function(resp) {
                 self.put('authenticated', true);
-                self.put('security-user', JSON.stringify(response.user));
+                self.put('security-user', JSON.stringify(resp.security_user));
                 if (!self.get('redirect-url')) {
-                    Backbone.history.navigate('#dashboard/', {
+                    return Backbone.history.navigate('#dashboard/', {
                         trigger: true
                     });
                 }
                 var redirectUrl = self.get('redirect-url');
                 self.remove('redirect-url');
-                return Backbone.history.navigate(redirectUrl, {
+                Backbone.history.navigate(redirectUrl, {
                     trigger: true
                 });
             });

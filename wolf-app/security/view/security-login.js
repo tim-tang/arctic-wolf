@@ -5,6 +5,7 @@ define(function(require, exports, module) {
     require('parsley');
     var layoutApp = require('../../layout/layout-app');
     var layoutFooter = require('../../layout/view/layout-footer');
+    var authenticationProvider = require('../authentication/authentication-provider');
 
     var securityLogin = Backbone.View.extend({
 
@@ -32,7 +33,13 @@ define(function(require, exports, module) {
                 console.log('Ready to do backend authentication!');
                 var username = $('#username').val();
                 var password = $('#password').val();
-                Backbone.history.navigate('#dashboard/', true);
+                //authenticationProvider.authenticate({
+                //    username: username,
+                //    password: password
+                //});
+                Backbone.history.navigate('#dashboard/', {
+                    trigger: true
+                });
             } else {
                 console.log('Client side validate error.');
             }
