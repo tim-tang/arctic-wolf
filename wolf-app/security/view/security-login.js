@@ -12,7 +12,7 @@ define(function(require, exports, module) {
         prefix: 'security/templates/',
         template: 'security-login.html',
 
-        initialize: function(){
+        initialize: function() {
             this.subviews = [];
         },
 
@@ -27,13 +27,13 @@ define(function(require, exports, module) {
         },
 
         authenticate: function(event) {
-            if(event) event.preventDefault();
-            if(this.$('#security-login-form').parsley().validate()){
+            if (event) event.preventDefault();
+            if ($('#security-login-form').parsley().validate()) {
                 console.log('Ready to do backend authentication!');
                 var username = $('#username').val();
                 var password = $('#password').val();
                 Backbone.history.navigate('#dashboard/', true);
-            } else{
+            } else {
                 console.log('Client side validate error.');
             }
         }
