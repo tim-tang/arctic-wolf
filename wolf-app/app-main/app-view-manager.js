@@ -81,7 +81,7 @@ define(function(require, exports, module) {
                     $('<div id="layout-container"></div>').appendTo('#main-body');
                 }
             }
-            $(selector).html(currentView.el);
+            $(selector).html(currentView.el).hide().fadeIn();
             currentView.render().promise().done(function() {
                 if (!callback) {
                     return;
