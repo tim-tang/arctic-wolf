@@ -32,10 +32,10 @@ define(function(require, exports, module) {
                 console.log('Ready to do backend authentication!');
                 var username = $('#username').val();
                 var password = $('#password').val();
+                Backbone.history.navigate('#dashboard/', true);
             } else{
                 console.log('Client side validate error.');
             }
-            //Backbone.history.navigate('#dashboard/', true);
         }
     });
 
