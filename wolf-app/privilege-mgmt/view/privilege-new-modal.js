@@ -20,10 +20,6 @@ define(function(require, exports, module) {
         prefix: 'privilege-mgmt/templates/modal/',
 
         template: 'privilege-new-modal.html',
-        
-        privilegeType: null,
-        
-        criterias: null,
 
         events: {
             'click #privilege-create-action': 'create_privilege'
@@ -31,7 +27,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
-            privilegeType = {
+            this.privilegeType = {
 				"selector_id": "privilege-type",
 				"optgroups": [
 					{
@@ -55,9 +51,9 @@ define(function(require, exports, module) {
 						]
 					},
 				]
-			},
+			};
 			
-			criterias = {
+			this.criterias = {
 				"selector_id": "criteria",
 				"optgroups": [
 					{
@@ -87,7 +83,7 @@ define(function(require, exports, module) {
 						]
 					}
 				]
-			}
+			};
         },
 
         /*
@@ -99,9 +95,9 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            componentFacade.init_select2('.select2', criterias);
             componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', privilegeType);
+			componentFacade.init_select2('.select2', this.criterias);
+			componentFacade.init_select2('.select2', this.privilegeType);
         },
 
         new_attributes: function() {
