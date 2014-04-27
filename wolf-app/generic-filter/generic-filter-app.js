@@ -6,6 +6,7 @@ define(function(require, exports, module) {
     var eventBus = require('../app-main/app-eventbus');
     var genericFilter = require('./view/generic-filter');
     var genericFilterRecords = require('./view/generic-record-container');
+    var _ = require('underscore');
 
     var genericFilterApp = new Backbone.Layout({
 
@@ -14,9 +15,8 @@ define(function(require, exports, module) {
         template: 'generic-filter-container.html',
 
         initialize: function() {
-            //this.subviews = [];
-            eventBus.on('show-loading', this.show_loading, this);
-            eventBus.on('hide-loading', this.hide_loading, this);
+            eventBus.on('generic-filter:show-loading', this.show_loading, this);
+            eventBus.on('generic-filter:hide-loading', this.hide_loading, this);
         },
 
 
@@ -41,6 +41,7 @@ define(function(require, exports, module) {
         hide_loading: function() {
             commonLoading.destroy();
         }
+
     });
 
     module.exports = {

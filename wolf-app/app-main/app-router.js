@@ -35,16 +35,7 @@ define(function(require, exports, module) {
             });
         },
 
-        // ------------ Before & After Router Interceptor ---------------//
-        before: function(params, next){
-            console.log('Before Router Interceptor....');
-            // everythin is fine go ahead.
-            return next();
-        },
 
-        after: function(){
-            console.log('After Router Interceptor....');
-        },
 
         // ------------------ Event Actions ---------------------//
         // TODO: need refactor.
@@ -74,6 +65,20 @@ define(function(require, exports, module) {
             '*error': 'not_found',
         },
 
+        // ----------------- Define Security Resources -------------------//
+        security_resources: ['#dashboard/*'],
+        public_resources: ['', '#security/*'],
+
+        // ------------ Before & After Router Interceptor ---------------//
+        before: function(params, next){
+            console.log('Before Router Interceptor....');
+            // everythin is fine go ahead.
+            return next();
+        },
+
+        after: function(){
+            console.log('After Router Interceptor....');
+        },
 
         home: function() {
             Backbone.history.navigate('security/login', true);

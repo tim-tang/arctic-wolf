@@ -15,7 +15,7 @@ define(function(require, exports, module) {
         template: 'generic-record-container.html',
 
         initialize: function(options) {
-            _.bindAll(this, 'cleanup');
+            //_.bindAll(this, 'cleanup');
             this.selector = options.el;
             this.listenTo(genericRecordColl, 'request', this.show_loading);
             this.listenTo(genericRecordColl, 'sync', this.filter_complete);
@@ -37,19 +37,15 @@ define(function(require, exports, module) {
             });
             this.insertView(genericRecordView).render();
             // trigger hide loading.
-            eventBus.trigger('hide-loading');
+            eventBus.trigger('generic-filter:hide-loading');
         },
 
         show_loading: function() {
-            eventBus.trigger('show-loading', this.selector);
-        },
-
-        hide_loading: function() {
-            eventBus.trigger('hide-loading', this.selector);
+            eventBus.trigger('generic-filter:show-loading', this.selector);
         },
 
         cleanup: function() {
-            genericRecordColl.reset();
+            this.undelegateEvents();
             genericRecordView.remove();
         }
     });
