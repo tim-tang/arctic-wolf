@@ -33,12 +33,9 @@ define(function(require, exports, module) {
                 console.log('Ready to do backend authentication!');
                 var username = $('#username').val();
                 var password = $('#password').val();
-                //authenticationProvider.authenticate({
-                //    username: username,
-                //    password: password
-                //});
-                Backbone.history.navigate('#dashboard/', {
-                    trigger: true
+                authenticationProvider.authenticate({
+                    username: username,
+                    password: password
                 });
             } else {
                 console.log('Client side validate error.');

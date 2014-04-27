@@ -52,7 +52,7 @@ define(function(require, exports, module) {
         if (securityUser) {
             var cutomizedOptions = _.extend({
                 beforeSend: function(xhr) {
-                    var authToken = securityUser.authtoken;
+                    var authToken = securityUser.auth_token;
                     console.log('Authentication Token: >>', authToken);
                     if (authToken) xhr.setRequestHeader('Authorization', authToken);
                 }

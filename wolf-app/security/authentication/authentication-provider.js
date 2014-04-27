@@ -65,6 +65,7 @@ define(function(require, exports, module) {
             });
 
             authenticate.done(function(resp) {
+                console.log(resp);
                 self.put('authenticated', true);
                 self.put('security-user', JSON.stringify(resp.security_user));
                 if (!self.get('redirect-url')) {
