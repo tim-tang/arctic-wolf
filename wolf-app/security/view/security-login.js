@@ -6,6 +6,7 @@ define(function(require, exports, module) {
     var layoutApp = require('../../layout/layout-app');
     var layoutFooter = require('../../layout/view/layout-footer');
     var authenticationProvider = require('../authentication/authentication-provider');
+    var eventBus = require('../../app-main/app-eventbus');
 
     var securityLogin = Backbone.View.extend({
 
@@ -30,12 +31,15 @@ define(function(require, exports, module) {
         authenticate: function(event) {
             if (event) event.preventDefault();
             if ($('#security-login-form').parsley().validate()) {
-                console.log('Ready to do backend authentication!');
                 var username = $('#username').val();
                 var password = $('#password').val();
+                eventBus.trigger('security:show-loading');
                 authenticationProvider.authenticate({
                     username: username,
                     password: password
+                }, function() {
+                    //TODO: server side error handling
+                    eventBus.trigger('security:hide-loading');
                 });
             } else {
                 console.log('Client side validate error.');

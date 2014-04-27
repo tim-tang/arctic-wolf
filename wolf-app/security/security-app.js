@@ -4,12 +4,15 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('../app-main/app-eventbus');
     var viewManager = require('../app-main/app-view-manager');
+     var commonLoading = require('../common/common-loading');
 
     var securityApp = new Backbone.Layout({
 
         el: '#main-body',
 
         initialize: function() {
+            eventBus.on('security:show-loading', this.show_loading, this);
+            eventBus.on('security:hide-loading', this.hide_loading, this);
             eventBus.on('render-security-login', this.render_security_login, this);
             eventBus.on('render-forgot-password', this.render_forgot_password, this);
             eventBus.on('render-reset-password', this.render_reset_password, this);
@@ -43,7 +46,15 @@ define(function(require, exports, module) {
 
         render_500: function() {
             require('./view/500').run('#security-container', viewManager);
-        }
+        },
+
+        show_loading: function() {
+             commonLoading.init('#security-container');
+         },
+
+         hide_loading: function() {
+             commonLoading.destroy();
+         },
     });
 
     module.exports = securityApp;

@@ -56,7 +56,7 @@ define(function(require, exports, module) {
 
 
         //-------------------- Security APIs ------------------------//
-        authenticate: function(credentials) {
+        authenticate: function(credentials, callback) {
             var self = this;
             var authenticate = $.ajax({
                 url: this.url + '/authenticate',
@@ -65,25 +65,27 @@ define(function(require, exports, module) {
             });
 
             authenticate.done(function(resp) {
-                console.log(resp);
                 self.put('authenticated', true);
                 self.put('security-user', JSON.stringify(resp.security_user));
                 if (!self.get('redirect-url')) {
-                    return Backbone.history.navigate('#dashboard/', {
+                    Backbone.history.navigate('#dashboard/', {
                         trigger: true
                     });
+                    return callback();
                 }
                 var redirectUrl = self.get('redirect-url');
                 self.remove('redirect-url');
                 Backbone.history.navigate(redirectUrl, {
                     trigger: true
                 });
+                callback();
             });
 
             authenticate.fail(function(resp, status) {
                 Backbone.history.navigate('#security/login', {
                     trigger: true
                 });
+                callback();
             });
         },
 

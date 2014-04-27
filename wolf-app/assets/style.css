@@ -5332,6 +5332,24 @@ body.modal-open,
 }
 
 /* arctic - Loading */
+#security-container .loading {
+  display: none;
+  cursor: wait;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  top: 0;
+  left: 0;
+}
+#security-container .loading i {
+  position: relative;
+  top: 50%;
+  margin-top: -13px;
+  left: 50%;
+  margin-left: -13px;
+  font-size: 28px;
+}
 #main-content .loading {
   display: none;
   cursor: wait;
