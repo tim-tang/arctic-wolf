@@ -125,25 +125,29 @@ define(function(require, exports, module) {
 
         },
 
-        init_select2: function(selector, options) {
+        init_select2: function(selector, options, view, index) {
             var componentSelect2 = require('./view/component-select2');
             var select2_view = (new componentSelect2({
                 selector: selector,
                 attrs: options
             })).render().promise().done(function(select2_view) {
-                select2_view.$el.appendTo('#' + select2_view.options["selector_id"] + '-container');
-                
-                //console.log(select2_view.options["selector_id"]);
-                //console.log(select2_view.selector);
-                //console.log(select2_view);
-                
-                // Set selector attributes: id & multiple
-            	select2_view.$el.find('select').attr("id", select2_view.options["selector_id"]);
+            	var select_id = select2_view.options["selector_id"];
+            	
+            	// If select_id is not null, then set id to this select and append this selector to its container
+                if(select_id) {
+                	select2_view.$el.appendTo('#' + select2_view.options["selector_id"] + '-container');
+                	select2_view.$el.find('select').attr("id", select2_view.options["selector_id"]);
+                } 
+                // Append this selector to the promised element
+                else {
+                	select2_view.$el.appendTo(view.$el.children()[index]);
+                }
+
+                // Set selector attributes: multiple
             	if(select2_view.options["multiple"] === 'multiple')
             		select2_view.$el.find('select').attr("multiple", "multiple");
 
-            	//console.log($('#' + select2_view.options["selector_id"]));
-
+				// Setup CSS for this select element
                 select2_view.$el.find('select').select2({
 	                width: '100%'
 	            });

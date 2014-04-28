@@ -1,7 +1,7 @@
 <select class="select2">
     <% _.each(options.optgroups, function(optgroup) { %>
 	    <optgroup label="<%= optgroup.label%>">
-	    	<%= console.log(optgroup.options)%>
+	    	<!--%= console.log(optgroup.options)%-->
 	        <% _.each(optgroup.options, function(option) { %>
 	            <option value="<%= option.value%>">
 	                <%= option.label%>

@@ -10,6 +10,7 @@ define(function(require, exports, module) {
     var criteriaModel = require('../model/criteria-model');
     var criteriaRow = require('./criteria-row');
     
+    var eventBus = require('../../app-main/app-eventbus');
     var componentFacade = require('../../common/component-facade');
 
     var criteriaModal = Backbone.View.extend({
@@ -49,6 +50,9 @@ define(function(require, exports, module) {
 					},
 				]
 			};
+			
+			eventBus.on('add_criteria_row', this.add_criteria_row, this);
+			eventBus.on('remove_criteria_row', this.add_criteria_row, this);
         },
 
 		changeObjectType: function() {
@@ -58,18 +62,9 @@ define(function(require, exports, module) {
 		    });
     
 			var objType = $("#object-type-container").find('select').val();
-			console.log("changeObjectType > objType = " + objType);
-
            	var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 		},
-		
-        /*
-        serialize: function() {
-                    return {
-                        criteria: _.clone(this.model.attributes)
-                    };
-                },*/
         
         afterRender: function() {
             componentFacade.init_switch('.switch');
@@ -80,7 +75,30 @@ define(function(require, exports, module) {
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 	    },
-
+        
+        add_criteria_row: function() {
+			var objType = $("#object-type-container").find('select').val();
+			var criteriaRowView = new criteriaRow({objType: objType});
+            this.insertView('#criteria-row-container', criteriaRowView).render();
+        },
+        
+        remove_criteria_row: function() {
+        	
+        },
+        
+        
+        /****************************************************
+         * 
+         *					About data
+         * 
+         *****************************************************/
+        /*
+        serialize: function() {
+                    return {
+                        criteria: _.clone(this.model.attributes)
+                    };
+                },*/
+                     
         new_attributes: function() {
             return {
                 cri_name: this.$('#cri-name').val().trim(),
