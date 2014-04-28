@@ -9,7 +9,7 @@
 
          model: userAttrsModel,
 
-         url: App.WS_HOST + '/user-attrs',
+         url: '/user-attrs',
 
          // Fetch crieriable attributes
          getCriteriableAttrs: function() {

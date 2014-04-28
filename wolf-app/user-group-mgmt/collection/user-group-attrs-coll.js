@@ -9,7 +9,7 @@
 
          model: userGroupAttrsModel,
 
-         url: App.WS_HOST + '/user-group-attrs',
+         url: '/user-group-attrs',
 
          // Fetch crieriable attributes
          getCriteriableAttrs: function() {

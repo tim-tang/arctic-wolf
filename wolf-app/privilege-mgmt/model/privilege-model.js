@@ -4,7 +4,7 @@
 
     var privilegeModel = Backbone.Model.extend({
 
-        urlRoot: App.WS_HOST + '/privileges',
+        urlRoot: '/privileges',
         //url: function(){
         //    var origUrl = Backbone.Model.prototype.url.call(this);
         //    var parsedUrl = origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');

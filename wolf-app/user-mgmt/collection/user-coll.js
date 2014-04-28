@@ -9,12 +9,12 @@
 
     	model: userModel,
 
-        url: App.WS_HOST + '/users',
-        
+        url: '/users',
+
         columns: [],
-        
+
         data: [],
-        
+
         /**
          * Convert attributes data to model data.
          */
@@ -22,13 +22,13 @@
 			// Columns of User Group Table
 			this.columns = resp['aoColumns'];
 			//console.log(JSON.stringify(columns));
-			
+
 			var attributes = _.pluck(this.columns, 'mData');
-             
+
 			// Data of User Group Table
 			var data = resp['aaData'];
 			//console.log(JSON.stringify(data));
-			
+
 			for(var i = 0; i < data.length; i++) {
 				var user = new this.model();
                 _.each(attributes, function(attr) {
@@ -38,7 +38,7 @@
                 //push the model object
                 this.push(user);
 			}
-            
+
             return this.models;
         },
 

@@ -9,7 +9,7 @@
 
          model: privilegeAttrsModel,
 
-         url: App.WS_HOST + '/privilege-attrs',
+         url: '/privilege-attrs',
 
          // Fetch crieriable attributes
          getCriteriableAttrs: function() {

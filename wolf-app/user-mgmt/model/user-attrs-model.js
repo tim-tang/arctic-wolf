@@ -3,8 +3,8 @@
      var Backbone = require('backbone');
 
      var userAttrsModel = Backbone.Model.extend({
-     
-     	urlRoot: App.WS_HOST + '/user-attrs'
+
+     	urlRoot: '/user-attrs'
 
 
      });

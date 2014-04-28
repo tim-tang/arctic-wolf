@@ -9,7 +9,7 @@
 
          model: criteriaAttrsModel,
 
-         url: App.WS_HOST + '/criteria-attrs',
+         url: '/criteria-attrs',
 
          // Fetch crieriable attributes
          getCriteriableAttrs: function() {

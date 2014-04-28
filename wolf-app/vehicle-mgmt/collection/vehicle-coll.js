@@ -9,7 +9,7 @@
 
          model: vehicleModel,
 
-         url: App.WS_HOST + '/vehicles',
+         url: '/vehicles',
 
          columns: [],
 

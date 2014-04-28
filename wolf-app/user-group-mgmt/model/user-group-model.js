@@ -4,7 +4,7 @@
 
     var userGroupModel = Backbone.Model.extend({
 
-        urlRoot: App.WS_HOST + '/user-groups',
+        urlRoot: '/user-groups',
         //url: function(){
         //    var origUrl = Backbone.Model.prototype.url.call(this);
         //    var parsedUrl = origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');

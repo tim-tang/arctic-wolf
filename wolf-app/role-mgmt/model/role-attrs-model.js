@@ -4,7 +4,7 @@
 
      var roleAttrsModel = Backbone.Model.extend({
 
-     	urlRoot: App.WS_HOST + '/role-attrs'
+     	urlRoot: '/role-attrs'
 
 
      });

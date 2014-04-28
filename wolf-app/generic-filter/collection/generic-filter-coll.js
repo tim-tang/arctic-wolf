@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var componentFacade = require('../../common/component-facade');
     var genericFilterColl = Backbone.Collection.extend({
 
-        url: App.WS_HOST + '/generic-filter',
+        url: '/generic-filter',
 
 
         parse: function(resp){

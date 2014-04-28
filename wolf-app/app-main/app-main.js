@@ -43,11 +43,18 @@ define(function(require, exports, module) {
      ****************************************************/
     var backboneSync = Backbone.sync;
     Backbone.sync = function(method, model, options) {
+
+        /*
+         * Change the `url` property of options.
+         */
+        options = _.extend(options, {
+            url: 'http://localhost:5000' + (_.isFunction(model.url) ? model.url() : model.url)
+        });
+
         /**
          * The jQuery `ajax` method includes a 'headers' option
          * which lets you set any headers you like
          */
-        //var theUser = JSON.parse(.getItem("happuser"));
         var securityUser = authenticationProvider.get('security-user');
         if (securityUser) {
             var cutomizedOptions = _.extend({

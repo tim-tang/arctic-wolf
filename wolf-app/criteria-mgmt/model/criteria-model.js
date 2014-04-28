@@ -4,7 +4,7 @@
 
     var criteriaModel = Backbone.Model.extend({
 
-        urlRoot: App.WS_HOST + '/criterias',
+        urlRoot: '/criterias',
         //url: function(){
         //    var origUrl = Backbone.Model.prototype.url.call(this);
         //    var parsedUrl = origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');

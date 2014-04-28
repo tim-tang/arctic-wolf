@@ -4,7 +4,7 @@
 
      var genericRecordModel = Backbone.Model.extend({
 
-         url: App.WS_HOST + '/generic-records',
+         url: '/generic-records',
 
          defaults: {
              name: '',

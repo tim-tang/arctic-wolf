@@ -7,9 +7,7 @@ define(function(require, exports, module) {
 
     var genericRecordColl = Backbone.Collection.extend({
 
-        url: function() {
-            return App.WS_HOST + '/generic-records/filter';
-        },
+        url: '/generic-records/filter',
 
         model: genericRecord,
 
