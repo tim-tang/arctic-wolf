@@ -52,14 +52,9 @@ define(function(require, exports, module) {
         },
 
 		changeObjectType: function() {
-			// this.remove();
-		    // this.unbind();
-		    // handle other unbinding needs, here
-		    _.each(this.views, function(view) {
-		    	console.log(view);
-				//view.remove();
+		    _.each(this.views["#criteria-row-container"], function(view) {
+		    	//console.log(view);
 			    view.$el.remove();  
-			    //Backbone.View.prototype.remove.call(view);
 		    });
     
 			var objType = $("#object-type-container").find('select').val();
