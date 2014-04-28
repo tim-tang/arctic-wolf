@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     
     var componentFacade = require('../../common/component-facade');
 
-    var criteriaModal = Backbone.View.extend({
+    var criteriaRow = Backbone.View.extend({
         manage: true,
 
         model: new criteriaModel(),
@@ -20,7 +20,7 @@ define(function(require, exports, module) {
 
         template: 'criteria-row.html',
         
-        criteriaCount: 0,
+        criteriaCount: 1,
 
         events: {
             'change #attributes': 'changeObjectAttr',
@@ -199,6 +199,8 @@ define(function(require, exports, module) {
        	},
 		
 		changeObjectAttr: function() {
+			this.$el.children("#operators-container").children().remove();
+			
 			// Clear operator selector
 			$("#operators").empty();
 
@@ -218,24 +220,21 @@ define(function(require, exports, module) {
 			}
 		},
 		
-       	addCriteria: function() {
+		addCriteria: function() {
 			this.criteriaCount++;
-            // Get a new row based on the prototype row
-            var newCriteria = this.$el.clone;
-            //newCriteria.attr("class", "");
-            //newCriteria.find("#value").attr("value", this.criteriaCount);
 
-			this.$el.parents("criteria-row-container").append(newCriteria);
-       	},
-       	
-   		removeCriteria: function() {
+			var criteriaRowView = new criteriaRow({objType: this.objType});
+            this.insertView('#criteria-row-container', criteriaRowView).render();
+		},
+		
+		removeCriteria: function() {
 			//alert(criteriaCount);
-            if(this.criteriaCount >= 1) {
-                $(this).parents("criteria-row-container").remove();
-                this.criteriaCount--;
-            }
-       	}
+			if (this.criteriaCount > 1) {
+				this.$el.remove();
+				this.criteriaCount--;
+			}
+		}
     });
 
-    module.exports = criteriaModal;
+    module.exports = criteriaRow;
 });
