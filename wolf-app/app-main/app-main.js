@@ -7,6 +7,7 @@ define(function(require, exports, module) {
     require('layoutmanager');
     var authenticationProvider = require('../security/authentication/authentication-provider');
     var appRouter = require('./app-router');
+    window.App = require('../common/global-constant');
 
     /****************************************************
      * Backbone Layout Manager Configuration.
@@ -52,7 +53,7 @@ define(function(require, exports, module) {
          * Change the `url` property of options.
          */
         options = _.extend(options, {
-            url: 'http://localhost:5000' + (_.isFunction(model.url) ? model.url() : model.url)
+            url: App.WS_HOST + (_.isFunction(model.url) ? model.url() : model.url)
         });
 
         /**
@@ -83,7 +84,6 @@ define(function(require, exports, module) {
      ****************************************************/
     module.exports = {
         init: function() {
-            window.App = require('../common/global-constant');
             // set the app namespace instancing the router
             var WolfApp = {
                 ROOT: "/wolf-app",
