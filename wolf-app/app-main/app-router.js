@@ -1,11 +1,13 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
+    var _ = require('underscore');
     var Backbone = require('backbone');
     var securityApp = require('../security/security-app');
     var eventBus = require('./app-eventbus');
     var viewManager = require('./app-view-manager');
     var AppBaseRouter = require('./app-base-router');
+    var authenticationProvider = require('../security/authentication/authentication-provider');
     var AppRouter = {};
 
     AppRouter.Router = AppBaseRouter.extend({
@@ -66,18 +68,45 @@ define(function(require, exports, module) {
         },
 
         // ----------------- Define Security Resources -------------------//
-        security_resources: ['#dashboard/*'],
-        public_resources: ['', '#security/*'],
+        /**
+         *  Resource that need be authorized
+         */
+        security_resources: ['#dashboard/', '#vehicle-mgmt/', '#user-group-mgmt/', '#user-mgmt/', '#role-mgmt/', '#privilege-mgmt/', '#criteria-mgmt/', '#generic-filter/'],
+        /**
+         * Resource that is public
+         */
+        public_resources: ['', '#security/login', '#security/forgot-password', '#security/reset-password'],
+        /**
+         * Cancelled access resources while user authenticated.
+         */
+        cancelled_while_auth_done: ['#security/login'],
 
-        // ------------ Before & After Router Interceptor ---------------//
+        // ------------------ Before & After Router Interceptor ---------------------//
         before: function(params, next){
-            console.log('Before Router Interceptor....');
-            // everythin is fine go ahead.
+            var isAuthenticated = authenticationProvider.get('authenticated');
+            var redirectUrl = Backbone.history.location.hash;
+            var isSecurityResource = _.contains(this.security_resources, redirectUrl);
+            var isCancelAccessResource = _.contains(this.cancelled_while_auth_done, redirectUrl);
+
+            if(!isAuthenticated && isSecurityResource){
+                // if user not authenticated and try to access security resources,
+                // will be navigate to login page.
+                authenticationProvider.put('redirect-url', redirectUrl);
+                return Backbone.history.navigate('#security/login', { trigger : true });
+            }
+
+            if(isAuthenticated && isCancelAccessResource){
+                // if user has been authenticated and try to access cancelled pages,
+                // will be redirect to dashboard page directly.
+                return Backbone.history.navigate('#dashboard/', { trigger : true });
+            }
+
+            // everythin is fine then go ahead.
             return next();
         },
 
         after: function(){
-            console.log('After Router Interceptor....');
+            //console.log('After Router Interceptor....');
         },
 
         home: function() {
