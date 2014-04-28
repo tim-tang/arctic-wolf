@@ -1,4 +1,4 @@
-define(function(require, exports, module){
+define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
@@ -14,8 +14,8 @@ define(function(require, exports, module){
             '': 'home'
         },
 
-        home: function(){
-            eventBus.trigger('switch-view');
+        home: function() {
+            eventBus.trigger('layout:check-layout-action');
         }
     });
 

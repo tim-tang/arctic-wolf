@@ -17,8 +17,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            eventBus.trigger('switch-view');
-            //privilegeApp.render();
+            eventBus.trigger('layout:check-layout-action');
         }
     });
 

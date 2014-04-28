@@ -17,7 +17,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            eventBus.trigger('switch-view');
+            eventBus.trigger('layout:check-layout-action');
             //userApp.render();
         }
     });

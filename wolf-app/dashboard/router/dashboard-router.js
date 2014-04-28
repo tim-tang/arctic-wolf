@@ -15,7 +15,7 @@ define(function(require, exports, module) {
         },
 
         home: function() {
-            eventBus.trigger('check-layout-action');
+            eventBus.trigger('layout:check-layout-action');
         }
     });
 

@@ -14,8 +14,8 @@ define(function(require, exports, module) {
 
         initialize: function() {
             // ---------------- Register Events -------------------//
-            eventBus.on('check-layout-action', this.check_layout_action, this);
-            eventBus.on('logout-action', this.logout_action, this);
+            eventBus.on('layout:check-layout-action', this.check_layout_action, this);
+            eventBus.on('layout:discard-layout-action', this.discard_layout_action, this);
 
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
@@ -47,7 +47,7 @@ define(function(require, exports, module) {
             });
         },
 
-        logout_action: function() {
+        discard_layout_action: function() {
             AppRouter.layoutApp = null;
             viewManager.discardLayout();
         },
