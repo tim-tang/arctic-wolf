@@ -22,6 +22,8 @@ define(function(require, exports, module) {
 
         template: 'criteria-new-modal.html',
 
+		criteriaCount: 1,
+		
         events: {
             'click #criteria-create-action': 'create_criteria',
             'change #object-type': 'changeObjectType'
@@ -52,7 +54,7 @@ define(function(require, exports, module) {
 			};
 			
 			eventBus.on('add_criteria_row', this.add_criteria_row, this);
-			eventBus.on('remove_criteria_row', this.add_criteria_row, this);
+			eventBus.on('remove_criteria_row', this.remove_criteria_row, this);
         },
 
 		changeObjectType: function() {
@@ -64,6 +66,8 @@ define(function(require, exports, module) {
 			var objType = $("#object-type-container").find('select').val();
            	var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
+            
+            this.criteriaCount = 1;
 		},
         
         afterRender: function() {
@@ -80,10 +84,14 @@ define(function(require, exports, module) {
 			var objType = $("#object-type-container").find('select').val();
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
+            this.criteriaCount++;
         },
         
-        remove_criteria_row: function() {
-        	
+        remove_criteria_row: function(view) {
+        	if(this.criteriaCount > 1) {
+        		view.$el.remove();
+        		this.criteriaCount--;
+        	}
         },
         
         

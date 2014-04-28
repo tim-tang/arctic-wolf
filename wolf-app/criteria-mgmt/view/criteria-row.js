@@ -21,8 +21,6 @@ define(function(require, exports, module) {
 
         template: 'criteria-row.html',
         
-        criteriaCount: 1,
-
         events: {
             'change select': 'changeSelectValue',
             'click #add': 'addCriteria',
@@ -162,7 +160,25 @@ define(function(require, exports, module) {
 					},
 				]
 			};
-			
+
+			this.logicOperators = {
+				//"selector_id": "operators",
+				"optgroups": [
+					{
+						"options": [
+							{
+								"value": "1", 
+								"label": "AND"
+							},
+							{
+								"value": "2", 
+								"label": "OR"
+							}
+						]
+					},
+				]
+			};
+						
 			this.objType = this.options.objType;	
 		},
 
@@ -195,7 +211,9 @@ define(function(require, exports, module) {
 				// Value input
 				//$("#value").remove();
 				//$("#value-div").append("<input class='form-control datetime' type='text' value='This is DatePicker' size='8'>");
-			}			
+			}
+			
+			componentFacade.init_select2('.select2', this.logicOperators, this, 3);
        	},
 		
 		changeSelectValue: function(select) {
@@ -203,9 +221,6 @@ define(function(require, exports, module) {
 			// Attributes changed
 			if(containerDivID === "attributes-container") {
 				this.$el.children("#operators-container").children().remove();
-			
-				// Clear operator selector
-				$("#operators").empty();
 	
 				var attValue = select.val;
 				if (attValue == '1') {
@@ -226,18 +241,20 @@ define(function(require, exports, module) {
 			else if(containerDivID === "operators-container") {
 				
 			}
+			// Logic Operators changed
+			else if(containerDivID === "logic-operators-container") {
+				//eventBus.trigger('add_criteria_row');
+			}
 		},
 		
-		addCriteria: function() {
-			this.criteriaCount++;
+		addCriteria: function(event) {
+            if (event) event.preventDefault();
 			eventBus.trigger('add_criteria_row');
 		},
 		
-		removeCriteria: function() {
-			if (this.criteriaCount > 1) {
-				this.$el.remove();
-				this.criteriaCount--;
-			}
+		removeCriteria: function(event) {
+            if (event) event.preventDefault();
+			eventBus.trigger('remove_criteria_row', this);
 		}
     });
 
