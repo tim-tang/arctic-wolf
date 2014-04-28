@@ -10,7 +10,7 @@ define(function(require, exports, module) {
         url: 'http://localhost:5000/security',
 
         initialize: function() {
-            //check for sessionStorage support
+            //check for storage support
             if (Storage && sessionStorage) {
                 this.supportStorage = true;
             }
@@ -22,6 +22,7 @@ define(function(require, exports, module) {
                 return Backbone.Model.prototype.get.call(this, key);
             }
             var data = sessionStorage.getItem(key);
+            //var data = localStorage.getItem(key);
             if (data && data[0] !== '{') {
                 return data;
             }
@@ -32,6 +33,7 @@ define(function(require, exports, module) {
         put: function(key, value) {
             if (this.supportStorage) {
                 sessionStorage.setItem(key, value);
+                //localStorage.setItem(key, value);
             } else {
                 Backbone.Model.prototype.set.call(this, key, value);
             }
@@ -41,6 +43,7 @@ define(function(require, exports, module) {
         remove: function(key) {
             if (this.supportStorage) {
                 sessionStorage.removeItem(key);
+                //localStorage.removeItem(key);
             } else {
                 Backbone.Model.prototype.unset.call(this, key);
             }
@@ -52,6 +55,7 @@ define(function(require, exports, module) {
                 return Backbone.Model.prototype.clear(this);
             }
             sessionStorage.clear();
+            //localStorage.clear();
         },
 
 
