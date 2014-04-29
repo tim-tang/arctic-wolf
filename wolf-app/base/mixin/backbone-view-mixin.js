@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var backboneViewExtensions = {
+    var backboneViewMixin = {
 
         mixin: function(from) {
             var to = this.prototype;
@@ -16,8 +16,8 @@ define(function(require, exports, module) {
             _.defaults(to.triggers, from.triggers);
 
             // we then extend `to`'s `initialize`
-            backboneViewExtensions.extendMethod(to, from, "initialize");
-            backboneViewExtensions.extendMethod(to, from, "render");
+            backboneViewMixin.extendMethod(to, from, "initialize");
+            backboneViewMixin.extendMethod(to, from, "render");
         },
 
         // Helper method to extend an already existing method
@@ -43,6 +43,6 @@ define(function(require, exports, module) {
         }
     };
 
-    module.exports = _.extend(Backbone.View.prototype, backboneViewExtensions);
+    module.exports = _.extend(Backbone.View.prototype, backboneViewMixin);
 
 });

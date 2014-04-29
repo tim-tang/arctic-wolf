@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var backboneViewExtension = require('../mixin/backbone-view-extension');
+    var backboneViewMixin = require('../mixin/backbone-view-mixin');
 
     var eventBus = require('../../app-main/app-eventbus');
 
@@ -19,7 +19,7 @@ define(function(require, exports, module) {
             eventBus.trigger('hide-loading');
         },
     }, {
-        mixin: backboneViewExtension.mixin
+        mixin: backboneViewMixin.mixin
     });
 
     module.exports = baseView;

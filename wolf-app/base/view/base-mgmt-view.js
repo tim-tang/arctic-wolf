@@ -8,7 +8,6 @@ define(function(require, exports, module) {
     var eventBus = require('../../app-main/app-eventbus');
     var commonUtils = require('../../common/common-utils');
     var componentFacade = require('../../common/component-facade');
-    var mgmtViewMixin = require('../mixin/mgmt-view-mixin');
 
     var baseMgmtView = BaseView.extend({
 
@@ -64,6 +63,5 @@ define(function(require, exports, module) {
 
     });
 
-    baseMgmtView.mixin(mgmtViewMixin);
     module.exports = baseMgmtView;
 });
