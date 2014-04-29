@@ -27,5 +27,6 @@ define(function(require, exports, module) {
     });
 
     vehicleMgmt.mixin(mgmtViewMixin);
+    
     module.exports = vehicleMgmt;
 });

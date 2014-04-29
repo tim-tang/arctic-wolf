@@ -39,7 +39,8 @@ define(function(require, exports, module) {
         },
 
         view_obj: function(event) {
-            if (event) e.preventDefault();
+            if (event) event.preventDefault();
+            alert("mgmtViewMixin");
             //TODO:
         },
 
