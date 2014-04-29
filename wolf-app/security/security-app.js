@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('../app-main/app-eventbus');
     var viewManager = require('../app-main/app-view-manager');
-     var commonLoading = require('../common/common-loading');
+    var commonLoading = require('../common/common-loading');
 
     var securityApp = new Backbone.Layout({
 
@@ -49,12 +49,12 @@ define(function(require, exports, module) {
         },
 
         show_loading: function() {
-             commonLoading.init('#security-container');
-         },
+            commonLoading.init('#security-container');
+        },
 
-         hide_loading: function() {
-             commonLoading.destroy();
-         },
+        hide_loading: function() {
+            commonLoading.destroy();
+        },
     });
 
     module.exports = securityApp;

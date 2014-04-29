@@ -1,4 +1,4 @@
-define(function(require, exports, module){
+define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     require('subroute');
@@ -16,7 +16,7 @@ define(function(require, exports, module){
         },
 
         home: function() {
-            eventBus.trigger('switch-view');
+            eventBus.trigger('layout:check-layout-action');
         }
     });
 

@@ -8,14 +8,14 @@ define(function(require, exports, module) {
     var viewManager = require('./app-view-manager');
     var AppBaseRouter = require('./app-base-router');
     var authenticationProvider = require('../security/authentication/authentication-provider');
-    var AppRouter = {};
 
+    var AppRouter = {};
     AppRouter.Router = AppBaseRouter.extend({
 
         initialize: function() {
             // ---------------- Register Events -------------------//
-            eventBus.on('check-layout-action', this.check_layout_action, this);
-            eventBus.on('logout-action', this.logout_action, this);
+            eventBus.on('layout:check-layout-action', this.check_layout_action, this);
+            eventBus.on('layout:discard-layout-action', this.discard_layout_action, this);
 
             // setup the ajax links for the html5 push navigation
             $("#main-body").on("click", "a:not(a[data-bypass])", function(e) {
@@ -37,17 +37,14 @@ define(function(require, exports, module) {
             });
         },
 
-
-
         // ------------------ Event Actions ---------------------//
-        // TODO: need refactor.
         check_layout_action: function() {
             this.predict_layout_existence(function() {
                 eventBus.trigger('switch-view');
             });
         },
 
-        logout_action: function() {
+        discard_layout_action: function() {
             AppRouter.layoutApp = null;
             viewManager.discardLayout();
         },
@@ -67,26 +64,13 @@ define(function(require, exports, module) {
             '*error': 'not_found',
         },
 
-        // ----------------- Define Security Resources -------------------//
-        /**
-         *  Resource that need be authorized
-         */
-        security_resources: ['#dashboard/', '#vehicle-mgmt/', '#user-group-mgmt/', '#user-mgmt/', '#role-mgmt/', '#privilege-mgmt/', '#criteria-mgmt/', '#generic-filter/'],
-        /**
-         * Resource that is public
-         */
-        public_resources: ['', '#security/login', '#security/forgot-password', '#security/reset-password'],
-        /**
-         * Cancelled access resources while user authenticated.
-         */
-        cancelled_while_auth_done: ['#security/login'],
 
         // ------------------ Before & After Router Interceptor ---------------------//
         before: function(params, next){
             var isAuthenticated = authenticationProvider.get('authenticated');
             var redirectUrl = Backbone.history.location.hash;
-            var isSecurityResource = _.contains(this.security_resources, redirectUrl);
-            var isCancelAccessResource = _.contains(this.cancelled_while_auth_done, redirectUrl);
+            var isSecurityResource = _.contains(App.SECURITY_RESOURCES, redirectUrl);
+            var isCancelAccessResource = _.contains(App.CANCELLED_WHILE_AUTH_DONE, redirectUrl);
 
             if(!isAuthenticated && isSecurityResource){
                 // if user not authenticated and try to access security resources,

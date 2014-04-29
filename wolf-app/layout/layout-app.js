@@ -29,7 +29,6 @@ define(function(require, exports, module) {
 
         initialize: function() {
             eventBus.on('switch-view', this.switch_view, this);
-            this.subviews = [];
         },
 
         beforeRender: function() {
@@ -40,7 +39,6 @@ define(function(require, exports, module) {
             // -- insert layout logo view
             var layoutLogoView = new layoutLogo();
             this.insertView('#layout-logo-user-menu', layoutLogoView).render();
-            this.subviews.push(layoutLogoView);
 
             // -- insert layout user view
             var self = this;
@@ -49,14 +47,11 @@ define(function(require, exports, module) {
                 // -- insert layout menu view
                 var layoutMenuView = new layoutMenu();
                 self.insertView('#layout-logo-user-menu', layoutMenuView).render();
-                self.subviews.push(layoutMenuView);
             });
-            this.subviews.push(layoutUserView);
 
             // -- insert layout profile view
             var layoutProfileView = new layoutProfile();
             this.insertView('#layout-profile', layoutProfileView).render();
-            this.subviews.push(layoutProfileView);
         },
 
         /**

@@ -15,8 +15,8 @@ define(function(require, exports, module) {
 
         sign_out: function(e) {
             e.preventDefault();
-            authenticationProvider.signout(function(){
-                eventBus.trigger('logout-action');
+            authenticationProvider.signout(function() {
+                eventBus.trigger('layout:discard-layout-action');
                 Backbone.history.navigate('security/login', true);
             });
         }

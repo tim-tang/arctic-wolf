@@ -15,12 +15,11 @@ define(function(require, exports, module) {
         template: 'security-login.html',
 
         initialize: function() {
-            this.subviews = [];
+
         },
 
         afterRender: function() {
             var layoutFooterView = new layoutFooter();
-            this.subviews.push(layoutFooterView);
             this.insertView('.middle-login', layoutFooterView).render();
         },
 

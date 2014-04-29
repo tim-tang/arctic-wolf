@@ -9,30 +9,30 @@ define(function(require, exports, module) {
         prefix: "layout/templates/",
         template: 'layout-menu.html',
 
-        initialize: function(){
+        initialize: function() {
             eventBus.on('active-menu-item', this.active_menu_item, this);
         },
 
         events: {
-             'click ul.cl-vnavigation li': 'active_menu_item'
-         },
+            'click ul.cl-vnavigation li': 'active_menu_item'
+        },
 
-        afterRender: function(){
+        afterRender: function() {
             //add layout behavior after loaded complete.
             var layoutBehavior = require('../behavior/layout-behavior');
             layoutBehavior.init();
             this.active_menu_item();
         },
 
-        active_menu_item: function(event){
-            if(event){
+        active_menu_item: function(event) {
+            if (event) {
                 event.preventDefault();
             }
             $('ul.cl-vnavigation li').each(function(index, li) {
                 var $clink = li.children[0];
                 if ($clink.href == String(window.location)) {
                     $(this).addClass('active');
-                } else{
+                } else {
                     $(this).removeClass('active');
                 }
             });

@@ -6,7 +6,12 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     require('layoutmanager');
     var authenticationProvider = require('../security/authentication/authentication-provider');
+    var appRouter = require('./app-router');
+    window.App = require('../common/global-constant');
 
+    /****************************************************
+     * Backbone Layout Manager Configuration.
+     ****************************************************/
     Backbone.Layout.configure({
         // Set the prefix to where your templates live on the server, but keep in
         // mind that this prefix needs to match what your production paths will be.
@@ -48,7 +53,7 @@ define(function(require, exports, module) {
          * Change the `url` property of options.
          */
         options = _.extend(options, {
-            url: 'http://localhost:5000' + (_.isFunction(model.url) ? model.url() : model.url)
+            url: App.WS_HOST + (_.isFunction(model.url) ? model.url() : model.url)
         });
 
         /**
@@ -73,18 +78,19 @@ define(function(require, exports, module) {
         backboneSync(method, model, cutomizedOptions ? cutomizedOptions : options);
     };
 
-    var appRouter = require('./app-router');
 
+    /****************************************************
+     * Wolf App Main Entrance.
+     ****************************************************/
     module.exports = {
         init: function() {
-            window.App = require('../common/global-constant');
-            // Set the app namespace instancing the router
+            // set the app namespace instancing the router
             var WolfApp = {
                 ROOT: "/wolf-app",
                 APP_ROUTERS: [
                 new appRouter()]
             };
-            // Start the Backbone push navigation
+            // start the Backbone push navigation
             Backbone.history.start({
                 root: WolfApp.ROOT,
                 pushState: false,
