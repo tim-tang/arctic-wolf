@@ -6,6 +6,7 @@
 
 	var eventBus = require('../app-main/app-eventbus');
 	var commonLoading = require('../common/common-loading');
+	var viewManager = require('../app-main/app-view-manager');
 
 	var roleMgmt = require('./view/role-mgmt');
 	var roleModal = require('./view/modal/role-new-modal');
@@ -26,15 +27,11 @@
             //TODO:
         },
 
-        afterRender: function() {
-            this.insertView('#role-home', new roleMgmt()).render();
-		 	this.insertView('#role-home', new roleModal()).render();
-        },
-
         initialize: function() {
             this.subviews = [];
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
+            eventBus.on('role:view-role', this.view_role, this);
         },
 
         afterRender: function() {
@@ -54,6 +51,10 @@
        	hide_loading: function() {
        		commonLoading.destroy();
 		},
+		
+		view_role: function() {
+            require('./role-details-app').run(viewManager);
+        }
     });
 
     module.exports = {

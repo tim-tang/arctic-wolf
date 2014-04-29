@@ -1,7 +1,7 @@
-define(function(require, exports, module){
+define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    var roleApp = require('../role-app');
+    var roleDetailsApp = require('../role-details-app');
     var eventBus = require('../../app-main/app-eventbus');
 
 	require('subroute');
@@ -19,11 +19,10 @@ define(function(require, exports, module){
 
         home: function() {
             eventBus.trigger('layout:check-layout-action');
-            //roleApp.render();
         },
 
         viewRole: function() {
-        	alert('view Role');
+        	eventBus.trigger('role:view-role');
         }
     });
 

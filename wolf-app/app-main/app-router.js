@@ -82,7 +82,7 @@ define(function(require, exports, module) {
             if(isAuthenticated && isCancelAccessResource){
                 // if user has been authenticated and try to access cancelled pages,
                 // will be redirect to dashboard page directly.
-                return Backbone.history.navigate('#dashboard/', { trigger : true });
+                //return Backbone.history.navigate('#dashboard/', { trigger : true });
             }
 
             // everythin is fine then go ahead.

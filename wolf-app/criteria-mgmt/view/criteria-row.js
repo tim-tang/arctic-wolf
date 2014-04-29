@@ -197,7 +197,6 @@ define(function(require, exports, module) {
 				attValue = this.vehicleAttrs.optgroups[0].options[0].value;
 			}
 
-			console.log("attValue = "+ attValue);
 			// Operator selector
 			if (attValue == '1') {
 				// Assign operators for String

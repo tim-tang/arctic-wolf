@@ -3,27 +3,44 @@
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
-	var roleTabs = require('./view/role-tabs');
+	
+    var eventBus = require('../app-main/app-eventbus');
+    var viewManager = require('../app-main/app-view-manager');
 
 	var roleDetailsApp = new Backbone.Layout({
 
-		el: '#main-content',
+		// el: '#main-content',
 
         manage: true,
 
         prefix: "role-mgmt/templates/",
 
-        template: 'role-details.html',
+        template: 'role-details-container.html',
+        
+        initialize: function() {
+            eventBus.on('role:render-role-tab', this.render_role_tab, this);
+		},
 
 	    events: {
             //TODO:
         },
-
+		
         afterRender: function() {
-            //this.insertView('#role-home', new roleMgmt()).render();
-		 	//this.insertView('#role-home', new roleModal()).render();
-		 	this.insertView('#tab-container', new roleTabs()).render();
+        	alert("1111");
+        	require('./view/role-tabs').run(viewManager);
+        	alert("2222");
+        	eventBus.trigger('role:active-tab');
+		 	// this.insertView('#tabs-container', new roleTabs()).render();
+        },
+        
+        render_role_tab: function() {
+        	alert("render_role_tab");
         }
     });
-    module.exports = roleDetailsApp;
+    
+	module.exports = {
+        run: function(viewManager) {
+            viewManager.show('#main-content', roleDetailsApp);
+        }
+    };
  });

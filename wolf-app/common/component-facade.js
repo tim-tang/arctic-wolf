@@ -125,12 +125,18 @@ define(function(require, exports, module) {
 
         },
 
+        /**
+         * Initial date selector
+         *
+         * @param selector, options, view, index
+         */
         init_select2: function(selector, options, view, index) {
             var componentSelect2 = require('./view/component-select2');
             var select2_view = (new componentSelect2({
                 selector: selector,
                 attrs: options
             })).render().promise().done(function(select2_view) {
+            	// Fetch select_id
             	var select_id = select2_view.options["selector_id"];
             	
             	// If select_id is not null, then set id to this select and append this selector to its container

@@ -75,7 +75,6 @@ define(function(require, exports, module) {
 			componentFacade.init_select2('.select2', this.objectType);
 			
 			var objType = this.objectType.optgroups[0].options[0].value;
-			console.log("objType = "+ objType);
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 	    },
@@ -108,11 +107,23 @@ define(function(require, exports, module) {
                 },*/
                      
         new_attributes: function() {
+        	
+        	var oneCriteriaRowSelectCount = 3;
+        	var selects = this.$('#criteria-table').children('#criteria-row-container').find('select');
+        	var criteriaCount = selects.length / 3;
+        	for(var i = 0; i < criteriaCount; i++) {
+        		var attributeValue = selects[i * oneCriteriaRowSelectCount + 0].value;
+        		var operatorValue = selects[i * oneCriteriaRowSelectCount + 1].value;
+        		var logicOperatorValue = selects[i * oneCriteriaRowSelectCount + 2].value;
+        		console.log(">>>>>>>>>>>>>>Criteria " + i + ": attributes-" + attributeValue + " operator-" + operatorValue + " logicOperator-" + logicOperatorValue);
+        	};
+        	
+        	
             return {
                 cri_name: this.$('#cri-name').val().trim(),
                 cri_desc: this.$('#cri-desc').val().trim(),
                 obj_type: this.$('#object-type').val().trim(),
-                enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
+                enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'                
             }
         },
 
