@@ -1,0 +1,30 @@
+{
+  "family": "arctic",
+  "version": "0.0.1",
+  "name": "wolf-app",
+  "author": "Tim.Tang <tang.jilong@gmail.com>",
+  "spm": {
+    "idleading": "dist/",
+    "source": "./wolf-app/sea-modules-spm",
+    "alias": {
+      "$": "jquery/jquery/1.10.1/jquery",
+      "$-debug": "jquery/jquery/1.10.1/jquery-debug",
+      "jquery": "jquery/jquery/1.10.1/jquery",
+      "jquery-debug": "jquery/jquery/1.10.1/jquery-debug",
+      "select2": "jquery/select2/3.4.5/select2-zh-cn",
+      "select2-css": "jquery/select2/3.4.5/select2.css",
+      "select2-css-debug": "jquery/select2/3.4.5/select2-debug.css",
+      "underscore": "gallery/underscore/1.5.2/underscore",
+      "backbone": "gallery/backbone/1.1.0/backbone"
+    }
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-sea-hashmap": "~0.2.1",
+    "grunt-cmd-transport": "~0.4.1",
+    "grunt-cmd-concat": "~0.2.5",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-clean": "~0.5.0"
+  }
+}
+
