@@ -23,12 +23,6 @@ define(function(require, exports, module) {
         
         collection: privilegeColl,
 
-        initialize: function() {
-            this.listenTo(privilegeColl, 'request', this.show_loading);
-            this.listenTo(privilegeColl, 'remove', this.hide_loading);
-            this.listenTo(privilegeColl, 'sync', this.load_objects);
-        },
-
         afterRender: function() {
             privilegeColl.fetch();
         }

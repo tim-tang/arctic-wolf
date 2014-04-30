@@ -23,12 +23,6 @@ define(function(require, exports, module) {
         
         collection: userColl,
 
-        initialize: function() {
-            this.listenTo(userColl, 'request', this.show_loading);
-            this.listenTo(userColl, 'remove', this.hide_loading);
-            this.listenTo(userColl, 'sync', this.load_objects);
-        },
-
         afterRender: function() {
             userColl.fetch();
         }

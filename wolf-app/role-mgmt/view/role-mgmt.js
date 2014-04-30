@@ -25,12 +25,6 @@ define(function(require, exports, module) {
         
         collection: roleColl,
 
-        initialize: function() {
-            this.listenTo(roleColl, 'request', this.show_loading);
-            this.listenTo(roleColl, 'remove', this.hide_loading);
-            this.listenTo(roleColl, 'sync', this.load_objects);
-        },
-
 		view_obj: function(event) {
             if (event) event.preventDefault();
             require('../role-details-app').run(viewManager);

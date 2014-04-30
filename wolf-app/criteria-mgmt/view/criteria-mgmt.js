@@ -24,12 +24,6 @@ define(function(require, exports, module) {
         datatable_id: 'criteria-mgmt-datatable',
         
         collection: criteriaColl,
-        
-        initialize: function() {
-            this.listenTo(criteriaColl, 'request', this.show_loading);
-            this.listenTo(criteriaColl, 'remove', this.hide_loading);
-            this.listenTo(criteriaColl, 'sync', this.load_objects);
-        },
 
         afterRender: function() {
             criteriaColl.fetch();
