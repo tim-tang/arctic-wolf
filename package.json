@@ -5,7 +5,7 @@
   "author": "Tim.Tang <tang.jilong@gmail.com>",
   "spm": {
     "idleading": "dist/",
-    "source": "./wolf-app/sea-modules-spm",
+    "source": "wolf-app",
     "alias": {
       "$": "jquery/jquery/1.10.1/jquery",
       "$-debug": "jquery/jquery/1.10.1/jquery-debug",
