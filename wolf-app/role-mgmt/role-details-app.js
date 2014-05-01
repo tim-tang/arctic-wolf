@@ -6,6 +6,8 @@
 	
     var eventBus = require('../app-main/app-eventbus');
     var viewManager = require('../app-main/app-view-manager');
+    
+    var roleTabs = require('./view/role-tabs');
 
 	var roleDetailsApp = new Backbone.Layout({
 
@@ -26,11 +28,8 @@
         },
 		
         afterRender: function() {
-        	alert("1111");
-        	require('./view/role-tabs').run(viewManager);
-        	alert("2222");
-        	eventBus.trigger('role:active-tab');
-		 	// this.insertView('#tabs-container', new roleTabs()).render();
+			var roleTabsView = new roleTabs();
+            this.insertView('#role-home', roleTabsView).render();
         },
         
         render_role_tab: function() {

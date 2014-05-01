@@ -1,13 +1,13 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
-    var Backbone = require('backbone');
+    var BaseView = require('../../base/view/base-view');
+    var detailsViewMixin = require('../../base/mixin/details-view-mixin');
+
     var commonUtils = require('../../common/common-utils');
     var eventBus = require('../../app-main/app-eventbus');
 
-    var roleTabs = Backbone.View.extend({
-
-        manage: true,
+    var roleTabs = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
 
@@ -48,9 +48,7 @@ define(function(require, exports, module) {
         }
     });
 
-	module.exports = {
-        run: function(viewManager) {
-            viewManager.show('#tab-container', roleTabs);
-        }
-    };
+	roleTabs.mixin(detailsViewMixin);
+
+    module.exports = roleTabs;
 });

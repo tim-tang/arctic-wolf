@@ -7,7 +7,6 @@ define(function(require, exports, module) {
     var mgmtViewMixin = require('../../base/mixin/mgmt-view-mixin');
 	var viewManager = require('../../app-main/app-view-manager');
 
-    	
     var eventBus = require('../../app-main/app-eventbus');
     var commonUtils = require('../../common/common-utils');
     var componentFacade = require('../../common/component-facade');
@@ -27,6 +26,7 @@ define(function(require, exports, module) {
 
 		view_obj: function(event) {
             if (event) event.preventDefault();
+            alert("call role-details-app");
             require('../role-details-app').run(viewManager);
         },
         

@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    var roleDetailsApp = require('../role-details-app');
     var eventBus = require('../../app-main/app-eventbus');
+	var viewManager = require('../../app-main/app-view-manager');
 
 	require('subroute');
 
@@ -22,7 +22,8 @@ define(function(require, exports, module) {
         },
 
         viewRole: function() {
-        	eventBus.trigger('role:view-role');
+        	alert("In route");
+            require('../role-details-app').run(viewManager);
         }
     });
 
