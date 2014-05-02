@@ -1,17 +1,17 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
-    var BaseView = require('../../base/view/base-view');
-    var detailsViewMixin = require('../../base/mixin/details-view-mixin');
+    var BaseView = require('../../../base/view/base-view');
+    var detailsViewMixin = require('../../../base/mixin/details-view-mixin');
 
-    var commonUtils = require('../../common/common-utils');
-    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../../common/common-utils');
+    var eventBus = require('../../../app-main/app-eventbus');
 
-    var roleTabs = BaseView.extend({
+    var roleGeneralInfo = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
 
-        template: 'role-tabs.html',
+        template: 'role-general-info.html',
 
         initialize: function() {
             //eventBus.on('active_tab', this.active_tab, this);
@@ -23,7 +23,6 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-        	alert("In role tabs");
             // replace legacy behavior core with layout behavior.
 			// require('../../layout/behavior/layout-behavior').init_layout_misc();
             //this.active_tab();
@@ -48,7 +47,7 @@ define(function(require, exports, module) {
         }
     });
 
-	roleTabs.mixin(detailsViewMixin);
+	roleGeneralInfo.mixin(detailsViewMixin);
 
-    module.exports = roleTabs;
+    module.exports = roleGeneralInfo;
 });
