@@ -10,6 +10,7 @@
 
 	var roleMgmt = require('./view/role-mgmt');
 	var roleModal = require('./view/modal/role-new-modal');
+	var roleDetailsApp = require('./role-details-app');
 
 	var roleApp = new Backbone.Layout({
 
@@ -53,7 +54,9 @@
 		},
 		
 		view_role: function() {
-            require('./role-details-app').run(viewManager);
+			var roleDetailsApp = new roleDetailsApp();
+            this.insertView('#role-home', roleModalView).render();
+            this.subviews.push(roleModalView);
         }
     });
 
