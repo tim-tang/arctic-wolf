@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     //- Import dependency js
-    require('jcookie');
     require('nanoscroller');
     require('sparkline');
     require('jquery-ui');
