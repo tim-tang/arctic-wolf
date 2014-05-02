@@ -22,7 +22,6 @@ define(function(require, exports, module) {
         },
 
         viewRole: function() {
-        	alert("In route");
             require('../role-details-app').run(viewManager);
         }
     });
