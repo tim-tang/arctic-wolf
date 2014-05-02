@@ -6,7 +6,7 @@ define(function(require, exports, module) {
     require('datatables');
     require('jasny');
     require('select2');
-    //require('switch');
+    require('switch');
     require('multi-select');
     require('moment');
     require('daterangepicker');

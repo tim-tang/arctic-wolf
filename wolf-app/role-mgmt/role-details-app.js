@@ -8,6 +8,7 @@
     var viewManager = require('../app-main/app-view-manager');
     
     var roleGeneralInfo = require('./view/tab/role-general-info');
+    var rolePrivilege = require('./view/tab/role-privilege');
 
 	var roleDetailsApp = new Backbone.Layout({
 
@@ -30,9 +31,13 @@
         afterRender: function() {
 			var roleGeneralInfoView = new roleGeneralInfo();
             this.insertView('#generalInfo', roleGeneralInfoView).render();
+            
+            var rolePrivilegeView = new rolePrivilege();
+            this.insertView('#privilege', rolePrivilegeView).render();
         },
         
         active_tab: function() {
+            if (event) event.preventDefault();
 			$('div.tab-pane cont').each(function(index, li) {
 				var $clink = li.children[0];
 				alert($clink.href);
