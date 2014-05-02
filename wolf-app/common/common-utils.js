@@ -11,7 +11,6 @@ define(function(require, exports, module) {
     require('datatables');
     require('jasny');
     require('select2');
-    require('switch');
     require('multi-select');
 
     module.exports = {

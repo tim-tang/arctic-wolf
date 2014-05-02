@@ -6,7 +6,7 @@ define(function(require, exports, module) {
     require('datatables');
     require('jasny');
     require('select2');
-    require('switch');
+    //require('switch');
     require('multi-select');
     require('moment');
     require('daterangepicker');
@@ -138,12 +138,12 @@ define(function(require, exports, module) {
             })).render().promise().done(function(select2_view) {
             	// Fetch select_id
             	var select_id = select2_view.options["selector_id"];
-            	
+
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
                 	select2_view.$el.appendTo('#' + select2_view.options["selector_id"] + '-container');
                 	select2_view.$el.find('select').attr("id", select2_view.options["selector_id"]);
-                } 
+                }
                 // Append this selector to the promised element
                 else {
                 	select2_view.$el.appendTo(view.$el.children()[index]);
