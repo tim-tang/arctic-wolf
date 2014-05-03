@@ -9,6 +9,9 @@
     
     var roleGeneralInfo = require('./view/tab/role-general-info');
     var rolePrivilege = require('./view/tab/role-privilege');
+    var roleUser = require('./view/tab/role-user');
+    var roleUsergroup = require('./view/tab/role-user-group');
+    var roleHistory = require('./view/tab/role-history');
 
 	var roleDetailsApp = new Backbone.Layout({
 
@@ -30,19 +33,31 @@
 		
         afterRender: function() {
 			var roleGeneralInfoView = new roleGeneralInfo();
-            this.insertView('#generalInfo', roleGeneralInfoView).render();
+            this.insertView('#general-info', roleGeneralInfoView).render();
             
             var rolePrivilegeView = new rolePrivilege();
             this.insertView('#privilege', rolePrivilegeView).render();
+            
+            var roleUserView = new roleUser();
+            this.insertView('#user', roleUserView).render();
+            
+            var roleUsergroupView = new roleUsergroup();
+            this.insertView('#user-group', roleUsergroupView).render();
+            
+			var roleHistoryView = new roleHistory();
+            this.insertView('#history', roleHistoryView).render();
         },
         
-        active_tab: function() {
+        active_tab: function(event) {
             if (event) event.preventDefault();
-			$('div.tab-pane cont').each(function(index, li) {
-				var $clink = li.children[0];
-				alert($clink.href);
-				alert(String(window.location));
-				if ($clink.href == String(window.location)) {
+            
+            var $clink = event.currentTarget.children[0].text;
+            
+            
+			$('div.tab-pane').each(function(tab) {
+				alert(tab.id);
+				if ($clink == tab.id) {
+					alert("In active tab" + tab.id);
 					$(this).addClass('active');
 				} else {
 					$(this).removeClass('active');
