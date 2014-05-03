@@ -11,10 +11,12 @@
       "$-debug": "jquery/jquery/1.10.1/jquery-debug",
       "jquery": "jquery/jquery/1.10.1/jquery",
       "jquery-debug": "jquery/jquery/1.10.1/jquery-debug",
-      "select2": "jquery/select2/3.4.5/select2-zh-cn",
-      "select2-css": "jquery/select2/3.4.5/select2.css",
-      "select2-css-debug": "jquery/select2/3.4.5/select2-debug.css",
       "underscore": "gallery/underscore/1.5.2/underscore",
+      "select2": "jquery/select2/3.4.6/select2.js",
+      "select2-css": "jquery/select2/3.4.6/select2.css",
+      "datatables": "jquery/datatables/1.9.4/datatables",
+      "datetimepicker": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.js",
+      "datetimepicker-css": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.css",
       "backbone": "gallery/backbone/1.1.0/backbone"
     }
   }
