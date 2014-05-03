@@ -14,9 +14,20 @@
       "underscore": "gallery/underscore/1.5.2/underscore",
       "select2": "jquery/select2/3.4.6/select2.js",
       "select2-css": "jquery/select2/3.4.6/select2.css",
+      "nanoscroller": "jquery-plugin/nanoscroller/0.7.5/nanoscroller.js",
+      "nanoscroller-css": "jquery-plugin/nanoscroller/0.7.5/nanoscroller.css",
       "datatables": "jquery/datatables/1.9.4/datatables",
       "datetimepicker": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.js",
       "datetimepicker-css": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.css",
+      "switch": "atans/bootstrap-switch/2.0.0/bootstrap-switch.js",
+      "switch-css": "atans/bootstrap-switch/2.0.0/bootstrap-switch.css",
+      "sparkline": "seedit/sparkline/0.0.1/sparkline.js",
+      "bootstrap-slider":"gumutianqi/bootstrap-slider/2.0.0/bootstrap-slider.js",
+      "bootstrap-slider-css":"gumutianqi/bootstrap-slider/2.0.0/slider.css",
+      "bootstrap":"gallery/bootstrap/3.0.0/bootstrap.js",
+      "bootstrap":"gallery/bootstrap/3.0.0/bootstrap.css",
+      "font-awesome": "mooxe/font-awesome/4.0.3/css/font-awesome.min.css",
+      "animate": "alice/animate/2.1.0/animate.css",
       "backbone": "gallery/backbone/1.1.0/backbone"
     }
   }
