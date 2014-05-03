@@ -183,7 +183,7 @@ define(function(require, exports, module) {
             });
 
             /*Datepicker UI*/
-            $(".ui-datepicker").datepicker();
+            //$(".ui-datepicker").datepicker();
 
             /*Tooltips*/
             $('.ttip, [data-toggle="tooltip"]').tooltip();

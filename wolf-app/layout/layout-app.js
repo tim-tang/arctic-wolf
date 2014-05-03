@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     //- Import dependency js
     require('nanoscroller');
     require('sparkline');
-    require('jquery-ui');
     require('gritter');
     require('bootstrap');
 
