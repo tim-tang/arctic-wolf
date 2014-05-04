@@ -2,35 +2,34 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var BaseView = require('../../../base/view/base-view');
-    var objDetailsViewMixin = require('../../../base/mixin/object-details-view-mixin');
+    var objMgmtViewMixin = require('../../../base/mixin/object-mgmt-view-mixin');
 
     var commonUtils = require('../../../common/common-utils');
     var eventBus = require('../../../app-main/app-eventbus');
 
-    var roleModel = require('../../model/role-model');
+    var roleHistoryColl = require('../../collection/role-history-coll');
 
     var roleHistory = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
 
         template: 'role-history.html',
+        
+        datatable_id: 'role-history-datatable',
 
-		model: roleModel,
-
-        initialize: function() {
+		collection: roleHistoryColl,
+		
+		initialize: function() {
             $('#tab-content').children().remove();
         },
-
-        events: {
-
-        },
-
-        afterRender: function() {
-
+        
+   		afterRender: function() {
+   			roleHistoryColl.reset();
+            roleHistoryColl.fetch();
         }
     });
 
-	roleHistory.mixin(objDetailsViewMixin);
+	roleHistory.mixin(objMgmtViewMixin);
 
     module.exports = roleHistory;
 });

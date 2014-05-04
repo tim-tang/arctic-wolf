@@ -22,11 +22,7 @@ define(function(require, exports, module) {
         pageStatus: 'view',
 
         initialize: function() {
-        	this.listenTo(this.model, 'request', this.show_loading);
-        	this.listenTo(this.model, 'sync', this.load_role_details);
-			//$('#tab-content').children().remove();
-            this.model.set({id: 1});
-            this.model.fetch();
+        	//TODO:
         },
 
         events: {

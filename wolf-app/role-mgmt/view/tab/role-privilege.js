@@ -13,13 +13,15 @@ define(function(require, exports, module) {
     var rolePrivilge = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
+        
+        datatable_id: 'role-history-datatable',
 
         template: 'role-privilege.html',
 
-		model: roleModel,
+		model: new roleModel(),
 
         initialize: function() {
-            $('#tab-content').children().remove();
+            
         },
 
         events: {

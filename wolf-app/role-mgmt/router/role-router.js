@@ -28,6 +28,7 @@ define(function(require, exports, module) {
         },
         
         viewRole: function() {
+        	// TODO: Should get selected row
             require('../role-details-app').run(viewManager);
         },
 

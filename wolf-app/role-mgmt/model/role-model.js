@@ -4,6 +4,8 @@
 
     var roleModel = Backbone.Model.extend({
 
+		idAttribute: 'id',
+		
         urlRoot: '/roles',
         //url: function(){
         //    var origUrl = Backbone.Model.prototype.url.call(this);
@@ -13,6 +15,7 @@
         //},
 
         defaults: {
+        	id: 1,
             role_name: '',
             role_desc: '',
             privileges: '',

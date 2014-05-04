@@ -9,11 +9,13 @@ define(function(require, exports, module) {
     var objDetailsViewMixin = {
 
         initialize: function() {
-        	this.listenTo(this.model, 'request', this.show_loading);
+        	$('#tab-content').children().remove();
+        	
+        	//this.listenTo(this.model, 'request', this.show_loading);
+        	//this.listenTo(this.model, 'remove', this.hide_loading);
         	this.listenTo(this.model, 'sync', this.load_object);
-            /*this.listenTo(this.collection, 'request', this.show_loading);
-            this.listenTo(this.collection, 'remove', this.hide_loading);
-            this.listenTo(this.collection, 'sync', this.load_objects);*/
+        	
+        	this.model.fetch();
         },
 
         events: {
@@ -22,7 +24,7 @@ define(function(require, exports, module) {
         },
 
         load_object: function() {
-
+            console.log(this.model.toJSON());
         },
 
         edit_obj: function(event) {

@@ -12,6 +12,8 @@
     var roleUser = require('./view/tab/role-user');
     var roleUsergroup = require('./view/tab/role-user-group');
     var roleHistory = require('./view/tab/role-history');
+    
+    var roleModel = require('./model/role-model');
 
 	var roleDetailsApp = new Backbone.Layout({
 
@@ -41,21 +43,26 @@
         
         renderGeneralInfo: function() {
         	var roleGeneralInfoView = new roleGeneralInfo();
+        	// TODO: Set model as selected model
+        	// roleGeneralInfoView.model = new roleModel();
             this.insertView('#tab-content', roleGeneralInfoView).render();
         },
         
         renderPrivileges: function() {
         	var rolePrivilegeView = new rolePrivilege();
+        	//rolePrivilegeView.model = new roleModel();
             this.insertView('#tab-content', rolePrivilegeView).render();
         },
         
         renderUserGroups: function() {
         	var roleUsergroupView = new roleUsergroup();
+        	//roleUsergroupView.model = new roleModel();
             this.insertView('#tab-content', roleUsergroupView).render();
         },
         
         renderUsers: function() {
         	var roleUserView = new roleUser();
+        	//roleUserView.model = new roleModel();
             this.insertView('#tab-content', roleUserView).render();
         },
         

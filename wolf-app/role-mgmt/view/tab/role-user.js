@@ -15,10 +15,10 @@ define(function(require, exports, module) {
 
         template: 'role-user.html',
 
-		model: roleModel,
+		model: new roleModel(),
 
         initialize: function() {
-            $('#tab-content').children().remove();
+            
         },
 
         events: {
