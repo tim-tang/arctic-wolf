@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     // var Backbone = require('backbone');
     var BaseView = require('../../base/view/base-view');
-    var mgmtViewMixin = require('../../base/mixin/mgmt-view-mixin');
+    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
     
     var eventBus = require('../../app-main/app-eventbus');
     var commonUtils = require('../../common/common-utils');
@@ -28,7 +28,7 @@ define(function(require, exports, module) {
         }
     });
 
-	privilegeMgmt.mixin(mgmtViewMixin);
+	privilegeMgmt.mixin(objMgmtViewMixin);
 
     module.exports = privilegeMgmt;
 });

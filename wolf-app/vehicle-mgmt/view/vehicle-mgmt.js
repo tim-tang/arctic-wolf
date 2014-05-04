@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     var eventBus = require('../../app-main/app-eventbus');
 
     var vehicleColl = require('../collection/vehicle-coll');
-    var mgmtViewMixin = require('../../base/mixin/mgmt-view-mixin');
+    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
 
     var vehicleMgmt = BaseView.extend({
 
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         }
     });
 
-    vehicleMgmt.mixin(mgmtViewMixin);
+    vehicleMgmt.mixin(objMgmtViewMixin);
     
     module.exports = vehicleMgmt;
 });
