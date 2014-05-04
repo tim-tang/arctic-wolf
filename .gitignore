@@ -33,3 +33,4 @@ sea-modules
 .settings
 *.swp
 .externalToolBuilders
+dist/

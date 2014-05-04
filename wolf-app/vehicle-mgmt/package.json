@@ -1,0 +1,17 @@
+{
+  "family": "wolf-app",
+  "name": "vehicle-mgmt",
+  "version": "0.0.1",
+  "spm": {
+    "source": "./",
+    "alias": {
+      "$": "$",
+      "_": "underscore",
+      "backbone": "backbone"
+    },
+    "output": [
+      "vehicle-app.js"
+    ]
+  }
+}
+
