@@ -27,6 +27,11 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             criteriaColl.fetch();
+        },
+        
+        new_obj: function(event) {
+            if (event) event.preventDefault();
+            eventBus.trigger('reset_criteria_new_modal');
         }
 	});
 

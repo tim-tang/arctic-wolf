@@ -55,21 +55,11 @@ define(function(require, exports, module) {
 			
 			eventBus.on('add_criteria_row', this.add_criteria_row, this);
 			eventBus.on('remove_criteria_row', this.remove_criteria_row, this);
+			
+			// Reset criteria new modal
+			eventBus.on('reset_criteria_new_modal', this.resetCriteriaNewModal, this);
         },
-
-		changeObjectType: function() {
-		    _.each(this.views["#criteria-row-container"], function(view) {
-		    	//console.log(view);
-			    view.$el.remove();  
-		    });
-    
-			var objType = $("#object-type-container").find('select').val();
-           	var criteriaRowView = new criteriaRow({objType: objType});
-            this.insertView('#criteria-row-container', criteriaRowView).render();
-            
-            this.criteriaCount = 1;
-		},
-        
+     
         afterRender: function() {
             componentFacade.init_switch('.switch');
 			componentFacade.init_select2('.select2', this.objectType);
@@ -79,13 +69,19 @@ define(function(require, exports, module) {
             this.insertView('#criteria-row-container', criteriaRowView).render();
 	    },
         
+		changeObjectType: function() {
+			var objType = $("#object-type-container").find('select').val();
+			this.resetCriteria(objType);
+		},
+
+		// Add & remove crireria row
         add_criteria_row: function() {
 			var objType = $("#object-type-container").find('select').val();
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
             this.criteriaCount++;
         },
-        
+		// Add & remove crireria row
         remove_criteria_row: function(view) {
         	if(this.criteriaCount > 1) {
         		view.$el.remove();
@@ -93,7 +89,30 @@ define(function(require, exports, module) {
         	}
         },
         
+        // Reset CriteriaNewModal Page
+        resetCriteriaNewModal: function() {
+        	// Initial Object Type & Crieria
+			var objType = this.objectType.optgroups[0].options[0].value;
+            this.resetObjectType(objType);
+            this.resetCriteria(objType);
+        },
         
+        resetObjectType: function(objType) {
+			$('#object-type-container').children().remove();
+			componentFacade.init_select2('.select2', this.objectType);
+		},
+		
+		resetCriteria: function(objType) {
+		    _.each(this.views["#criteria-row-container"], function(view) {
+			    view.$el.remove();  
+		    });
+    
+           	var criteriaRowView = new criteriaRow({objType: objType});
+            this.insertView('#criteria-row-container', criteriaRowView).render();
+            
+            this.criteriaCount = 1;
+		},
+
         /****************************************************
          * 
          *					About data
@@ -120,10 +139,10 @@ define(function(require, exports, module) {
         	
         	
             return {
-                cri_name: this.$('#cri-name').val().trim(),
+				cri_name: this.$('#cri-name').val().trim(),
                 cri_desc: this.$('#cri-desc').val().trim(),
                 obj_type: this.$('#object-type').val().trim(),
-                enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'                
+                enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },
 

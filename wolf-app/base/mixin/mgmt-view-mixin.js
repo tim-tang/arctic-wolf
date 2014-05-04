@@ -17,7 +17,8 @@ define(function(require, exports, module) {
         events: {
             'click #mgmt-delete': 'delete_obj',
             'click #mgmt-edit': 'edit_obj',
-            'click #mgmt-view': 'view_obj'
+            'click #mgmt-view': 'view_obj',
+            'click #mgmt-new': 'new_obj'
         },
 
         load_objects: function() {
@@ -54,6 +55,11 @@ define(function(require, exports, module) {
             console.log(JSON.stringify(this.collection));
             _.invoke(this.collection.selected(), 'destroy');
             commonUtils.remove_selected_row(this.datatable);
+        },
+        
+        new_obj: function(event) {
+            if (event) event.preventDefault();
+            //TODO:
         }
     };
 
