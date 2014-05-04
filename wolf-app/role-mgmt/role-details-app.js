@@ -50,14 +50,18 @@
         
         active_tab: function(event) {
             if (event) event.preventDefault();
+        
+			var $clink = event.currentTarget.textContent;
+            var tabs = event.currentTarget.parentNode.children;
+            var $clinkIndex = 0;
             
-            var $clink = event.currentTarget.children[0].text;
+            for(;tabs.length; $clinkIndex++) {
+            	if($clink === tabs[$clinkIndex].textContent)
+					break;
+            }
             
-            
-			$('div.tab-pane').each(function(tab) {
-				alert(tab.id);
-				if ($clink == tab.id) {
-					alert("In active tab" + tab.id);
+			$('div.tab-pane').each(function(index) {
+				if ($clinkIndex === index) {
 					$(this).addClass('active');
 				} else {
 					$(this).removeClass('active');
