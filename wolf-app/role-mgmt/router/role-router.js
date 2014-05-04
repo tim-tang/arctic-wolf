@@ -14,7 +14,11 @@ define(function(require, exports, module) {
 
         routes: {
             '': 'home',
-            'view': 'viewRole'
+            'view': 'viewRole',
+            'privileges': 'viewPrivileges',
+            'user-groups': 'viewUserGroups',
+            'users': 'viewUsers',
+            'history': 'viewHistory'
         },
 
         home: function() {
@@ -23,6 +27,26 @@ define(function(require, exports, module) {
 
         viewRole: function() {
             require('../role-details-app').run(viewManager);
+        },
+
+        viewPrivileges: function() {
+            //TODO: switch to privileges view.
+            alert('Switch privilge view...');
+        },
+
+        viewUserGroups: function(){
+            //TODO: switch to user groups view.
+            alert('Switch user groups view...');
+        },
+
+        viewUsers: function() {
+            //TODO: switch to users view.
+            alert('Switch users view...');
+        },
+
+        viewHistory: function() {
+            //TODO: switch to history view.
+            alert('Switch history view...');
         }
     });
 
