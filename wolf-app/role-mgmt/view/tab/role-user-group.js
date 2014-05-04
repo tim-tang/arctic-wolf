@@ -6,11 +6,11 @@ define(function(require, exports, module) {
 
     var commonUtils = require('../../../common/common-utils');
     var eventBus = require('../../../app-main/app-eventbus');
-    
-	var roleModel = require('../../../model/role-model');
+
+	var roleModel = require('../../model/role-model');
 
     var roleUserGroup = BaseView.extend({
-		
+
         prefix: "role-mgmt/templates/tab/",
 
         template: 'role-user-group.html',
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-        	
+
         }
     });
 

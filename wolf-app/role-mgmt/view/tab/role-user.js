@@ -6,8 +6,8 @@ define(function(require, exports, module) {
 
     var commonUtils = require('../../../common/common-utils');
     var eventBus = require('../../../app-main/app-eventbus');
-    
-	var roleModel = require('../../../model/role-model');
+
+	var roleModel = require('../../model/role-model');
 
     var roleUser = BaseView.extend({
 
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-        	
+
         }
     });
 
