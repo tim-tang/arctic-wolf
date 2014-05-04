@@ -1,53 +1,40 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
+	var _ = require('underscore');
     var BaseView = require('../../../base/view/base-view');
-    var detailsViewMixin = require('../../../base/mixin/details-view-mixin');
+    var objDetailsViewMixin = require('../../../base/mixin/object-details-view-mixin');
 
     var commonUtils = require('../../../common/common-utils');
     var eventBus = require('../../../app-main/app-eventbus');
+    var componentFacade = require('../../../common/component-facade');
+    
+    var roleModel = require('../../../model/role-model');
 
     var roleGeneralInfo = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
 
         template: 'role-general-info.html',
+        
+        model: roleModel,
+        
+        pageStatus: 'view',
 
         initialize: function() {
-            //eventBus.on('active_tab', this.active_tab, this);
-            eventBus.on('role:active-tab', this.active_tab, this);
+			$('#tab-content').children().remove();
         },
 
         events: {
-             'click ul.nav-tabs li': 'active_tab'
+        	
         },
 
         afterRender: function() {
-            // replace legacy behavior core with layout behavior.
-			// require('../../layout/behavior/layout-behavior').init_layout_misc();
-            //this.active_tab();
-        },
-
-        active_tab: function() {
-        	alert("asdf");
-        	/*
-						$('div.tab-pane cont').each(function(index, li) {
-							//var sub_menus = $(li).find('ul');
-							//if (sub_menus.length > 0) {
-							//    return;
-							//}
-							var $clink = li.children[0];
-							if ($clink.href == String(window.location)) {
-								$(this).addClass('active');
-							} else {
-								$(this).removeClass('active');
-							}
-						});*/
-			
+			componentFacade.init_switch('.switch');
         }
     });
 
-	roleGeneralInfo.mixin(detailsViewMixin);
+	roleGeneralInfo.mixin(objDetailsViewMixin);
 
-    module.exports = roleGeneralInfo;
+	module.exports = roleGeneralInfo;
 });

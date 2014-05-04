@@ -59,7 +59,8 @@ define(function(require, exports, module) {
         
         new_obj: function(event) {
             if (event) event.preventDefault();
-            //TODO:
+			// $('.modal-content').find('input:text, input:password, input:file, select, textarea').val('');
+			// $('.modal-content').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
         }
     };
 

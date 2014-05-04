@@ -1,5 +1,6 @@
 define(function(require, exports, module) {
 
+	var $ = require('$');
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
 	var viewManager = require('../../app-main/app-view-manager');
@@ -15,6 +16,7 @@ define(function(require, exports, module) {
         routes: {
             '': 'home',
             'view': 'viewRole',
+            'general-info': 'viewGeneralInfo',
             'privileges': 'viewPrivileges',
             'user-groups': 'viewUserGroups',
             'users': 'viewUsers',
@@ -24,29 +26,29 @@ define(function(require, exports, module) {
         home: function() {
             eventBus.trigger('layout:check-layout-action');
         },
-
+        
         viewRole: function() {
             require('../role-details-app').run(viewManager);
         },
 
+		viewGeneralInfo: function() {
+            eventBus.trigger('role:render-general-info');
+        },
+        
         viewPrivileges: function() {
-            //TODO: switch to privileges view.
-            alert('Switch privilge view...');
+			eventBus.trigger('role:render-privileges');
         },
 
-        viewUserGroups: function(){
-            //TODO: switch to user groups view.
-            alert('Switch user groups view...');
+        viewUserGroups: function() {
+            eventBus.trigger('role:render-user-groups');
         },
 
         viewUsers: function() {
-            //TODO: switch to users view.
-            alert('Switch users view...');
+			eventBus.trigger('role:render-users');
         },
 
         viewHistory: function() {
-            //TODO: switch to history view.
-            alert('Switch history view...');
+			eventBus.trigger('role:render-history');
         }
     });
 

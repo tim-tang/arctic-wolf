@@ -9,10 +9,10 @@ define(function(require, exports, module) {
 
         function showView(selector, view) {
             disposeView(currentView, function() {
-				console.log(view);
-            	console.log(view.$el);
-                view.$el.removeClass('animated ' + TRANSITION_TYPE);
-                render(selector, view, null);
+				if(view.$el) {
+                	view.$el.removeClass('animated ' + TRANSITION_TYPE);
+                	render(selector, view, null);
+				}
             });
         }
 

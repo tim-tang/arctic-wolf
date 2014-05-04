@@ -12,7 +12,6 @@ define(function(require, exports, module) {
     var componentFacade = require('../../common/component-facade');
 
     var roleColl = require('../collection/role-coll');
-    var roleModel = require('../model/role-model');
     
     var roleMgmt = BaseView.extend({
 
@@ -23,12 +22,6 @@ define(function(require, exports, module) {
         datatable_id: 'role-mgmt-datatable',
         
         collection: roleColl,
-
-		view_obj: function(event) {
-            if (event) event.preventDefault();
-            alert("call role-details-app");
-            require('../role-details-app').run(viewManager);
-        },
         
         afterRender: function() {
             roleColl.fetch();

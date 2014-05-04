@@ -8,7 +8,7 @@
     var viewManager = require('../app-main/app-view-manager');
 
     var roleGeneralInfo = require('./view/tab/role-general-info');
-    var rolePrivilege = require('./view/tab/role-privilege');
+	var rolePrivilege = require('./view/tab/role-privilege');
     var roleUser = require('./view/tab/role-user');
     var roleUsergroup = require('./view/tab/role-user-group');
     var roleHistory = require('./view/tab/role-history');
@@ -24,7 +24,11 @@
         template: 'role-details-container.html',
 
         initialize: function() {
-            //eventBus.on('role:render-role-tab', this.render_role_tab, this);
+        	eventBus.on('role:render-general-info', this.renderGeneralInfo, this);
+            eventBus.on('role:render-privileges', this.renderPrivileges, this);
+            eventBus.on('role:render-user-groups', this.renderUserGroups, this);
+            eventBus.on('role:render-users', this.renderUsers, this);
+            eventBus.on('role:render-history', this.renderHistory, this);
 		},
 
 	    events: {
@@ -32,49 +36,41 @@
         },
 
         afterRender: function() {
-
-            // TODO: Try to use switch tab view in sub router.
-			var roleGeneralInfoView = new roleGeneralInfo();
-            this.insertView('#general-info', roleGeneralInfoView).render();
-
-            var rolePrivilegeView = new rolePrivilege();
-            this.insertView('#privilege', rolePrivilegeView).render();
-
-            var roleUserView = new roleUser();
-            this.insertView('#user', roleUserView).render();
-
-            var roleUsergroupView = new roleUsergroup();
-            this.insertView('#user-group', roleUsergroupView).render();
-
-			var roleHistoryView = new roleHistory();
-            this.insertView('#history', roleHistoryView).render();
+        	this.renderGeneralInfo();
+        },
+        
+        renderGeneralInfo: function() {
+        	var roleGeneralInfoView = new roleGeneralInfo();
+            this.insertView('#tab-content', roleGeneralInfoView).render();
+        },
+        
+        renderPrivileges: function() {
+        	var rolePrivilegeView = new rolePrivilege();
+            this.insertView('#tab-content', rolePrivilegeView).render();
+        },
+        
+        renderUserGroups: function() {
+        	var roleUsergroupView = new roleUsergroup();
+            this.insertView('#tab-content', roleUsergroupView).render();
+        },
+        
+        renderUsers: function() {
+        	var roleUserView = new roleUser();
+            this.insertView('#tab-content', roleUserView).render();
+        },
+        
+        renderHistory: function() {
+        	var roleHistoryView = new roleHistory();
+            this.insertView('#tab-content', roleHistoryView).render();
         },
 
         active_tab: function(event) {
             if (event) event.preventDefault();
 
-            // updated active menu
+            // Updated active menu
             var currentTarget = $(event.target).parent();
             currentTarget.siblings('.active').removeClass('active');
             currentTarget.addClass('active');
-
-			//var $clink = event.currentTarget.textContent;
-            //var tabs = event.currentTarget.parentNode.children;
-            //var $clinkIndex = 0;
-
-            //for(;tabs.length; $clinkIndex++) {
-            //	if($clink === tabs[$clinkIndex].textContent)
-			//		break;
-            //}
-
-			////$('div.tab-pane').each(function(index) {
-			//$('ul.nav-tabs li').each(function(index) {
-			//	if ($clinkIndex === index) {
-			//		$(this).addClass('active');
-			//	} else {
-			//		$(this).removeClass('active');
-			//	}
-			//});
         }
     });
 
