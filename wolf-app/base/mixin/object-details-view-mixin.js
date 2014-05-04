@@ -9,8 +9,8 @@ define(function(require, exports, module) {
     var detailsViewMixin = {
 
         initialize: function() {
-        	//this.listenTo(this.model, 'request', this.show_loading);
-        	//this.listenTo(this.model, 'sync', this.load_object);
+        	this.listenTo(this.model, 'request', this.show_loading);
+        	this.listenTo(this.model, 'sync', this.load_object);
             /*this.listenTo(this.collection, 'request', this.show_loading);
             this.listenTo(this.collection, 'remove', this.hide_loading);
             this.listenTo(this.collection, 'sync', this.load_objects);*/
@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         },
 
         load_object: function() {
-            
+
         },
 
         edit_obj: function(event) {

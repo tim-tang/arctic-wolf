@@ -17,16 +17,27 @@ define(function(require, exports, module) {
 
         template: 'role-general-info.html',
 
-        model: roleModel,
+        model: new roleModel(),
 
         pageStatus: 'view',
 
         initialize: function() {
-			$('#tab-content').children().remove();
+        	this.listenTo(this.model, 'request', this.show_loading);
+        	this.listenTo(this.model, 'sync', this.load_role_details);
+			//$('#tab-content').children().remove();
+            this.model.set({id: 1});
+            this.model.fetch();
         },
 
         events: {
+            //TODO:
+        },
 
+
+        load_role_details: function() {
+            console.log(this.model.isNew());
+            alert('load role details complete...');
+            this.hide_loading();
         },
 
         afterRender: function() {
@@ -35,6 +46,5 @@ define(function(require, exports, module) {
     });
 
 	roleGeneralInfo.mixin(objDetailsViewMixin);
-
 	module.exports = roleGeneralInfo;
 });
