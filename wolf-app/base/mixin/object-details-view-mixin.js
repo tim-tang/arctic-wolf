@@ -6,7 +6,7 @@ define(function(require, exports, module) {
     var componentFacade = require('../../common/component-facade');
     var eventBus = require('../../app-main/app-eventbus');
 
-    var detailsViewMixin = {
+    var objDetailsViewMixin = {
 
         initialize: function() {
         	this.listenTo(this.model, 'request', this.show_loading);
@@ -31,5 +31,5 @@ define(function(require, exports, module) {
         }
 	};
 
-    module.exports = detailsViewMixin;
+    module.exports = objDetailsViewMixin;
 });
