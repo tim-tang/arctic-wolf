@@ -29,8 +29,8 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
-            privileges = {
-				"selector_id": "assign-privilege",
+            this.privileges = {
+				"selector_id": "privileges",
 				"multiple": "multiple",
 				"optgroups": [
 					{
@@ -98,7 +98,7 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-			componentFacade.init_multi_select('.searchable', privileges);
+			componentFacade.init_multi_select('.searchable', this.privileges);
 		},
 
         new_attributes: function() {

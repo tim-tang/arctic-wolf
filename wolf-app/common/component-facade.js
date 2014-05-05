@@ -183,38 +183,62 @@ define(function(require, exports, module) {
 
         init_multi_select: function(selector, options) {
             /*Multi-Select Search*/
-            $('selector').multiSelect({
-                selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
-                selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
-                afterInit: function(ms) {
-                    var that = this,
-                        $selectableSearch = that.$selectableUl.prev(),
-                        $selectionSearch = that.$selectionUl.prev(),
-                        selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
-                        selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+			var componentMultiSelect = require('./view/component-multi-select');
+            var multi_select_view = (new componentMultiSelect({
+                selector: selector,
+                attrs: options
+            })).render().promise().done(function(multi_select_view) {
+            	// Fetch select_id
+            	var select_id = multi_select_view.options["selector_id"];
 
-                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on('keydown', function(e) {
-                        if (e.which === 40) {
-                            that.$selectableUl.focus();
-                            return false;
-                        }
-                    });
-
-                    that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on('keydown', function(e) {
-                        if (e.which == 40) {
-                            that.$selectionUl.focus();
-                            return false;
-                        }
-                    });
-                },
-                afterSelect: function() {
-                    this.qs1.cache();
-                    this.qs2.cache();
-                },
-                afterDeselect: function() {
-                    this.qs1.cache();
-                    this.qs2.cache();
+            	// If select_id is not null, then set id to this select and append this selector to its container
+                if(select_id) {
+                	multi_select_view.$el.appendTo('#' + multi_select_view.options["selector_id"] + '-container');
+                	multi_select_view.$el.find('select').attr("id", multi_select_view.options["selector_id"]);
                 }
+                // Append this selector to the promised element
+                else {
+                	multi_select_view.$el.appendTo(view.$el.children()[index]);
+                }
+
+                // Set selector attributes: multiple
+            	if(multi_select_view.options["multiple"] === 'multiple')
+            		multi_select_view.$el.find('select').attr("multiple", "multiple");
+
+				// Setup CSS for this select element
+                multi_select_view.$el.find('select').multiSelect({
+					selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
+	                selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
+					afterInit: function(ms) {
+	                    var that = this,
+	                        $selectableSearch = that.$selectableUl.prev(),
+	                        $selectionSearch = that.$selectionUl.prev(),
+	                        selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+	                        selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+	
+	                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on('keydown', function(e) {
+	                        if (e.which === 40) {
+	                            that.$selectableUl.focus();
+	                            return false;
+	                        }
+	                    });
+	
+	                    that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on('keydown', function(e) {
+	                        if (e.which == 40) {
+	                            that.$selectionUl.focus();
+	                            return false;
+	                        }
+	                    });
+	                },
+	                afterSelect: function() {
+	                    this.qs1.cache();
+	                    this.qs2.cache();
+	                },
+	                afterDeselect: function() {
+	                    this.qs1.cache();
+	                    this.qs2.cache();
+	                }
+	            });
             });
         },
 

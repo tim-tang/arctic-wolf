@@ -21,7 +21,6 @@
         template: 'user-container.html',
 
         initialize: function() {
-            this.subviews = [];
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
         },
@@ -29,11 +28,9 @@
         afterRender: function() {
 			var userMgmtView = new userMgmt();
             this.insertView('#user-home', userMgmtView).render();
-            this.subviews.push(userMgmtView);
 
 			var userModalView = new userModal();
             this.insertView('#user-home', userModalView).render();
-            this.subviews.push(userModalView);
         },
 
         show_loading: function() {

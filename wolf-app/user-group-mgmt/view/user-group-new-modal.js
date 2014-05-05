@@ -6,7 +6,9 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../../common/common-utils');
+    
+	var componentFacade = require('../../common/component-facade');
+	
     var userGroupColl = require('../collection/user-group-coll');
     var userGroupModel = require('../model/user-group-model');
 
@@ -25,6 +27,28 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
+            this.users = {
+				"selector_id": "users",
+				"multiple": "multiple",
+				"optgroups": [
+					{
+						"options": [
+							{
+								"value": "1", 
+								"label": "User01"
+							},
+							{
+								"value": "2", 
+								"label": "User02"
+							},
+							{
+								"value": "3", 
+								"label": "User03"
+							}
+						]
+					},
+				]
+			};
         },
 
         /*
@@ -36,8 +60,8 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
-            commonUtils.init_switch();
-            commonUtils.init_multi_select();
+            componentFacade.init_switch('.switch');
+			componentFacade.init_multi_select('.multi-select', this.users);
         },
 
         new_attributes: function() {

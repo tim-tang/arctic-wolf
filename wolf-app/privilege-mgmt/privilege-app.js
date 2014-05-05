@@ -30,7 +30,6 @@
         },
 
         initialize: function() {
-            this.subviews = [];
             eventBus.on('show-loading', this.show_loading, this);
             eventBus.on('hide-loading', this.hide_loading, this);
         },
@@ -38,11 +37,9 @@
         afterRender: function() {
 			var privilegeMgmtView = new privilegeMgmt();
             this.insertView('#privilege-home', privilegeMgmtView).render();
-            this.subviews.push(privilegeMgmtView);
 
 			var privilegeModalView = new privilegeModal();
             this.insertView('#privilege-home', privilegeModalView).render();
-            this.subviews.push(privilegeModalView);
         },
 
 		show_loading: function() {

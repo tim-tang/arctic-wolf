@@ -50,7 +50,7 @@
             viewManager.show('#main-content', userGroupApp);
         },
 
-        invokeUserGroupRouter: function(){
+        invokeUserGroupRouter: function() {
             var userGroupRouter = require('./router/user-group-router');
             return new userGroupRouter('user-group-mgmt/', {
                 createTrailingSlashRoutes: true

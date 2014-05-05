@@ -28,7 +28,6 @@
          },
 
          initialize: function() {
-             this.subviews = [];
              eventBus.on('show-loading', this.show_loading, this);
              eventBus.on('hide-loading', this.hide_loading, this);
              eventBus.on('role:view-role', this.view_role, this);
@@ -37,11 +36,9 @@
          afterRender: function() {
              var roleMgmtView = new roleMgmt();
              this.insertView('#role-home', roleMgmtView).render();
-             this.subviews.push(roleMgmtView);
 
              var roleModalView = new roleModal();
              this.insertView('#role-home', roleModalView).render();
-             this.subviews.push(roleModalView);
          },
 
          show_loading: function() {

@@ -29,6 +29,28 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
+            this.users = {
+				"selector_id": "users",
+				"multiple": "multiple",
+				"optgroups": [
+					{
+						"options": [
+							{
+								"value": "1", 
+								"label": "User01"
+							},
+							{
+								"value": "2", 
+								"label": "User02"
+							},
+							{
+								"value": "3", 
+								"label": "User03"
+							}
+						]
+					},
+				]
+			};
         },
 
         /*
@@ -41,7 +63,7 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', privileges);
+			componentFacade.init_multi_select('.searchable', this.users);
 		},
 
         new_attributes: function() {
