@@ -14,7 +14,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             // ---------------- Register Events -------------------//
-            eventBus.on('layout:check-layout-action', this.check_layout_action, this);
+            eventBus.on('layout:switch-module-action', this.switch_module_action, this);
             eventBus.on('layout:discard-layout-action', this.discard_layout_action, this);
 
             // setup the ajax links for the html5 push navigation
@@ -38,10 +38,10 @@ define(function(require, exports, module) {
         },
 
         // ------------------ Event Actions ---------------------//
-        check_layout_action: function() {
+        switch_module_action: function() {
             var self = this;
             this.predict_layout_existence(function() {
-                self.switch_view();
+                self.switch_module();
             });
         },
 
@@ -54,7 +54,7 @@ define(function(require, exports, module) {
          * Swith modular views.
          * TODO: extract uri to constants.
          */
-        switch_view: function() {
+        switch_module: function() {
             eventBus.trigger('layout:active-menu-item');
             switch (Backbone.history.fragment) {
             case "dashboard/":

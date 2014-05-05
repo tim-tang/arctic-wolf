@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         },
 
         home: function() {
-            eventBus.trigger('layout:check-layout-action');
+            eventBus.trigger('layout:switch-module-action');
         },
 
         viewRole: function() {
