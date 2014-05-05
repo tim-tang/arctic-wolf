@@ -1,7 +1,6 @@
 define(function(require, exports, module){
 
     var Backbone = require('backbone');
-    var userGroupApp = require('../user-group-app');
     var eventBus = require('../../app-main/app-eventbus');
 
 	require('subroute');
@@ -18,7 +17,6 @@ define(function(require, exports, module){
 
         home: function() {
             eventBus.trigger('layout:check-layout-action');
-            //userGroupApp.render();
         }
     });
 

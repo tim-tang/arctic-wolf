@@ -47,6 +47,13 @@ define(function(require, exports, module) {
     module.exports = {
         run: function(viewManager) {
             viewManager.show('#main-content', genericFilterApp);
+        },
+
+        invokeGenericFilterRouter: function(){
+            var genericFilterRouter = require('./router/generic-filter-router');
+            return new genericFilterRouter('generic-filter/', {
+                createTrailingSlashRoutes: true
+            });
         }
     };
 });

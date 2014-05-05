@@ -52,6 +52,13 @@
     module.exports = {
         run: function(viewManager) {
             viewManager.show('#main-content', criteriaApp);
+        },
+
+        invokeCriteriaRouter: function() {
+            var criteriaRouter = require('./router/criteria-router');
+            return new criteriaRouter('criteria-mgmt/', {
+                createTrailingSlashRoutes: true
+            });
         }
     };
  });

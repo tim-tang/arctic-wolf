@@ -66,20 +66,22 @@ define(function(require, exports, module) {
 
 
         // ------------------ Before & After Router Interceptor ---------------------//
-        before: function(params, next){
+        before: function(params, next) {
             var isAuthenticated = authenticationProvider.get('authenticated');
             var redirectUrl = Backbone.history.location.hash;
             var isSecurityResource = _.contains(App.SECURITY_RESOURCES, redirectUrl);
             var isCancelAccessResource = _.contains(App.CANCELLED_WHILE_AUTH_DONE, redirectUrl);
 
-            if(!isAuthenticated && isSecurityResource){
+            if (!isAuthenticated && isSecurityResource) {
                 // if user not authenticated and try to access security resources,
                 // will be navigate to login page.
                 authenticationProvider.put('redirect-url', redirectUrl);
-                return Backbone.history.navigate('#security/login', { trigger : true });
+                return Backbone.history.navigate('#security/login', {
+                    trigger: true
+                });
             }
 
-            if(isAuthenticated && isCancelAccessResource){
+            if (isAuthenticated && isCancelAccessResource) {
                 // if user has been authenticated and try to access cancelled pages,
                 // will be redirect to dashboard page directly.
                 //return Backbone.history.navigate('#dashboard/', { trigger : true });
@@ -89,7 +91,7 @@ define(function(require, exports, module) {
             return next();
         },
 
-        after: function(){
+        after: function() {
             //console.log('After Router Interceptor....');
         },
 
@@ -99,20 +101,14 @@ define(function(require, exports, module) {
 
         invokeSecurityModule: function(subroute) {
             if (!AppRouter.securityRouter) {
-                var securityRouter = require('../security/router/security-router');
-                AppRouter.securityRouter = new securityRouter('security/', {
-                    createTrailingSlashRoutes: true
-                });
+                AppRouter.securityRouter = require('../security/security-app').invokeSecurityRouter();
             }
         },
 
         invokeDashboardModule: function() {
             this.predict_layout_existence(function() {
                 if (!AppRouter.dashboardRouter) {
-                    var dashboardRouter = require('../dashboard/router/dashboard-router');
-                    AppRouter.dashboardRouter = new dashboardRouter('dashboard/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.dashboardRouter = require('../dashboard/dashboard-app').invokeDashboardRouter();
                 }
             });
         },
@@ -120,65 +116,47 @@ define(function(require, exports, module) {
         invokeVehicleModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.vehicleRouter) {
-                    var vehicleRouter = require('../vehicle-mgmt/router/vehicle-router');
-                    AppRouter.vehicleRouter = new vehicleRouter('vehicle-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.vehicleRouter = require('../vehicle-mgmt/vehicle-app').invokeVehicleRouter();
                 }
             });
         },
 
         invokeUserGroupModule: function(subroute) {
-            var userGroupRouter = require('../user-group-mgmt/router/user-group-router');
             this.predict_layout_existence(function() {
                 if (!AppRouter.userGroupRouter) {
-                    AppRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.userGroupRouter = require('../user-group-mgmt/user-group-app').invokeUserGroupRouter();
                 }
             });
         },
 
         invokeUserModule: function(subroute) {
-            var userRouter = require('../user-mgmt/router/user-router');
             this.predict_layout_existence(function() {
                 if (!AppRouter.userRouter) {
-                    AppRouter.userRouter = new userRouter('user-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.userRouter = require('../user-mgmt/user-app').invokeUserRouter();
                 }
             });
         },
 
         invokeRoleModule: function(subroute) {
-            var roleRouter = require('../role-mgmt/router/role-router');
             this.predict_layout_existence(function() {
                 if (!AppRouter.roleRouter) {
-                    AppRouter.roleRouter = new roleRouter('role-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.roleRouter = require('../role-mgmt/role-app').invokeRoleRouter();
                 }
             });
         },
 
         invokePrivilegeModule: function(subroute) {
-            var privilegeRouter = require('../privilege-mgmt/router/privilege-router');
             this.predict_layout_existence(function() {
                 if (!AppRouter.privilegeRouter) {
-                    AppRouter.privilegeRouter = new privilegeRouter('privilege-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.privilegeRouter = require('../privilege-mgmt/privilege-app').invokePrivilegeRouter();
                 }
             });
         },
 
         invokeCriteriaModule: function(subroute) {
-            var criteriaRouter = require('../criteria-mgmt/router/criteria-router');
             this.predict_layout_existence(function() {
                 if (!AppRouter.criteriaRouter) {
-                    AppRouter.criteriaRouter = new criteriaRouter('criteria-mgmt/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.criteriaRouter = require('../criteria-mgmt/criteria-app').invokeCriteriaRouter();
                 }
             });
         },
@@ -186,10 +164,7 @@ define(function(require, exports, module) {
         invokeGenericFilterModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.genericFilterRouter) {
-                    var genericFilterRouter = require('../generic-filter/router/generic-filter-router');
-                    AppRouter.genericFilterRouter = new genericFilterRouter('generic-filter/', {
-                        createTrailingSlashRoutes: true
-                    });
+                    AppRouter.genericFilterRouter = require('../generic-filter/generic-filter-app').invokeGenericFilterRouter();
                 }
             });
         },

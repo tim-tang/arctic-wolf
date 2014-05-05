@@ -12,19 +12,25 @@ define(function(require, exports, module) {
 
 
         initialize: function() {
-            this.subviews = [];
+            //TODO:
         },
 
 
         afterRender: function() {
             //TODO:
         }
-
     });
 
     module.exports = {
         run: function(viewManager) {
             viewManager.show('#main-content', dashboardApp);
+        },
+
+        invokeDashboardRouter: function() {
+            var dashboardRouter = require('./router/dashboard-router');
+            return new dashboardRouter('dashboard/', {
+                createTrailingSlashRoutes: true
+            });
         }
     };
 });

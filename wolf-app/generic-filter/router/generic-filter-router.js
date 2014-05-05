@@ -2,7 +2,6 @@ define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
-    require('subroute');
 
     var genericFilterRouter = Backbone.SubRoute.extend({
 

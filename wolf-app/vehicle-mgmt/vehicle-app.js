@@ -15,7 +15,6 @@
          template: 'vehicle-container.html',
 
          initialize: function() {
-             this.subviews = [];
              eventBus.on('show-loading', this.show_loading, this);
              eventBus.on('hide-loading', this.hide_loading, this);
          },
@@ -27,10 +26,8 @@
          afterRender: function() {
              var vehicleMgmtView = new vehicleMgmt();
              this.insertView('#vehicle-home', vehicleMgmtView).render();
-             this.subviews.push(vehicleMgmtView);
              var vehicleModalView = new vehicleModal();
              this.insertView('#vehicle-home', vehicleModalView).render();
-             this.subviews.push(vehicleModalView);
          },
 
          show_loading: function() {
@@ -39,12 +36,19 @@
 
          hide_loading: function() {
              commonLoading.destroy();
-         },
+         }
      });
 
      module.exports = {
          run: function(viewManager) {
             viewManager.show('#main-content', vehicleApp);
+         },
+
+         invokeVehicleRouter: function() {
+            var vehicleRouter = require('./router/vehicle-router');
+            return new vehicleRouter('vehicle-mgmt/', {
+                createTrailingSlashRoutes: true
+            });
          }
      };
  });

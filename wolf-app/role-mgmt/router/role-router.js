@@ -5,8 +5,6 @@ define(function(require, exports, module) {
     var eventBus = require('../../app-main/app-eventbus');
 	var viewManager = require('../../app-main/app-view-manager');
 
-	require('subroute');
-
 	var roleRouter = Backbone.SubRoute.extend({
 
     	initialize: function(options) {
@@ -26,7 +24,7 @@ define(function(require, exports, module) {
         home: function() {
             eventBus.trigger('layout:check-layout-action');
         },
-        
+
         viewRole: function() {
         	// TODO: Should get selected row
             require('../role-details-app').run(viewManager);
@@ -35,7 +33,7 @@ define(function(require, exports, module) {
 		viewGeneralInfo: function() {
             eventBus.trigger('role:render-general-info');
         },
-        
+
         viewPrivileges: function() {
 			eventBus.trigger('role:render-privileges');
         },

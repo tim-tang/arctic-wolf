@@ -57,6 +57,13 @@
     module.exports = {
         run: function(viewManager) {
             viewManager.show('#main-content', privilegeApp);
+        },
+
+        invokePrivilegeRouter: function(){
+            var privilegeRouter = require('./router/privilege-router');
+            return new privilegeRouter('privilege-mgmt/', {
+                createTrailingSlashRoutes: true
+            });
         }
     };
  });

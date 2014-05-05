@@ -55,6 +55,13 @@ define(function(require, exports, module) {
         hide_loading: function() {
             commonLoading.destroy();
         },
+
+        invokeSecurityRouter: function() {
+            var securityRouter = require('./router/security-router');
+            return new securityRouter('security/', {
+                createTrailingSlashRoutes: true
+            });
+        }
     });
 
     module.exports = securityApp;

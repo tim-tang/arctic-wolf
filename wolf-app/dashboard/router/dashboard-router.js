@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    require('subroute');
     var eventBus = require('../../app-main/app-eventbus');
 
     var dashboardRouter = Backbone.SubRoute.extend({

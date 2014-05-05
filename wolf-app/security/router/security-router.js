@@ -1,8 +1,8 @@
-define(function(require, exports, module){
+define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    require('subroute');
     var eventBus = require('../../app-main/app-eventbus');
+    require('subroute');
 
     var securityRouter = Backbone.SubRoute.extend({
 
@@ -16,7 +16,7 @@ define(function(require, exports, module){
             'reset-password': 'reset_password'
         },
 
-        login: function(){
+        login: function() {
             eventBus.trigger('render-security-login');
         },
 
