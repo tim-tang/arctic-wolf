@@ -10,7 +10,7 @@ define(function(require, exports, module) {
         template: 'layout-menu.html',
 
         initialize: function() {
-            eventBus.on('active-menu-item', this.active_menu_item, this);
+            eventBus.on('layout:active-menu-item', this.active_menu_item, this);
         },
 
         events: {

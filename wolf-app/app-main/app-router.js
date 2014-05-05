@@ -39,14 +39,49 @@ define(function(require, exports, module) {
 
         // ------------------ Event Actions ---------------------//
         check_layout_action: function() {
+            var self = this;
             this.predict_layout_existence(function() {
-                eventBus.trigger('switch-view');
+                self.switch_view();
             });
         },
 
         discard_layout_action: function() {
             AppRouter.layoutApp = null;
             viewManager.discardLayout();
+        },
+
+        /**
+         * Swith modular views.
+         * TODO: extract uri to constants.
+         */
+        switch_view: function() {
+            eventBus.trigger('layout:active-menu-item');
+            switch (Backbone.history.fragment) {
+            case "dashboard/":
+                require('../dashboard/dashboard-app').run(viewManager);
+                break;
+            case "generic-filter/":
+                require('../generic-filter/generic-filter-app').run(viewManager);
+                break;
+            case "user-mgmt/":
+                require('../user-mgmt/user-app').run(viewManager);
+                break;
+            case "user-group-mgmt/":
+                require('../user-group-mgmt/user-group-app').run(viewManager);
+                break;
+            case "role-mgmt/":
+                require('../role-mgmt/role-app').run(viewManager);
+                break;
+            case "privilege-mgmt/":
+                require('../privilege-mgmt/privilege-app').run(viewManager);
+                break;
+            case "criteria-mgmt/":
+                require('../criteria-mgmt/criteria-app').run(viewManager);
+                break;
+            case "vehicle-mgmt/":
+                require('../vehicle-mgmt/vehicle-app').run(viewManager);
+                break;
+            }
         },
 
         // ----------------- Backbone Routers ------------------//
