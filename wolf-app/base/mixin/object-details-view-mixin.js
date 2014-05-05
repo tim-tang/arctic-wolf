@@ -19,18 +19,26 @@ define(function(require, exports, module) {
         },
 
         events: {
-            'click #mgmt-edit': 'edit_obj',
-            'click #mgmt-view': 'view_obj'
+            'click #delete': 'delete_obj',
+            'click #add': 'add_obj'
         },
 
         load_object: function() {
             console.log(this.model.toJSON());
         },
-
-        edit_obj: function(event) {
+        
+        add_obj: function(event) {
             if (event) event.preventDefault();
             //TODO:
-        }
+            alert('In Add');
+        },
+        
+        delete_obj: function(event) {
+			if (event) event.preventDefault();
+            console.log(JSON.stringify(this.collection));
+            _.invoke(this.collection.selected(), 'destroy');
+            commonUtils.remove_selected_row(this.datatable);
+        }      
 	};
 
     module.exports = objDetailsViewMixin;
