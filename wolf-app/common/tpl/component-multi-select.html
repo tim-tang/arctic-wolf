@@ -3,7 +3,7 @@
 	    <optgroup label="<%= optgroup.label%>">
 	    	<!--%= console.log(optgroup.options)%-->
 	        <% _.each(optgroup.options, function(option) { %>
-	            <option value="<%= option.value%>">
+	            <option selected="selected" value="<%= option.value%>">
 	                <%= option.label%>
 	            </option>
 	            <% });%>

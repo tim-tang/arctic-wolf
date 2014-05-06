@@ -10,6 +10,7 @@ define(function(require, exports, module) {
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
+	var eventBus = require('../../../app-main/app-eventbus');
 	var componentFacade = require('../../../common/component-facade');
 
     var assignPrivilegeModal = Backbone.View.extend({
@@ -98,6 +99,10 @@ define(function(require, exports, module) {
         
 
         afterRender: function() {
+			eventBus.trigger('set_selected_privileges', this);
+		},
+		
+		renderPrivilegeMultiSelect: function() {
 			componentFacade.init_multi_select('.searchable', this.privileges);
 		},
 

@@ -53,8 +53,8 @@ define(function(require, exports, module) {
 				]
 			};
 			
-			eventBus.on('add_criteria_row', this.add_criteria_row, this);
-			eventBus.on('remove_criteria_row', this.remove_criteria_row, this);
+			eventBus.on('add_criteria_row', this.addCriteriaRow, this);
+			eventBus.on('remove_criteria_row', this.removeCriteriaRow, this);
 			
 			// Reset criteria new modal
 			eventBus.on('reset_criteria_new_modal', this.resetCriteriaNewModal, this);
@@ -75,14 +75,14 @@ define(function(require, exports, module) {
 		},
 
 		// Add & remove crireria row
-        add_criteria_row: function() {
+        addCriteriaRow: function() {
 			var objType = $("#object-type-container").find('select').val();
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
             this.criteriaCount++;
         },
 		// Add & remove crireria row
-        remove_criteria_row: function(view) {
+        removeCriteriaRow: function(view) {
         	if(this.criteriaCount > 1) {
         		view.$el.remove();
         		this.criteriaCount--;

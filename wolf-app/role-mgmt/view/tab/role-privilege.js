@@ -26,12 +26,21 @@ define(function(require, exports, module) {
 		
         initialize: function() {
             this.model.urlRoot = '/role-privileges';
+            
+            // This trigger is used to reverse control multi selector data in assign-privilege-modal
+			eventBus.on('set_selected_privileges', this.setSelectedPrivileges, this);
         },
         
 		load_object: function() {
 			this.collection.set(this.model.get('privileges')['aaData']);
         	this.init_datatable('privileges');
        	},
+
+		// This trigger method is used to reverse control assign-privilege-modal
+		setSelectedPrivileges: function(view) {
+			console.log(view.privileges);
+			view.renderPrivilegeMultiSelect();
+		},
         
         events: {
 			//TODO:

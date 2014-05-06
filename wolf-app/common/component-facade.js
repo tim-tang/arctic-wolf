@@ -196,10 +196,6 @@ define(function(require, exports, module) {
                 	multi_select_view.$el.appendTo('#' + multi_select_view.options["selector_id"] + '-container');
                 	multi_select_view.$el.find('select').attr("id", multi_select_view.options["selector_id"]);
                 }
-                // Append this selector to the promised element
-                else {
-                	multi_select_view.$el.appendTo(view.$el.children()[index]);
-                }
 
                 // Set selector attributes: multiple
             	if(multi_select_view.options["multiple"] === 'multiple')
