@@ -12,7 +12,7 @@ define(function(require, exports, module) {
 
         prefix: 'common/tpl/',
         
-        template: 'component-select2.html',
+        template: 'component-multi-select.html',
 
 		initialize: function(options) {
         	this.selector = options.selector;

@@ -39,11 +39,13 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "1", 
-								"label": "Read User"
+								"label": "Read User",
+								"selected": "true"
 							},
 							{
 								"value": "2", 
-								"label": "Read Vehicle"
+								"label": "Read Vehicle",
+								"selected": "false"
 							}
 						]
 					},
@@ -52,11 +54,13 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "3", 
-								"label": "Create User"
+								"label": "Create User",
+								"selected": "true"
 							},
 							{
 								"value": "4", 
-								"label": "Create Vehicle"
+								"label": "Create Vehicle",
+								"selected": "false"
 							}
 						]
 					},
@@ -65,11 +69,13 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "5", 
-								"label": "Modify User"
+								"label": "Modify User",
+								"selected": "true"
 							},
 							{
 								"value": "6", 
-								"label": "Modify Vehicle"
+								"label": "Modify Vehicle",
+								"selected": "false"
 							}
 						]
 					},
@@ -78,11 +84,13 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "7", 
-								"label": "Delete User"
+								"label": "Delete User",
+								"selected": "true"
 							},
 							{
 								"value": "8", 
-								"label": "Delete Vehicle"
+								"label": "Delete Vehicle",
+								"selected": "false"
 							}
 						]
 					}

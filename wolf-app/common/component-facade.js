@@ -200,6 +200,11 @@ define(function(require, exports, module) {
                 // Set selector attributes: multiple
             	if(multi_select_view.options["multiple"] === 'multiple')
             		multi_select_view.$el.find('select').attr("multiple", "multiple");
+            	
+				multi_select_view.$el.find('select').filter(function() {
+				    //may want to use $.trim in here
+				    return $(this).text() != null; 
+				}).attr('selected', true);
 
 				// Setup CSS for this select element
                 multi_select_view.$el.find('select').multiSelect({

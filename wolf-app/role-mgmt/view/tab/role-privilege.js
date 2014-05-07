@@ -39,6 +39,16 @@ define(function(require, exports, module) {
 		// This trigger method is used to reverse control assign-privilege-modal
 		setSelectedPrivileges: function(view) {
 			console.log(view.privileges);
+			console.log(this.collection);
+			var coll = this.collection;
+			_.each(view.privileges.optgroups, function(optgroup) {
+				_.each(optgroup.options, function(option) {
+					console.log(">>>>>>>>>>>"+ option.value);
+					//console.log(coll.get(option.value));
+					if(coll.get(option.value))
+						console.log(option.value);
+				});
+			});
 			view.renderPrivilegeMultiSelect();
 		},
         
