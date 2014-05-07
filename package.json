@@ -4,8 +4,6 @@
   "name": "wolf-app",
   "author": "Tim.Tang <tang.jilong@gmail.com>",
   "spm": {
-    "idleading": "dist/",
-    "source": "wolf-app",
     "alias": {
       "$": "jquery/jquery/1.10.1/jquery",
       "$-debug": "jquery/jquery/1.10.1/jquery-debug",
@@ -28,7 +26,9 @@
       "bootstrap":"gallery/bootstrap/3.0.0/bootstrap.css",
       "font-awesome": "mooxe/font-awesome/4.0.3/css/font-awesome.min.css",
       "animate": "alice/animate/2.1.0/animate.css",
-      "backbone": "gallery/backbone/1.1.0/backbone"
+      "backbone": "gallery/backbone/1.1.0/backbone",
+      "layoutmanager": "arctic-cmd-repo/backbone-layoutmanager/0.9.5backbone.layoutmanager.js",
+      "subroute": "arctic-cmd-repo/backbone-subroute/0.4.2/backbone.subroute.js"
     }
   }
 }

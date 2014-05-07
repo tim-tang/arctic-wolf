@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             vehicleApp: {
                 options: {
                     //idleading: 'dist',
-                    paths: 'sea-modules',
+                    paths: ['sea-modules'],
                     debug: false,
                     alias: {
                         '$': 'jquery/jquery/1.10.1/jquery.js',
@@ -39,6 +39,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'vehicle-mgmt',
                     src: '**/*.js',
+                    filter : 'isFile',
                     dest: '.build/vehicle-app'
                 }]
             }
@@ -46,15 +47,15 @@ module.exports = function(grunt) {
         concat: {
             vehicleApp: {
                 options: {
-                    include: 'all',
-                    paths: 'sea-modules',
+                    include: 'relative',
+                    paths: ['sea-modules']
                 },
                 files: [{
                     expand: true,
                     cwd: '.build/vehicle-app',
-                    src: ['vehicle-app.js'],
-                    //src: '**/*.js',
-                    //src: '**/*.js',
+                    //src: ['vehicle-app.js'],
+                    src: '**/*.js',
+                    filter: 'isFile',
                     //filter: function(filepath) {
                     //    return !/-debug\.js$/.test(filepath);
                     //},
