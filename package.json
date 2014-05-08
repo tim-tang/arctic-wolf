@@ -27,6 +27,7 @@
       "font-awesome": "mooxe/font-awesome/4.0.3/css/font-awesome.min.css",
       "animate": "alice/animate/2.1.0/animate.css",
       "backbone": "gallery/backbone/1.1.0/backbone",
+      "moment": "gallery/moment/2.6.0/moment.js",
       "layoutmanager": "arctic-cmd-repo/backbone-layoutmanager/0.9.5backbone.layoutmanager.js",
       "subroute": "arctic-cmd-repo/backbone-subroute/0.4.2/backbone.subroute.js"
     }
