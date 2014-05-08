@@ -4,8 +4,6 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('../../app-main/app-eventbus');
 	var viewManager = require('../../app-main/app-view-manager');
-	
-	require('subroute');
 
 	var roleRouter = Backbone.SubRoute.extend({
 
