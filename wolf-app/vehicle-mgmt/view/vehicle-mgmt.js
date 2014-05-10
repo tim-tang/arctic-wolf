@@ -1,14 +1,14 @@
 define(function(require, exports, module) {
 
     var _ = require('underscore');
-    var BaseView = require('../../base/view/base-view');
+    var appCommon = require('../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
 
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
-    var eventBus = require('../../app-main/app-eventbus');
-
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
     var vehicleColl = require('../collection/vehicle-coll');
-    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
 
     var vehicleMgmt = BaseView.extend({
 
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         }
     });
 
-    vehicleMgmt.mixin(objMgmtViewMixin);
-    
+    vehicleMgmt.mixin(genericMgmtViewMixin);
+
     module.exports = vehicleMgmt;
 });

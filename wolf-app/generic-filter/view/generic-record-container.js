@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var eventBus = require('../../app-main/app-eventbus');
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
     var genericRecordColl = require('../collection/generic-record-coll');
     var genericRecords = require('./generic-records');
     var genericRecordView;

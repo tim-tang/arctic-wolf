@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var layoutFooter = require('../../layout/view/layout-footer');
+    var securityFooter = require('./security-footer');
 
     var notFound = Backbone.View.extend({
         manage: true,
@@ -18,7 +18,7 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-            var layoutFooterView = new layoutFooter();
+            var layoutFooterView = new securityFooter();
             this.subviews.push(layoutFooterView);
             this.insertView('.middle', layoutFooterView).render();
         }

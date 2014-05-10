@@ -9,13 +9,15 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../common/common-utils');
+    var appCommon = require('../app-common/app-common-index');
+    var commonUtils = appCommon.CommonUtils;
+
     var layoutLogo = require('./view/layout-logo');
     var layoutUser = require('./view/layout-user');
     var layoutMenu = require('./view/layout-menu');
     var layoutProfile = require('./view/layout-profile');
-    var eventBus = require('../app-main/app-eventbus');
-    var viewManager = require('../app-main/app-view-manager');
+    var eventBus = require('../app-core/app-eventbus');
+    var viewManager = require('../app-core/app-view-manager');
 
     var layoutApp = new Backbone.Layout({
 

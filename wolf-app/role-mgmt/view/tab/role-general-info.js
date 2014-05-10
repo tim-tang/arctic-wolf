@@ -1,13 +1,14 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
-	var _ = require('underscore');
-    var BaseView = require('../../../base/view/base-view');
-    var objDetailsViewMixin = require('../../../base/mixin/object-details-view-mixin');
+    var _ = require('underscore');
+    var appCommon = require('../../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
 
-    var commonUtils = require('../../../common/common-utils');
-    var eventBus = require('../../../app-main/app-eventbus');
-    var componentFacade = require('../../../common/component-facade');
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
+    var eventBus = require('../../../app-core/app-core-index').Eventbus;
 
     var roleModel = require('../../model/role-model');
 
@@ -22,7 +23,7 @@ define(function(require, exports, module) {
         pageStatus: 'view',
 
         initialize: function() {
-        	//TODO:
+            //TODO:
         },
 
         events: {
@@ -37,10 +38,10 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-			componentFacade.init_switch('.switch');
+            componentFacade.init_switch('.switch');
         }
     });
 
-	roleGeneralInfo.mixin(objDetailsViewMixin);
-	module.exports = roleGeneralInfo;
+    roleGeneralInfo.mixin(genericDetailsViewMixin);
+    module.exports = roleGeneralInfo;
 });

@@ -5,9 +5,9 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     require('layoutmanager');
-    var authenticationProvider = require('../security/authentication/authentication-provider');
+    var authenticationProvider = require('../security/index').AuthenticationProvider;
     var appRouter = require('./app-router');
-    window.App = require('../common/global-constant');
+    window.App = require('../app-common/app-common-index').CommonConstants;
 
     /****************************************************
      * Backbone Layout Manager Configuration.

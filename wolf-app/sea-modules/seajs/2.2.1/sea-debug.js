@@ -543,6 +543,8 @@ Module.prototype.load = function() {
   }
 
   if (mod._remain === 0) {
+    //console.log('!!');
+    //console.log(mod);
     mod.onload()
     return
   }
@@ -575,6 +577,8 @@ Module.prototype.onload = function() {
   mod.status = STATUS.LOADED
 
   if (mod.callback) {
+      //console.log('Callback after load: ');
+      //console.log(mod);
     mod.callback()
   }
 
@@ -586,7 +590,11 @@ Module.prototype.onload = function() {
     if (waitings.hasOwnProperty(uri)) {
       m = cachedMods[uri]
       m._remain -= waitings[uri]
+      //console.log(uri + " # " + m._remain);
+      //console.log('------------------------');
+      //console.log(waitings);
       if (m._remain === 0) {
+          //console.log(m);
         m.onload()
       }
     }

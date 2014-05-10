@@ -6,7 +6,10 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var commonUtils = require('../../common/common-utils');
+
+    var appCommon = require('../../app-common/app-common-index');
+    var commonUtils = appCommon.CommonUtils;
+
     var userColl = require('../collection/user-coll');
     var userModel = require('../model/user-model');
 
@@ -33,7 +36,7 @@ define(function(require, exports, module) {
                         user: _.clone(this.model.attributes)
                     };
                 },*/
-        
+
 
         afterRender: function() {
             commonUtils.init_switch();

@@ -1,11 +1,11 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
-    var BaseView = require('../../../base/view/base-view');
-    var objMgmtViewMixin = require('../../../base/mixin/object-mgmt-view-mixin');
+    var appCommon = require('../../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
 
-    var commonUtils = require('../../../common/common-utils');
-    var eventBus = require('../../../app-main/app-eventbus');
+    var commonUtils = appCommon.CommonUtils;
 
     var roleHistoryColl = require('../../collection/role-history-coll');
 
@@ -14,22 +14,22 @@ define(function(require, exports, module) {
         prefix: "role-mgmt/templates/tab/",
 
         template: 'role-history.html',
-        
+
         datatable_id: 'role-history-datatable',
 
 		collection: roleHistoryColl,
-		
+
 		initialize: function() {
             $('#tab-content').children().remove();
         },
-        
+
    		afterRender: function() {
    			roleHistoryColl.reset();
             roleHistoryColl.fetch();
         }
     });
 
-	roleHistory.mixin(objMgmtViewMixin);
+	roleHistory.mixin(genericDetailsViewMixin);
 
     module.exports = roleHistory;
 });

@@ -4,9 +4,10 @@
      var _ = require('underscore');
      var Backbone = require('backbone');
 
-     var eventBus = require('../app-main/app-eventbus');
-     var commonLoading = require('../common/common-loading');
-     var viewManager = require('../app-main/app-view-manager');
+     var eventBus = require('../app-core/app-eventbus');
+     var appCommon = require('../app-common/app-common-index');
+	 var commonLoading = appCommon.CommonLoading;
+     var viewManager = require('../app-core/app-view-manager');
 
      var roleMgmt = require('./view/role-mgmt');
      var roleModal = require('./view/modal/role-new-modal');

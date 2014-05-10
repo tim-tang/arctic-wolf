@@ -2,9 +2,9 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
-    var eventBus = require('../../app-main/app-eventbus');
+    var commonUtils = require('../../app-common/common-utils');
+    var componentFacade = require('../../app-common/component-facade');
+    var eventBus = require('../../app-core/app-eventbus');
 
     var objMgmtViewMixin = {
 
@@ -56,7 +56,7 @@ define(function(require, exports, module) {
             _.invoke(this.collection.selected(), 'destroy');
             commonUtils.remove_selected_row(this.datatable);
         },
-        
+
         new_obj: function(event) {
             if (event) event.preventDefault();
 			// $('.modal-content').find('input:text, input:password, input:file, select, textarea').val('');

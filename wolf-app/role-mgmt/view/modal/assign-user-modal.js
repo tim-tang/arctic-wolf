@@ -6,11 +6,11 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    
+
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
-	var componentFacade = require('../../../common/component-facade');
+	var componentFacade = require('../../../app-common/component-facade');
 
     var roleModal = Backbone.View.extend({
         manage: true,
@@ -22,7 +22,7 @@ define(function(require, exports, module) {
         template: 'assign-user-modal.html',
 
 		privileges: null,
-		
+
         events: {
             'click #role-create-action': 'create_role'
         },
@@ -36,15 +36,15 @@ define(function(require, exports, module) {
 					{
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "User01"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "User02"
 							},
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "User03"
 							}
 						]
@@ -59,7 +59,7 @@ define(function(require, exports, module) {
                         role: _.clone(this.model.attributes)
                     };
                 },*/
-        
+
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
@@ -74,7 +74,7 @@ define(function(require, exports, module) {
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },
-        
+
         clearValues: function() {
         	this.$('#role-name').val('');
 			this.$('#role-desc').val('');

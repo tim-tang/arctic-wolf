@@ -4,8 +4,9 @@
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
-	var eventBus = require('../app-main/app-eventbus');
-	var commonLoading = require('../common/common-loading');
+	var eventBus = require('../app-core/app-core-index').Eventbus;
+    var appCommon = require('../app-common/app-common-index');
+	var commonLoading = appCommon.CommonLoading;
 
 	var privilegeMgmt = require('./view/privilege-mgmt');
 	var privilegeModal = require('./view/privilege-new-modal');

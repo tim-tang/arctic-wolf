@@ -2,25 +2,26 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    // var Backbone = require('backbone');
-    var BaseView = require('../../base/view/base-view');
-    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
 
-    var eventBus = require('../../app-main/app-eventbus');
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
+    var appCommon = require('../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
+
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
 
     var userColl = require('../collection/user-coll');
     var userModel = require('../model/user-model');
 
     var userMgmt = BaseView.extend({
-    	
+
         prefix: "user-mgmt/templates/",
 
         template: 'user-mgmt.html',
-        
+
         datatable_id: 'user-mgmt-datatable',
-        
+
         collection: userColl,
 
         afterRender: function() {
@@ -28,7 +29,7 @@ define(function(require, exports, module) {
         }
     });
 
-    userMgmt.mixin(objMgmtViewMixin);
-    
+    userMgmt.mixin(genericMgmtViewMixin);
+
     module.exports = userMgmt;
 });

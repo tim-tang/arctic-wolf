@@ -6,11 +6,11 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    
+
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
-	var componentFacade = require('../../../common/component-facade');
+	var componentFacade = require('../../../app-common/component-facade');
 
     var roleModal = Backbone.View.extend({
         manage: true,
@@ -21,8 +21,8 @@ define(function(require, exports, module) {
 
         template: 'role-new-modal.html',
 
-		privileges: null, 
-		
+		privileges: null,
+
         events: {
             'click #role-create-action': 'create_role'
         },
@@ -37,11 +37,11 @@ define(function(require, exports, module) {
 						"label": "Read",
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "Read User"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "Read Vehicle"
 							}
 						]
@@ -50,11 +50,11 @@ define(function(require, exports, module) {
 						"label": "Create",
 						"options": [
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "Create User"
 							},
 							{
-								"value": "4", 
+								"value": "4",
 								"label": "Create Vehicle"
 							}
 						]
@@ -63,11 +63,11 @@ define(function(require, exports, module) {
 						"label": "Modify",
 						"options": [
 							{
-								"value": "5", 
+								"value": "5",
 								"label": "Modify User"
 							},
 							{
-								"value": "6", 
+								"value": "6",
 								"label": "Modify Vehicle"
 							}
 						]
@@ -76,11 +76,11 @@ define(function(require, exports, module) {
 						"label": "Delete",
 						"options": [
 							{
-								"value": "7", 
+								"value": "7",
 								"label": "Delete User"
 							},
 							{
-								"value": "8", 
+								"value": "8",
 								"label": "Delete Vehicle"
 							}
 						]
@@ -95,7 +95,7 @@ define(function(require, exports, module) {
                         role: _.clone(this.model.attributes)
                     };
                 },*/
-        
+
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
@@ -110,7 +110,7 @@ define(function(require, exports, module) {
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },
-        
+
         clearValues: function() {
         	this.$('#role-name').val('');
 			this.$('#role-desc').val('');

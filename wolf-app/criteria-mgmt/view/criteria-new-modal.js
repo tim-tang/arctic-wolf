@@ -5,13 +5,13 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    
+
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
     var criteriaRow = require('./criteria-row');
-    
-    var eventBus = require('../../app-main/app-eventbus');
-    var componentFacade = require('../../common/component-facade');
+
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
+    var componentFacade = require('../../app-common/component-facade');
 
     var criteriaModal = Backbone.View.extend({
         manage: true,
@@ -23,7 +23,7 @@ define(function(require, exports, module) {
         template: 'criteria-new-modal.html',
 
 		criteriaCount: 1,
-		
+
         events: {
             'click #criteria-create-action': 'create_criteria',
             'change #object-type': 'changeObjectType'
@@ -37,38 +37,38 @@ define(function(require, exports, module) {
 					{
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "User"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "UserGroup"
 							},
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "Vehicle"
 							}
 						]
 					},
 				]
 			};
-			
+
 			eventBus.on('add_criteria_row', this.addCriteriaRow, this);
 			eventBus.on('remove_criteria_row', this.removeCriteriaRow, this);
-			
+
 			// Reset criteria new modal
 			eventBus.on('reset_criteria_new_modal', this.resetCriteriaNewModal, this);
         },
-     
+
         afterRender: function() {
             componentFacade.init_switch('.switch');
 			componentFacade.init_select2('.select2', this.objectType);
-			
+
 			var objType = this.objectType.optgroups[0].options[0].value;
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 	    },
-        
+
 		changeObjectType: function() {
 			var objType = $("#object-type-container").find('select').val();
 			this.resetCriteria(objType);
@@ -88,7 +88,7 @@ define(function(require, exports, module) {
         		this.criteriaCount--;
         	}
         },
-        
+
         // Reset CriteriaNewModal Page
         resetCriteriaNewModal: function() {
         	// Initial Object Type & Crieria
@@ -96,27 +96,27 @@ define(function(require, exports, module) {
             this.resetObjectType(objType);
             this.resetCriteria(objType);
         },
-        
+
         resetObjectType: function(objType) {
 			$('#object-type-container').children().remove();
 			componentFacade.init_select2('.select2', this.objectType);
 		},
-		
+
 		resetCriteria: function(objType) {
 		    _.each(this.views["#criteria-row-container"], function(view) {
-			    view.$el.remove();  
+			    view.$el.remove();
 		    });
-    
+
            	var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
-            
+
             this.criteriaCount = 1;
 		},
 
         /****************************************************
-         * 
+         *
          *					About data
-         * 
+         *
          *****************************************************/
         /*
         serialize: function() {
@@ -124,9 +124,9 @@ define(function(require, exports, module) {
                         criteria: _.clone(this.model.attributes)
                     };
                 },*/
-                     
+
         new_attributes: function() {
-        	
+
         	var oneCriteriaRowSelectCount = 3;
         	var selects = this.$('#criteria-table').children('#criteria-row-container').find('select');
         	var criteriaCount = selects.length / 3;
@@ -136,8 +136,8 @@ define(function(require, exports, module) {
         		var logicOperatorValue = selects[i * oneCriteriaRowSelectCount + 2].value;
         		console.log(">>>>>>>>>>>>>>Criteria " + i + ": attributes-" + attributeValue + " operator-" + operatorValue + " logicOperator-" + logicOperatorValue);
         	};
-        	
-        	
+
+
             return {
 				cri_name: this.$('#cri-name').val().trim(),
                 cri_desc: this.$('#cri-desc').val().trim(),

@@ -6,12 +6,12 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    
+
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
-	var eventBus = require('../../../app-main/app-eventbus');
-	var componentFacade = require('../../../common/component-facade');
+	var eventBus = require('../../../app-core/app-core-index').Eventbus;
+	var componentFacade = require('../../../app-common/component-facade');
 
     var assignPrivilegeModal = Backbone.View.extend({
         manage: true,
@@ -22,8 +22,8 @@ define(function(require, exports, module) {
 
         template: 'assign-privilege-modal.html',
 
-		privileges: null, 
-		
+		privileges: null,
+
         events: {
             'click #role-create-action': 'create_role'
         },
@@ -38,12 +38,12 @@ define(function(require, exports, module) {
 						"label": "Read",
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "Read User",
 								"selected": "true"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "Read Vehicle",
 								"selected": "false"
 							}
@@ -53,12 +53,12 @@ define(function(require, exports, module) {
 						"label": "Create",
 						"options": [
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "Create User",
 								"selected": "true"
 							},
 							{
-								"value": "4", 
+								"value": "4",
 								"label": "Create Vehicle",
 								"selected": "false"
 							}
@@ -68,12 +68,12 @@ define(function(require, exports, module) {
 						"label": "Modify",
 						"options": [
 							{
-								"value": "5", 
+								"value": "5",
 								"label": "Modify User",
 								"selected": "true"
 							},
 							{
-								"value": "6", 
+								"value": "6",
 								"label": "Modify Vehicle",
 								"selected": "false"
 							}
@@ -83,12 +83,12 @@ define(function(require, exports, module) {
 						"label": "Delete",
 						"options": [
 							{
-								"value": "7", 
+								"value": "7",
 								"label": "Delete User",
 								"selected": "true"
 							},
 							{
-								"value": "8", 
+								"value": "8",
 								"label": "Delete Vehicle",
 								"selected": "false"
 							}
@@ -104,12 +104,12 @@ define(function(require, exports, module) {
                         role: _.clone(this.model.attributes)
                     };
                 },*/
-        
+
 
         afterRender: function() {
 			eventBus.trigger('set_selected_privileges', this);
 		},
-		
+
 		renderPrivilegeMultiSelect: function() {
 			componentFacade.init_multi_select('.searchable', this.privileges);
 		},
@@ -122,7 +122,7 @@ define(function(require, exports, module) {
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             }
         },
-        
+
         clearValues: function() {
         	this.$('#role-name').val('');
 			this.$('#role-desc').val('');

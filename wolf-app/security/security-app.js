@@ -2,9 +2,13 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var eventBus = require('../app-main/app-eventbus');
-    var viewManager = require('../app-main/app-view-manager');
-    var commonLoading = require('../common/common-loading');
+
+    var appCore = require('../app-core/app-core-index');
+    var appCommon = require('../app-common/app-common-index');
+
+    var eventBus = appCore.Eventbus;
+    var viewManager = appCore.ViewMgmt;
+    var commonLoading = appCommon.CommonLoading;
 
     var securityApp = new Backbone.Layout({
 

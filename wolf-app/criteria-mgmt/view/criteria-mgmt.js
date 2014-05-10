@@ -2,17 +2,16 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    // var Backbone = require('backbone');
-    var BaseView = require('../../base/view/base-view');
-    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
-    
-    var eventBus = require('../../app-main/app-eventbus');
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
+    var appCommon = require('../../app-common/app-common-index.js');
+    var BaseView = appCommon.BaseView;
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
 
+    var eventBus = require('../../app-core/app-core-index').EventBus;
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
-    
+
     var criteriaMgmt = BaseView.extend({
 
         manage: true,
@@ -20,22 +19,22 @@ define(function(require, exports, module) {
         prefix: "criteria-mgmt/templates/",
 
         template: 'criteria-mgmt.html',
-        
+
         datatable_id: 'criteria-mgmt-datatable',
-        
+
         collection: criteriaColl,
 
         afterRender: function() {
             criteriaColl.fetch();
         },
-        
+
         new_obj: function(event) {
             if (event) event.preventDefault();
             eventBus.trigger('reset_criteria_new_modal');
         }
 	});
 
-	criteriaMgmt.mixin(objMgmtViewMixin);
+	criteriaMgmt.mixin(genericMgmtViewMixin);
 
     module.exports = criteriaMgmt;
 });

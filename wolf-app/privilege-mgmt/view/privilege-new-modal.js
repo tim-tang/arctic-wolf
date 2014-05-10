@@ -2,15 +2,15 @@ define(function(require, exports, module) {
 
     require('modalEffects');
     require('quicksearch');
-    
+
     var $ = require('$');
 	var _ = require('underscore');
     var Backbone = require('backbone');
-    
+
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');
 
-	var componentFacade = require('../../common/component-facade');
+	var componentFacade = require('../../app-common/component-facade');
 
     var privilegeModal = Backbone.View.extend({
         manage: true,
@@ -33,26 +33,26 @@ define(function(require, exports, module) {
 					{
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "Read"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "Create"
 							},
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "Modify"
 							},
 							{
-								"value": "4", 
+								"value": "4",
 								"label": "Delete"
 							}
 						]
 					},
 				]
 			};
-			
+
 			this.criterias = {
 				"selector_id": "criteria",
 				"optgroups": [
@@ -60,11 +60,11 @@ define(function(require, exports, module) {
 						"label": "Vehicle",
 						"options": [
 							{
-								"value": "1", 
+								"value": "1",
 								"label": "All Vehicle"
 							},
 							{
-								"value": "2", 
+								"value": "2",
 								"label": "Red Car"
 							}
 						]
@@ -73,11 +73,11 @@ define(function(require, exports, module) {
 						"label": "User",
 						"options": [
 							{
-								"value": "3", 
+								"value": "3",
 								"label": "All User"
 							},
 							{
-								"value": "4", 
+								"value": "4",
 								"label": "All Administrator"
 							}
 						]
@@ -92,7 +92,7 @@ define(function(require, exports, module) {
                         privilege: _.clone(this.model.attributes)
                     };
                 },*/
-        
+
 
         afterRender: function() {
             componentFacade.init_switch('.switch');

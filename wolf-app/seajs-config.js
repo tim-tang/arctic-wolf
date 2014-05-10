@@ -26,7 +26,7 @@ seajs.config({
         "multi-select": "jquery.multiselect/js/jquery.multi-select.js",
         "bootstrap": "bootstrap/dist/js/bootstrap.min.js",
         "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js",
-        "app-main": "./app-main/app-main.js"
+        "app-main": "./app-main/index.js"
     },
 
     debug: true,

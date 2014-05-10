@@ -2,25 +2,27 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    // var Backbone = require('backbone');
-    var BaseView = require('../../base/view/base-view');
-    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
-    
-    var eventBus = require('../../app-main/app-eventbus');
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
+
+    var appCommon = require('../../app-common/app-common-index.js');
+    var BaseView = appCommon.BaseView;
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
+
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
 
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');
 
     var privilegeMgmt = BaseView.extend({
-    	
+
         prefix: "privilege-mgmt/templates/",
 
         template: 'privilege-mgmt.html',
-        
+
         datatable_id: 'privilege-mgmt-datatable',
-        
+
         collection: privilegeColl,
 
         afterRender: function() {
@@ -28,7 +30,7 @@ define(function(require, exports, module) {
         }
     });
 
-	privilegeMgmt.mixin(objMgmtViewMixin);
+	privilegeMgmt.mixin(genericMgmtViewMixin);
 
     module.exports = privilegeMgmt;
 });

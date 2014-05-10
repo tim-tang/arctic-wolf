@@ -1,8 +1,9 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    var viewManager = require('../app-main/app-view-manager');
-    var eventBus = require('../app-main/app-eventbus');
+    var appCore = require('../app-core/app-core-index');
+    var viewManager = appCore.viewMgmt;
+    var eventBus = appCore.Eventbus;
 
     var dashboardApp = new Backbone.Layout({
 

@@ -2,12 +2,14 @@ define(function(require, exports, module) {
 
     var $ = require('$');
 	var _ = require('underscore');
-    var BaseView = require('../../../base/view/base-view');
-    var objDetailsViewMixin = require('../../../base/mixin/object-details-view-mixin');
 
-    var commonUtils = require('../../../common/common-utils');
-    var eventBus = require('../../../app-main/app-eventbus');
-    var componentFacade = require('../../../common/component-facade');
+    var appCommon = require('../../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
+
+    var commonUtils = appCommon.CommonUtils;
+    var eventBus = require('../../../app-core/app-core-index').Eventbus;
+    var componentFacade = appCommon.ComponentFacade;
 
     var roleModel = require('../../model/role-model');
     var privilegeColl = require('../../../privilege-mgmt/collection/privilege-coll');
@@ -15,22 +17,22 @@ define(function(require, exports, module) {
     var rolePrivilge = BaseView.extend({
 
         prefix: "role-mgmt/templates/tab/",
-        
+
         datatable_id: 'assigned-privileges-datatable',
 
         template: 'role-privilege.html',
 
 		model: new roleModel(),
-		
+
 		collection: privilegeColl,
-		
+
         initialize: function() {
             this.model.urlRoot = '/role-privileges';
-            
+
             // This trigger is used to reverse control multi selector data in assign-privilege-modal
 			eventBus.on('set_selected_privileges', this.setSelectedPrivileges, this);
         },
-        
+
 		load_object: function() {
 			this.collection.set(this.model.get('privileges')['aaData']);
         	this.init_datatable('privileges');
@@ -51,7 +53,7 @@ define(function(require, exports, module) {
 			});
 			view.renderPrivilegeMultiSelect();
 		},
-        
+
         events: {
 			//TODO:
         },
@@ -61,7 +63,7 @@ define(function(require, exports, module) {
         }
     });
 
-	rolePrivilge.mixin(objDetailsViewMixin);
+	rolePrivilge.mixin(genericDetailsViewMixin);
 
 	module.exports = rolePrivilge;
 });

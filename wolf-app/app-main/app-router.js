@@ -3,11 +3,12 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var securityApp = require('../security/security-app');
-    var eventBus = require('./app-eventbus');
-    var viewManager = require('./app-view-manager');
+    var securityApp = require('../security/index').SecurityApp;
+    var authenticationProvider = require('../security/index').AuthenticationProvider;
+    var appCore = require('../app-core/app-core-index');
+    var eventBus = appCore.Eventbus;
+    var viewManager = appCore.ViewMgmt;
     var AppBaseRouter = require('./app-base-router');
-    var authenticationProvider = require('../security/authentication/authentication-provider');
 
     var AppRouter = {};
     AppRouter.Router = AppBaseRouter.extend({
@@ -58,28 +59,28 @@ define(function(require, exports, module) {
             eventBus.trigger('layout:active-menu-item');
             switch (Backbone.history.fragment) {
             case "dashboard/":
-                require('../dashboard/dashboard-app').run(viewManager);
+                require('../dashboard/index').DashboardApp.run(viewManager);
                 break;
             case "generic-filter/":
-                require('../generic-filter/generic-filter-app').run(viewManager);
+                require('../generic-filter/index').GenericFilterApp.run(viewManager);
                 break;
             case "user-mgmt/":
-                require('../user-mgmt/user-app').run(viewManager);
+                require('../user-mgmt/index').UserMgmtApp.run(viewManager);
                 break;
             case "user-group-mgmt/":
-                require('../user-group-mgmt/user-group-app').run(viewManager);
+                require('../user-group-mgmt/index').UserGrpMgmtApp.run(viewManager);
                 break;
             case "role-mgmt/":
-                require('../role-mgmt/role-app').run(viewManager);
+                require('../role-mgmt/index').RoleMgmtApp.run(viewManager);
                 break;
             case "privilege-mgmt/":
-                require('../privilege-mgmt/privilege-app').run(viewManager);
+                require('../privilege-mgmt/index').PrivilegeMgmtApp.run(viewManager);
                 break;
             case "criteria-mgmt/":
-                require('../criteria-mgmt/criteria-app').run(viewManager);
+                require('../criteria-mgmt/index').CriteriaMgmtApp.run(viewManager);
                 break;
             case "vehicle-mgmt/":
-                require('../vehicle-mgmt/vehicle-app').run(viewManager);
+                require('../vehicle-mgmt/index').VehicleMgmtApp.run(viewManager);
                 break;
             }
         },
@@ -136,14 +137,14 @@ define(function(require, exports, module) {
 
         invokeSecurityModule: function(subroute) {
             if (!AppRouter.securityRouter) {
-                AppRouter.securityRouter = require('../security/security-app').invokeSecurityRouter();
+                AppRouter.securityRouter = require('../security/index').SecurityApp.invokeSecurityRouter();
             }
         },
 
         invokeDashboardModule: function() {
             this.predict_layout_existence(function() {
                 if (!AppRouter.dashboardRouter) {
-                    AppRouter.dashboardRouter = require('../dashboard/dashboard-app').invokeDashboardRouter();
+                    AppRouter.dashboardRouter = require('../dashboard/index').DashboardApp.invokeDashboardRouter();
                 }
             });
         },
@@ -151,7 +152,7 @@ define(function(require, exports, module) {
         invokeVehicleModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.vehicleRouter) {
-                    AppRouter.vehicleRouter = require('../vehicle-mgmt/vehicle-app').invokeVehicleRouter();
+                    AppRouter.vehicleRouter = require('../vehicle-mgmt/index').VehicleMgmtApp.invokeVehicleRouter();
                 }
             });
         },
@@ -159,7 +160,7 @@ define(function(require, exports, module) {
         invokeUserGroupModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.userGroupRouter) {
-                    AppRouter.userGroupRouter = require('../user-group-mgmt/user-group-app').invokeUserGroupRouter();
+                    AppRouter.userGroupRouter = require('../user-group-mgmt/index').UserGrpMgmtApp.invokeUserGroupRouter();
                 }
             });
         },
@@ -167,7 +168,7 @@ define(function(require, exports, module) {
         invokeUserModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.userRouter) {
-                    AppRouter.userRouter = require('../user-mgmt/user-app').invokeUserRouter();
+                    AppRouter.userRouter = require('../user-mgmt/index').UserMgmtApp.invokeUserRouter();
                 }
             });
         },
@@ -175,7 +176,7 @@ define(function(require, exports, module) {
         invokeRoleModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.roleRouter) {
-                    AppRouter.roleRouter = require('../role-mgmt/role-app').invokeRoleRouter();
+                    AppRouter.roleRouter = require('../role-mgmt/index').RoleMgmtApp.invokeRoleRouter();
                 }
             });
         },
@@ -183,7 +184,7 @@ define(function(require, exports, module) {
         invokePrivilegeModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.privilegeRouter) {
-                    AppRouter.privilegeRouter = require('../privilege-mgmt/privilege-app').invokePrivilegeRouter();
+                    AppRouter.privilegeRouter = require('../privilege-mgmt/index').PrivilegeMgmtApp.invokePrivilegeRouter();
                 }
             });
         },
@@ -191,7 +192,7 @@ define(function(require, exports, module) {
         invokeCriteriaModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.criteriaRouter) {
-                    AppRouter.criteriaRouter = require('../criteria-mgmt/criteria-app').invokeCriteriaRouter();
+                    AppRouter.criteriaRouter = require('../criteria-mgmt/index').CriteriaMgmtApp.invokeCriteriaRouter();
                 }
             });
         },
@@ -199,7 +200,7 @@ define(function(require, exports, module) {
         invokeGenericFilterModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.genericFilterRouter) {
-                    AppRouter.genericFilterRouter = require('../generic-filter/generic-filter-app').invokeGenericFilterRouter();
+                    AppRouter.genericFilterRouter = require('../generic-filter/index').GenericFilterApp.invokeGenericFilterRouter();
                 }
             });
         },
@@ -212,7 +213,7 @@ define(function(require, exports, module) {
             if (AppRouter.layoutApp) {
                 return callback();
             }
-            AppRouter.layoutApp = require('../layout/layout-app');
+            AppRouter.layoutApp = require('../layout/index').LayoutApp;
             AppRouter.layoutApp.retain = true;
             viewManager.showLayout('#layout-container', AppRouter.layoutApp, function() {
                 callback();

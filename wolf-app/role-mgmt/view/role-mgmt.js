@@ -3,13 +3,14 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     //var Backbone = require('backbone');
-    var BaseView = require('../../base/view/base-view');
-    var objMgmtViewMixin = require('../../base/mixin/object-mgmt-view-mixin');
-    var viewManager = require('../../app-main/app-view-manager');
+    var appCommon = require('../../app-common/app-common-index');
+    var BaseView = appCommon.BaseView;
+    var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
+    var commonUtils = appCommon.CommonUtils;
+    var componentFacade = appCommon.ComponentFacade;
 
-    var eventBus = require('../../app-main/app-eventbus');
-    var commonUtils = require('../../common/common-utils');
-    var componentFacade = require('../../common/component-facade');
+    var viewManager = require('../../app-core/app-view-manager');
+    var eventBus = require('../../app-core/app-eventbus');
 
     var roleColl = require('../collection/role-coll');
 
@@ -28,7 +29,7 @@ define(function(require, exports, module) {
         }
     });
 
-    roleMgmt.mixin(objMgmtViewMixin);
+    roleMgmt.mixin(genericMgmtViewMixin);
 
     module.exports = roleMgmt;
 });

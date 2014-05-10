@@ -3,10 +3,9 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var $ = require('$');
     require('parsley');
-    var layoutApp = require('../../layout/layout-app');
-    var layoutFooter = require('../../layout/view/layout-footer');
+    var securityFooter = require('./security-footer');
     var authenticationProvider = require('../authentication/authentication-provider');
-    var eventBus = require('../../app-main/app-eventbus');
+    var eventBus = require('../../app-core/app-core-index').Eventbus;
 
     var securityLogin = Backbone.View.extend({
 
@@ -19,7 +18,7 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-            var layoutFooterView = new layoutFooter();
+            var layoutFooterView = new securityFooter();
             this.insertView('.middle-login', layoutFooterView).render();
         },
 
