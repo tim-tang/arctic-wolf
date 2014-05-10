@@ -10,11 +10,9 @@
       "jquery": "jquery/jquery/1.10.1/jquery",
       "jquery-debug": "jquery/jquery/1.10.1/jquery-debug",
       "underscore": "gallery/underscore/1.5.2/underscore",
-      "select2": "jquery/select2/3.4.6/select2.js",
-      "select2-css": "jquery/select2/3.4.6/select2.css",
       "nanoscroller": "jquery-plugin/nanoscroller/0.7.5/nanoscroller.js",
       "nanoscroller-css": "jquery-plugin/nanoscroller/0.7.5/nanoscroller.css",
-      "datatables": "jquery/datatables/1.9.4/datatables",
+      "jquery-datatables": "jquery/datatables/1.9.4/datatables",
       "datetimepicker": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.js",
       "datetimepicker-css": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.css",
       "switch": "atans/bootstrap-switch/2.0.0/bootstrap-switch.js",
@@ -29,7 +27,17 @@
       "backbone": "gallery/backbone/1.1.0/backbone",
       "moment": "gallery/moment/2.6.0/moment.js",
       "layoutmanager": "arctic-cmd-repo/backbone-layoutmanager/0.9.5backbone.layoutmanager.js",
-      "subroute": "arctic-cmd-repo/backbone-subroute/0.4.2/backbone.subroute.js"
+      "subroute": "arctic-cmd-repo/backbone-subroute/0.4.2/backbone.subroute.js",
+      "select2": "arctic-cmd-repo/jquery-select2/3.4.6/select2.js",
+      "select2-css": "arctic-cmd-repo/jquery-select2/3.4.6/select2.css",
+      "jasny": "arctic-cmd-repo/bootstrap-jasny/3.1.0/jasny-bootstrap.js",
+      "jasny-css": "arctic-cmd-repo/bootstrap-jasny/3.1.0/jasny-bootstrap.css",
+      "daterangepicker": "arctic-cmd-repo/bootstrap-daterangepicker/1.3.6/daterangepicker.js",
+      "daterangepicker-css": "arctic-cmd-repo/bootstrap-daterangepicker/1.3.6/daterangepicker-bs3.js",
+      "touchspin": "arctic-cmd-repo/bootstrap-touchspin/2.8.0/bootstrap.touchspin.js",
+      "multi-select": "arctic-cmd-repo/jquery-multi-select/0.9.10/jquery.multi-select.js",
+      "datatables": "arctic-cmd-repo/datatables/0.0.1/bootstrap-adapter/js/datatables.js",
+      "parsley": "arctic-cmd-repo/parsley/2.0.0/parsley.js"
     }
   }
 }
