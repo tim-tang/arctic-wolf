@@ -141,8 +141,8 @@ define(function(require, exports, module) {
 
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
-                	select2_view.$el.appendTo('#' + select2_view.options["selector_id"] + '-container');
-                	select2_view.$el.find('select').attr("id", select2_view.options["selector_id"]);
+                	select2_view.$el.appendTo('#' + select_id + '-container');
+                	select2_view.$el.find('select').attr("id", select_id);
                 }
                 // Append this selector to the promised element
                 else {
@@ -193,8 +193,13 @@ define(function(require, exports, module) {
 
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
-                	multi_select_view.$el.appendTo('#' + multi_select_view.options["selector_id"] + '-container');
-                	multi_select_view.$el.find('select').attr("id", multi_select_view.options["selector_id"]);
+                	var select_container = '#' + select_id + '-container';
+            		// Remove existing multi selector
+            		if($(select_container).children())
+            			$(select_container).children().remove();
+            	
+                	multi_select_view.$el.appendTo(select_container);
+                	multi_select_view.$el.find('select').attr("id", select_id);
                 }
 
                 // Set selector attributes: multiple
