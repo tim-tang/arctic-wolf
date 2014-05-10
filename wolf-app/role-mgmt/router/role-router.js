@@ -2,8 +2,9 @@ define(function(require, exports, module) {
 
 	var $ = require('$');
     var Backbone = require('backbone');
-    var eventBus = require('../../app-core/app-eventbus');
-	var viewManager = require('../../app-core/app-view-manager');
+    var appCore = require('../../app-core/index');
+    var eventBus = appCore.Eventbus;
+	var viewManager = appCore.ViewMgmt;
 
 	require('subroute');
 

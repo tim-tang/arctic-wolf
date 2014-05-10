@@ -2,15 +2,16 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    //var Backbone = require('backbone');
+
     var appCommon = require('../../app-common/index');
     var BaseView = appCommon.BaseView;
     var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
 
-    var viewManager = require('../../app-core/app-view-manager');
-    var eventBus = require('../../app-core/app-eventbus');
+    var appCore = require('../../app-core/index');
+    var viewManager = appCore.viewMgmt;
+    var eventBus = appCore.Eventbus;
 
     var roleColl = require('../collection/role-coll');
 

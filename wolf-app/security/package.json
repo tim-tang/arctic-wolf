@@ -1,6 +1,6 @@
 {
   "family": "wolf-app",
-  "name": "vehicle-mgmt",
+  "name": "security",
   "version": "0.0.1",
   "spm": {
     "source": "./",
@@ -10,7 +10,7 @@
       "backbone": "backbone"
     },
     "output": [
-      "vehicle-app.js"
+      "index.js"
     ]
   }
 }

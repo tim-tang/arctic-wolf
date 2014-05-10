@@ -4,8 +4,9 @@
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
-    var eventBus = require('../app-core/app-eventbus');
-    var viewManager = require('../app-core/app-view-manager');
+    var appCore = require('../app-core/index');
+    var eventBus = appCore.Eventbus;
+    var viewManager = appCore.ViewMgmt;
 
     var roleGeneralInfo = require('./view/tab/role-general-info');
 	var rolePrivilege = require('./view/tab/role-privilege');

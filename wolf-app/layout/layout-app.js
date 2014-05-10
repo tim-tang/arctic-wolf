@@ -11,13 +11,14 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var appCommon = require('../app-common/index');
     var commonUtils = appCommon.CommonUtils;
+    var appCore = require('../app-core/index');
+    var eventBus = appCore.Eventbus;
+    var viewManager = appCore.ViewMgmt;
 
     var layoutLogo = require('./view/layout-logo');
     var layoutUser = require('./view/layout-user');
     var layoutMenu = require('./view/layout-menu');
     var layoutProfile = require('./view/layout-profile');
-    var eventBus = require('../app-core/app-eventbus');
-    var viewManager = require('../app-core/app-view-manager');
 
     var layoutApp = new Backbone.Layout({
 
