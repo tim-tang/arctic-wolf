@@ -4,10 +4,10 @@
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
-    var appCommon = require('../app-common/app-common-index');
+    var appCommon = require('../app-common/index');
 	var commonLoading = appCommon.CommonLoading;
 
-	var eventBus = require('../app-core/app-core-index').Eventbus;
+	var eventBus = require('../app-core/index').Eventbus;
 
 	var criteriaMgmt = require('./view/criteria-mgmt');
 	var criteriaModal = require('./view/criteria-new-modal');

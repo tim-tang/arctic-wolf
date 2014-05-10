@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
     var $ = require('$');
 
-    var appCommon = require('../../../app-common/app-common-index');
+    var appCommon = require('../../../app-common/index');
     var BaseView = appCommon.BaseView;
     var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
 

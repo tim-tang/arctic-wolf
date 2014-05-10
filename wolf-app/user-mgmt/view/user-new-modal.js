@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var appCommon = require('../../app-common/app-common-index');
+    var appCommon = require('../../app-common/index');
     var commonUtils = appCommon.CommonUtils;
 
     var userColl = require('../collection/user-coll');

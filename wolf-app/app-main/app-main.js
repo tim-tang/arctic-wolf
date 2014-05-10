@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     require('layoutmanager');
     var authenticationProvider = require('../security/index').AuthenticationProvider;
     var appRouter = require('./app-router');
-    window.App = require('../app-common/app-common-index').CommonConstants;
+    window.App = require('../app-common/index').CommonConstants;
 
     /****************************************************
      * Backbone Layout Manager Configuration.

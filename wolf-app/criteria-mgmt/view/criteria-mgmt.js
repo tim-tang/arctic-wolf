@@ -2,13 +2,13 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
-    var appCommon = require('../../app-common/app-common-index.js');
+    var appCommon = require('../../app-common/index.js');
     var BaseView = appCommon.BaseView;
     var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
 
-    var eventBus = require('../../app-core/app-core-index').EventBus;
+    var eventBus = require('../../app-core/index').EventBus;
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
 

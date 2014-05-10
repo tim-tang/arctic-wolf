@@ -5,7 +5,7 @@
      var Backbone = require('backbone');
 
      var eventBus = require('../app-core/app-eventbus');
-     var appCommon = require('../app-common/app-common-index');
+     var appCommon = require('../app-common/index');
 	 var commonLoading = appCommon.CommonLoading;
      var viewManager = require('../app-core/app-view-manager');
 

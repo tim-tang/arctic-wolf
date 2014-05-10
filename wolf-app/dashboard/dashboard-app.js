@@ -1,7 +1,7 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    var appCore = require('../app-core/app-core-index');
+    var appCore = require('../app-core/index');
     var viewManager = appCore.viewMgmt;
     var eventBus = appCore.Eventbus;
 

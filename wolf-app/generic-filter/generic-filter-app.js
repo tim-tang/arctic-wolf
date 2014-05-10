@@ -2,10 +2,10 @@ define(function(require, exports, module) {
 
 
     var Backbone = require('backbone');
-    var appCommon = require('../app-common/app-common-index');
+    var appCommon = require('../app-common/index');
 	var commonLoading = appCommon.CommonLoading;
 
-    var eventBus = require('../app-core/app-core-index').Eventbus;
+    var eventBus = require('../app-core/index').Eventbus;
     var genericFilter = require('./view/generic-filter');
     var genericFilterRecords = require('./view/generic-record-container');
     var _ = require('underscore');

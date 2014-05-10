@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var securityApp = require('../security/index').SecurityApp;
     var authenticationProvider = require('../security/index').AuthenticationProvider;
-    var appCore = require('../app-core/app-core-index');
+    var appCore = require('../app-core/index');
     var eventBus = appCore.Eventbus;
     var viewManager = appCore.ViewMgmt;
     var AppBaseRouter = require('./app-base-router');

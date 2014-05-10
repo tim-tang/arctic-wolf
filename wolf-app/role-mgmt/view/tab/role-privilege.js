@@ -3,12 +3,12 @@ define(function(require, exports, module) {
     var $ = require('$');
 	var _ = require('underscore');
 
-    var appCommon = require('../../../app-common/app-common-index');
+    var appCommon = require('../../../app-common/index');
     var BaseView = appCommon.BaseView;
     var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
 
     var commonUtils = appCommon.CommonUtils;
-    var eventBus = require('../../../app-core/app-core-index').Eventbus;
+    var eventBus = require('../../../app-core/index').Eventbus;
     var componentFacade = appCommon.ComponentFacade;
 
     var roleModel = require('../../model/role-model');

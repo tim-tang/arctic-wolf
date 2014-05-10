@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var backboneViewMixin = require('../mixin/backbone-view-mixin');
-    var eventBus = require('../../app-core/app-core-index').Eventbus;
+    var eventBus = require('../../app-core/index').Eventbus;
 
     var baseView = Backbone.View.extend({
 

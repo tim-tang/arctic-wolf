@@ -3,8 +3,8 @@
      var $ = require('$');
      var _ = require('underscore');
      var Backbone = require('backbone');
-     var eventBus = require('../app-core/app-core-index').Eventbus;
-     var appCommon = require('../app-common/app-common-index');
+     var eventBus = require('../app-core/index').Eventbus;
+     var appCommon = require('../app-common/index');
 	 var commonLoading = appCommon.CommonLoading;
      var vehicleMgmt = require('./view/vehicle-mgmt');
      var vehicleModal = require('./view/vehicle-new-modal');
