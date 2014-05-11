@@ -25,6 +25,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             this.model.urlRoot = '/role-users';
+            this.model.set('id', '777');
         },
 
         load_object: function() {

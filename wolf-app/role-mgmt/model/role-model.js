@@ -15,7 +15,7 @@
         //},
 
         defaults: {
-        	id: 1,
+        	// id: 1,
             role_name: '',
             role_desc: '',
             privileges: '',

@@ -28,6 +28,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             this.model.urlRoot = '/role-privileges';
+            this.model.set('id', '888');
 
             // This trigger is used to reverse control multi selector data in assign-privilege-modal
 			eventBus.on('set_selected_privileges', this.setSelectedPrivileges, this);
