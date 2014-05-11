@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
-	var componentFacade = require('../../../app-common/index').ComponetFacade;
+	var componentFacade = require('../../../app-common/index').ComponentFacade;
 
     var roleModal = Backbone.View.extend({
         manage: true,
