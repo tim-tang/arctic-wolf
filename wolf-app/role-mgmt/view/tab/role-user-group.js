@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     var componentFacade = appCommon.ComponentFacade;
 
 	var roleModel = require('../../model/role-model');
-	var userGroupColl = require('../../../user-group-mgmt/collection/user-group-coll');
+	var userGroupColl = require('app-user-group-mgmt').UserGroupColl;
 
     var roleUserGroup = BaseView.extend({
 

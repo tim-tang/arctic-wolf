@@ -12,7 +12,7 @@ define(function(require, exports, module) {
     var componentFacade = appCommon.ComponentFacade;
 
     var roleModel = require('../../model/role-model');
-    var privilegeColl = require('../../../privilege-mgmt/collection/privilege-coll');
+    var privilegeColl = require('app-privilege-mgmt').PrivilegeColl;
 
     var rolePrivilge = BaseView.extend({
 

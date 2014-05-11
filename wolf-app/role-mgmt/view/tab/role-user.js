@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     var componentFacade = appCommon.ComponentFacade;
 
 	var roleModel = require('../../model/role-model');
-	var userColl = require('../../../user-mgmt/collection/user-coll');
+	var userColl = require('app-user-mgmt').UserColl;
 
     var roleUser = BaseView.extend({
 
