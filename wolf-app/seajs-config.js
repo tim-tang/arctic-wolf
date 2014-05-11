@@ -1,3 +1,10 @@
+seajs.production = false;
+if (seajs.production) {
+    seajs.config({
+        //TODO: handling production environment.
+    });
+}
+
 seajs.config({
     paths: {
         "wolf-app": "http://localhost:3000/wolf-app"
@@ -63,7 +70,6 @@ seajs.config({
         //"datatables": "arctic-cmd-repo/datatables/0.0.1/bootstrap-adapter/js/datatables.js",
         //"html5shiv": "gallery/html5shiv/3.7.0/html5shiv.js",
         //"parsley": "arctic-cmd-repo/parsley/2.0.0/parsley.js",
-
         ////TODO: Make following lib cmdize
         //"parsley": "wolf-app/sea-modules/jquery.parsley/2.0.0/parsley.js",
         //"quicksearch": "wolf-app/sea-modules/jquery.quicksearch/jquery.quicksearch.js",
@@ -72,7 +78,6 @@ seajs.config({
         //"switch": "wolf-app/sea-modules/bootstrap.switch/bootstrap-switch.min.js",
         //"gritter": "wolf-app/sea-modules/jquery.gritter/js/jquery.gritter.js",
         //"modalEffects": "wolf-app/sea-modules/jquery.niftymodals/js/jquery.modalEffects.js",
-
         // --------------------------------------- //
         //          ARCTIC WOLF MODULES            //
         // --------------------------------------- //

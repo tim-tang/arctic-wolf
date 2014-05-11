@@ -10,7 +10,17 @@
       "backbone": "backbone",
       "layoutmanager": "layoutmanager",
       "app-core": "app-core",
-      "app-security": "app-security"
+      "app-security": "app-security",
+      "app-common": "app-common",
+      "app-layout": "app-layout",
+      "app-dashboard": "app-dashboard",
+      "app-user-mgmt": "app-user-mgmt",
+      "app-user-group-mgmt": "app-user-group-mgmt",
+      "app-criteria-mgmt": "app-criteria-mgmt",
+      "app-privilege-mgmt": "app-privilege-mgmt",
+      "app-role-mgmt": "app-role-mgmt",
+      "app-vehicle-mgmt": "app-vehicle-mgmt",
+      "app-generic-filter": "app-generic-filter"
     },
     "output": [
       "index.js"
