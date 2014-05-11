@@ -3,14 +3,14 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
 
-    var appCommon = require('../../app-common/index.js');
+    var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
     var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
 
     var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
-    var eventBus = require('../../app-core/index').Eventbus;
+    var eventBus = require('app-core').Eventbus;
 
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');

@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var commonUtils = require('../common-utils');
     var componentFacade = require('../component-facade');
-    var eventBus = require('../../app-core/index').Eventbus;
+    var eventBus = require('app-core').Eventbus;
 
     var objMgmtViewMixin = {
 

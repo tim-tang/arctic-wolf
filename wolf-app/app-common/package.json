@@ -6,13 +6,13 @@
     "source": "./",
     "alias": {
       "$": "$",
-      "_": "underscore",
-      "backbone": "backbone"
+      "underscore": "underscore",
+      "backbone": "backbone",
+      "app-core": "app-core"
     },
     "output": [
       "index.js"
     ]
   }
 }
-
 

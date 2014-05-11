@@ -1,6 +1,6 @@
 {
   "family": "wolf-app",
-  "name": "vehicle-mgmt",
+  "name": "layout",
   "version": "0.0.1",
   "spm": {
     "source": "./",
@@ -10,10 +10,12 @@
       "backbone": "backbone",
       "app-core": "app-core",
       "app-common": "app-common",
-      "subroute": "subroute"
+      "subroute": "subroute",
+      "app-security": "app-security"
     },
     "output": [
       "index.js"
     ]
   }
 }
+

@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     require('parsley');
     var securityFooter = require('./security-footer');
     var authenticationProvider = require('../authentication/authentication-provider');
-    var eventBus = require('../../app-core/index').Eventbus;
+    var eventBus = require('app-core').Eventbus;
 
     var securityLogin = Backbone.View.extend({
 

@@ -1,6 +1,6 @@
 {
   "family": "wolf-app",
-  "name": "vehicle-mgmt",
+  "name": "privilege-mgmt",
   "version": "0.0.1",
   "spm": {
     "source": "./",

@@ -1,13 +1,13 @@
 define(function(require, exports, module) {
 
     var _ = require('underscore');
-    var appCommon = require('../../app-common/index');
+    var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
     var genericMgmtViewMixin = appCommon.GenericMgmtViewMixin;
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
 
-    var eventBus = require('../../app-core/index').Eventbus;
+    var eventBus = require('app-core').Eventbus;
     var vehicleColl = require('../collection/vehicle-coll');
 
     var vehicleMgmt = BaseView.extend({

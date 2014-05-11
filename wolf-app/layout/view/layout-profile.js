@@ -1,8 +1,8 @@
 define(function(require, exports, module) {
 
     var Backbone = require('backbone');
-    var eventBus = require('../../app-core/index').Eventbus;
-    var authenticationProvider = require('../../security/authentication/authentication-provider');
+    var eventBus = require('app-core').Eventbus;
+    var authenticationProvider = require('app-security').AuthenticationProvider;
 
     var layoutProfile = Backbone.View.extend({
         manage: true,

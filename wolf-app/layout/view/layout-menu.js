@@ -2,7 +2,7 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var Backbone = require('backbone');
-    var eventBus = require('../../app-core/index').Eventbus;
+    var eventBus = require('app-core').Eventbus;
 
     var layoutMenu = Backbone.View.extend({
         manage: true,

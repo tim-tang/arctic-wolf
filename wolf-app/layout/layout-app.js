@@ -9,9 +9,9 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
-    var appCommon = require('../app-common/index');
+    var appCommon = require('app-common');
     var commonUtils = appCommon.CommonUtils;
-    var appCore = require('../app-core/index');
+    var appCore = require('app-core');
     var eventBus = appCore.Eventbus;
     var viewManager = appCore.ViewMgmt;
 

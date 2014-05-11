@@ -9,8 +9,8 @@ define(function(require, exports, module) {
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
 
-    var eventBus = require('../../app-core/index').Eventbus;
-    var componentFacade = require('../../app-common/index').ComponentFacade;
+    var eventBus = require('app-core').Eventbus;
+    var componentFacade = require('app-common').ComponentFacade;
 
     var criteriaRow = Backbone.View.extend({
         manage: true,

@@ -10,8 +10,8 @@ define(function(require, exports, module) {
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
-	var eventBus = require('../../../app-core/index').Eventbus;
-	var componentFacade = require('../../../app-common/index').ComponentFacade;
+	var eventBus = require('app-core').Eventbus;
+	var componentFacade = require('app-common').ComponentFacade;
 
     var assignPrivilegeModal = Backbone.View.extend({
         manage: true,

@@ -6,7 +6,7 @@
     "source": "./",
     "alias": {
       "$": "$",
-      "_": "underscore",
+      "underscore": "underscore",
       "backbone": "backbone"
     },
     "output": [
