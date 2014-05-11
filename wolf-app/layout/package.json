@@ -11,6 +11,10 @@
       "app-core": "app-core",
       "app-common": "app-common",
       "subroute": "subroute",
+      "nanoscroller": "nanoscroller",
+      "sparkline": "sparkline",
+      "gritter": "gritter",
+      "bootstrap": "bootstrap",
       "app-security": "app-security"
     },
     "output": [

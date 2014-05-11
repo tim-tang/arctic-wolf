@@ -10,10 +10,16 @@
       "backbone": "backbone",
       "app-core": "app-core",
       "app-common": "app-common",
-      "subroute": "subroute"
+      "subroute": "subroute",
+      "modalEffects": "modalEffects",
+      "quicksearch": "quicksearch",
+      "app-privilege-mgmt": "app-privilege-mgmt",
+      "app-user-mgmt": "app-user-mgmt",
+      "app-user-group-mgmt": "app-user-group-mgmt"
     },
     "output": [
       "index.js"
     ]
   }
 }
+

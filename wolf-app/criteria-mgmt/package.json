@@ -10,7 +10,8 @@
       "backbone": "backbone",
       "app-core": "app-core",
       "app-common": "app-common",
-      "subroute": "subroute"
+      "subroute": "subroute",
+      "modalEffects": "modalEffects"
     },
     "output": [
       "index.js"

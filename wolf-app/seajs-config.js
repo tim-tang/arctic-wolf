@@ -32,7 +32,7 @@ seajs.config({
         "switch": "bootstrap.switch/bootstrap-switch.min.js",
         "multi-select": "jquery.multiselect/js/jquery.multi-select.js",
         "bootstrap": "bootstrap/dist/js/bootstrap.min.js",
-        "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js","$": "jquery/jquery/1.10.1/jquery",
+        "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js",
 
         // ------------------------------------------//
         //               SPM Sources                 //

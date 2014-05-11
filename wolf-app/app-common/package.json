@@ -8,6 +8,18 @@
       "$": "$",
       "underscore": "underscore",
       "backbone": "backbone",
+      "jquery-datatables": "jquery-datatables",
+      "datatables": "datatables",
+      "jasny": "jasny",
+      "select2": "select2",
+      "switch": "switch",
+      "multi-select": "multi-select",
+      "moment": "moment",
+      "daterangepicker": "daterangepicker",
+      "datetimepicker": "datetimepicker",
+      "bootstrap-slider": "bootstrap-slider",
+      "modalEffects": "modalEffects",
+      "bt-touchspin": "bt-touchspin",
       "app-core": "app-core"
     },
     "output": [
