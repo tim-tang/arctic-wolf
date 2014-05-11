@@ -2,6 +2,7 @@ define(function(require, exports, module){
 
     var Backbone = require('backbone');
     var eventBus = require('../../app-core/index').Eventbus;
+    require('subroute');
 
 	var criteriaRouter = Backbone.SubRoute.extend({
 

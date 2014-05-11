@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-	var componentFacade = require('../../app-common/component-facade');
+	var componentFacade = require('../../app-common/index').ComponetFacade;
 
     var userGroupColl = require('../collection/user-group-coll');
     var userGroupModel = require('../model/user-group-model');

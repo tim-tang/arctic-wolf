@@ -8,7 +8,7 @@
      var Backbone = require('backbone');
      var vehicleColl = require('../collection/vehicle-coll');
      var vehicleModel = require('../model/vehicle-model');
-     var componentFacade = require('../../app-common/component-facade');
+     var componentFacade = require('../../app-common/index').ComponetFacade;
 
      var vehicleModal = Backbone.View.extend({
          manage: true,

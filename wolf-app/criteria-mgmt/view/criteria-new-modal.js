@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     var criteriaRow = require('./criteria-row');
 
     var eventBus = require('../../app-core/index').Eventbus;
-    var componentFacade = require('../../app-common/component-facade');
+    var componentFacade = require('../../app-common/index').ComponentFacade;
 
     var criteriaModal = Backbone.View.extend({
         manage: true,

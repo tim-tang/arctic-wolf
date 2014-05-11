@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     var privilegeColl = require('../collection/privilege-coll');
     var privilegeModel = require('../model/privilege-model');
 
-	var componentFacade = require('../../app-common/component-facade');
+	var componentFacade = require('../../app-common/index').ComponetFacade;
 
     var privilegeModal = Backbone.View.extend({
         manage: true,

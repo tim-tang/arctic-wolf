@@ -5,7 +5,6 @@ define(function(require, exports, module) {
     var appCore = require('../../app-core/index');
     var eventBus = appCore.Eventbus;
 	var viewManager = appCore.ViewMgmt;
-
 	require('subroute');
 
 	var roleRouter = Backbone.SubRoute.extend({
