@@ -81,19 +81,19 @@ seajs.config({
         // --------------------------------------- //
         //          ARCTIC WOLF MODULES            //
         // --------------------------------------- //
-        "app-core": "wolf-app/app-core/index.js",
-        "app-common": "wolf-app/app-common/index.js",
-        "app-security": "wolf-app/security/index.js",
-        "app-layout": "wolf-app/layout/index.js",
-        "app-dashboard": "wolf-app/dashboard/index.js",
-        "app-user-mgmt": "wolf-app/user-mgmt/index.js",
-        "app-user-group-mgmt": "wolf-app/user-group-mgmt/index.js",
-        "app-criteria-mgmt": "wolf-app/criteria-mgmt/index.js",
-        "app-privilege-mgmt": "wolf-app/privilege-mgmt/index.js",
-        "app-role-mgmt": "wolf-app/role-mgmt/index.js",
-        "app-vehicle-mgmt": "wolf-app/vehicle-mgmt/index.js",
-        "app-generic-filter": "wolf-app/generic-filter/index.js",
-        "app-main": "wolf-app/app-main/index.js"
+        "app-core": "wolf-app/app-core/src/index.js",
+        "app-common": "wolf-app/app-common/src/index.js",
+        "app-security": "wolf-app/security/src/index.js",
+        "app-layout": "wolf-app/layout/src/index.js",
+        "app-dashboard": "wolf-app/dashboard/src/index.js",
+        "app-user-mgmt": "wolf-app/user-mgmt/src/index.js",
+        "app-user-group-mgmt": "wolf-app/user-group-mgmt/src/index.js",
+        "app-criteria-mgmt": "wolf-app/criteria-mgmt/src/index.js",
+        "app-privilege-mgmt": "wolf-app/privilege-mgmt/src/index.js",
+        "app-role-mgmt": "wolf-app/role-mgmt/src/index.js",
+        "app-vehicle-mgmt": "wolf-app/vehicle-mgmt/src/index.js",
+        "app-generic-filter": "wolf-app/generic-filter/src/index.js",
+        "app-main": "wolf-app/app-main/src/index.js"
     },
 
     debug: true,
