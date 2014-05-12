@@ -16,6 +16,11 @@ define(function(require, exports, module) {
         	this.listenTo(this.model, 'sync', this.load_object);
 
         	this.model.fetch();
+        	
+        	// This trigger is used to reverse control multi selector data in assign-privilege-modal
+            console.log("######## Register event: set_selected_objects");
+            eventBus.off('set_selected_objects');
+			eventBus.on('set_selected_objects', this.setSelectedObjectsForMultiSelect, this);
         },
 
         events: {
@@ -25,7 +30,7 @@ define(function(require, exports, module) {
 
         init_datatable: function(tab_identify) {
 			var self = this;
-            // initialze jquery datatable
+            // Initialze jquery datatable
             componentFacade.init_datatable(this.datatable_id, {
                 data: this.model.get(tab_identify)['aaData'],
                 header: this.model.get(tab_identify)['aoColumns']
@@ -40,18 +45,28 @@ define(function(require, exports, module) {
                 eventBus.trigger('hide-loading');
             });
        	},
+       	
+		// This trigger method is used to reverse control assign-modal
+		setSelectedObjectsForMultiSelect: function(view) {
+			var selectedObjectsValue = [];
+			_.each(this.collection.models, function(model) {
+				selectedObjectsValue.push(model.id);
+			});
+			view.assignObjects.selected = selectedObjectsValue;
+			console.log(view.assignObjects);
+			view.renderMultiSelect();
+		},
 
         add_obj: function(event) {
             if (event) event.preventDefault();
-            //TODO:
-            alert('In Add');
+            $('#assign-modal').modal('show');
         },
 
         delete_obj: function(event) {
 			if (event) event.preventDefault();
-            console.log(JSON.stringify(this.collection));
             _.invoke(this.collection.selected(), 'destroy');
             commonUtils.remove_selected_row(this.datatable);
+            console.log(this.collection);
         }
 	};
 

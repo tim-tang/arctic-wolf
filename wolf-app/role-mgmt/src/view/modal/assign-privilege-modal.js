@@ -22,7 +22,7 @@ define(function(require, exports, module) {
 
         template: 'assign-privilege-modal.html',
 
-		privileges: null,
+		assignObjects: null,
 
         events: {
             'click #role-create-action': 'create_role'
@@ -30,7 +30,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
-            this.privileges = {
+            this.assignObjects = {
 				"selector_id": "privileges",
 				"multiple": "multiple",
 				"selected": [],
@@ -100,12 +100,11 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
-        	console.log(">>>>>>>>>>>>>>>>What happened!");
-			eventBus.trigger('set_selected_privileges', this);
+			eventBus.trigger('set_selected_objects', this);
 		},
 
-		renderPrivilegeMultiSelect: function() {
-			componentFacade.init_multi_select('.searchable', this.privileges);
+		renderMultiSelect: function() {
+			componentFacade.init_multi_select('.searchable', this.assignObjects);
 		},
 
         new_attributes: function() {

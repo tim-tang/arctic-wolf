@@ -212,9 +212,7 @@ define(function(require, exports, module) {
 				
 				// Setup CSS for this select element
                 _select.multiSelect({
-
                 	selectableOptgroup: true,
-                	
 					selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
 	                selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
 					afterInit: function(ms) {

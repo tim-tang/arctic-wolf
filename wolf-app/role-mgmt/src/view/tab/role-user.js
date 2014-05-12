@@ -1,6 +1,7 @@
 define(function(require, exports, module) {
 
     var $ = require('$');
+    
     var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
     var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;

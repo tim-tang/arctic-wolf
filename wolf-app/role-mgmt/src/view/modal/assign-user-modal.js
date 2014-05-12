@@ -10,6 +10,7 @@ define(function(require, exports, module) {
     var roleColl = require('../../collection/role-coll');
     var roleModel = require('../../model/role-model');
 
+	var eventBus = require('app-core').Eventbus;
 	var componentFacade = require('app-common').ComponentFacade;
 
     var roleModal = Backbone.View.extend({
@@ -21,7 +22,7 @@ define(function(require, exports, module) {
 
         template: 'assign-user-modal.html',
 
-		privileges: null,
+		assignObjects: null,
 
         events: {
             'click #role-create-action': 'create_role'
@@ -29,23 +30,24 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
-            this.users = {
+            this.assignObjects = {
 				"selector_id": "users",
 				"multiple": "multiple",
+				"selected": [],
 				"optgroups": [
 					{
 						"options": [
 							{
 								"value": "1",
-								"label": "User01"
+								"label": "Administrators"
 							},
 							{
 								"value": "2",
-								"label": "User02"
+								"label": "Tim"
 							},
 							{
 								"value": "3",
-								"label": "User03"
+								"label": "Johnny"
 							}
 						]
 					},
@@ -62,8 +64,11 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
-            componentFacade.init_switch('.switch');
-			componentFacade.init_multi_select('.searchable', this.users);
+            eventBus.trigger('set_selected_objects', this);
+		},
+
+		renderMultiSelect: function() {
+			componentFacade.init_multi_select('.searchable', this.assignObjects);
 		},
 
         new_attributes: function() {
