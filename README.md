@@ -20,6 +20,7 @@ Arctic single page application font-end with Sea.js and Backbone.js
 ## Build Arctic Wolf (Assume Node.JS has been installed).
 
     $ npm install spm -g
+    $ npm install spm build -g
     $ make build
 
 ## Start web server
