@@ -1,13 +1,20 @@
 {
   "name": "arctic-wolf",
   "author": "Tim.Tang <tang.jilong@gmail.com>",
+  "wolf_app_tpl": [
+    "app-common/**/*.html",
+    "security/**/*.html",
+    "dashboard/**/*.html",
+    "criteria-mgmt/**/*.html",
+    "generic-filter/**/*.html",
+    "layout/**/*.html",
+    "privilege-mgmt/**/*.html",
+    "role-mgmt/**/*.html",
+    "user-group-mgmt/**/*.html",
+    "user-mgmt/**/*.html",
+    "vehicle-mgmt/**/*.html"
+  ],
   "spm": {
-    "output": {
-      "relative": [
-        "app-core/index.js",
-        "app-common/index.js"
-      ]
-    },
     "alias": {
       "seajs": "seajs/seajs/2.2.1/sea",
       "$": "jquery/jquery/1.10.1/jquery.js",
@@ -39,6 +46,10 @@
       "app-core": "wolf-app/app-core/index.js",
       "app-common": "wolf-app/app-common/index.js"
     }
+  },
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-jst": "~0.6.0"
   }
 }
 

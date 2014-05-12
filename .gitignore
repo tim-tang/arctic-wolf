@@ -34,3 +34,4 @@ sea-modules
 *.swp
 .externalToolBuilders
 dist/
+wolf-tpl/

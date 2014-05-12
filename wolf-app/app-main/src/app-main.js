@@ -2,7 +2,8 @@ define(function(require, exports, module) {
 
     //- Import dependency js
     var $ = require('$');
-    var _ = require('underscore');
+    window._ = require('underscore');
+    require('wolf-tpl');
     var Backbone = require('backbone');
     require('layoutmanager');
     var authenticationProvider = require('app-security').AuthenticationProvider;
@@ -21,13 +22,15 @@ define(function(require, exports, module) {
         // This method will check for prebuilt templates first and fall back to
         // loading in via AJAX.
         fetchTemplate: function(path) {
-            // Check for a global JST object.  When you build your templates for
-            // production, ensure they are all attached here.
-            var JST = window.JST || {};
+            if (seajs.production) {
+                // Check for a global JST object.  When you build your templates for
+                // production, ensure they are all attached here.
+                var JST = window.JST || {};
 
-            // If the path exists in the object, use it instead of fetching remotely.
-            if (JST[path]) {
-                return JST[path];
+                // If the path exists in the object, use it instead of fetching remotely.
+                if (JST[path]) {
+                    return JST[path];
+                }
             }
 
             // If it does not exist in the JST object, mark this function as

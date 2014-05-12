@@ -81,6 +81,7 @@ seajs.config({
         // --------------------------------------- //
         //          ARCTIC WOLF MODULES            //
         // --------------------------------------- //
+        "wolf-tpl": "wolf-tpl/wolf-tpl.js",
         "app-core": "wolf-app/app-core/src/index.js",
         "app-common": "wolf-app/app-common/src/index.js",
         "app-security": "wolf-app/security/src/index.js",
