@@ -6,7 +6,11 @@
     "alias": {
       "$": "$",
       "underscore": "underscore",
-      "backbone": "backbone"
+      "backbone": "backbone",
+      "parsley": "parsley",
+      "subroute": "subroute",
+      "app-core": "app-core",
+      "app-common": "app-common"
     },
     "output": [
       "index.js"
