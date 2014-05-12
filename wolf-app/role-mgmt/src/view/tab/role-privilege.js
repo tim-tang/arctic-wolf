@@ -31,6 +31,8 @@ define(function(require, exports, module) {
             this.model.set('id', '888');
 
             // This trigger is used to reverse control multi selector data in assign-privilege-modal
+            console.log("######## Register event: set_selected_privileges");
+            eventBus.off('set_selected_privileges');
 			eventBus.on('set_selected_privileges', this.setSelectedPrivileges, this);
         },
 
@@ -41,17 +43,20 @@ define(function(require, exports, module) {
 
 		// This trigger method is used to reverse control assign-privilege-modal
 		setSelectedPrivileges: function(view) {
-			console.log(view.privileges);
-			console.log(this.collection);
+			//console.log(view.privileges);
+			//console.log(this.collection);
 			var coll = this.collection;
+			var selectedOptionsValue = [];
 			_.each(view.privileges.optgroups, function(optgroup) {
 				_.each(optgroup.options, function(option) {
-					console.log(">>>>>>>>>>>"+ option.value);
-					//console.log(coll.get(option.value));
+					//console.log(">>>>>0>>>>>>"+ option.selected);
 					if(coll.get(option.value))
-						console.log(option.value);
+						selectedOptionsValue.push(option.value);
+					//console.log(">>>>>1>>>>>>"+ option.selected);
 				});
 			});
+			view.privileges.selected = selectedOptionsValue;
+			console.log(view.privileges);
 			view.renderPrivilegeMultiSelect();
 		},
 

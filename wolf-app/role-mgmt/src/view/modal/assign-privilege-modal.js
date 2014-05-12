@@ -33,19 +33,18 @@ define(function(require, exports, module) {
             this.privileges = {
 				"selector_id": "privileges",
 				"multiple": "multiple",
+				"selected": [],
 				"optgroups": [
 					{
 						"label": "Read",
 						"options": [
 							{
 								"value": "1",
-								"label": "Read User",
-								"selected": "true"
+								"label": "Read User"
 							},
 							{
 								"value": "2",
-								"label": "Read Vehicle",
-								"selected": "false"
+								"label": "Read Vehicle"
 							}
 						]
 					},
@@ -54,13 +53,11 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "3",
-								"label": "Create User",
-								"selected": "true"
+								"label": "Create User"
 							},
 							{
 								"value": "4",
-								"label": "Create Vehicle",
-								"selected": "false"
+								"label": "Create Vehicle"
 							}
 						]
 					},
@@ -69,13 +66,11 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "5",
-								"label": "Modify User",
-								"selected": "true"
+								"label": "Modify User"
 							},
 							{
 								"value": "6",
-								"label": "Modify Vehicle",
-								"selected": "false"
+								"label": "Modify Vehicle"
 							}
 						]
 					},
@@ -84,18 +79,16 @@ define(function(require, exports, module) {
 						"options": [
 							{
 								"value": "7",
-								"label": "Delete User",
-								"selected": "true"
+								"label": "Delete User"
 							},
 							{
 								"value": "8",
-								"label": "Delete Vehicle",
-								"selected": "false"
+								"label": "Delete Vehicle"
 							}
 						]
 					}
 				]
-			}
+			};
         },
 
         /*
@@ -107,6 +100,7 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
+        	console.log(">>>>>>>>>>>>>>>>What happened!");
 			eventBus.trigger('set_selected_privileges', this);
 		},
 
@@ -120,7 +114,7 @@ define(function(require, exports, module) {
                 role_desc: this.$('#role-desc').val().trim(),
                 privileges: this.$('#privileges').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
-            }
+            };
         },
 
         clearValues: function() {

@@ -72,7 +72,7 @@ define(function(require, exports, module) {
                 role_desc: this.$('#role-desc').val().trim(),
                 privileges: this.$('#privileges').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
-            }
+            };
         },
 
         clearValues: function() {

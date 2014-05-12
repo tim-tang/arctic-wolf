@@ -139,10 +139,11 @@ define(function(require, exports, module) {
             	// Fetch select_id
             	var select_id = select2_view.options["selector_id"];
 
+				var _select = select2_view.$el.find('select');
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
                 	select2_view.$el.appendTo('#' + select_id + '-container');
-                	select2_view.$el.find('select').attr("id", select_id);
+                	_select.attr("id", select_id);
                 }
                 // Append this selector to the promised element
                 else {
@@ -151,11 +152,13 @@ define(function(require, exports, module) {
 
                 // Set selector attributes: multiple
             	if(select2_view.options["multiple"] === 'multiple')
-            		select2_view.$el.find('select').attr("multiple", "multiple");
+            		_select.attr("multiple", "multiple");
 
 				// Setup CSS for this select element
-                select2_view.$el.find('select').select2({
-	                width: '100%'
+                _select.select2({
+	                width: '100%',
+	                placeholder: "Please select",
+	                allowClear: true
 	            });
             });
         },
@@ -191,6 +194,7 @@ define(function(require, exports, module) {
             	// Fetch select_id
             	var select_id = multi_select_view.options["selector_id"];
 
+				var _select = multi_select_view.$el.find('select');
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
                 	var select_container = '#' + select_id + '-container';
@@ -199,20 +203,18 @@ define(function(require, exports, module) {
             			$(select_container).children().remove();
             	
                 	multi_select_view.$el.appendTo(select_container);
-                	multi_select_view.$el.find('select').attr("id", select_id);
+                	_select.attr("id", select_id);
                 }
 
                 // Set selector attributes: multiple
             	if(multi_select_view.options["multiple"] === 'multiple')
-            		multi_select_view.$el.find('select').attr("multiple", "multiple");
-            	
-				multi_select_view.$el.find('select').filter(function() {
-				    //may want to use $.trim in here
-				    return $(this).text() != null; 
-				}).attr('selected', true);
-
+            		_select.attr("multiple", "multiple");
+				
 				// Setup CSS for this select element
-                multi_select_view.$el.find('select').multiSelect({
+                _select.multiSelect({
+
+                	selectableOptgroup: true,
+                	
 					selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
 	                selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
 					afterInit: function(ms) {
@@ -245,6 +247,10 @@ define(function(require, exports, module) {
 	                    this.qs2.cache();
 	                }
 	            });
+	            
+				// Set default options
+            	console.log(options.selected);
+				_select.multiSelect('select', options.selected);
             });
         },
 
