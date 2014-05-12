@@ -7,7 +7,7 @@
             \/              \/                 \/         \/                         
 
 ---
-Arctic font-end with Sea.js and Backbone.js
+Arctic single page application font-end with Sea.js and Backbone.js
 
 - Front-end modular with Sea.js.
 - Front-end MVC by Backbone.js.
@@ -17,12 +17,16 @@ Arctic font-end with Sea.js and Backbone.js
 - GruntJS to structure code.
 - ...
 
+## Build Arctic Wolf (Assume Node.JS has been installed).
+
+    $ npm install spm -g
+    $ make build
 
 ## Start web server
     
     $ make server
 
-## Start arctic-bear server
+## Start arctic-bear server, go to arctic bear repo and clone code.
 
     $ make server
 
