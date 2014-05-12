@@ -11,10 +11,9 @@ define(function(require, exports, module) {
         initialize: function() {
         	$('#tab-content').children().remove();
 
-        	//this.listenTo(this.model, 'request', this.show_loading);
-        	//this.listenTo(this.model, 'remove', this.hide_loading);
         	this.listenTo(this.model, 'sync', this.load_object);
 
+			// Fetch model data
         	this.model.fetch();
         	
         	// This trigger is used to reverse control multi selector data in assign-privilege-modal
@@ -28,9 +27,9 @@ define(function(require, exports, module) {
             'click #add': 'add_obj'
         },
 
+		// Initialze jquery datatable
         init_datatable: function(tab_identify) {
 			var self = this;
-            // Initialze jquery datatable
             componentFacade.init_datatable(this.datatable_id, {
                 data: this.model.get(tab_identify)['aaData'],
                 header: this.model.get(tab_identify)['aoColumns']
@@ -49,6 +48,10 @@ define(function(require, exports, module) {
 		// This trigger method is used to reverse control assign-modal
 		setSelectedObjectsForMultiSelect: function(view) {
 			var selectedObjectsValue = [];
+			
+			console.log("***************"+ this.collection);
+			console.log("***************"+ this.model.get('privileges')['aaData']);
+			
 			_.each(this.collection.models, function(model) {
 				selectedObjectsValue.push(model.id);
 			});

@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 
     var roleModel = require('../../model/role-model');
     var privilegeColl = require('app-privilege-mgmt').PrivilegeColl;
+    var assignPrivilegeModal = require('../modal/assign-privilege-modal');
 
     var rolePrivilge = BaseView.extend({
 
@@ -30,8 +31,12 @@ define(function(require, exports, module) {
         },
 
 		load_object: function() {
+			// Prepare collection
 			this.collection.set(this.model.get('privileges')['aaData']);
+        	// Initial assigned privileges datatable
         	this.init_datatable('privileges');
+        	// Insert Assign Privilege Modal
+        	this.insertView(new assignPrivilegeModal()).render();
        	},
 
         events: {

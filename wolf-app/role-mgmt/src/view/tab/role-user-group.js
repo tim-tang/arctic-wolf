@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 
 	var roleModel = require('../../model/role-model');
 	var userGroupColl = require('app-user-group-mgmt').UserGroupColl;
+	var assignUserGroupModal = require('../modal/assign-user-group-modal');
 
     var roleUserGroup = BaseView.extend({
 
@@ -30,8 +31,12 @@ define(function(require, exports, module) {
         },
 
         load_object: function() {
+        	// Prepare collection
         	this.collection.set(this.model.get('user_groups')['aaData']);
+        	// Initial assigned user group datatable
         	this.init_datatable('user_groups');
+        	// Insert Assign User Group Modal
+        	this.insertView(new assignUserGroupModal()).render();
        	},
 
         events: {

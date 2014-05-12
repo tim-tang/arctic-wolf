@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
-    var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
+    var genericInfoViewMixin = appCommon.GenericInfoViewMixin;
 
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
@@ -30,7 +30,6 @@ define(function(require, exports, module) {
             //TODO:
         },
 
-
         load_role_details: function() {
             console.log(this.model.isNew());
             alert('load role details complete...');
@@ -42,6 +41,6 @@ define(function(require, exports, module) {
         }
     });
 
-    roleGeneralInfo.mixin(genericDetailsViewMixin);
+    roleGeneralInfo.mixin(genericInfoViewMixin);
     module.exports = roleGeneralInfo;
 });

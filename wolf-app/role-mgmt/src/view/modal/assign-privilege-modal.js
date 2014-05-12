@@ -14,6 +14,7 @@ define(function(require, exports, module) {
 	var componentFacade = require('app-common').ComponentFacade;
 
     var assignPrivilegeModal = Backbone.View.extend({
+    	
         manage: true,
 
         model: new roleModel(),

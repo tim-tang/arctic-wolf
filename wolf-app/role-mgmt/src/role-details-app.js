@@ -13,13 +13,7 @@
     var roleUser = require('./view/tab/role-user');
     var roleUsergroup = require('./view/tab/role-user-group');
     var roleHistory = require('./view/tab/role-history');
-
-    var assignPrivilegeModal = require('./view/modal/assign-privilege-modal');
-    var assignUserGroupModal = require('./view/modal/assign-user-group-modal');
-    var assignUserModal = require('./view/modal/assign-user-modal');
-
-    // var roleModel = require('./model/role-model');
-
+    
 	var roleDetailsApp = new Backbone.Layout({
 
 		// el: '#main-content',
@@ -57,27 +51,18 @@
         	var rolePrivilegeView = new rolePrivilege();
         	//rolePrivilegeView.model = new roleModel();
             this.insertView('#tab-content', rolePrivilegeView).render();
-
-            var assignPrivilegeModalView = new assignPrivilegeModal();
-            this.insertView('#tab-content', assignPrivilegeModalView).render();
         },
 
         renderUserGroups: function() {
         	var roleUsergroupView = new roleUsergroup();
         	//roleUsergroupView.model = new roleModel();
             this.insertView('#tab-content', roleUsergroupView).render();
-
-            var assignUserGroupModalView = new assignUserGroupModal();
-            this.insertView('#tab-content', assignUserGroupModalView).render();
         },
 
         renderUsers: function() {
         	var roleUserView = new roleUser();
         	//roleUserView.model = new roleModel();
             this.insertView('#tab-content', roleUserView).render();
-
-            var assignUserModalView = new assignUserModal();
-            this.insertView('#tab-content', assignUserModalView).render();
         },
 
         renderHistory: function() {

@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 
 	var roleModel = require('../../model/role-model');
 	var userColl = require('app-user-mgmt').UserColl;
+    var assignUserModal = require('../modal/assign-user-modal');
 
     var roleUser = BaseView.extend({
 
@@ -30,8 +31,12 @@ define(function(require, exports, module) {
         },
 
         load_object: function() {
+        	// Prepare collection
         	this.collection.set(this.model.get('users')['aaData']);
+        	// Initial assigned users datatable
         	this.init_datatable('users');
+        	// Insert Assign User Modal
+        	this.insertView(new assignUserModal()).render();
        	},
 
         events: {
