@@ -29,7 +29,7 @@ define(function(require, exports, module) {
 
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
-            privileges = {
+            this.privileges = {
 				"selector_id": "privileges",
 				"multiple": "multiple",
 				"optgroups": [
@@ -86,7 +86,7 @@ define(function(require, exports, module) {
 						]
 					}
 				]
-			}
+			};
         },
 
         /*
@@ -99,7 +99,7 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', privileges);
+			componentFacade.init_select2('.select2', this.privileges);
 		},
 
         new_attributes: function() {
@@ -108,7 +108,7 @@ define(function(require, exports, module) {
                 role_desc: this.$('#role-desc').val().trim(),
                 privileges: this.$('#privileges').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
-            }
+            };
         },
 
         clearValues: function() {
