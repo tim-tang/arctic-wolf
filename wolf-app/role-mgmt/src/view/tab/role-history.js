@@ -3,10 +3,11 @@ define(function(require, exports, module) {
     var $ = require('$');
     var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
-    var genericDetailsViewMixin = appCommon.GenericDetailsViewMixin;
+    var genericHistoryViewMixin = appCommon.GenericHistoryViewMixin;
 
     var commonUtils = appCommon.CommonUtils;
 
+	var roleModel = require('../../model/role-model');
     var roleHistoryColl = require('../../collection/role-history-coll');
 
     var roleHistory = BaseView.extend({
@@ -17,19 +18,27 @@ define(function(require, exports, module) {
 
         datatable_id: 'role-history-datatable',
 
+		model: new roleModel(),
+
 		collection: roleHistoryColl,
-
+		
 		initialize: function() {
-            $('#tab-content').children().remove();
+            this.model.urlRoot = '/role-history';
         },
-
+        
+		load_history: function() {
+			// Prepare collection
+			this.collection.set(this.model.get('history')['aaData']);
+        	// Initial assigned privileges datatable
+        	this.init_datatable('history');
+       	},
+       	
    		afterRender: function() {
-   			roleHistoryColl.reset();
-            roleHistoryColl.fetch();
+   			//TODO:
         }
     });
 
-	roleHistory.mixin(genericDetailsViewMixin);
+	roleHistory.mixin(genericHistoryViewMixin);
 
     module.exports = roleHistory;
 });

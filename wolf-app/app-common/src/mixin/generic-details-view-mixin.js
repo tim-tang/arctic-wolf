@@ -8,18 +8,19 @@ define(function(require, exports, module) {
 
     var objDetailsViewMixin = {
 
-        initialize: function() {
+        initialize: function(options) {
+        	console.log("##################In objDetailsViewMixin initialize()");
+        	// Remove previous content
         	$('#tab-content').children().remove();
-
+        	// Set object id
+			this.model.set('id', options.id);
+			// Resigster sync event
         	this.listenTo(this.model, 'sync', this.load_object);
-
 			// Fetch model data
         	this.model.fetch();
-        	
         	// This trigger is used to reverse control multi selector data in assign-privilege-modal
-            console.log("######## Register event: set_selected_objects");
-            eventBus.off('set_selected_objects');
-			eventBus.on('set_selected_objects', this.setSelectedObjectsForMultiSelect, this);
+            eventBus.off('role:set-selected-objects');
+			eventBus.on('role:set-selected-objects', this.setSelectedObjectsForMultiSelect, this);
         },
 
         events: {
@@ -27,9 +28,10 @@ define(function(require, exports, module) {
             'click #add': 'add_obj'
         },
 
-		// Initialze jquery datatable
+		// Load objects into datatable
         init_datatable: function(tab_identify) {
 			var self = this;
+			// Initialze jquery datatable
             componentFacade.init_datatable(this.datatable_id, {
                 data: this.model.get(tab_identify)['aaData'],
                 header: this.model.get(tab_identify)['aoColumns']
@@ -47,29 +49,29 @@ define(function(require, exports, module) {
        	
 		// This trigger method is used to reverse control assign-modal
 		setSelectedObjectsForMultiSelect: function(view) {
-			var selectedObjectsValue = [];
-			
-			console.log("***************"+ this.collection);
-			console.log("***************"+ this.model.get('privileges')['aaData']);
-			
+			console.log("##################In objDetailsViewMixin setSelectedObjectsForMultiSelect()");
+			// Prepare selected objects
+			var selectedObjectsValue = [];			
 			_.each(this.collection.models, function(model) {
 				selectedObjectsValue.push(model.id);
 			});
 			view.assignObjects.selected = selectedObjectsValue;
-			console.log(view.assignObjects);
+			// Render multiple select
 			view.renderMultiSelect();
 		},
 
+		// Click add link
         add_obj: function(event) {
             if (event) event.preventDefault();
-            $('#assign-modal').modal('show');
+            // Show modal
+            $('#assign-object-modal').modal('show');
         },
 
+		// Click delete link
         delete_obj: function(event) {
 			if (event) event.preventDefault();
             _.invoke(this.collection.selected(), 'destroy');
             commonUtils.remove_selected_row(this.datatable);
-            console.log(this.collection);
         }
 	};
 

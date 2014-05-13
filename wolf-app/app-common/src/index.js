@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     module.exports.BaseView = require('./view/mixin-base-view');
     module.exports.GenericInfoViewMixin = require('./mixin/generic-info-view-mixin');
     module.exports.GenericDetailsViewMixin = require('./mixin/generic-details-view-mixin');
+    module.exports.GenericHistoryViewMixin = require('./mixin/generic-history-view-mixin');
     module.exports.GenericMgmtViewMixin = require('./mixin/generic-mgmt-view-mixin');
 
     //----------------- Common Utils -------------------//

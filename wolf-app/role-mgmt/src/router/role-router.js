@@ -15,7 +15,7 @@ define(function(require, exports, module) {
 
         routes: {
             '': 'home',
-            'view': 'viewRole',
+            'view/:roleId': 'viewRole',
             'general-info': 'viewGeneralInfo',
             'privileges': 'viewPrivileges',
             'user-groups': 'viewUserGroups',
@@ -27,9 +27,8 @@ define(function(require, exports, module) {
             eventBus.trigger('layout:switch-module-action');
         },
 
-        viewRole: function() {
-        	// TODO: Should get selected row
-            require('../role-details-app').run(viewManager);
+        viewRole: function(roleId) {
+            require('../role-details-app').run(viewManager, roleId);
         },
 
 		viewGeneralInfo: function() {

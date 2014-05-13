@@ -15,7 +15,7 @@
         //},
 
         defaults: {
-        	// id: 1,
+        	id: '',
             role_name: '',
             role_desc: '',
             privileges: '',
@@ -23,7 +23,7 @@
             is_selected: false
         },
 
-        // set is_selected attribute status.
+        // Set is_selected attribute status.
         toggle_select: function() {
             this.set({is_selected: !this.get('is_selected')});
         }

@@ -27,10 +27,10 @@ define(function(require, exports, module) {
 
         initialize: function() {
             this.model.urlRoot = '/role-privileges';
-            this.model.set('id', '888');
         },
 
 		load_object: function() {
+			console.log("##################In rolePrivilge load_object()");
 			// Prepare collection
 			this.collection.set(this.model.get('privileges')['aaData']);
         	// Initial assigned privileges datatable

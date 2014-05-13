@@ -64,7 +64,7 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
-            eventBus.trigger('set_selected_objects', this);
+            eventBus.trigger('role:set-selected-objects', this);
 		},
 		
 		renderMultiSelect: function() {

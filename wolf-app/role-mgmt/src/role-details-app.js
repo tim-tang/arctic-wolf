@@ -23,6 +23,8 @@
         prefix: "role-mgmt/src/tpl/",
 
         template: 'role-details-container.html',
+        
+        roleId: null,
 
         initialize: function() {
         	eventBus.on('role:render-general-info', this.renderGeneralInfo, this);
@@ -41,32 +43,27 @@
         },
 
         renderGeneralInfo: function() {
-        	var roleGeneralInfoView = new roleGeneralInfo();
-        	// TODO: Set model as selected model
-        	// roleGeneralInfoView.model = new roleModel();
+        	var roleGeneralInfoView = new roleGeneralInfo({'id': this.roleId});
             this.insertView('#tab-content', roleGeneralInfoView).render();
         },
 
         renderPrivileges: function() {
-        	var rolePrivilegeView = new rolePrivilege();
-        	//rolePrivilegeView.model = new roleModel();
+        	var rolePrivilegeView = new rolePrivilege({'id': this.roleId});
             this.insertView('#tab-content', rolePrivilegeView).render();
         },
 
         renderUserGroups: function() {
-        	var roleUsergroupView = new roleUsergroup();
-        	//roleUsergroupView.model = new roleModel();
+        	var roleUsergroupView = new roleUsergroup({'id': this.roleId});
             this.insertView('#tab-content', roleUsergroupView).render();
         },
 
         renderUsers: function() {
-        	var roleUserView = new roleUser();
-        	//roleUserView.model = new roleModel();
+        	var roleUserView = new roleUser({'id': this.roleId});
             this.insertView('#tab-content', roleUserView).render();
         },
 
         renderHistory: function() {
-        	var roleHistoryView = new roleHistory();
+        	var roleHistoryView = new roleHistory({'id': this.roleId});
             this.insertView('#tab-content', roleHistoryView).render();
         },
 
@@ -81,7 +78,8 @@
     });
 
 	module.exports = {
-        run: function(viewManager) {
+        run: function(viewManager, roleId) {
+        	roleDetailsApp.roleId = roleId;
             viewManager.show('#main-content', roleDetailsApp);
         }
     };

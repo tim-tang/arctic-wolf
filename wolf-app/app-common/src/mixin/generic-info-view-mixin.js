@@ -8,11 +8,13 @@ define(function(require, exports, module) {
 
     var objInfoViewMixin = {
 
-        initialize: function() {
+        initialize: function(options) {
+        	// Remove previous content
         	$('#tab-content').children().remove();
-
+			// Set object id
+			this.model.set('id', options.id);
+			// Resigster sync event
         	this.listenTo(this.model, 'sync', this.load_object);
-
 			// Fetch model data
         	this.model.fetch();
         },
@@ -20,18 +22,6 @@ define(function(require, exports, module) {
         events: {
             //'click #delete': 'delete_obj',
             //'click #add': 'add_obj'
-        },
-
-        add_obj: function(event) {
-            if (event) event.preventDefault();
-            $('#assign-modal').modal('show');
-        },
-
-        delete_obj: function(event) {
-			if (event) event.preventDefault();
-            _.invoke(this.collection.selected(), 'destroy');
-            commonUtils.remove_selected_row(this.datatable);
-            console.log(this.collection);
         }
 	};
 

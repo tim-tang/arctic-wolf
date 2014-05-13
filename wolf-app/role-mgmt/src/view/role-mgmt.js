@@ -24,10 +24,12 @@ define(function(require, exports, module) {
         datatable_id: 'role-mgmt-datatable',
 
         collection: roleColl,
+        
+        view_url: 'role-mgmt/view',
 
         afterRender: function() {
             roleColl.fetch();
-        }
+        },
     });
 
     roleMgmt.mixin(genericMgmtViewMixin);

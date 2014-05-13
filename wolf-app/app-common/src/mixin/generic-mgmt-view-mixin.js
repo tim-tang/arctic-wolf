@@ -2,9 +2,10 @@ define(function(require, exports, module) {
 
     var $ = require('$');
     var _ = require('underscore');
+    var Backbone = require('backbone');
+    var eventBus = require('app-core').Eventbus;
     var commonUtils = require('../common-utils');
     var componentFacade = require('../component-facade');
-    var eventBus = require('app-core').Eventbus;
 
     var objMgmtViewMixin = {
 
@@ -12,6 +13,9 @@ define(function(require, exports, module) {
             this.listenTo(this.collection, 'request', this.show_loading);
             this.listenTo(this.collection, 'remove', this.hide_loading);
             this.listenTo(this.collection, 'sync', this.load_objects);
+            
+            // Unselect all models
+            this.collection.unselectAll();
         },
 
         events: {
@@ -21,9 +25,10 @@ define(function(require, exports, module) {
             'click #mgmt-new': 'new_obj'
         },
 
+		// Load objects into datatable
         load_objects: function() {
             var self = this;
-            // initialze jquery datatable
+            // Initialze jquery datatable
             componentFacade.init_datatable(this.datatable_id, {
                 data: this.collection.toJSON(),
                 header: this.collection.columns
@@ -41,8 +46,17 @@ define(function(require, exports, module) {
 
         view_obj: function(event) {
             if (event) event.preventDefault();
-            alert("mgmtViewMixin");
-            //TODO:
+            // Fetch the selected object and navigate to view page
+			var selectedModels = this.collection.selected();
+			var selectedCount = selectedModels.length;
+            if(selectedCount === 0) {
+            	alert("Select one object to view!");
+            } else if(selectedCount === 1) {
+            	console.log(selectedModels[0].get('id'));
+				Backbone.history.navigate(this.view_url + "/" + selectedModels[0].get('id'), true);
+			} else {
+				alert("Selected more than one object!");
+			}
         },
 
         edit_obj: function(event) {
@@ -52,7 +66,7 @@ define(function(require, exports, module) {
 
         delete_obj: function(event) {
             if (event) event.preventDefault();
-            console.log(JSON.stringify(this.collection));
+            // console.log(JSON.stringify(this.collection));
             _.invoke(this.collection.selected(), 'destroy');
             commonUtils.remove_selected_row(this.datatable);
         },
