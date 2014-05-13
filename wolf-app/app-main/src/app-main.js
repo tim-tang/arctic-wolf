@@ -3,7 +3,9 @@ define(function(require, exports, module) {
     //- Import dependency js
     var $ = require('$');
     window._ = require('underscore');
-    //if (seajs.production) require('wolf-tpl');
+    if (seajs.production){
+    //    require('wolf-tpl');
+    }
     var Backbone = require('backbone');
     require('layoutmanager');
     var authenticationProvider = require('app-security').AuthenticationProvider;
