@@ -50,7 +50,8 @@
   },
   "devDependencies": {
     "grunt": "~0.4.4",
-    "grunt-contrib-jst": "~0.6.0"
+    "grunt-contrib-jst": "~0.6.0",
+    "grunt-md5": "~0.1.10"
   }
 }
 

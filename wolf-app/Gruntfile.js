@@ -36,9 +36,26 @@ module.exports = function(grunt) {
                     "sea-modules/wolf-app/wolf-tpl/<%= pkg.version%>/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                 }
             }
+        },
+
+        md5: {
+            compile: {
+                files: [{'sea-modules/wolf-app/app-core': 'app-core/dist/**/*.js'}, {'sea-modules/wolf-app/app-common': 'app-common/dist/**/*.js'}],
+                options: {
+                    encoding: null,
+                    keepBasename: true,
+                    keepExtension: true,
+                    afterEach: function (fileChange, options) {
+
+                    }
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jst');
+    grunt.loadNpmTasks('grunt-md5');
+
     grunt.registerTask('compile', ['jst']);
+    grunt.registerTask('deploy', ['md5']);
 };
