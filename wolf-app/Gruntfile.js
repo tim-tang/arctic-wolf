@@ -33,7 +33,7 @@ module.exports = function(grunt) {
                     amd: true
                 },
                 files: {
-                    "sea-modules/wolf-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    "sea-modules/wolf-app/wolf-tpl/<%= pkg.version%>/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                 }
             }
         }

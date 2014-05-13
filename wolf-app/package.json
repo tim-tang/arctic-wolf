@@ -1,6 +1,7 @@
 {
   "name": "arctic-wolf",
   "author": "Tim.Tang <tang.jilong@gmail.com>",
+  "version": "0.0.1",
   "wolf_app_tpl": [
     "app-common/**/*.html",
     "security/**/*.html",

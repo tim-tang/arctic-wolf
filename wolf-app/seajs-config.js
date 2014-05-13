@@ -1,9 +1,4 @@
 seajs.production = false;
-if (seajs.production) {
-    seajs.config({
-        //TODO: handling production environment.
-    });
-}
 
 seajs.config({
     paths: {
@@ -81,7 +76,6 @@ seajs.config({
         // --------------------------------------- //
         //          ARCTIC WOLF MODULES            //
         // --------------------------------------- //
-        "wolf-tpl": "wolf-tpl/wolf-tpl.js",
         "app-core": "wolf-app/app-core/src/index.js",
         "app-common": "wolf-app/app-common/src/index.js",
         "app-security": "wolf-app/security/src/index.js",
@@ -100,3 +94,27 @@ seajs.config({
     debug: true,
     charset: 'utf-8'
 });
+
+// configuration for production environment.
+if (seajs.production) {
+    seajs.config({
+        map: [
+            ["wolf-app/app-core/src/index.js", "app-core/0.0.1/index.js"],
+            ["wolf-app/app-common/src/index.js", "app-common/0.0.1/index.js"],
+            ["wolf-app/security/src/index.js", "app-security/0.0.1/index.js"],
+            ["wolf-app/layout/src/index.js", "app-layout/0.0.1/index.js"],
+            ["wolf-app/dashboard/src/index.js", "app-dashboard/0.0.1/index.js"],
+            ["wolf-app/user-mgmt/src/index.js", "app-user-mgmt/0.0.1/index.js"],
+            ["wolf-app/user-group-mgmt/src/index.js", "app-user-group-mgmt/0.0.1/index.js"],
+            ["wolf-app/criteria-mgmt/src/index.js", "app-criteria-mgmt/0.0.1/index.js"],
+            ["wolf-app/privilege-mgmt/src/index.js", "app-privilege-mgmt/0.0.1/index.js"],
+            ["wolf-app/role-mgmt/src/index.js", "app-role-mgmt/0.0.1/index.js"],
+            ["wolf-app/vehicle-mgmt/src/index.js", "app-vehicle-mgmt/0.0.1/index.js"],
+            ["wolf-app/generic-filter/src/index.js", "app-generic-filter/0.0.1/index.js"],
+            ["wolf-app/app-main/src/index.js", "app-main/0.0.1/index.js"]
+        ],
+
+        debug: false
+    });
+
+}
