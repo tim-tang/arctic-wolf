@@ -45,7 +45,13 @@
              return this.filter(function(vehicle) {
                  return vehicle.get('is_selected') === true;
              });
-         }
+         },
+         
+         unselectAll: function() {
+        	this.forEach(function(model) {
+            	model.set({'is_selected': false});
+            });
+		 }
      });
      module.exports = new vehicleColl();
  });

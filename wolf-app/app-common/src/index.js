@@ -6,6 +6,8 @@ define(function(require, exports, module) {
     module.exports.GenericDetailsViewMixin = require('./mixin/generic-details-view-mixin');
     module.exports.GenericHistoryViewMixin = require('./mixin/generic-history-view-mixin');
     module.exports.GenericMgmtViewMixin = require('./mixin/generic-mgmt-view-mixin');
+    module.exports.BaseCollection = require('./collection/mixin-base-collection');
+    module.exports.GenericCollectionMixin = require('./mixin/generic-collection-mixin');
 
     //----------------- Common Utils -------------------//
     module.exports.CommonConstants = require('./common-constants');

@@ -52,7 +52,6 @@ define(function(require, exports, module) {
             if(selectedCount === 0) {
             	alert("Select one object to view!");
             } else if(selectedCount === 1) {
-            	console.log(selectedModels[0].get('id'));
 				Backbone.history.navigate(this.view_url + "/" + selectedModels[0].get('id'), true);
 			} else {
 				alert("Selected more than one object!");
