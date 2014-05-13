@@ -7,12 +7,6 @@
 		idAttribute: 'id',
 		
         urlRoot: '/roles',
-        //url: function(){
-        //    var origUrl = Backbone.Model.prototype.url.call(this);
-        //    var parsedUrl = origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
-        //    return parsedUrl;
-
-        //},
 
         defaults: {
         	id: '',

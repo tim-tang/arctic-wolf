@@ -30,7 +30,6 @@ define(function(require, exports, module) {
         },
 
         initialize: function() {
-            //this.listenTo(this.model, 'change', this.test);
             this.assignObjects = {
 				"selector_id": "privileges",
 				"multiple": "multiple",
@@ -104,7 +103,9 @@ define(function(require, exports, module) {
 			eventBus.trigger('role:set-selected-objects', this);
 		},
 
-		renderMultiSelect: function() {
+		// Render multiple select
+		renderMultiSelect: function(collection_all) {
+			console.log(collection_all);
 			componentFacade.init_multi_select('.searchable', this.assignObjects);
 		},
 

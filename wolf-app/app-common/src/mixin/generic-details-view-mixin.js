@@ -18,6 +18,8 @@ define(function(require, exports, module) {
         	this.listenTo(this.model, 'sync', this.load_object);
 			// Fetch model data
         	this.model.fetch();
+            // Fetch collection data of object for assign page
+            this.collection_all.fetch();
         	// This trigger is used to reverse control multi selector data in assign-privilege-modal
             eventBus.off('role:set-selected-objects');
 			eventBus.on('role:set-selected-objects', this.setSelectedObjectsForMultiSelect, this);
@@ -57,7 +59,7 @@ define(function(require, exports, module) {
 			});
 			view.assignObjects.selected = selectedObjectsValue;
 			// Render multiple select
-			view.renderMultiSelect();
+			view.renderMultiSelect(this.collection_all);
 		},
 
 		// Click add link

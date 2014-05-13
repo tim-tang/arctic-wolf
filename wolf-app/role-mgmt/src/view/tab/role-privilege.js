@@ -25,6 +25,8 @@ define(function(require, exports, module) {
 
 		collection: privilegeColl,
 
+        collection_all: privilegeColl,
+
         initialize: function() {
             this.model.urlRoot = '/role-privileges';
         },

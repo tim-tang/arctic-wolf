@@ -1,16 +1,13 @@
 define(function(require, exports, module) {
 
-    var $ = require('$');
     var _ = require('underscore');
     var Backbone = require('backbone');
+
     var backboneCollectionMixin = require('../mixin/backbone-collection-mixin');
-    var eventBus = require('app-core').Eventbus;
 
     var baseCollection = Backbone.Collection.extend({
 
-		/**
-         * Convert attributes data to model data.
-         */
+        // Convert attributes data to model data.
 		parse: function(resp) {
 			// Columns of Table
 			this.columns = resp['aoColumns'];
@@ -39,6 +36,7 @@ define(function(require, exports, module) {
             });
         },
         
+        // Unselect all models
         unselectAll: function() {
         	this.forEach(function(model) {
             	model.set({'is_selected': false});
