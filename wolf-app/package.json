@@ -15,6 +15,20 @@
     "user-mgmt/**/*.html",
     "vehicle-mgmt/**/*.html"
   ],
+  "wolf_app_modules": [
+      {"sea-modules/wolf-app/app-core/": "app-core/dist/**/*.js"}, 
+      {"sea-modules/wolf-app/app-common/": "app-common/dist/**/*.js"},
+      {"sea-modules/wolf-app/criteria-mgmt/": "criteria-mgmt/dist/**/*.js"},
+      {"sea-modules/wolf-app/dashboard/": "dashboard/dist/**/*.js"},
+      {"sea-modules/wolf-app/generic-filter/": "generic-filter/dist/**/*.js"},
+      {"sea-modules/wolf-app/layout/": "layout/dist/**/*.js"},
+      {"sea-modules/wolf-app/privilege-mgmt/": "privilege-mgmt/dist/**/*.js"},
+      {"sea-modules/wolf-app/role-mgmt/": "role-mgmt/dist/**/*.js"},
+      {"sea-modules/wolf-app/security/": "security/dist/**/*.js"},
+      {"sea-modules/wolf-app/user-group-mgmt/": "user-group-mgmt/dist/**/*.js"},
+      {"sea-modules/wolf-app/vehcile-mgmt/": "vehicle-mgmt/dist/**/*.js"},
+      {"sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"}
+  ],
   "spm": {
     "alias": {
       "seajs": "seajs/seajs/2.2.1/sea",

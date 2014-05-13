@@ -25,7 +25,12 @@ compile-tpl:
 	@echo
 
 build-modules:
-	@rm -rf ../sea-modules/wolf-app
+	@rm -rf ./sea-modules/wolf-app
 	@for mod in $(wolf-app); do \
-		$(MAKE) -C $$mod build deploy; \
+		$(MAKE) -C $$mod build ; \
 	done
+	@grunt deploy
+	@echo
+	@echo   "-- Success To Deploy Wolf App Modules --"
+	@echo
+

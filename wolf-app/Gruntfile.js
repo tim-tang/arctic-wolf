@@ -40,14 +40,12 @@ module.exports = function(grunt) {
 
         md5: {
             compile: {
-                files: [{'sea-modules/wolf-app/app-core': 'app-core/dist/**/*.js'}, {'sea-modules/wolf-app/app-common': 'app-common/dist/**/*.js'}],
+                files: "<%=pkg.wolf_app_modules %>",
                 options: {
                     encoding: null,
                     keepBasename: true,
                     keepExtension: true,
-                    afterEach: function (fileChange, options) {
-
-                    }
+                    afterEach: function (fileChange, options) {}
                 }
             }
         }
