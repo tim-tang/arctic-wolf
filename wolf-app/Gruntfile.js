@@ -10,6 +10,27 @@
 
 module.exports = function(grunt) {
     var pkg = grunt.file.readJSON('package.json');
+    var path = require('path');
+    var fs = require('fs');
+    var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
+
+    var postMD5 = function(fileChanges) {
+            var map = [];
+            fileChanges.forEach(function(fileChange) {
+                fileChange.oldPath = 'wolf-app-path/' + fileChange.oldPath.replace('dist', 'src');
+                fileChange.newPath = fileChange.newPath.replace('sea-modules/', '');
+                map.push([fileChange.oldPath, fileChange.newPath]);
+            });
+            var code = '';
+            var seajs_config_path = "seajs-config.js";
+            if (grunt.file.exists(seajs_config_path)) {
+                code = grunt.file.read(seajs_config_path);
+            }
+            code = code.replace(/\/\*map start\*\/[\s\S]*\/\*map end\*\//, '').trim();
+            code = code + '\n' + grunt.template.process(SEAJS_MAP_TPL, {data : {mapJSON : JSON.stringify(map, null, '\t')}});
+            grunt.file.write(seajs_config_path, code);
+            grunt.log.writeln('Seajs Config File "' + seajs_config_path + '" Modified Succeed!');
+        };
 
     // project configuration.
     grunt.initConfig({
@@ -18,22 +39,11 @@ module.exports = function(grunt) {
         jst: {
             compile: {
                 options: {
-                    //templateSettings: {
-                    //    interpolate: /\{\{(.+?)\}\}/g
-                    //},
-                    //processContent: function(src) {
-                    //    return ['define(function(require, exports, module) {',
-                    //            "var _ = require('underscore');",
-                    //            src,
-                    //            "module.exports = this['JST'];",
-                    //            "});"
-                    //            ].join('\n');
-                    //},
                     prettify: true,
                     amd: true
                 },
                 files: {
-                    "sea-modules/wolf-app/wolf-tpl/<%= pkg.version%>/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    "wolf-app/wolf-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                 }
             }
         },
@@ -45,7 +55,7 @@ module.exports = function(grunt) {
                     encoding: null,
                     keepBasename: true,
                     keepExtension: true,
-                    afterEach: function (fileChange, options) {}
+                    after: postMD5
                 }
             }
         }

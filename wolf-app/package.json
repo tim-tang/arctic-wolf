@@ -2,6 +2,7 @@
   "name": "arctic-wolf",
   "author": "Tim.Tang <tang.jilong@gmail.com>",
   "version": "0.0.1",
+  "seajs_config": "seajs-config.js",
   "wolf_app_tpl": [
     "app-common/**/*.html",
     "security/**/*.html",
@@ -27,7 +28,8 @@
       {"sea-modules/wolf-app/security/": "security/dist/**/*.js"},
       {"sea-modules/wolf-app/user-group-mgmt/": "user-group-mgmt/dist/**/*.js"},
       {"sea-modules/wolf-app/vehcile-mgmt/": "vehicle-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"}
+      {"sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"},
+      {"sea-modules/wolf-app/wolf-tpl/": "wolf-app/wolf-tpl/**/*.js"}
   ],
   "spm": {
     "alias": {
