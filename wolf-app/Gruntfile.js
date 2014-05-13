@@ -27,7 +27,11 @@ module.exports = function(grunt) {
                 code = grunt.file.read(seajs_config_path);
             }
             code = code.replace(/\/\*map start\*\/[\s\S]*\/\*map end\*\//, '').trim();
-            code = code + '\n' + grunt.template.process(SEAJS_MAP_TPL, {data : {mapJSON : JSON.stringify(map, null, '\t')}});
+            code = code + '\n' + grunt.template.process(SEAJS_MAP_TPL, {
+                data: {
+                    mapJSON: JSON.stringify(map, null, '\t')
+                }
+            });
             grunt.file.write(seajs_config_path, code);
             grunt.log.writeln('Seajs Config File "' + seajs_config_path + '" Modified Succeed!');
         };
@@ -50,7 +54,7 @@ module.exports = function(grunt) {
 
         md5: {
             compile: {
-                files: "<%=pkg.wolf_app_modules %>",
+                files: "<%=pkg.wolf_md5_modules %>",
                 options: {
                     encoding: null,
                     keepBasename: true,
@@ -58,12 +62,27 @@ module.exports = function(grunt) {
                     after: postMD5
                 }
             }
+        },
+
+        shell: {
+            buildModules: {
+                command: function() {
+                    var pkg = grunt.file.readJSON('package.json');
+                    var modules = pkg.wolf_build_modules;
+                    var commands = [];
+                    modules.forEach(function(module) {
+                        commands.push('make -C ' + module + ' build');
+                    });
+                    return commands.join('&&');
+                }
+            }
         }
     });
 
     grunt.loadNpmTasks('grunt-contrib-jst');
     grunt.loadNpmTasks('grunt-md5');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('compile', ['jst']);
-    grunt.registerTask('deploy', ['md5']);
+    grunt.registerTask('build', ['shell', 'md5']);
 };

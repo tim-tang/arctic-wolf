@@ -3,8 +3,6 @@
 #
 .PHONY: setup build compile-tpl
 
-include wolf-app.mk
-
 build: setup compile-tpl build-modules 
 	@echo
 	@echo   "//------------------------------------------------------//"
@@ -22,16 +20,13 @@ compile-tpl:
 	@rm -rf ./sea-modules/wolf-app
 	@grunt compile
 	@echo
-	@echo   "-- Success To Precompile Underscore Templates --"
+	@echo   "-- Success To Precompile Wolf App Underscore Templates --"
 	@echo
 
 build-modules:
-	@for mod in $(wolf-app); do \
-		$(MAKE) -C $$mod build ; \
-	done
-	@grunt deploy
+	@grunt build
 	@rm -rf ./wolf-app
 	@echo
-	@echo   "-- Success To Deploy Wolf App Modules --"
+	@echo   "-- Success To Build & Deploy Wolf App Modules --"
 	@echo
 

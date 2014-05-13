@@ -16,20 +16,61 @@
     "user-mgmt/**/*.html",
     "vehicle-mgmt/**/*.html"
   ],
-  "wolf_app_modules": [
-      {"sea-modules/wolf-app/app-core/": "app-core/dist/**/*.js"}, 
-      {"sea-modules/wolf-app/app-common/": "app-common/dist/**/*.js"},
-      {"sea-modules/wolf-app/criteria-mgmt/": "criteria-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/dashboard/": "dashboard/dist/**/*.js"},
-      {"sea-modules/wolf-app/generic-filter/": "generic-filter/dist/**/*.js"},
-      {"sea-modules/wolf-app/layout/": "layout/dist/**/*.js"},
-      {"sea-modules/wolf-app/privilege-mgmt/": "privilege-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/role-mgmt/": "role-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/security/": "security/dist/**/*.js"},
-      {"sea-modules/wolf-app/user-group-mgmt/": "user-group-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/vehcile-mgmt/": "vehicle-mgmt/dist/**/*.js"},
-      {"sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"},
-      {"sea-modules/wolf-app/wolf-tpl/": "wolf-app/wolf-tpl/**/*.js"}
+  "wolf_build_modules": [
+    "app-core",
+    "app-common",
+    "security",
+    "layout",
+    "dashboard",
+    "user-mgmt",
+    "user-group-mgmt",
+    "criteria-mgmt",
+    "privilege-mgmt",
+    "role-mgmt",
+    "vehicle-mgmt",
+    "generic-filter",
+    "app-main"
+  ],
+  "wolf_md5_modules": [
+    {
+      "sea-modules/wolf-app/app-core/": "app-core/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/app-common/": "app-common/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/criteria-mgmt/": "criteria-mgmt/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/dashboard/": "dashboard/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/generic-filter/": "generic-filter/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/layout/": "layout/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/privilege-mgmt/": "privilege-mgmt/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/role-mgmt/": "role-mgmt/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/security/": "security/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/user-group-mgmt/": "user-group-mgmt/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/vehcile-mgmt/": "vehicle-mgmt/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"
+    },
+    {
+      "sea-modules/wolf-app/wolf-tpl/": "wolf-app/wolf-tpl/**/*.js"
+    }
   ],
   "spm": {
     "alias": {
@@ -67,7 +108,8 @@
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-contrib-jst": "~0.6.0",
-    "grunt-md5": "~0.1.10"
+    "grunt-md5": "~0.1.10",
+    "grunt-shell": "~0.7.0"
   }
 }
 
