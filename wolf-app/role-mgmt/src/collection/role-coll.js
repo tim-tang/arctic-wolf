@@ -13,7 +13,7 @@
 		
 		model: roleModel,
 		
-        url: '/roles',
+        url: '/roles'
     });
 
 	roleColl.mixin(genericCollectionMixin);
