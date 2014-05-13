@@ -25,6 +25,8 @@ define(function(require, exports, module) {
 
 		collection: userColl,
 
+        collection_all: userColl,
+
         initialize: function() {
             this.model.urlRoot = '/role-users';
         },

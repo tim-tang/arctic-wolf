@@ -25,6 +25,8 @@ define(function(require, exports, module) {
 
 		collection: userGroupColl,
 
+        collection_all: userGroupColl,
+
         initialize: function() {
             this.model.urlRoot = '/role-user-groups';
         },
