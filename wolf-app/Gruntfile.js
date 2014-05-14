@@ -14,23 +14,33 @@ module.exports = function(grunt) {
     var fs = require('fs');
     var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
 
+    /**
+     * Generate seajs alias/mapping configuration files.
+     */
     var postMD5 = function(fileChanges) {
-            var pkg = grunt.file.readJSON('package.json');
             var aliasMap = {};
             var map = [];
             fileChanges.forEach(function(fileChange) {
                 fileChange.oldMapPath = fileChange.oldPath;
                 fileChange.newMapPath = fileChange.newPath;
+
                 // --------------- Alias Config -------------------//
-                if (fileChange.oldPath.indexOf('-debug.js') > 0) {
-                    fileChange.oldPath = 'app-' + fileChange.oldPath.replace('/dist/index-debug.js', '').replace('app-', '') + '-debug';
+                var version;
+                if (fileChange.oldPath.indexOf('index-debug.js') > 0) {
+                    var module_name = fileChange.oldPath.replace('/dist/index-debug.js', '');
+                    version = grunt.file.readJSON(module_name + '/package.json').version;
+                    fileChange.oldPath = 'app-' + module_name.replace('app-', '') + '-debug';
                 } else {
-                    fileChange.oldPath = 'app-' + fileChange.oldPath.replace('/dist/index.js', '').replace('app-', '').replace('/wolf-tpl.js', '');
+                    var module_name = fileChange.oldPath.replace('/dist/index.js', '');
+                    if (fileChange.oldPath.indexOf('app-tpl') > 0) {
+                        version = grunt.file.readJSON(module_name + '/package.json').version;
+                    }
+                    fileChange.oldPath = 'app-' + module_name.replace('app-', '').replace('/wolf-tpl.js', '');
                 }
                 fileChange.newPath = fileChange.newPath.replace('sea-modules/', '');
 
                 // --------------- Mapping Config -------------------//
-                fileChange.oldMapPath = 'wolf-app/' + fileChange.oldMapPath.replace('dist', pkg.version);
+                fileChange.oldMapPath = 'wolf-app/' + fileChange.oldMapPath.replace('dist', version ? version : '');
 
                 aliasMap[fileChange.oldPath] = fileChange.newPath;
                 map.push([fileChange.oldMapPath, fileChange.newPath]);
@@ -66,6 +76,8 @@ module.exports = function(grunt) {
             }
         },
 
+        // TODO:
+        // Read module package.json version to structure the module directory.
         md5: {
             compile: {
                 files: "<%=pkg.wolf_md5_modules %>",
@@ -97,7 +109,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-md5');
     grunt.loadNpmTasks('grunt-shell');
 
-    grunt.registerTask('xx', ['md5']);
     grunt.registerTask('compile', ['jst']);
     grunt.registerTask('build', ['shell', 'md5']);
 };
