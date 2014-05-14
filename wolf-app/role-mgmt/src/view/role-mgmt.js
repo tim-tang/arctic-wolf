@@ -17,11 +17,9 @@ define(function(require, exports, module) {
 
     var roleMgmt = BaseView.extend({
 
-        prefix: "role-mgmt/src/tpl/",
+        prefix: "app-common/src/tpl/obj-mgmt/",
 
-        template: 'role-mgmt.html',
-
-        datatable_id: 'role-mgmt-datatable',
+        template: 'obj-mgmt.html',
 
         collection: roleColl,
         

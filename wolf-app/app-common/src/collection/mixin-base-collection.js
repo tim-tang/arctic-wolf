@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var backboneCollectionMixin = require('../mixin/backbone-collection-mixin');
+    var backboneCollectionMixin = require('../mixin/collection/backbone-collection-mixin');
 
     var baseCollection = Backbone.Collection.extend({
 

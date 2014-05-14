@@ -4,11 +4,13 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var eventBus = require('app-core').Eventbus;
-    var commonUtils = require('../common-utils');
-    var componentFacade = require('../component-facade');
+    var commonUtils = require('../../common-utils');
+    var componentFacade = require('../../component-facade');
 
     var objMgmtViewMixin = {
-
+        
+        datatable_id: 'obj-mgmt-datatable',
+        
         initialize: function() {
             this.listenTo(this.collection, 'request', this.show_loading);
             this.listenTo(this.collection, 'remove', this.hide_loading);

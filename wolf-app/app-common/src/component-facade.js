@@ -131,7 +131,7 @@ define(function(require, exports, module) {
          * @param selector, options, view, index
          */
         init_select2: function(selector, options, view, index) {
-            var componentSelect2 = require('./view/component-select2');
+            var componentSelect2 = require('./view/component/component-select2');
             var select2_view = (new componentSelect2({
                 selector: selector,
                 attrs: options
@@ -186,7 +186,7 @@ define(function(require, exports, module) {
 
         init_multi_select: function(selector, options) {
             /*Multi-Select Search*/
-			var componentMultiSelect = require('./view/component-multi-select');
+			var componentMultiSelect = require('./view/component/component-multi-select');
             var multi_select_view = (new componentMultiSelect({
                 selector: selector,
                 attrs: options

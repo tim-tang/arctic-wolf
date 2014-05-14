@@ -10,9 +10,9 @@ define(function(require, exports, module) {
 
         manage: true,
 
-        prefix: 'app-common/src/tpl/',
+        prefix: 'app-common/src/tpl/component/',
 
-        template: 'component-select2.html',
+        template: 'component-multi-select.html',
 
 		initialize: function(options) {
         	this.selector = options.selector;

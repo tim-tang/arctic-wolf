@@ -18,7 +18,7 @@ define(function(require, exports, module) {
 
         model: new userModel(),
 
-        prefix: 'user-mgmt/src/tpl/',
+        prefix: 'user-mgmt/src/tpl/modal/',
 
         template: 'user-new-modal.html',
 

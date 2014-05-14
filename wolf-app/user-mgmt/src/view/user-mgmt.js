@@ -24,6 +24,8 @@ define(function(require, exports, module) {
 
         collection: userColl,
 
+        view_url: 'user-mgmt/view',
+
         afterRender: function() {
             userColl.fetch();
         }
