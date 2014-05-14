@@ -69,7 +69,7 @@
       "sea-modules/wolf-app/app-main/": "app-main/dist/**/*.js"
     },
     {
-      "sea-modules/wolf-app/wolf-tpl/": "wolf-app/wolf-tpl/**/*.js"
+      "sea-modules/wolf-app/wolf-tpl/": "wolf-app/wolf-tpl/dist/**/*.js"
     }
   ],
   "spm": {

@@ -2,7 +2,7 @@
 if(seajs.production){
     seajs.config({
         alias: {
-            "wolf-tpl": "wolf-app/wolf-tpl/src/wolf-tpl.js"
+            "wolf-tpl": "wolf-app-path/wolf-tpl/src/wolf-tpl.js"
         },
         map : <%= mapJSON %>,
         debug: false

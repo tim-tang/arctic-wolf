@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 
-    //- Import dependency js
     var $ = require('$');
     window._ = require('underscore');
     if (seajs.production){

@@ -36,10 +36,9 @@ module.exports = function(grunt) {
             grunt.log.writeln('Seajs Config File "' + seajs_config_path + '" Modified Succeed!');
         };
 
-    // project configuration.
+    // grunt wolf app configuration.
     grunt.initConfig({
         pkg: pkg,
-        // configuration to be run (and then tested).
         jst: {
             compile: {
                 options: {
@@ -47,7 +46,7 @@ module.exports = function(grunt) {
                     amd: true
                 },
                 files: {
-                    "wolf-app/wolf-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    "wolf-app/wolf-tpl/dist/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                 }
             }
         },
