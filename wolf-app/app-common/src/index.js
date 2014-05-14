@@ -2,12 +2,12 @@ define(function(require, exports, module) {
 
     //----------------- Common Views -------------------//
     module.exports.BaseView = require('./view/mixin-base-view');
-    module.exports.GenericInfoViewMixin = require('./mixin/generic-info-view-mixin');
-    module.exports.GenericDetailsViewMixin = require('./mixin/generic-details-view-mixin');
-    module.exports.GenericHistoryViewMixin = require('./mixin/generic-history-view-mixin');
-    module.exports.GenericMgmtViewMixin = require('./mixin/generic-mgmt-view-mixin');
+    module.exports.GenericInfoViewMixin = require('./mixin/view/generic-info-view-mixin');
+    module.exports.GenericDetailsViewMixin = require('./mixin/view/generic-details-view-mixin');
+    module.exports.GenericHistoryViewMixin = require('./mixin/view/generic-history-view-mixin');
+    module.exports.GenericMgmtViewMixin = require('./mixin/view/generic-mgmt-view-mixin');
     module.exports.BaseCollection = require('./collection/mixin-base-collection');
-    module.exports.GenericCollectionMixin = require('./mixin/generic-collection-mixin');
+    module.exports.GenericCollectionMixin = require('./mixin/collection/generic-collection-mixin');
 
     //----------------- Common Utils -------------------//
     module.exports.CommonConstants = require('./common-constants');

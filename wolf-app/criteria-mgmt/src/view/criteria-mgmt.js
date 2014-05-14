@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     var commonUtils = appCommon.CommonUtils;
     var componentFacade = appCommon.ComponentFacade;
 
-    var eventBus = require('app-core').EventBus;
+    var eventBus = require('app-core').Eventbus;
     var criteriaColl = require('../collection/criteria-coll');
     var criteriaModel = require('../model/criteria-model');
 
