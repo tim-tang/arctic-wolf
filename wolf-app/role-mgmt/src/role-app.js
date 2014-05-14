@@ -1,73 +1,73 @@
- define(function(require, exports, module) {
+define(function(require, exports, module) {
 
-     var $ = require('$');
-     var _ = require('underscore');
-     var Backbone = require('backbone');
+	var $ = require('$');
+	var _ = require('underscore');
+	var Backbone = require('backbone');
 
-     var appCore = require('app-core');
-     var eventBus = appCore.Eventbus;
-     var viewManager = appCore.ViewMgmt;
-     var appCommon = require('app-common');
-	 var commonLoading = appCommon.CommonLoading;
+	var eventBus = require('app-core').Eventbus;
 
-     var roleMgmt = require('./view/role-mgmt');
-     var roleModal = require('./view/modal/role-new-modal');
-     var roleDetailsApp = require('./role-details-app');
+	var appCommon = require('app-common');
+	var commonLoading = appCommon.CommonLoading;
+	var genericViewFactory = appCommon.GenericViewFactory;
 
-     var roleApp = new Backbone.Layout({
+	var roleColl = require('./collection/role-coll');
+	var roleModal = require('./view/modal/role-new-modal');
+	var roleDetailsApp = require('./role-details-app');
 
-         //el: '#main-content',
-         manage: true,
+	var roleApp = new Backbone.Layout({
 
-         keep: true,
+		manage : true,
 
-         prefix: "role-mgmt/src/tpl/",
+		prefix : "role-mgmt/src/tpl/",
 
-         template: 'role-container.html',
+		template : 'role-container.html',
 
-         events: {
-             //TODO:
-         },
+		events : {
+			//TODO:
+		},
 
-         initialize: function() {
-             eventBus.on('show-loading', this.show_loading, this);
-             eventBus.on('hide-loading', this.hide_loading, this);
-             eventBus.on('role:view-role', this.view_role, this);
-         },
+		initialize : function() {
+			eventBus.on('show-loading', this.show_loading, this);
+			eventBus.on('hide-loading', this.hide_loading, this);
+			eventBus.on('role:view-role', this.view_role, this);
+		},
 
-         afterRender: function() {
-             var roleMgmtView = new roleMgmt();
-             this.insertView('#role-home', roleMgmtView).render();
+		afterRender : function() {
+			var roleMgmtView = genericViewFactory.createView('OBJ_MGMT', {
+				'collection' : roleColl,
+				'view_url' : 'role-mgmt/view'
+			});
+			this.insertView('#role-home', roleMgmtView).render();
 
-             var roleModalView = new roleModal();
-             this.insertView('#role-home', roleModalView).render();
-         },
+			var roleModalView = new roleModal();
+			this.insertView('#role-home', roleModalView).render();
+		},
 
-         show_loading: function() {
-             commonLoading.init('#main-content');
-         },
+		show_loading : function() {
+			commonLoading.init('#main-content');
+		},
 
-         hide_loading: function() {
-             commonLoading.destroy();
-         },
+		hide_loading : function() {
+			commonLoading.destroy();
+		},
 
-         view_role: function() {
-             var roleDetailsApp = new roleDetailsApp();
-             this.insertView('#role-home', roleModalView).render();
-             this.subviews.push(roleModalView);
-         }
-     });
+		view_role : function() {
+			var roleDetailsApp = new roleDetailsApp();
+			this.insertView('#role-home', roleModalView).render();
+			this.subviews.push(roleModalView);
+		}
+	});
 
-     module.exports = {
-         run: function(viewManager) {
-             viewManager.show('#main-content', roleApp);
-         },
+	module.exports = {
+		run : function(viewManager) {
+			viewManager.show('#main-content', roleApp);
+		},
 
-         invokeRoleRouter: function() {
-             var roleRouter = require('./router/role-router');
-             return new roleRouter('role-mgmt/', {
-                 createTrailingSlashRoutes: true
-             });
-         }
-     };
- });
+		invokeRoleRouter : function() {
+			var roleRouter = require('./router/role-router');
+			return new roleRouter('role-mgmt/', {
+				createTrailingSlashRoutes : true
+			});
+		}
+	};
+});

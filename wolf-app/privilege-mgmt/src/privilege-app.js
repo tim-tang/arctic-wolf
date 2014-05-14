@@ -1,67 +1,65 @@
- define(function(require, exports, module) {
+define(function(require, exports, module) {
 
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
 	var eventBus = require('app-core').Eventbus;
-    var appCommon = require('app-common');
-	var commonLoading = appCommon.CommonLoading;
 
-	var privilegeMgmt = require('./view/privilege-mgmt');
+	var appCommon = require('app-common');
+	var commonLoading = appCommon.CommonLoading;
+	var genericViewFactory = appCommon.GenericViewFactory;
+
+	var privilegeColl = require('./collection/privilege-coll');
 	var privilegeModal = require('./view/privilege-new-modal');
 
 	var privilegeApp = new Backbone.Layout({
+		
+		manage : true,
 
-		//el: '#main-content',
+		prefix : "privilege-mgmt/src/tpl/",
 
-        manage: true,
+		template : 'privilege-container.html',
 
-        prefix: "privilege-mgmt/src/tpl/",
+		events : {
+			//TODO:
+		},
+		
+		initialize : function() {
+			eventBus.on('show-loading', this.show_loading, this);
+			eventBus.on('hide-loading', this.hide_loading, this);
+		},
 
-        template: 'privilege-container.html',
-
-	    events: {
-            //TODO:
-        },
-
-        afterRender: function() {
-            this.insertView('#privilege-home', new privilegeMgmt()).render();
-		 	this.insertView('#privilege-home', new privilegeModal()).render();
-        },
-
-        initialize: function() {
-            eventBus.on('show-loading', this.show_loading, this);
-            eventBus.on('hide-loading', this.hide_loading, this);
-        },
-
-        afterRender: function() {
-			var privilegeMgmtView = new privilegeMgmt();
-            this.insertView('#privilege-home', privilegeMgmtView).render();
+		afterRender : function() {
+			var privilegeMgmtView = genericViewFactory.createView('OBJ_MGMT', {
+				'collection' : privilegeColl,
+				'view_url' : 'privilege-mgmt/view'
+			});
+			this.insertView('#privilege-home', privilegeMgmtView).render();
 
 			var privilegeModalView = new privilegeModal();
-            this.insertView('#privilege-home', privilegeModalView).render();
-        },
+			this.insertView('#privilege-home', privilegeModalView).render();
+		},
 
-		show_loading: function() {
+		show_loading : function() {
 			commonLoading.init('#main-content');
 		},
 
-       	hide_loading: function() {
-       		commonLoading.destroy();
+		hide_loading : function() {
+			commonLoading.destroy();
 		},
-    });
+	});
 
-    module.exports = {
-        run: function(viewManager) {
-            viewManager.show('#main-content', privilegeApp);
-        },
+	module.exports = {
+		run : function(viewManager) {
+			viewManager.show('#main-content', privilegeApp);
+		},
 
-        invokePrivilegeRouter: function(){
-            var privilegeRouter = require('./router/privilege-router');
-            return new privilegeRouter('privilege-mgmt/', {
-                createTrailingSlashRoutes: true
-            });
-        }
-    };
- });
+		invokePrivilegeRouter : function() {
+			var privilegeRouter = require('./router/privilege-router');
+			return new privilegeRouter('privilege-mgmt/', {
+				createTrailingSlashRoutes : true
+			});
+		}
+	};
+});

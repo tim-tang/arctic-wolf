@@ -9,15 +9,17 @@ define(function(require, exports, module) {
 
     var objMgmtViewMixin = {
         
-        datatable_id: 'obj-mgmt-datatable',
-        
-        initialize: function() {
+        initialize: function(options) {
+        	this.collection = options.collection;
+        	this.view_url = options.view_url;
+        	
             this.listenTo(this.collection, 'request', this.show_loading);
             this.listenTo(this.collection, 'remove', this.hide_loading);
             this.listenTo(this.collection, 'sync', this.load_objects);
             
             // Unselect all models
-            this.collection.unselectAll();
+            if(this.collection)
+        		this.collection.unselectAll();
         },
 
         events: {
@@ -26,6 +28,11 @@ define(function(require, exports, module) {
             'click #mgmt-view': 'view_obj',
             'click #mgmt-new': 'new_obj'
         },
+        
+        afterRender: function() {
+            this.collection.fetch();
+        },
+
 
 		// Load objects into datatable
         load_objects: function() {

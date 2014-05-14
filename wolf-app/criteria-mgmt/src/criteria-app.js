@@ -1,63 +1,65 @@
- define(function(require, exports, module) {
+define(function(require, exports, module) {
 
 	var $ = require('$');
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 
-    var appCommon = require('app-common');
-	var commonLoading = appCommon.CommonLoading;
-
 	var eventBus = require('app-core').Eventbus;
 
-	var criteriaMgmt = require('./view/criteria-mgmt');
+	var appCommon = require('app-common');
+	var commonLoading = appCommon.CommonLoading;
+	var genericViewFactory = appCommon.GenericViewFactory;
+
+	var criteriaColl = require('./collection/criteria-coll');
 	var criteriaModal = require('./view/criteria-new-modal');
 
 	var criteriaApp = new Backbone.Layout({
+		
+		manage : true,
 
-		//el: '#main-content',
+		prefix : "criteria-mgmt/src/tpl/",
 
-        manage: true,
+		template : 'criteria-container.html',
 
-        prefix: "criteria-mgmt/src/tpl/",
+		events : {
+			//TODO:
+		},
 
-        template: 'criteria-container.html',
+		initialize : function() {
+			eventBus.on('show-loading', this.show_loading, this);
+			eventBus.on('hide-loading', this.hide_loading, this);
+		},
 
-	    events: {
-            //TODO:
-        },
-
-        initialize: function() {
-            eventBus.on('show-loading', this.show_loading, this);
-            eventBus.on('hide-loading', this.hide_loading, this);
-        },
-
-        afterRender: function() {
-			var criteriaMgmtView = new criteriaMgmt();
-            this.insertView('#criteria-home', criteriaMgmtView).render();
+		afterRender : function() {
+			var criteriaMgmtView = genericViewFactory.createView('OBJ_MGMT', {
+				'collection' : criteriaColl,
+				'view_url' : 'criteria-mgmt/view'
+			});
+			this.insertView('#criteria-home', criteriaMgmtView).render();
 
 			var criteriaModalView = new criteriaModal();
-            this.insertView('#criteria-home', criteriaModalView).render();
-        },
+			this.insertView('#criteria-home', criteriaModalView).render();
+		},
 
-		show_loading: function() {
+		show_loading : function() {
 			commonLoading.init('#main-content');
 		},
 
-       	hide_loading: function() {
-       		commonLoading.destroy();
+		hide_loading : function() {
+			commonLoading.destroy();
 		},
-    });
+	});
 
-    module.exports = {
-        run: function(viewManager) {
-            viewManager.show('#main-content', criteriaApp);
-        },
+	module.exports = {
+		run : function(viewManager) {
+			viewManager.show('#main-content', criteriaApp);
+		},
 
-        invokeCriteriaRouter: function() {
-            var criteriaRouter = require('./router/criteria-router');
-            return new criteriaRouter('criteria-mgmt/', {
-                createTrailingSlashRoutes: true
-            });
-        }
-    };
- });
+		invokeCriteriaRouter : function() {
+			var criteriaRouter = require('./router/criteria-router');
+			return new criteriaRouter('criteria-mgmt/', {
+				createTrailingSlashRoutes : true
+			});
+		}
+	};
+});
