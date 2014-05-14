@@ -61,7 +61,7 @@
     <script src="seajs-config.js"></script>
 
 <script type="text/javascript">
-    seajs.use(seajs.production? ['$', 'app-main', 'wolf-tpl']:['$', 'app-main'], function($, app_main){
+    seajs.use(seajs.production? ['$', 'app-main', 'app-tpl']:['$', 'app-main'], function($, app_main){
         $(document).ready(function() {
             app_main.AppMain.init();
         });

@@ -9,6 +9,8 @@
       "backbone": "backbone",
       "app-core": "app-core",
       "app-common": "app-common",
+      "app-user-group-mgmt": "app-user-group-mgmt",
+      "app-role-mgmt": "app-role-mgmt",
       "subroute": "subroute",
       "modalEffects": "modalEffects",
       "quicksearch": "quicksearch"

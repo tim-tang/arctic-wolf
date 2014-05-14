@@ -15,20 +15,35 @@ module.exports = function(grunt) {
     var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
 
     var postMD5 = function(fileChanges) {
+            var pkg = grunt.file.readJSON('package.json');
+            var aliasMap = {};
             var map = [];
             fileChanges.forEach(function(fileChange) {
-                fileChange.oldPath = 'wolf-app-path/' + fileChange.oldPath.replace('dist', 'src');
+                fileChange.oldMapPath = fileChange.oldPath;
+                fileChange.newMapPath = fileChange.newPath;
+                // --------------- Alias Config -------------------//
+                if (fileChange.oldPath.indexOf('-debug.js') > 0) {
+                    fileChange.oldPath = 'app-' + fileChange.oldPath.replace('/dist/index-debug.js', '').replace('app-', '') + '-debug';
+                } else {
+                    fileChange.oldPath = 'app-' + fileChange.oldPath.replace('/dist/index.js', '').replace('app-', '').replace('/wolf-tpl.js', '');
+                }
                 fileChange.newPath = fileChange.newPath.replace('sea-modules/', '');
-                map.push([fileChange.oldPath, fileChange.newPath]);
+
+                // --------------- Mapping Config -------------------//
+                fileChange.oldMapPath = 'wolf-app/' + fileChange.oldMapPath.replace('dist', pkg.version);
+
+                aliasMap[fileChange.oldPath] = fileChange.newPath;
+                map.push([fileChange.oldMapPath, fileChange.newPath]);
             });
             var code = '';
             var seajs_config_path = "seajs-config.js";
             if (grunt.file.exists(seajs_config_path)) {
                 code = grunt.file.read(seajs_config_path);
             }
-            code = code.replace(/\/\*map start\*\/[\s\S]*\/\*map end\*\//, '').trim();
+            code = code.replace(/\/\*production start\*\/[\s\S]*\/\*production end\*\//, '').trim();
             code = code + '\n' + grunt.template.process(SEAJS_MAP_TPL, {
                 data: {
+                    aliasJSON: JSON.stringify(aliasMap, null, '\t'),
                     mapJSON: JSON.stringify(map, null, '\t')
                 }
             });
@@ -46,7 +61,7 @@ module.exports = function(grunt) {
                     amd: true
                 },
                 files: {
-                    "wolf-app/wolf-tpl/dist/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    "app-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                 }
             }
         },
@@ -82,6 +97,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-md5');
     grunt.loadNpmTasks('grunt-shell');
 
+    grunt.registerTask('xx', ['md5']);
     grunt.registerTask('compile', ['jst']);
     grunt.registerTask('build', ['shell', 'md5']);
 };

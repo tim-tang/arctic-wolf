@@ -1,11 +1,9 @@
-/*map start*/
+/*production start*/
 if(seajs.production){
     seajs.config({
-        alias: {
-            "wolf-tpl": "wolf-app-path/wolf-tpl/src/wolf-tpl.js"
-        },
-        map : <%= mapJSON %>,
+        alias: <%= aliasJSON %>,
+        map: <%= mapJSON %>,
         debug: false
     });
 }
-/*map end*/
+/*production end*/

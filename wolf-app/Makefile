@@ -25,7 +25,7 @@ compile-tpl:
 
 build-modules:
 	@grunt build
-	@rm -rf ./wolf-app
+	@rm -rf ./app-tpl
 	@echo
 	@echo   "-- Success To Build & Deploy Wolf App Modules --"
 	@echo

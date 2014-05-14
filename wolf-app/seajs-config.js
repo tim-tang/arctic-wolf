@@ -105,40 +105,68 @@ seajs.config({
 });
 
 // -- configuration for production environment.
-/*map start*/
+/*production start*/
 if (seajs.production) {
     seajs.config({
         alias: {
-            "wolf-tpl": "wolf-app-path/wolf-tpl/src/wolf-tpl.js"
+            "app-core-debug": "wolf-app/app-core/0.0.1/index-debug-80fd52afdbc1074d6b7367ed64a7dc0d.js",
+            "app-core": "wolf-app/app-core/0.0.1/index-e48a407a09f051c446e1d7d59fdf4a3b.js",
+            "app-common-debug": "wolf-app/app-common/0.0.1/index-debug-77dd64bf9413ac9f45b438ee5ecacd4d.js",
+            "app-common": "wolf-app/app-common/0.0.1/index-fe31bc175ccabff4651163c2d6c46990.js",
+            "app-criteria-mgmt-debug": "wolf-app/criteria-mgmt/0.0.1/index-debug-c36acd2b7462ed6ba46f3c4259c18b11.js",
+            "app-criteria-mgmt": "wolf-app/criteria-mgmt/0.0.1/index-97f353e9515345ad466517a3689089ba.js",
+            "app-dashboard-debug": "wolf-app/dashboard/0.0.1/index-debug-e80143216e57efff1262c02322a13f49.js",
+            "app-dashboard": "wolf-app/dashboard/0.0.1/index-fe107eae853dccd53def49bc6a09d6cd.js",
+            "app-generic-filter-debug": "wolf-app/generic-filter/0.0.1/index-debug-f28e63776af29e460dc005e02d4dee5e.js",
+            "app-generic-filter": "wolf-app/generic-filter/0.0.1/index-413d24e900f84ab2ff23179c1f1f160e.js",
+            "app-layout-debug": "wolf-app/layout/0.0.1/index-debug-c5a4248bde653b7a0cf9091fc96b11c8.js",
+            "app-layout": "wolf-app/layout/0.0.1/index-b4c42c4d82a81b84cf93b4ffb8cb1ec9.js",
+            "app-privilege-mgmt-debug": "wolf-app/privilege-mgmt/0.0.1/index-debug-8f8c25308f332829ec196c90735f4c71.js",
+            "app-privilege-mgmt": "wolf-app/privilege-mgmt/0.0.1/index-cd81238ec1bf6745e4aff7554e9dec65.js",
+            "app-role-mgmt-debug": "wolf-app/role-mgmt/0.0.1/index-debug-635c7c77b1f70687138faaf368cdab69.js",
+            "app-role-mgmt": "wolf-app/role-mgmt/0.0.1/index-60274d40d1c04bcc9b0e12651b50e9a0.js",
+            "app-security-debug": "wolf-app/security/0.0.1/index-debug-08379a1eafe1286cb1af5254b7a580b4.js",
+            "app-security": "wolf-app/security/0.0.1/index-2ba65af79f67c4113eaf8bd8a2a9d73f.js",
+            "app-user-group-mgmt-debug": "wolf-app/user-group-mgmt/0.0.1/index-debug-5ab38c537ff49d428c5074c0911df80c.js",
+            "app-user-group-mgmt": "wolf-app/user-group-mgmt/0.0.1/index-50ca57261f4010f4245ee3861903a1a5.js",
+            "app-user-mgmt-debug": "wolf-app/user-mgmt/0.0.1/index-debug-eb73e34176584ad5e7b3a653097c3c07.js",
+            "app-user-mgmt": "wolf-app/user-mgmt/0.0.1/index-11b6ea2959d22a5c9c919257485bf865.js",
+            "app-vehicle-mgmt-debug": "wolf-app/vehicle-mgmt/0.0.1/index-debug-93fb673fcecb94c92947c0bcc7ea8bcc.js",
+            "app-vehicle-mgmt": "wolf-app/vehicle-mgmt/0.0.1/index-90df9eb9ceedaa4d7b4536f345d1af24.js",
+            "app-main-debug": "wolf-app/app-main/0.0.1/index-debug-e673ff390a81b6af78b3aa69271d8c6a.js",
+            "app-main": "wolf-app/app-main/0.0.1/index-92dbd2142b7d1f815a03630ae034d086.js",
+            "app-tpl": "wolf-app/wolf-tpl/wolf-tpl-df6b4841007245a3550b2148a1b1590c.js"
         },
         map: [
-            ["wolf-app-path/app-core/src/index-debug.js", "wolf-app/app-core/index-debug-80fd52afdbc1074d6b7367ed64a7dc0d.js"],
-            ["wolf-app-path/app-core/src/index.js", "wolf-app/app-core/index-e48a407a09f051c446e1d7d59fdf4a3b.js"],
-            ["wolf-app-path/app-common/src/index-debug.js", "wolf-app/app-common/index-debug-8316c2831ea07a9b2285edc605231ec4.js"],
-            ["wolf-app-path/app-common/src/index.js", "wolf-app/app-common/index-f09b36ccb5323e8aebe4881b435a23d4.js"],
-            ["wolf-app-path/criteria-mgmt/src/index-debug.js", "wolf-app/criteria-mgmt/index-debug-2ecab45d316676169a1c539a2956e2eb.js"],
-            ["wolf-app-path/criteria-mgmt/src/index.js", "wolf-app/criteria-mgmt/index-97a08ebf85ce62958c109fd55df70246.js"],
-            ["wolf-app-path/dashboard/src/index-debug.js", "wolf-app/dashboard/index-debug-e80143216e57efff1262c02322a13f49.js"],
-            ["wolf-app-path/dashboard/src/index.js", "wolf-app/dashboard/index-fe107eae853dccd53def49bc6a09d6cd.js"],
-            ["wolf-app-path/generic-filter/src/index-debug.js", "wolf-app/generic-filter/index-debug-f28e63776af29e460dc005e02d4dee5e.js"],
-            ["wolf-app-path/generic-filter/src/index.js", "wolf-app/generic-filter/index-413d24e900f84ab2ff23179c1f1f160e.js"],
-            ["wolf-app-path/layout/src/index-debug.js", "wolf-app/layout/index-debug-c5a4248bde653b7a0cf9091fc96b11c8.js"],
-            ["wolf-app-path/layout/src/index.js", "wolf-app/layout/index-b4c42c4d82a81b84cf93b4ffb8cb1ec9.js"],
-            ["wolf-app-path/privilege-mgmt/src/index-debug.js", "wolf-app/privilege-mgmt/index-debug-8f8c25308f332829ec196c90735f4c71.js"],
-            ["wolf-app-path/privilege-mgmt/src/index.js", "wolf-app/privilege-mgmt/index-cd81238ec1bf6745e4aff7554e9dec65.js"],
-            ["wolf-app-path/role-mgmt/src/index-debug.js", "wolf-app/role-mgmt/index-debug-e9fc73e3591292c84616ea983a26c78e.js"],
-            ["wolf-app-path/role-mgmt/src/index.js", "wolf-app/role-mgmt/index-91123ead2205baee8d63a4177d2d5f99.js"],
-            ["wolf-app-path/security/src/index-debug.js", "wolf-app/security/index-debug-08379a1eafe1286cb1af5254b7a580b4.js"],
-            ["wolf-app-path/security/src/index.js", "wolf-app/security/index-2ba65af79f67c4113eaf8bd8a2a9d73f.js"],
-            ["wolf-app-path/user-group-mgmt/src/index-debug.js", "wolf-app/user-group-mgmt/index-debug-5ab38c537ff49d428c5074c0911df80c.js"],
-            ["wolf-app-path/user-group-mgmt/src/index.js", "wolf-app/user-group-mgmt/index-50ca57261f4010f4245ee3861903a1a5.js"],
-            ["wolf-app-path/vehicle-mgmt/src/index-debug.js", "wolf-app/vehcile-mgmt/index-debug-93fb673fcecb94c92947c0bcc7ea8bcc.js"],
-            ["wolf-app-path/vehicle-mgmt/src/index.js", "wolf-app/vehcile-mgmt/index-90df9eb9ceedaa4d7b4536f345d1af24.js"],
-            ["wolf-app-path/app-main/src/index-debug.js", "wolf-app/app-main/index-debug-e673ff390a81b6af78b3aa69271d8c6a.js"],
-            ["wolf-app-path/app-main/src/index.js", "wolf-app/app-main/index-92dbd2142b7d1f815a03630ae034d086.js"],
-            ["wolf-app-path/wolf-app/wolf-tpl/src/wolf-tpl.js", "wolf-app/wolf-tpl/wolf-tpl-fbf9d80c9d323804442986c29878f977.js"]
+            ["wolf-app/app-core/0.0.1/index-debug.js", "wolf-app/app-core/0.0.1/index-debug-80fd52afdbc1074d6b7367ed64a7dc0d.js"],
+            ["wolf-app/app-core/0.0.1/index.js", "wolf-app/app-core/0.0.1/index-e48a407a09f051c446e1d7d59fdf4a3b.js"],
+            ["wolf-app/app-common/0.0.1/index-debug.js", "wolf-app/app-common/0.0.1/index-debug-77dd64bf9413ac9f45b438ee5ecacd4d.js"],
+            ["wolf-app/app-common/0.0.1/index.js", "wolf-app/app-common/0.0.1/index-fe31bc175ccabff4651163c2d6c46990.js"],
+            ["wolf-app/criteria-mgmt/0.0.1/index-debug.js", "wolf-app/criteria-mgmt/0.0.1/index-debug-c36acd2b7462ed6ba46f3c4259c18b11.js"],
+            ["wolf-app/criteria-mgmt/0.0.1/index.js", "wolf-app/criteria-mgmt/0.0.1/index-97f353e9515345ad466517a3689089ba.js"],
+            ["wolf-app/dashboard/0.0.1/index-debug.js", "wolf-app/dashboard/0.0.1/index-debug-e80143216e57efff1262c02322a13f49.js"],
+            ["wolf-app/dashboard/0.0.1/index.js", "wolf-app/dashboard/0.0.1/index-fe107eae853dccd53def49bc6a09d6cd.js"],
+            ["wolf-app/generic-filter/0.0.1/index-debug.js", "wolf-app/generic-filter/0.0.1/index-debug-f28e63776af29e460dc005e02d4dee5e.js"],
+            ["wolf-app/generic-filter/0.0.1/index.js", "wolf-app/generic-filter/0.0.1/index-413d24e900f84ab2ff23179c1f1f160e.js"],
+            ["wolf-app/layout/0.0.1/index-debug.js", "wolf-app/layout/0.0.1/index-debug-c5a4248bde653b7a0cf9091fc96b11c8.js"],
+            ["wolf-app/layout/0.0.1/index.js", "wolf-app/layout/0.0.1/index-b4c42c4d82a81b84cf93b4ffb8cb1ec9.js"],
+            ["wolf-app/privilege-mgmt/0.0.1/index-debug.js", "wolf-app/privilege-mgmt/0.0.1/index-debug-8f8c25308f332829ec196c90735f4c71.js"],
+            ["wolf-app/privilege-mgmt/0.0.1/index.js", "wolf-app/privilege-mgmt/0.0.1/index-cd81238ec1bf6745e4aff7554e9dec65.js"],
+            ["wolf-app/role-mgmt/0.0.1/index-debug.js", "wolf-app/role-mgmt/0.0.1/index-debug-635c7c77b1f70687138faaf368cdab69.js"],
+            ["wolf-app/role-mgmt/0.0.1/index.js", "wolf-app/role-mgmt/0.0.1/index-60274d40d1c04bcc9b0e12651b50e9a0.js"],
+            ["wolf-app/security/0.0.1/index-debug.js", "wolf-app/security/0.0.1/index-debug-08379a1eafe1286cb1af5254b7a580b4.js"],
+            ["wolf-app/security/0.0.1/index.js", "wolf-app/security/0.0.1/index-2ba65af79f67c4113eaf8bd8a2a9d73f.js"],
+            ["wolf-app/user-group-mgmt/0.0.1/index-debug.js", "wolf-app/user-group-mgmt/0.0.1/index-debug-5ab38c537ff49d428c5074c0911df80c.js"],
+            ["wolf-app/user-group-mgmt/0.0.1/index.js", "wolf-app/user-group-mgmt/0.0.1/index-50ca57261f4010f4245ee3861903a1a5.js"],
+            ["wolf-app/user-mgmt/0.0.1/index-debug.js", "wolf-app/user-mgmt/0.0.1/index-debug-eb73e34176584ad5e7b3a653097c3c07.js"],
+            ["wolf-app/user-mgmt/0.0.1/index.js", "wolf-app/user-mgmt/0.0.1/index-11b6ea2959d22a5c9c919257485bf865.js"],
+            ["wolf-app/vehicle-mgmt/0.0.1/index-debug.js", "wolf-app/vehicle-mgmt/0.0.1/index-debug-93fb673fcecb94c92947c0bcc7ea8bcc.js"],
+            ["wolf-app/vehicle-mgmt/0.0.1/index.js", "wolf-app/vehicle-mgmt/0.0.1/index-90df9eb9ceedaa4d7b4536f345d1af24.js"],
+            ["wolf-app/app-main/0.0.1/index-debug.js", "wolf-app/app-main/0.0.1/index-debug-e673ff390a81b6af78b3aa69271d8c6a.js"],
+            ["wolf-app/app-main/0.0.1/index.js", "wolf-app/app-main/0.0.1/index-92dbd2142b7d1f815a03630ae034d086.js"],
+            ["wolf-app/app-tpl/wolf-tpl.js", "wolf-app/wolf-tpl/wolf-tpl-df6b4841007245a3550b2148a1b1590c.js"]
         ],
-        debug: false
+        debug: true
     });
 }
-/*map end*/
+/*production end*/
