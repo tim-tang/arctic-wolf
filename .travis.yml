@@ -7,6 +7,8 @@ notifications:
     - kkiiiu@gmail.com
 before_script:
   - npm install -g grunt-cli
+  - npm install spm -g
+  - npm install spm build -g
 script:
   - make build
 #after_scipt:
