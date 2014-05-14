@@ -6,6 +6,8 @@
     \____|__  / |__|    \___  > |__|  |__| \___  >   \__/\  /   \____/ |____/ |__|   
             \/              \/                 \/         \/                         
 
+[![Build Status](https://travis-ci.org/tim-tang/arctic-wolf.svg?branch=master)](https://travis-ci.org/tim-tang/arctic-wolf) 
+
 ---
 Arctic single page application font-end with Sea.js and Backbone.js
 
