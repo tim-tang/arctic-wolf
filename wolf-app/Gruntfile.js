@@ -13,6 +13,25 @@ module.exports = function(grunt) {
     var path = require('path');
     var fs = require('fs');
     var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
+    (function(grunt) {
+        var appModules = [];
+        pkg.wolf_build_modules.forEach(function(module) {
+            var path = module + '/package.json';
+            var map = {};
+            var target;
+            if (grunt.file.isFile(path)) {
+                var module_pkg = grunt.file.readJSON(path);
+                target = 'sea-modules/wolf-app/' + module + '/' + module_pkg.version + '/';
+            } else {
+                target = 'sea-modules/wolf-app/' + module;
+            }
+            var source = module + '/dist/**/*.js';
+            map[target] = source;
+            appModules.push(map);
+        });
+        console.log(appModules);
+        grunt.config.set('app_modules', appModules);
+    })(grunt);
 
     /**
      * Generate seajs alias/mapping configuration files.
@@ -76,11 +95,10 @@ module.exports = function(grunt) {
             }
         },
 
-        // TODO:
-        // Read module package.json version to structure the module directory.
         md5: {
             compile: {
-                files: "<%=pkg.wolf_md5_modules %>",
+                //files: "<%=pkg.wolf_md5_modules %>",
+                files: grunt.config.get('app_modules'),
                 options: {
                     encoding: null,
                     keepBasename: true,
@@ -97,7 +115,7 @@ module.exports = function(grunt) {
                     var modules = pkg.wolf_build_modules;
                     var commands = [];
                     modules.forEach(function(module) {
-                        commands.push('make -C ' + module + ' build');
+                        if (module !== 'app-tpl') commands.push('make -C ' + module + ' build');
                     });
                     return commands.join('&&');
                 }

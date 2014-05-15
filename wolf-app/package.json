@@ -29,7 +29,8 @@
     "role-mgmt",
     "vehicle-mgmt",
     "generic-filter",
-    "app-main"
+    "app-main",
+    "app-tpl"
   ],
   "wolf_md5_modules": [
     {
