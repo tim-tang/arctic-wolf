@@ -1,4 +1,4 @@
- define(function(require, exports, module){
+ define(function(require, exports, module) {
 
     var Backbone = require('backbone');
 
@@ -12,8 +12,8 @@
         	id: '',
             role_name: '',
             role_desc: '',
-            privileges: '',
             enabled: '',
+            privileges: '',
             is_selected: false
         },
 
