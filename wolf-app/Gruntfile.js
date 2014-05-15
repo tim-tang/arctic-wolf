@@ -15,6 +15,7 @@ module.exports = function(grunt) {
     var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
     (function(grunt) {
         var appModules = [];
+        var appTpls = [];
         pkg.wolf_build_modules.forEach(function(module) {
             var path = module + '/package.json';
             var map = {};
@@ -22,15 +23,15 @@ module.exports = function(grunt) {
             if (grunt.file.isFile(path)) {
                 var module_pkg = grunt.file.readJSON(path);
                 target = 'sea-modules/wolf-app/' + module + '/' + module_pkg.version + '/';
-            } else {
-                target = 'sea-modules/wolf-app/' + module;
             }
             var source = module + '/dist/**/*.js';
             map[target] = source;
             appModules.push(map);
+            appTpls.push(module+'/**/*.html');
         });
-        console.log(appModules);
+        appModules.push({"sea-modules/wolf-app/wolf-tpl/": "app-tpl/**/*.js"});
         grunt.config.set('app_modules', appModules);
+        grunt.config.set('app_tpls', appTpls);
     })(grunt);
 
     /**
@@ -51,7 +52,7 @@ module.exports = function(grunt) {
                     fileChange.oldPath = 'app-' + module_name.replace('app-', '') + '-debug';
                 } else {
                     var module_name = fileChange.oldPath.replace('/dist/index.js', '');
-                    if (fileChange.oldPath.indexOf('app-tpl') > 0) {
+                    if (grunt.file.isFile(module_name + '/package.json')) {
                         version = grunt.file.readJSON(module_name + '/package.json').version;
                     }
                     fileChange.oldPath = 'app-' + module_name.replace('app-', '').replace('/wolf-tpl.js', '');
@@ -90,7 +91,8 @@ module.exports = function(grunt) {
                     amd: true
                 },
                 files: {
-                    "app-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    //"app-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
+                    "app-tpl/wolf-tpl.js": grunt.config.get('app_tpls')
                 }
             }
         },

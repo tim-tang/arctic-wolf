@@ -3,19 +3,6 @@
   "author": "Tim.Tang <tang.jilong@gmail.com>",
   "version": "0.0.1",
   "seajs_config": "seajs-config.js",
-  "wolf_app_tpl": [
-    "app-common/**/*.html",
-    "security/**/*.html",
-    "dashboard/**/*.html",
-    "criteria-mgmt/**/*.html",
-    "generic-filter/**/*.html",
-    "layout/**/*.html",
-    "privilege-mgmt/**/*.html",
-    "role-mgmt/**/*.html",
-    "user-group-mgmt/**/*.html",
-    "user-mgmt/**/*.html",
-    "vehicle-mgmt/**/*.html"
-  ],
   "wolf_build_modules": [
     "app-core",
     "app-common",
@@ -29,52 +16,7 @@
     "role-mgmt",
     "vehicle-mgmt",
     "generic-filter",
-    "app-main",
-    "app-tpl"
-  ],
-  "wolf_md5_modules": [
-    {
-      "sea-modules/wolf-app/app-core/0.0.1/": "app-core/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/app-common/0.0.1/": "app-common/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/criteria-mgmt/0.0.1/": "criteria-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/dashboard/0.0.1/": "dashboard/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/generic-filter/0.0.1/": "generic-filter/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/layout/0.0.1/": "layout/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/privilege-mgmt/0.0.1/": "privilege-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/role-mgmt/0.0.1/": "role-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/security/0.0.1/": "security/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/user-group-mgmt/0.0.1/": "user-group-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/user-mgmt/0.0.1/": "user-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/vehicle-mgmt/0.0.1/": "vehicle-mgmt/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/app-main/0.0.1/": "app-main/dist/**/*.js"
-    },
-    {
-      "sea-modules/wolf-app/wolf-tpl/": "app-tpl/**/*.js"
-    }
+    "app-main"
   ],
   "spm": {
     "alias": {
