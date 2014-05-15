@@ -11,8 +11,10 @@ define(function(require, exports, module) {
         initialize: function(options) {
         	// Remove previous content
         	$('#tab-content').children().remove();
-        	// Set object id
-			this.model.set('id', options.id);
+        	// Set values passed from options
+        	this.model = options.model;
+        	this.model.urlRoot = options.urlRoot;
+			this.collection = options.collection;
 			// Resigster sync event
         	this.listenTo(this.model, 'sync', this.load_history);
 			// Fetch model data
@@ -31,13 +33,25 @@ define(function(require, exports, module) {
                 self.datatable = datatable;
                 $('#' + self.datatable_id).on('click', 'tbody tr', function(e) {
                     $(this).toggleClass('row_selected');
+                    /* History table row no need toggle_select(), only for view.
                     var selectedId = $(this).find("td:first").html().trim();
                     var model = self.collection.get(selectedId);
-                    model.toggle_select();
+                    model.toggle_select();*/
                 });
                 eventBus.trigger('hide-loading');
             });
-       	}
+       	},
+       	
+		load_history: function() {
+			// Prepare collection
+			this.collection.set(this.model.get('history')['aaData']);
+        	// Initial assigned privileges datatable
+        	this.init_datatable('history');
+       	},
+       	
+   		afterRender: function() {
+   			//TODO:
+        }
 	};
 
     module.exports = objHistoryViewMixin;
