@@ -12,11 +12,11 @@ define(function(require, exports, module) {
 	var genericViewFactory = appCommon.GenericViewFactory;
 
 	var roleGeneralInfo = require('./view/tab/role-general-info');
-	var rolePrivilege = require('./view/tab/role-privilege');
-	var roleUser = require('./view/tab/role-user');
-	var roleUsergroup = require('./view/tab/role-user-group');
-
+	
 	var roleModel = require('./model/role-model');
+	var privilegeColl = require('app-privilege-mgmt').PrivilegeColl;
+    var userGroupColl = require('app-user-group-mgmt').UserGroupColl;
+    var userColl = require('app-user-mgmt').UserColl;
 	var roleHistoryColl = require('./collection/role-history-coll');
 
 	var roleDetailsApp = new Backbone.Layout({
@@ -53,34 +53,42 @@ define(function(require, exports, module) {
 		},
 
 		renderPrivileges : function() {
-			var rolePrivilegeView = new rolePrivilege({
-				'id' : this.roleId
-			});
+            var rolePrivilegeView = genericViewFactory.createView('OBJ_OBJ', {
+                'identity' : 'privileges',
+                'urlRoot' : '/role-privileges',
+                'model' : new roleModel({'id' : this.roleId}),
+                'collection' : roleHistoryColl,
+                'source_collection' : roleHistoryColl
+            });
 			this.insertView('#tab-content', rolePrivilegeView).render();
 		},
 
 		renderUserGroups : function() {
-			var roleUsergroupView = new roleUsergroup({
-				'id' : this.roleId
-			});
+		    var roleUsergroupView = genericViewFactory.createView('OBJ_OBJ', {
+                'identity' : 'user_groups',
+                'urlRoot' : '/role-user-groups',
+                'model' : new roleModel({'id' : this.roleId}),
+                'collection' : userGroupColl,
+                'source_collection' : userGroupColl
+            });
 			this.insertView('#tab-content', roleUsergroupView).render();
 		},
 
 		renderUsers : function() {
-			var roleUserView = new roleUser({
-				'id' : this.roleId
-			});
+			var roleUserView = genericViewFactory.createView('OBJ_OBJ', {
+                'identity' : 'users',
+                'urlRoot' : '/role-users',
+                'model' : new roleModel({'id' : this.roleId}),
+                'collection' : userColl,
+                'source_collection' : userColl
+            });
 			this.insertView('#tab-content', roleUserView).render();
 		},
 
 		renderHistory : function() {
-			var _model = new roleModel();
-			_model.set({
-				'id' : this.roleId
-			});
 			var roleHistoryView = genericViewFactory.createView('OBJ_HISTORY', {
 				'urlRoot' : '/role-history',
-				'model' : _model,
+				'model' : new roleModel({'id' : this.roleId}),
 				'collection' : roleHistoryColl
 			});
 

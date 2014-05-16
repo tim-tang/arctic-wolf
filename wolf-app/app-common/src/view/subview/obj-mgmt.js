@@ -17,6 +17,8 @@ define(function(require, exports, module) {
         collection: null,
         
         view_url: null,
+        
+        assignPrivilegeModal: null,
     });
 
     objMgmt.mixin(genericMgmtViewMixin);

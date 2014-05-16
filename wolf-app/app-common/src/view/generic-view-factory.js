@@ -5,6 +5,7 @@ define(function(require, exports, module) {
 	
 	var objMgmtView = require('./subview/obj-mgmt');
 	var objHistoryView = require('./subview/obj-history');
+	var objObjView = require('./subview/obj-obj');
 
 	var genericViewFactory = {
 
@@ -17,6 +18,9 @@ define(function(require, exports, module) {
 				case 'OBJ_HISTORY':
 					subview = new objHistoryView(options);
 					break;
+				case 'OBJ_OBJ':
+                    subview = new objObjView(options);
+                    break;
 			}
 			
 			return subview;
