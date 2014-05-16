@@ -13,6 +13,12 @@ module.exports = function(grunt) {
     var path = require('path');
     var fs = require('fs');
     var SEAJS_MAP_TPL = grunt.file.read(path.join(__dirname, 'seajs-map.tpl'));
+
+    /**
+     * Initialize module configurations.
+     * - read module configuration from package.json
+     * - build the correct format
+     */
     (function(grunt) {
         var appModules = [];
         var appTpls = [];
@@ -27,9 +33,11 @@ module.exports = function(grunt) {
             var source = module + '/dist/**/*.js';
             map[target] = source;
             appModules.push(map);
-            appTpls.push(module+'/**/*.html');
+            appTpls.push(module + '/**/*.html');
         });
-        appModules.push({"sea-modules/wolf-app/wolf-tpl/": "app-tpl/**/*.js"});
+        appModules.push({
+            "sea-modules/wolf-app/wolf-tpl/": "app-tpl/**/*.js"
+        });
         grunt.config.set('app_modules', appModules);
         grunt.config.set('app_tpls', appTpls);
     })(grunt);
@@ -99,7 +107,6 @@ module.exports = function(grunt) {
 
         md5: {
             compile: {
-                //files: "<%=pkg.wolf_md5_modules %>",
                 files: grunt.config.get('app_modules'),
                 options: {
                     encoding: null,
