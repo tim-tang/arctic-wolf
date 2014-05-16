@@ -65,7 +65,6 @@ define(function(require, exports, module) {
             /*Date Range Picker*/
             var cb = function(start, end) {
                     $(selector + ' span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
-                    //alert("Callback has fired: [" + start.format('MMMM D, YYYY') + " to " + end.format('MMMM D, YYYY') + "]");
                 };
 
             var optionSet1 = {
@@ -197,7 +196,7 @@ define(function(require, exports, module) {
 				var _select = multi_select_view.$el.find('select');
             	// If select_id is not null, then set id to this select and append this selector to its container
                 if(select_id) {
-                	var select_container = '#' + select_id + '-container';
+                	var select_container = '#' + multi_select_view.options["container_id"];
             		// Remove existing multi selector
             		if($(select_container).children())
             			$(select_container).children().remove();

@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var eventBus = require('app-core').Eventbus;
     var commonUtils = require('../../common-utils');
     var componentFacade = require('../../component-facade');
-    var assignObjModal = require('../../view/subview/assign-obj-modal');
+    var assignObjModal = require('../../view/subview/obj-assign-modal');
 
     var objDetailsViewMixin = {
 
@@ -76,9 +76,15 @@ define(function(require, exports, module) {
 			_.each(this.collection.models, function(model) {
 				selectedObjectsValue.push(model.id);
 			});
-			view.assignObjects.selected = selectedObjectsValue;
+			// TODO: Need refactor
+			if(this.identity === 'privileges')
+                view.assignObjects[0].selected = selectedObjectsValue;
+            if(this.identity === 'user_groups')
+                view.assignObjects[1].selected = selectedObjectsValue;
+            if(this.identity === 'users')
+				view.assignObjects[2].selected = selectedObjectsValue;
 			// Render multiple select
-			view.renderMultiSelect(this.identity, this.collection_all);
+			view.renderMultiSelect(this.identity, this.source_collection);
 		},
 
 		// Click add link

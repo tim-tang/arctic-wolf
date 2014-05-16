@@ -4,8 +4,8 @@ define(function(require, exports, module) {
 	var _ = require('underscore');
 	
 	var objMgmtView = require('./subview/obj-mgmt');
+	var objAssignView = require('./subview/obj-assign');
 	var objHistoryView = require('./subview/obj-history');
-	var objObjView = require('./subview/obj-obj');
 
 	var genericViewFactory = {
 
@@ -18,11 +18,10 @@ define(function(require, exports, module) {
 				case 'OBJ_HISTORY':
 					subview = new objHistoryView(options);
 					break;
-				case 'OBJ_OBJ':
-                    subview = new objObjView(options);
+				case 'ASSIGN_OBJ':
+                    subview = new objAssignView(options);
                     break;
 			}
-			
 			return subview;
 		}
 	};

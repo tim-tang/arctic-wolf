@@ -29,7 +29,9 @@ define(function(require, exports, module) {
             //this.listenTo(this.model, 'change', this.test);
             this.users = {
 				"selector_id": "users",
+				"container_id": "users-container",
 				"multiple": "multiple",
+				"selected": [],
 				"optgroups": [
 					{
 						"options": [

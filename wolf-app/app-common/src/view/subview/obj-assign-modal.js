@@ -10,13 +10,13 @@ define(function(require, exports, module) {
 	var eventBus = require('app-core').Eventbus;
 	var componentFacade = require('../../component-facade');
 
-    var assignObjModal = Backbone.View.extend({
+    var objAssignModal = Backbone.View.extend({
     	
         manage: true,
 
         prefix: "app-common/src/tpl/subview/",
 
-        template: 'assign-obj-modal.html',
+        template: 'obj-assign-modal.html',
 
 		assignObjects: null,
 
@@ -27,6 +27,7 @@ define(function(require, exports, module) {
         initialize: function() {
             this.assignObjects = [{
 				"selector_id": "privileges",
+				"container_id": "assign-obj-container",
 				"multiple": "multiple",
 				"selected": [],
 				"optgroups": [
@@ -87,6 +88,7 @@ define(function(require, exports, module) {
 			
 			{
                 "selector_id": "user-groups",
+                "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],
                 "optgroups": [
@@ -110,6 +112,7 @@ define(function(require, exports, module) {
             },
             {
                 "selector_id": "users",
+                "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],
                 "optgroups": [
@@ -142,7 +145,7 @@ define(function(require, exports, module) {
 			console.log(source_collection);
 			if(identity === 'privileges')
                 componentFacade.init_multi_select('.searchable', this.assignObjects[0]);
-            if(identity === 'user-groups')
+            if(identity === 'user_groups')
                 componentFacade.init_multi_select('.searchable', this.assignObjects[1]);
             if(identity === 'users')
                 componentFacade.init_multi_select('.searchable', this.assignObjects[2]);
@@ -153,5 +156,5 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = assignObjModal;
+    module.exports = objAssignModal;
 });

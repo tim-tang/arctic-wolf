@@ -44,7 +44,8 @@ define(function(require, exports, module) {
 		afterRender : function() {
 			this.renderGeneralInfo();
 		},
-
+		
+		// Render General Info View
 		renderGeneralInfo : function() {
 			var roleGeneralInfoView = new roleGeneralInfo({
 				'id' : this.roleId
@@ -52,19 +53,21 @@ define(function(require, exports, module) {
 			this.insertView('#tab-content', roleGeneralInfoView).render();
 		},
 
+		// Render Assign Privilege View
 		renderPrivileges : function() {
-            var rolePrivilegeView = genericViewFactory.createView('OBJ_OBJ', {
+            var rolePrivilegeView = genericViewFactory.createView('ASSIGN_OBJ', {
                 'identity' : 'privileges',
                 'urlRoot' : '/role-privileges',
                 'model' : new roleModel({'id' : this.roleId}),
-                'collection' : roleHistoryColl,
-                'source_collection' : roleHistoryColl
+                'collection' : privilegeColl,
+                'source_collection' : privilegeColl
             });
 			this.insertView('#tab-content', rolePrivilegeView).render();
 		},
 
+		// Render Assign User Group View
 		renderUserGroups : function() {
-		    var roleUsergroupView = genericViewFactory.createView('OBJ_OBJ', {
+		    var roleUsergroupView = genericViewFactory.createView('ASSIGN_OBJ', {
                 'identity' : 'user_groups',
                 'urlRoot' : '/role-user-groups',
                 'model' : new roleModel({'id' : this.roleId}),
@@ -74,8 +77,9 @@ define(function(require, exports, module) {
 			this.insertView('#tab-content', roleUsergroupView).render();
 		},
 
+		// Render Assign Users View
 		renderUsers : function() {
-			var roleUserView = genericViewFactory.createView('OBJ_OBJ', {
+			var roleUserView = genericViewFactory.createView('ASSIGN_OBJ', {
                 'identity' : 'users',
                 'urlRoot' : '/role-users',
                 'model' : new roleModel({'id' : this.roleId}),
@@ -85,6 +89,7 @@ define(function(require, exports, module) {
 			this.insertView('#tab-content', roleUserView).render();
 		},
 
+		// Render Role History View
 		renderHistory : function() {
 			var roleHistoryView = genericViewFactory.createView('OBJ_HISTORY', {
 				'urlRoot' : '/role-history',
@@ -98,7 +103,6 @@ define(function(require, exports, module) {
 		active_tab : function(event) {
 			if (event)
 				event.preventDefault();
-
 			// Updated active menu
 			var currentTarget = $(event.target).parent();
 			currentTarget.siblings('.active').removeClass('active');

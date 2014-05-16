@@ -5,13 +5,13 @@ define(function(require, exports, module) {
     var BaseView = require('../mixin-base-view');
     var genericDetailsViewMixin = require('../../mixin/view/generic-details-view-mixin');
 
-    var rolePrivilge = BaseView.extend({
+    var objAssignView = BaseView.extend({
 
         prefix: "app-common/src/tpl/subview/",
 
         datatable_id: 'assigned-obj-datatable',
 
-        template: 'obj-obj.html',
+        template: 'obj-assign.html',
 
 		model: null,
 
@@ -24,7 +24,7 @@ define(function(require, exports, module) {
         assignPrivilegeModal: null
     });
 
-	rolePrivilge.mixin(genericDetailsViewMixin);
+	objAssignView.mixin(genericDetailsViewMixin);
 
-	module.exports = rolePrivilge;
+	module.exports = objAssignView;
 });
