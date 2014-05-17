@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     
 	var BaseView = require('../mixin-base-view');
-    var genericHistoryViewMixin = require('../../mixin/view/generic-history-view-mixin');
+    var genericHistoryViewMixin = require('../../mixin/view/generic-obj-history-view-mixin');
 
     var objHistory = BaseView.extend({
 

@@ -9,9 +9,14 @@ define(function(require, exports, module) {
 
     var objMgmtViewMixin = {
         
+		/*
+		 * Parameter 'options' should contain below varibles
+		 * - view_url: url of view specific object, ie. - 'role-mgmt/view',
+		 * - collection: collection of mgmt object, ie. - roleColl
+		 */
         initialize: function(options) {
-        	this.collection = options.collection;
         	this.view_url = options.view_url;
+        	this.collection = options.collection;
         	
             this.listenTo(this.collection, 'request', this.show_loading);
             this.listenTo(this.collection, 'remove', this.hide_loading);

@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
 
     var BaseView = require('../mixin-base-view');
-    var genericMgmtViewMixin = require('../../mixin/view/generic-mgmt-view-mixin');
+    var genericMgmtViewMixin = require('../../mixin/view/generic-obj-mgmt-view-mixin');
 
     var objMgmt = BaseView.extend({
 

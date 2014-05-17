@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     
     var BaseView = require('../mixin-base-view');
-    var genericDetailsViewMixin = require('../../mixin/view/generic-details-view-mixin');
+    var genericDetailsViewMixin = require('../../mixin/view/generic-obj-assign-view-mixin');
 
     var objAssignView = BaseView.extend({
 

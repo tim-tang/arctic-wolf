@@ -55,7 +55,7 @@ define(function(require, exports, module) {
 
 		// Render Assign Privilege View
 		renderPrivileges : function() {
-            var rolePrivilegeView = genericViewFactory.createView('ASSIGN_OBJ', {
+            var rolePrivilegeView = genericViewFactory.createView('OBJ_ASSIGN', {
                 'identity' : 'privileges',
                 'urlRoot' : '/role-privileges',
                 'model' : new roleModel({'id' : this.roleId}),
@@ -67,7 +67,7 @@ define(function(require, exports, module) {
 
 		// Render Assign User Group View
 		renderUserGroups : function() {
-		    var roleUsergroupView = genericViewFactory.createView('ASSIGN_OBJ', {
+		    var roleUsergroupView = genericViewFactory.createView('OBJ_ASSIGN', {
                 'identity' : 'user_groups',
                 'urlRoot' : '/role-user-groups',
                 'model' : new roleModel({'id' : this.roleId}),
@@ -79,7 +79,7 @@ define(function(require, exports, module) {
 
 		// Render Assign Users View
 		renderUsers : function() {
-			var roleUserView = genericViewFactory.createView('ASSIGN_OBJ', {
+			var roleUserView = genericViewFactory.createView('OBJ_ASSIGN', {
                 'identity' : 'users',
                 'urlRoot' : '/role-users',
                 'model' : new roleModel({'id' : this.roleId}),

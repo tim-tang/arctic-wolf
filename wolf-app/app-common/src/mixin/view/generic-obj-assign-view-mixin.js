@@ -8,7 +8,13 @@ define(function(require, exports, module) {
     var assignObjModal = require('../../view/subview/obj-assign-modal');
 
     var objDetailsViewMixin = {
-
+		/*
+		 * Parameter 'options' should contain below varibles
+		 * - identity: indicator to assign which object, ie. - 'privileges',
+		 * - model: object which have assigned other objects ie. - new objModel({'id' : roleId}),
+		 * - collection: collection of assigned objects, ie. - privilegeColl
+		 * - source_collection: collection of all objects which can be assigned, ie. - privilegeColl
+		 */
         initialize: function(options) {
         	console.log("##################In objDetailsViewMixin initialize()");
         	// Remove previous content

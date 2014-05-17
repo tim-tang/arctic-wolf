@@ -32,6 +32,9 @@ define(function(require, exports, module) {
 
 		load_object: function() {
 			console.log("##################In roleGeneralInfo load_object()");
+			
+			
+			
 			$('#name').children().remove();
 			$('#desc').children().remove();
 			var name = $("<p class='control-label' style='text-align:left'>").text(this.model.get('role_name'));

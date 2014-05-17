@@ -34,8 +34,8 @@ define(function(require, exports, module) {
 
 		afterRender : function() {
 			var roleMgmtView = genericViewFactory.createView('OBJ_MGMT', {
-				'collection' : roleColl,
-				'view_url' : 'role-mgmt/view'
+				'view_url' : 'role-mgmt/view',
+				'collection' : roleColl
 			});
 			this.insertView('#role-home', roleMgmtView).render();
 

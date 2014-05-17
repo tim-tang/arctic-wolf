@@ -1,14 +1,14 @@
 define(function(require, exports, module) {
 
     //----------------- Common Views -------------------//
+    module.exports.GenericViewFactory = require('./view/generic-view-factory');
     module.exports.BaseView = require('./view/mixin-base-view');
-    module.exports.GenericInfoViewMixin = require('./mixin/view/generic-info-view-mixin');
-    module.exports.GenericDetailsViewMixin = require('./mixin/view/generic-details-view-mixin');
-    module.exports.GenericHistoryViewMixin = require('./mixin/view/generic-history-view-mixin');
-    module.exports.GenericMgmtViewMixin = require('./mixin/view/generic-mgmt-view-mixin');
+    module.exports.GenericMgmtViewMixin = require('./mixin/view/generic-obj-mgmt-view-mixin');
+    module.exports.GenericInfoViewMixin = require('./mixin/view/generic-obj-info-view-mixin');
+    module.exports.GenericDetailsViewMixin = require('./mixin/view/generic-obj-assign-view-mixin');
+    module.exports.GenericHistoryViewMixin = require('./mixin/view/generic-obj-history-view-mixin');
     module.exports.BaseCollection = require('./collection/mixin-base-collection');
     module.exports.GenericCollectionMixin = require('./mixin/collection/generic-collection-mixin');
-    module.exports.GenericViewFactory = require('./view/generic-view-factory');
 
     //----------------- Common Utils -------------------//
     module.exports.CommonConstants = require('./common-constants');

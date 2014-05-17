@@ -7,8 +7,14 @@ define(function(require, exports, module) {
     var eventBus = require('app-core').Eventbus;
 
     var objHistoryViewMixin = {
-
-        initialize: function(options) {
+		
+		/*
+		 * Parameter 'options' should contain below varibles
+		 * - urlRoot: located source on server, ie. - '/role-history',
+		 * - model: of which object's history, ie. - new roleModel({'id' : roleId}),
+		 * - collection: collection of history, ie. - roleHistoryColl
+		 */
+		initialize: function(options) {
         	// Remove previous content
         	$('#tab-content').children().remove();
         	// Set values passed from options
@@ -21,7 +27,6 @@ define(function(require, exports, module) {
         	this.model.fetch();
         },
 
-		// Load objects into datatable
         // Load objects into datatable
         init_datatable: function(tab_identify) {
 			var self = this;
