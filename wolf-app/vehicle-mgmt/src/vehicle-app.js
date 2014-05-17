@@ -6,8 +6,9 @@ define(function(require, exports, module) {
 	var eventBus = require('app-core').Eventbus;
 	var appCommon = require('app-common');
 	var commonLoading = appCommon.CommonLoading;
-	var vehicleMgmt = require('./view/vehicle-mgmt');
 	var vehicleModal = require('./view/vehicle-new-modal');
+	var genericViewFactory = appCommon.GenericViewFactory;
+    var vehicleColl = require('./collection/vehicle-coll');
 
 	var vehicleApp = new Backbone.Layout({
 
@@ -25,7 +26,10 @@ define(function(require, exports, module) {
 		},
 
 		afterRender : function() {
-			var vehicleMgmtView = new vehicleMgmt();
+            var vehicleMgmtView = genericViewFactory.createView('OBJ_MGMT', {
+                'collection': vehicleColl,
+                'view_url': 'vehicle-mgmt/view'
+            });
 			this.insertView('#vehicle-home', vehicleMgmtView).render();
 			var vehicleModalView = new vehicleModal();
 			this.insertView('#vehicle-home', vehicleModalView).render();
