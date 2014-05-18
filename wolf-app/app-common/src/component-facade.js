@@ -200,7 +200,7 @@ define(function(require, exports, module) {
             		// Remove existing multi selector
             		if($(select_container).children())
             			$(select_container).children().remove();
-            	
+
                 	multi_select_view.$el.appendTo(select_container);
                 	_select.attr("id", select_id);
                 }
@@ -208,7 +208,7 @@ define(function(require, exports, module) {
                 // Set selector attributes: multiple
             	if(multi_select_view.options["multiple"] === 'multiple')
             		_select.attr("multiple", "multiple");
-				
+
 				// Setup CSS for this select element
                 _select.multiSelect({
                 	selectableOptgroup: true,
@@ -220,14 +220,14 @@ define(function(require, exports, module) {
 	                        $selectionSearch = that.$selectionUl.prev(),
 	                        selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
 	                        selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
-	
+
 	                    that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on('keydown', function(e) {
 	                        if (e.which === 40) {
 	                            that.$selectableUl.focus();
 	                            return false;
 	                        }
 	                    });
-	
+
 	                    that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on('keydown', function(e) {
 	                        if (e.which == 40) {
 	                            that.$selectionUl.focus();
@@ -244,7 +244,7 @@ define(function(require, exports, module) {
 	                    this.qs2.cache();
 	                }
 	            });
-	            
+
 				// Set default options
             	console.log(options.selected);
 				_select.multiSelect('select', options.selected);

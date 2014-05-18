@@ -2,6 +2,7 @@
 
      require('modalEffects');
      require('bt-touchspin');
+     require('select2');
 
      var $ = require('$');
      var _ = require('underscore');
@@ -32,6 +33,9 @@
 
          afterRender: function() {
            componentFacade.init_touchspine('#vehicle-price', {min: 1, max: 1000000, interval: 1, prefix: '$'});
+            $(".select2").select2({
+                width: '100%'
+            });
          },
 
          new_attributes: function(){
