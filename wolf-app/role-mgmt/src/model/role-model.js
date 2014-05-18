@@ -9,7 +9,6 @@
         urlRoot: '/roles',
 
         defaults: {
-        	id: '',
             role_name: '',
             role_desc: '',
             enabled: '',
