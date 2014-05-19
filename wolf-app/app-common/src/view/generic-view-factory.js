@@ -24,7 +24,7 @@ define(function(require, exports, module) {
 					/*
 					 * Parameter 'options' should contain below varibles
 					 * - identity: indicator to assign which object, ie. - 'privileges',
-					 * - model: object which have assigned other objects ie. - new objModel({'id' : roleId}),
+					 * - model: object which have assigned other objects ie. - new roleModel({'id' : roleId}),
 					 * - collection: collection of assigned objects, ie. - privilegeColl
 					 * - source_collection: collection of all objects which can be assigned, ie. - privilegeColl
 					 */
