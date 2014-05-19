@@ -99,7 +99,6 @@ module.exports = function(grunt) {
                     amd: true
                 },
                 files: {
-                    //"app-tpl/wolf-tpl.js": "<%= pkg.wolf_app_tpl %>"
                     "app-tpl/wolf-tpl.js": grunt.config.get('app_tpls')
                 }
             }
