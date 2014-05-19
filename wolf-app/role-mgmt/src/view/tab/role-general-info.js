@@ -20,10 +20,11 @@ define(function(require, exports, module) {
 
 		model : new roleModel(),
 
-		pageStatus : 'view',
+		pageMode : 'view',
 
 		initialize : function(options) {
 			this.model.urlRoot = '/role-general-info';
+			this.pageMode = options.pageMode ? options.pageMode : this.pageMode;
 		},
 
 		events : {
@@ -32,7 +33,9 @@ define(function(require, exports, module) {
 
 		load_object : function() {
 			console.log("##################In roleGeneralInfo load_object()");
-
+            var pageForm = $('#general-info');
+            pageForm.children('.form-group').remove();
+            
 			/*
 			 * Generate a line for an element， such as:
 			 * <div class="form-group">
@@ -49,41 +52,48 @@ define(function(require, exports, module) {
 			 * another is component or plain text displaying.
 			 * So, for a single attribute, there properties should be difine:
 			 * 1. id - number
-			 * 2. name - text
-			 * 3. type - text/number/date/list/multi-list
-			 * 4. length(for text)
-			 * 5. range(for number)
-			 * 6. element type - input/textarea/datepicker/select2/multi-select/......
-			 * 7. default value
-			 * 8. mode - view/edit
+			 * 2. name - attribute identity
+			 * 3. desc - display name
+			 * 4. type - text/number/date/list/multi-list
+			 * 5. length(for text)
+			 * 6. range(for number)
+			 * 7. element type - input/textarea/datepicker/select2/multi-select/......
+			 * 8. default value
 			 *
 			 */
-			var mock_attr = {
-				'name' : 'Text',
-				'type' : 'text',
-				'element_type' : 'input'
-			};
-
-			var attr_line_container = $('<div class="form-group">');
-			var attr_label = $('<label class="col-sm-3 control-label">');
-
-			var attr_element = this.createElement({
-				'name' : 'Text',
-				'type' : 'text',
-				'element_type' : 'input'
-			});
-
-			$('#name').children().remove();
-			$('#desc').children().remove();
-			var name = $("<p class='control-label' style='text-align:left'>").text(this.model.get('role_name'));
-			var desc = $("<p class='control-label' style='text-align:left'>").text(this.model.get('role_desc'));
-			$('#name').append(name);
-			$('#desc').append(desc);
+            var mock_attr = [{
+                'id' : 1000,
+                'name' : 'role_name',
+                'desc' : 'Name',
+                'type' : 'text',
+                'element_type' : 'input'
+            }, {
+                'id' : 1001,
+                'name' : 'role_desc',
+                'desc' : 'Description',
+                'type' : 'text',
+                'element_type' : 'textarea'
+            }]; 
+            
+            var self = this;
+            _.each(mock_attr, function(attr) {
+                var attr_line_container = $('<div class="form-group">');
+                var attr_right_col_container = $('<div class="col-sm-6">');
+                attr_line_container.append(self.createLabel(attr.desc));
+                attr_line_container.append(attr_right_col_container.append(self.createElement(attr)));
+                pageForm.append(attr_line_container);
+            });
 		},
-
-		createElement : function(optins) {
+        
+        createLabel: function(desc) {
+            return $('<label class="col-sm-3 control-label">').text(desc);
+        },
+        
+		createElement : function(options) {
+			var element = null;
 			if (options.type === 'text')
-
+                element = $("<p class='control-label' style='text-align:left'>").text(this.model.get(options.name));
+            return element;
 		},
 
 		afterRender : function() {

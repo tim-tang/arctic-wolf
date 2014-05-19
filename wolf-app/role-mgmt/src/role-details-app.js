@@ -28,6 +28,8 @@ define(function(require, exports, module) {
 		template : 'role-details-container.html',
 
 		roleId : null,
+		
+		pageMode: 'view',
 
 		initialize : function() {
 			eventBus.on('role:render-general-info', this.renderGeneralInfo, this);
@@ -48,7 +50,8 @@ define(function(require, exports, module) {
 		// Render General Info View
 		renderGeneralInfo : function() {
 			var roleGeneralInfoView = new roleGeneralInfo({
-				'id' : this.roleId
+				'id' : this.roleId,
+				'pageMode' : this.pageMode
 			});
 			this.insertView('#tab-content', roleGeneralInfoView).render();
 		},
