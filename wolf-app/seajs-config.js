@@ -38,46 +38,6 @@ seajs.config({
     charset: 'utf-8'
 });
 
-// -- configuration for dependency cmdized js libs.
-//seajs.config({
-//        // -------------------------------------------------------------//
-//        //                         SPM CMD Sources                      //
-//        // -------------------------------------------------------------//
-//        "$": "jquery/jquery/1.10.1/jquery",
-//        "$-debug": "jquery/jquery/1.10.1/jquery-debug",
-//        "jquery": "jquery/jquery/1.10.1/jquery",
-//        "jquery-debug": "jquery/jquery/1.10.1/jquery-debug",
-//        "underscore": "gallery/underscore/1.5.2/underscore",
-//        "underscore-debug": "gallery/underscore/1.5.2/underscore-debug",
-//        "backbone": "gallery/backbone/1.1.0/backbone",
-//        "backbone-debug": "gallery/backbone/1.1.0/backbone-debug",
-//        "nanoscroller": "jquery-plugin/nanoscroller/0.7.5/nanoscroller.js",
-//        "jquery-datatables": "jquery/datatables/1.9.4/datatables",
-//        //"datetimepicker": "jquery-plugin/bootstrap-datetimepicker/1.0.0/datetimepicker.js",
-//        //"switch": "atans/bootstrap-switch/2.0.0/bootstrap-switch-debug.js",
-//        "sparkline": "seedit/sparkline/0.0.1/sparkline.js",
-//        //"bootstrap-slider": "gumutianqi/bootstrap-slider/2.0.0/bootstrap-slider-debug.js",
-//        "bootstrap": "gallery/bootstrap/3.0.0/bootstrap.js",
-//        "moment": "gallery/moment/2.6.0/moment.js",
-//        "layoutmanager": "arctic-cmd-repo/backbone-layoutmanager/0.9.5/backbone.layoutmanager-debug.js",
-//        "subroute": "arctic-cmd-repo/backbone-subroute/0.4.2/backbone.subroute.js",
-//        "select2": "arctic-cmd-repo/jquery-select2/3.4.6/select2.js",
-//        "jasny": "arctic-cmd-repo/bootstrap-jasny/3.1.0/jasny-bootstrap.js",
-//        "daterangepicker": "arctic-cmd-repo/bootstrap-daterangepicker/1.3.6/daterangepicker.js",
-//        "bt-touchspin": "arctic-cmd-repo/bootstrap-touchspin/2.8.0/bootstrap.touchspin.js",
-//        "multi-select": "arctic-cmd-repo/jquery-multi-select/0.9.10/jquery.multi-select.js",
-//        "datatables": "arctic-cmd-repo/datatables/0.0.1/bootstrap-adapter/js/datatables.js",
-//        "html5shiv": "gallery/html5shiv/3.7.0/html5shiv.js",
-//        "parsley": "arctic-cmd-repo/parsley/2.0.0/parsley.js",
-//        //TODO: Make following lib cmdize
-//        "parsley": "wolf-app-path/sea-modules/jquery.parsley/2.0.0/parsley.js",
-//        "quicksearch": "wolf-app-path/sea-modules/jquery.quicksearch/jquery.quicksearch.js",
-//        "datetimepicker": "wolf-app-path/sea-modules/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js",
-//        "bootstrap-slider": "wolf-app-path/sea-modules/bootstrap.slider/js/bootstrap-slider.js",
-//        "switch": "wolf-app-path/sea-modules/bootstrap.switch/bootstrap-switch.min.js",
-//        "gritter": "wolf-app-path/sea-modules/jquery.gritter/js/jquery.gritter.js",
-//        "modalEffects": "wolf-app-path/sea-modules/jquery.niftymodals/js/jquery.modalEffects.js",
-//});
 // -- configuration for development environment.
 seajs.config({
     paths: {
@@ -104,7 +64,9 @@ seajs.config({
     }
 });
 
-// -- configuration for production environment.
+        // --------------------------------------------------------- //
+        //               ARCTIC WOLF MODULES & MAPPING               //
+        // --------------------------------------------------------- //
 /*production start*/
 if(seajs.production){
     seajs.config({
