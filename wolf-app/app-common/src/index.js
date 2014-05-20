@@ -17,4 +17,5 @@ define(function(require, exports, module) {
 
     //---------------- Common Components ------------------//
     module.exports.ComponentFacade = require('./component-facade');
+    module.exports.GenericComponentFactory = require('./generic-component-factory');
 });

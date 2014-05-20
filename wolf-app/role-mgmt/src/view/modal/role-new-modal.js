@@ -11,6 +11,7 @@ define(function(require, exports, module) {
     var roleModel = require('../../model/role-model');
 
 	var componentFacade = require('app-common').ComponentFacade;
+	var componentFactory = require('app-common').GenericComponentFactory;
 
     var roleModal = Backbone.View.extend({
         manage: true,
@@ -31,6 +32,7 @@ define(function(require, exports, module) {
             //this.listenTo(this.model, 'change', this.test);
             this.privileges = {
 				"selector_id": "privileges",
+				"component_type": "SELECT2",
 				"multiple": "multiple",
 				"optgroups": [
 					{
@@ -99,7 +101,9 @@ define(function(require, exports, module) {
 
         afterRender: function() {
             componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', this.privileges);
+			// componentFacade.init_select2('.select2', this.privileges);
+			
+			$('#' + this.privileges['selector_id'] + '-container').append(componentFactory.createComponent(this.privileges));
 		},
 
         new_attributes: function() {
