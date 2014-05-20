@@ -21,29 +21,26 @@ define(function(require, exports, module) {
             this.options = options;
             
             //var self = this;
-            //this.render().promise().done(this.deferred);
-        },
-        
-        render: function() {
-            console.log('>>>>>>>>>>>>>>>>>>>>>> beforeRender');
-            console.log('>>>>>>>>>>>>>>>>>>>>>> afterRender');
-            var selector_type = this.options["selector_type"];
-            if (!selector_type || this.options["selector_type"] === 'SELECT2')
-                this.makeSelect2();
-            else if (self.options["selector_type"] === 'MULTI_SELECT')
-                this.makeMultiSelect();
-            return this;
+            this.render();
+            //.promise().done(this.deferred);
         },
                 
-        afterRender: function() {
-            
+        renderComponent: function(view) {
+            var selector_type = this.options["component_type"];
+            if (!selector_type || selector_type === 'SELECT2')
+                this.makeSelect2(view);
+            else if (selector_type === 'MULTI_SELECT')
+                this.makeMultiSelect(view);
         },
-    
+            
         // Select2
-        makeSelect2 : function() {
-            var select_id = this.options["selector_id"];
+        makeSelect2 : function(view) {
+            var select_id = view.options["selector_id"];
 
-            var _select = this.$el.find('select');
+            var _select = view.$el.find('select');
+            
+            // Set CSS
+            _select.attr('class', 'select2');
             
             // If select_id is not null, then set id to this select and append this selector to its container
             if (select_id) {
@@ -51,11 +48,11 @@ define(function(require, exports, module) {
             }
             // Append this selector to the promised element
             else {
-                this.$el.appendTo(view.$el.children()[index]);
+                view.$el.appendTo(view.$el.children()[index]);
             }
 
             // Set selector attributes: multiple
-            if (this.options["multiple"] === 'multiple')
+            if (view.options["multiple"] === 'multiple')
                 _select.attr("multiple", "multiple");
 
             // Setup CSS for this select element
@@ -66,19 +63,23 @@ define(function(require, exports, module) {
             });
         },
 
-        makeMultiSelect : function() {
+        makeMultiSelect : function(view) {
             // Fetch select_id
-            var select_id = this.options["selector_id"];
+            var select_id = view.options["selector_id"];
 
-            var _select = this.$el.find('select');
+            var _select = view.$el.find('select');
+            
+			// Set CSS
+            _select.attr('class', 'searchable');
+            
             // If select_id is not null, then set id to this select and append this selector to its container
             if (select_id) {
-                var select_container = '#' + multi_select_view.options["container_id"];
+                var select_container = '#' + view.options["container_id"];
                 // Remove existing multi selector
                 if ($(select_container).children())
                     $(select_container).children().remove();
 
-                this.$el.appendTo(select_container);
+                view.$el.appendTo(select_container);
                 _select.attr("id", select_id);
             }
 
@@ -119,8 +120,8 @@ define(function(require, exports, module) {
             });
 
             // Set default options
-            console.log(options.selected);
-            _select.multiSelect('select', options.selected);
+            console.log(view.options.selected);
+            _select.multiSelect('select', view.options.selected);
         },
 
         serialize : function() {

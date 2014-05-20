@@ -11,6 +11,7 @@ define(function(require, exports, module) {
                 case 'SELECT2':
                 case 'MULTI_SELECT':
                     component = new selectView(options);
+                    component.render().promise().done(component.renderComponent(component));
                     break;
             }
             return component;
