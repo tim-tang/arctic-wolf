@@ -1,17 +1,28 @@
 define(function(require, exports, module) {
     
-    var selectView = require('./view/component/component-select');
+    var $ = require('$');
+    var eventBus = require('app-core').Eventbus;
     
+    var selectView = require('./view/component/component-select');
+        
     var genericComponentFactory = {
         
-        createComponent : function(options) {
+        makeComponent : function(options) {
             var component = 'ERROR to create component!';
             var component_type = options['component_type'];
             switch (component_type) {
+                case 'CONTAINER':
+                    component = this.makeContainer(options);
+                    break;
+                case 'LABEL':
+                    component = this.makeLabel(options);
+                    break;
                 case 'SELECT2':
                 case 'MULTI_SELECT':
-                    component = new selectView(options);
-                    component.render().promise().done(component.renderComponent(component));
+                    component = this.makeSelect(options);
+                    break;
+                case 'CHECKBOX':
+                    component = this.makeInput(options);
                     break;
             }
             return component;
@@ -21,36 +32,71 @@ define(function(require, exports, module) {
          * Generate container 'div'
          */
         makeContainer: function(options) {
-            return $('div').class(options.class);
+            return $('<div>').attr('class', options['class']);
         },
         
         /*
          * Generate element 'label'
          */ 
         makeLabel: function(options) {
-            return $('label').class(options.class);
+            return $('<label>').attr('class', options['class']).text(options['text']);
         },
         
         /*
-         * Generate component 'select2'
+         * Generate component 'select'
          */
-        makeSelect2: function() {
-            require('select2');
-            //TODO: Try to use component factory to populate UI plugins.
-        },
-        
-        /*
-         * Generate component 'multi-select'
-         */
-        makeMultiSelect: function() {
-            require('select2');
-            //TODO: Try to use component factory to populate UI plugins.
+        makeSelect: function(options) {
+            var _selectView = new selectView(options);
+            _selectView.render().promise().done(function() {
+                eventBus.trigger('component-select:renderComponent');
+            });
+            return _selectView.$el;
         },
         
         /*
          * Generate component 'input'
          */
         makeInput: function(options) {
+            var component_type = options['component_type'];
+            var inputView = null;
+            if(component_type === 'CHECKBOX') {
+                inputView = this.makeContainer({'class':'switch'}).append($('<input>').attr('type', 'checkbox')).bootstrapSwitch();;
+            }
+            return inputView;
+        },
+        
+        /*
+         * Generate component 'datatable'
+         */
+        makeDatatable: function(options) {
+            
+        },
+        
+        /*
+         * Generate component 'DateRangePicker'
+         */
+        makeDateRangePicker: function(options) {
+            
+        },
+        
+        /*
+         * Generate component 'Select2Tag'
+         */
+        makeSelect2Tag: function(options) {
+            
+        },
+        
+        /*
+         * Generate component 'SliderRange'
+         */
+        makeSliderRange: function(options) {
+            
+        },
+        
+        /*
+         * Generate component 'touchspine'
+         */
+        makeTouchspine: function(options) {
             
         },
     };

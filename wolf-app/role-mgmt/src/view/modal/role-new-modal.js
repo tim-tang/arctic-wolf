@@ -103,7 +103,7 @@ define(function(require, exports, module) {
             componentFacade.init_switch('.switch');
 			// componentFacade.init_select2('.select2', this.privileges);
 			
-			$('#' + this.privileges['selector_id'] + '-container').append(componentFactory.createComponent(this.privileges).$el);
+			$('#' + this.privileges['selector_id'] + '-container').append(componentFactory.makeComponent(this.privileges));
 		},
 
         new_attributes: function() {

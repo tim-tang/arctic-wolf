@@ -9,6 +9,7 @@ define(function(require, exports, module) {
 
 	var eventBus = require('app-core').Eventbus;
 	var componentFacade = require('../../component-facade');
+	var componentFactory = require('../../generic-component-factory.js');
 
     var objAssignModal = Backbone.View.extend({
     	
@@ -27,6 +28,7 @@ define(function(require, exports, module) {
         initialize: function() {
             this.assignObjects = [{
 				"selector_id": "privileges",
+				"component_type": "MULTI_SELECT",
 				"container_id": "assign-obj-container",
 				"multiple": "multiple",
 				"selected": [],
@@ -88,6 +90,7 @@ define(function(require, exports, module) {
 			
 			{
                 "selector_id": "user-groups",
+                "component_type": "MULTI_SELECT",
                 "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],
@@ -112,6 +115,7 @@ define(function(require, exports, module) {
             },
             {
                 "selector_id": "users",
+                "component_type": "MULTI_SELECT",
                 "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],
@@ -144,11 +148,11 @@ define(function(require, exports, module) {
 		renderMultiSelect: function(identity, source_collection) {
 			console.log(source_collection);
 			if(identity === 'privileges')
-                componentFacade.init_multi_select('.searchable', this.assignObjects[0]);
+                componentFactory.makeComponent(this.assignObjects[0]);
             if(identity === 'user_groups')
-                componentFacade.init_multi_select('.searchable', this.assignObjects[1]);
+                componentFactory.makeComponent(this.assignObjects[1]);
             if(identity === 'users')
-                componentFacade.init_multi_select('.searchable', this.assignObjects[2]);
+                componentFactory.makeComponent(this.assignObjects[2]);
 		},
 
         add_objects: function() {
