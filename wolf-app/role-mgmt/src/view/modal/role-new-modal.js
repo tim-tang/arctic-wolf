@@ -31,8 +31,8 @@ define(function(require, exports, module) {
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
             this.privileges = {
-				"selector_id": "privileges",
-				"component_type": "SELECT2",
+                "component_type": "SELECT2",
+				"select_id": "privileges",
 				"multiple": "multiple",
 				"optgroups": [
 					{
@@ -103,7 +103,7 @@ define(function(require, exports, module) {
             componentFacade.init_switch('.switch');
 			// componentFacade.init_select2('.select2', this.privileges);
 			
-			$('#' + this.privileges['selector_id'] + '-container').append(componentFactory.makeComponent(this.privileges));
+			$('#' + this.privileges['select_id'] + '-container').append(componentFactory.makeComponent(this.privileges));
 		},
 
         new_attributes: function() {

@@ -4,7 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var eventBus = require('app-core').Eventbus;
     var commonUtils = require('../../common-utils');
-    var componentFacade = require('../../component-facade');
+    var componentFactory = require('../../generic-component-factory');
     var assignObjModal = require('../../view/subview/obj-assign-modal');
 
     var objDetailsViewMixin = {
@@ -45,8 +45,24 @@ define(function(require, exports, module) {
             console.log("##################In objDetailsViewMixin load_object()");
             // Prepare collection
             this.collection.set(this.model.get(this.identity)['aaData']);
-            // Initial assigned privileges datatable
-            this.init_datatable(this.identity);
+            
+            // Load objects into datatable
+            var self = this;
+            var datatableOptions = {
+                "component_type": "DATATABLE",
+                "datatable_id" : this.datatable_id,
+                "data" : this.model.get(this.identity)['aaData'],
+                "header" : this.model.get(this.identity)['aoColumns'],
+                "callback" : function(datatable) {
+                    self.datatable = datatable;
+                    $('#' + self.datatable_id).on('click', 'tbody tr', function(e) {
+                        $(this).toggleClass('row_selected');
+                    });
+                    eventBus.trigger('hide-loading');
+                }
+            };
+            componentFactory.makeComponent(datatableOptions);
+            
             // Insert Assign Privilege Modal
             this.insertView(new assignObjModal()).render();
         },

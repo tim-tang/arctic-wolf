@@ -17,75 +17,65 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-select:renderComponent');
-            eventBus.on('component-select:renderComponent', this.renderComponent, this);
+            eventBus.off('component-select:renderSelect');
+            eventBus.on('component-select:renderSelect', this.renderSelect, this);
         },
 
-        renderComponent: function() {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>in renderComponent");
+        renderSelect: function() {
+            console.log(">>>>>>>>>>>>>>>>>>>>>>in renderSelect");
             var selector_type = this.options["component_type"];
-            if (!selector_type || selector_type === 'SELECT2')
-                this.makeSelect2();
-            else if (selector_type === 'MULTI_SELECT')
-                this.makeMultiSelect();
-        },
             
-        // Select2
-        makeSelect2 : function() {
-            var select_id = this.options["selector_id"];
+            // Fetch select_id
+            var select_id = this.options["select_id"];
+            var multiple = this.options["multiple"];
+            var container_id = this.options["container_id"];
 
             var _select = this.$el.find('select');
             
-            // Set CSS
-            _select.attr('class', 'select2');
-            
-            // If select_id is not null, then set id to this select and append this selector to its container
+            // If select_id is not null, then set id to this select
             if (select_id) {
                 _select.attr("id", select_id);
             }
-            // Append this selector to the promised element
-            else {
-                this.$el.appendTo(this.$el.children()[index]);
-            }
-
-            // Set selector attributes: multiple
-            if (this.options["multiple"] === 'multiple')
+            
+            // If select_id is not null, then set id to this select
+            if (multiple && multiple === 'multiple')
                 _select.attr("multiple", "multiple");
+                
+            // If container_id is not null, then append this selector to its container
+            if(container_id) {
+                var select_container = '#' + container_id;
+                // Remove existing multi selector
+                if ($(select_container).children())
+                    $(select_container).children().remove();
 
+                this.$el.appendTo(select_container);
+            }
+            
+            if (!selector_type || selector_type === 'SELECT2')
+                this.makeSelect2(_select);
+            else if (selector_type === 'MULTI_SELECT')
+                this.makeMultiSelect(_select);
+        },
+            
+        // Select2
+        makeSelect2 : function(select) {
+            // Set CSS
+            select.attr('class', 'select2');
+            
             // Setup CSS for this select element
-            _select.select2({
+            select.select2({
                 width : '100%',
                 placeholder : "Please select",
                 allowClear : true
             });
         },
 
-        makeMultiSelect : function() {
-            // Fetch select_id
-            var select_id = this.options["selector_id"];
-
-            var _select = this.$el.find('select');
-            
+        makeMultiSelect : function(select) {
 			// Set CSS
-            _select.attr('class', 'searchable');
+            select.attr('class', 'searchable');
             
-            // If select_id is not null, then set id to this select and append this selector to its container
-            if (select_id) {
-                var select_container = '#' + this.options["container_id"];
-                // Remove existing multi selector
-                if ($(select_container).children())
-                    $(select_container).children().remove();
-
-                this.$el.appendTo(select_container);
-                _select.attr("id", select_id);
-            }
-
-            // Set selector attributes: multiple
-            if (this.options["multiple"] === 'multiple')
-                _select.attr("multiple", "multiple");
-
             // Setup CSS for this select element
-            _select.multiSelect({
+            select.multiSelect({
                 selectableOptgroup : true,
                 selectableHeader : "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
                 selectionHeader : "<input type='text' class='form-control search-input' autocomplete='off' placeholder='Filter String'>",
@@ -118,7 +108,7 @@ define(function(require, exports, module) {
 
             // Set default options
             console.log(this.options.selected);
-            _select.multiSelect('select', this.options.selected);
+            select.multiSelect('select', this.options.selected);
         },
 
         serialize : function() {

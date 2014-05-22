@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var eventBus = require('app-core').Eventbus;
     
     var selectView = require('./view/component/component-select');
+    var datatableView = require('./view/component/component-datatable');
         
     var genericComponentFactory = {
         
@@ -17,6 +18,9 @@ define(function(require, exports, module) {
                 case 'LABEL':
                     component = this.makeLabel(options);
                     break;
+                case 'TEXT':
+                    component = this.makePlainText(options);
+                    break;
                 case 'SELECT2':
                 case 'MULTI_SELECT':
                     component = this.makeSelect(options);
@@ -24,37 +28,82 @@ define(function(require, exports, module) {
                 case 'CHECKBOX':
                     component = this.makeInput(options);
                     break;
+                case 'DATATABLE':
+                    component = this.makeDatatable(options);
+                    break;
             }
             return component;
         },
         
         /*
          * Generate container 'div'
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'CONTAINER'
+         * - class: css point to div
          */
         makeContainer: function(options) {
-            return $('<div>').attr('class', options['class']);
+            if(options['class']) return $('<div>').attr('class', options['class']);
         },
         
         /*
          * Generate element 'label'
-         */ 
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'LABEL'
+         * - class: css point to label
+         * - text: text point to text of label to display
+         */
         makeLabel: function(options) {
-            return $('<label>').attr('class', options['class']).text(options['text']);
+            var label = $('<label>');
+            if(options['class']) label.attr('class', options['class']);
+            if(options['text']) label.text(options['text']);
+            return label;
         },
         
         /*
+         * Generate element 'plain text'
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'TEXT'
+         * - class: css point to text
+         * - style: css point to text
+         * - text: text to display
+         */
+        makePlainText: function(options) {
+            var text = $('<p>');
+            if(options['class']) text.attr('class', options['class']);
+            if(options['style']) text.attr('style', options['style']);
+            if(options['text']) text.text(options['text']); 
+            return text;
+        },
+
+        /*
          * Generate component 'select'
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'SELECT2' or 'MULTI_SELECT'
+         * - select_id: id of select, ie - 'privileges'
+         * - container_id: container of select, if not specified, just return $el, 
+         *                 and it requires be located, ie - 'assign-obj-container'
+         * - multiple: multiple attribute of select
+         * - selected: default selected items, no default items goes with []
+         * - optgroups: optgroups of select, at least one optgroup required
          */
         makeSelect: function(options) {
             var _selectView = new selectView(options);
             _selectView.render().promise().done(function() {
-                eventBus.trigger('component-select:renderComponent');
+                eventBus.trigger('component-select:renderSelect');
             });
             return _selectView.$el;
         },
         
         /*
          * Generate component 'input'
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'CHECKBOX'
+         * .......
          */
         makeInput: function(options) {
             var component_type = options['component_type'];
@@ -64,12 +113,25 @@ define(function(require, exports, module) {
             }
             return inputView;
         },
-        
+                
         /*
          * Generate component 'datatable'
+         * 
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'DATATABLE'
+         * - datatable_id: id of datatable, ie - 'obj-mgmt-datatable'
+         * - container_id: container of datatable, if not specified, just return $el, 
+         *                 and it requires be located, ie - 'obj-mgmt-datatable-div'
+         * - data: data which will be polulated into datatable
+         * - header: header defined to datatable
+         * - callback: callback function
          */
         makeDatatable: function(options) {
-            
+            var _datatableView = new datatableView(options);
+            _datatableView.render().promise().done(function() {
+                eventBus.trigger('component-datatable:renderDatatable');
+            });
+            return _datatableView.$el;
         },
         
         /*
