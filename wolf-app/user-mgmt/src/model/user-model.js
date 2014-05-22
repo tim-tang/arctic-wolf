@@ -13,10 +13,11 @@
         //},
 
         defaults: {
-            ug_name: '',
-            ug_desc: '',
-            users: '',
-            enabled: ''
+            u_name: '',
+            u_desc: '',
+            u_email: '',
+            enabled: '',
+            is_selected: false
         },
 
         // set is_selected attribute status.

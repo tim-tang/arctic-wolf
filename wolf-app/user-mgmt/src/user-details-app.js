@@ -7,10 +7,15 @@
     var appCore = require('app-core');
     var eventBus = appCore.Eventbus;
     var viewManager = appCore.ViewMgmt;
+    
+    var appCommon = require('app-common');
+	var genericViewFactory = appCommon.GenericViewFactory;
 
     var userGeneralInfo = require('./view/tab/user-general-info');
-    var userUsergroup = require('./view/tab/user-user-group');
-    var userHistory = require('./view/tab/user-history');
+   	
+   	var userModel = require('./model/user-model');
+    var userGroupColl = require('app-user-group-mgmt').UserGroupColl;
+	var userHistoryColl = require('./collection/user-history-coll');
     
 	var userDetailsApp = new Backbone.Layout({
 
@@ -39,18 +44,32 @@
         },
 
         renderGeneralInfo: function() {
-        	var userGeneralInfoView = new userGeneralInfo({'id': this.userId});
-            this.insertView('#tab-content', userGeneralInfoView).render();
+	        var userGeneralInfoView = new userGeneralInfo({
+				'id' : this.userId,
+				'pageMode' : this.pageMode
+			});
+			this.insertView('#tab-content', userGeneralInfoView).render();
         },
 
         renderUserGroups: function() {
-        	var userUsergroupView = new userUsergroup({'id': this.userId});
-            this.insertView('#tab-content', userUsergroupView).render();
+        	var userUsergroupView = genericViewFactory.createView('OBJ_ASSIGN', {
+                'identity' : 'user_groups',
+                'urlRoot' : '/user-user-groups',
+                'model' : new userModel({'id' : this.userId}),
+                'collection' : userGroupColl,
+                'source_collection' : userGroupColl
+            });
+			this.insertView('#tab-content', userUsergroupView).render();
         },
 
         renderHistory: function() {
-        	var userHistoryView = new userHistory({'id': this.userId});
-            this.insertView('#tab-content', userHistoryView).render();
+            var userHistoryView = genericViewFactory.createView('OBJ_HISTORY', {
+				'urlRoot' : '/user-history',
+				'model' : new userModel({'id' : this.userId}),
+				'collection' : userHistoryColl
+			});
+
+			this.insertView('#tab-content', userHistoryView).render();
         },
 
         active_tab: function(event) {
