@@ -2,17 +2,15 @@
 
     var Backbone = require('backbone');
 
-    var userGroupModel = Backbone.Model.extend({
+    var userGroupHistoryModel = Backbone.Model.extend({
 
-		idAttribute: 'id',
-		
-        urlRoot: '/user-groups',
+        urlRoot: '/user-group-history',
 
         defaults: {
-            ug_name: '',
-            ug_desc: '',
-            users: '',
-            enabled: '',
+            action: '',
+            user_name: '',
+            date_time: '',
+            details: '',
             is_selected: false
         },
 
@@ -22,5 +20,5 @@
         }
     });
 
-    module.exports = userGroupModel;
+    module.exports = userGroupHistoryModel;
  });

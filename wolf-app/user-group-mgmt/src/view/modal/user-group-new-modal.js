@@ -9,15 +9,15 @@ define(function(require, exports, module) {
 
 	var componentFacade = require('app-common').ComponentFacade;
 
-    var userGroupColl = require('../collection/user-group-coll');
-    var userGroupModel = require('../model/user-group-model');
+    var userGroupColl = require('../../collection/user-group-coll');
+    var userGroupModel = require('../../model/user-group-model');
 
     var userGroupModal = Backbone.View.extend({
         manage: true,
 
         model: new userGroupModel(),
 
-        prefix: 'user-group-mgmt/src/tpl/',
+        prefix: 'user-group-mgmt/src/tpl/modal/',
 
         template: 'user-group-new-modal.html',
 
