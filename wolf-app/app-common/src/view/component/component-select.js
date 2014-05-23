@@ -23,37 +23,36 @@ define(function(require, exports, module) {
 
         renderSelect: function() {
             console.log(">>>>>>>>>>>>>>>>>>>>>>in renderSelect");
-            var selector_type = this.options["component_type"];
+            var type = this.options["component_type"];
             
-            // Fetch select_id
-            var select_id = this.options["select_id"];
+            // Fetch component_id
+            var component_id = this.options["component_id"];
             var multiple = this.options["multiple"];
             var container_id = this.options["container_id"];
 
             var _select = this.$el.find('select');
             
-            // If select_id is not null, then set id to this select
-            if (select_id) {
-                _select.attr("id", select_id);
+            // If component_id is not null, then set id to this select
+            if (component_id) {
+                _select.attr("id", component_id);
             }
             
-            // If select_id is not null, then set id to this select
+            // If component_id is not null, then set id to this select
             if (multiple && multiple === 'multiple')
                 _select.attr("multiple", "multiple");
                 
-            // If container_id is not null, then append this selector to its container
-            if(container_id) {
-                var select_container = '#' + container_id;
-                // Remove existing multi selector
-                if ($(select_container).children())
-                    $(select_container).children().remove();
-
-                this.$el.appendTo(select_container);
-            }
+            // If container_id is not null, then append this select to its container
+            if(!container_id)
+                container_id = component_id + '-container';
+            var select_container = '#' + container_id;
+            // Remove existing multi selector
+            if ($(select_container).children())
+                $(select_container).children('select').remove();
+            this.$el.appendTo(select_container);
             
-            if (!selector_type || selector_type === 'SELECT2')
+            if (!type || type === 'SELECT2')
                 this.makeSelect2(_select);
-            else if (selector_type === 'MULTI_SELECT')
+            else if (type === 'MULTI_SELECT')
                 this.makeMultiSelect(_select);
         },
             

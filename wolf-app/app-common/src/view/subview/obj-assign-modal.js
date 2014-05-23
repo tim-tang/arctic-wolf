@@ -28,7 +28,7 @@ define(function(require, exports, module) {
         initialize: function() {
             this.assignObjects = [{
                 "component_type": "MULTI_SELECT",
-				"select_id": "privileges",
+				"component_id": "privileges",
 				"container_id": "assign-obj-container",
 				"multiple": "multiple",
 				"selected": [],
@@ -90,7 +90,7 @@ define(function(require, exports, module) {
 			
 			{
 			    "component_type": "MULTI_SELECT",
-                "select_id": "user-groups",
+                "component_id": "user-groups",
                 "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],
@@ -115,7 +115,7 @@ define(function(require, exports, module) {
             },
             {
                 "component_type": "MULTI_SELECT",
-                "select_id": "users",
+                "component_id": "users",
                 "container_id": "assign-obj-container",
                 "multiple": "multiple",
                 "selected": [],

@@ -62,7 +62,8 @@ define(function(require, exports, module) {
                     })));
                 else if (attr['type'] === 'input')
                     attr_line_container.append(attr_right_col_container.append(componentFactory.makeComponent({
-                        'component_type' : 'CHECKBOX'
+                        'component_type' : 'CHECKBOX',
+                        'component_id' : 'enabled'
                     })));
                 // Append to constainer
                 container.append(attr_line_container);

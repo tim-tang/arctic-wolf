@@ -3,10 +3,19 @@ define(function(require, exports, module) {
     var $ = require('$');
     var eventBus = require('app-core').Eventbus;
     
+    var inputView = require('./view/component/component-input');
     var selectView = require('./view/component/component-select');
     var datatableView = require('./view/component/component-datatable');
-        
+    var dateRangePickerView = require('./view/component/component-daterange-picker');
+    
     var genericComponentFactory = {
+        
+        makeBulkComponent : function(componets) {
+            var self = this;
+            _.each(componets, function(component) {
+                self.makeComponent(component);
+            });
+        },
         
         makeComponent : function(options) {
             var component = 'ERROR to create component!';
@@ -25,11 +34,17 @@ define(function(require, exports, module) {
                 case 'MULTI_SELECT':
                     component = this.makeSelect(options);
                     break;
+                case 'TAGS':
                 case 'CHECKBOX':
+                case 'SLIDE_RANGE':
+                case 'TOUCH_SPINE':
                     component = this.makeInput(options);
                     break;
                 case 'DATATABLE':
                     component = this.makeDatatable(options);
+                    break;
+                case 'DATE_RANGE_PICKER':
+                    component = this.makeDateRangePicker(options);
                     break;
             }
             return component;
@@ -83,7 +98,7 @@ define(function(require, exports, module) {
          * 
          * Parameter 'options' contain below varibles:
          * - component_type: 'SELECT2' or 'MULTI_SELECT'
-         * - select_id: id of select, ie - 'privileges'
+         * - component_id: id of select, ie - 'privileges'
          * - container_id: container of select, if not specified, just return $el, 
          *                 and it requires be located, ie - 'assign-obj-container'
          * - multiple: multiple attribute of select
@@ -106,12 +121,11 @@ define(function(require, exports, module) {
          * .......
          */
         makeInput: function(options) {
-            var component_type = options['component_type'];
-            var inputView = null;
-            if(component_type === 'CHECKBOX') {
-                inputView = this.makeContainer({'class':'switch'}).append($('<input>').attr('type', 'checkbox')).bootstrapSwitch();;
-            }
-            return inputView;
+            var _inputView = new inputView(options);
+            _inputView.render().promise().done(function() {
+                eventBus.trigger('component-input:renderInput');
+            });
+            return _inputView.$el;
         },
                 
         /*
@@ -138,7 +152,11 @@ define(function(require, exports, module) {
          * Generate component 'DateRangePicker'
          */
         makeDateRangePicker: function(options) {
-            
+            var _dateRangePickerView = new dateRangePickerView(options);
+            _dateRangePickerView.render().promise().done(function() {
+                eventBus.trigger('component-daterange-picker:renderDateRangePicker');
+            });
+            return _dateRangePickerView.$el;
         },
         
         /*

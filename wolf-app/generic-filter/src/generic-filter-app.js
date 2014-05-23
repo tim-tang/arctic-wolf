@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 
-
     var Backbone = require('backbone');
     var appCommon = require('app-common');
 	var commonLoading = appCommon.CommonLoading;
@@ -20,7 +19,6 @@ define(function(require, exports, module) {
             eventBus.on('generic-filter:show-loading', this.show_loading, this);
             eventBus.on('generic-filter:hide-loading', this.hide_loading, this);
         },
-
 
         afterRender: function() {
             // append generic filter view.

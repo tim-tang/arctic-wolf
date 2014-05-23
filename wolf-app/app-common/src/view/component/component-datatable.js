@@ -33,7 +33,7 @@ define(function(require, exports, module) {
             }
             
             if(!container_id)
-                container_id = datatable_id + '-div';
+                container_id = datatable_id + '-container';
             var datatable_container = '#' + container_id;
             // Remove existing datatable
             if ($(datatable_container).children())

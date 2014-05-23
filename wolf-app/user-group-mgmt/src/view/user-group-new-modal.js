@@ -72,7 +72,7 @@ define(function(require, exports, module) {
                 ug_desc: this.$('#ug-desc').val().trim(),
                 users: this.$('#users').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
-            }
+            };
         },
 
         /**
