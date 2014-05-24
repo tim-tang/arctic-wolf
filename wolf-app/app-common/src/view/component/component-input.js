@@ -18,8 +18,8 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-input:renderInput:'+options["component_id"]);
-            eventBus.on('component-input:renderInput:'+options["component_id"], this.renderInput, this);
+            eventBus.off('component-input:renderInput:' + options["component_id"]);
+            eventBus.on('component-input:renderInput:' + options["component_id"], this.renderInput, this);
         },
 
         renderInput: function() {

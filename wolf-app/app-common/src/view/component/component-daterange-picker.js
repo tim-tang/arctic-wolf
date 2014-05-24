@@ -15,8 +15,8 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-daterange-picker:renderDateRangePicker');
-            eventBus.on('component-daterange-picker:renderDateRangePicker', this.renderDateRangePicker, this);
+            eventBus.off('component-daterange-picker:renderDateRangePicker:' + options["component_id"]);
+            eventBus.on('component-daterange-picker:renderDateRangePicker:' + options["component_id"], this.renderDateRangePicker, this);
             
             var component_id = this.options["component_id"];
             var container_id = this.options["container_id"];

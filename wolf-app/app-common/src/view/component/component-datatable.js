@@ -15,8 +15,8 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-datatable:renderDatatable');
-            eventBus.on('component-datatable:renderDatatable', this.renderDatatable, this);
+            eventBus.off('component-datatable:renderDatatable:' + options["component_id"]);
+            eventBus.on('component-datatable:renderDatatable:' + options["component_id"], this.renderDatatable, this);
         },
 
         renderDatatable: function() {

@@ -17,8 +17,8 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-select:renderSelect:'+options["component_id"]);
-            eventBus.on('component-select:renderSelect:'+options["component_id"], this.renderSelect, this);
+            eventBus.off('component-select:renderSelect:' + options["component_id"]);
+            eventBus.on('component-select:renderSelect:' + options["component_id"], this.renderSelect, this);
         },
 
         renderSelect: function() {

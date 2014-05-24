@@ -107,7 +107,7 @@ define(function(require, exports, module) {
          */
         makeSelect: function(options) {
             return (new selectView(options)).render().promise().done(function() {
-                eventBus.trigger('component-select:renderSelect:'+options["component_id"]);
+                eventBus.trigger('component-select:renderSelect:' + options["component_id"]);
             });
         },
 
@@ -120,7 +120,7 @@ define(function(require, exports, module) {
          */
         makeInput: function(options) {
             return (new inputView(options)).render().promise().done(function() {
-                eventBus.trigger('component-input:renderInput:'+options["component_id"]);
+                eventBus.trigger('component-input:renderInput:' + options["component_id"]);
             });
         },
 
@@ -137,48 +137,19 @@ define(function(require, exports, module) {
          * - callback: callback function
          */
         makeDatatable: function(options) {
-            var _datatableView = new datatableView(options);
-            _datatableView.render().promise().done(function() {
-                //TODO: Add component id into event name to avoid event conflict.
-                //Scenario: If mutli same components used in  same page, will cause event conflict
-                eventBus.trigger('component-datatable:renderDatatable');
+        	return (new datatableView(options)).render().promise().done(function() {
+                eventBus.trigger('component-datatable:renderDatatable:' + options["component_id"]);
             });
-            return _datatableView.$el;
         },
 
         /*
          * Generate component 'DateRangePicker'
          */
         makeDateRangePicker: function(options) {
-            var _dateRangePickerView = new dateRangePickerView(options);
-            _dateRangePickerView.render().promise().done(function() {
-                //TODO: Add component id into event name to avoid event conflict.
-                //Scenario: If mutli same components used in  same page, will cause event conflict
-                eventBus.trigger('component-daterange-picker:renderDateRangePicker');
+            return (new dateRangePickerView(options)).render().promise().done(function() {
+                eventBus.trigger('component-daterange-picker:renderDateRangePicker:' + options["component_id"]);
             });
-            return _dateRangePickerView.$el;
-        },
-
-        /*
-         * Generate component 'Select2Tag'
-         */
-        makeSelect2Tag: function(options) {
-
-        },
-
-        /*
-         * Generate component 'SliderRange'
-         */
-        makeSliderRange: function(options) {
-
-        },
-
-        /*
-         * Generate component 'touchspine'
-         */
-        makeTouchspine: function(options) {
-
-        },
+        }
     };
 
     module.exports = genericComponentFactory;
