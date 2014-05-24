@@ -51,6 +51,7 @@ define(function(require, exports, module) {
                 $(select_container).children('select').remove();
             this.$el.appendTo(select_container);
 
+            //TODO: refactor to use switch
             if (!type || type === 'SELECT2')
                 this.makeSelect2(_select);
             else if (type === 'MULTI_SELECT')

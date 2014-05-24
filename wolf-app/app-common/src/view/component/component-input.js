@@ -37,6 +37,7 @@ define(function(require, exports, module) {
                 _input.attr("id", component_id);
             }
 
+            //TODO: refactor to use switch.
             if (!type || type === 'CHECKBOX')
                 this.makeCheckbox(_input);
             else if (type === 'TAGS')

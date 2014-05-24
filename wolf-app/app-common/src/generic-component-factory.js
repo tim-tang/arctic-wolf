@@ -139,6 +139,8 @@ define(function(require, exports, module) {
         makeDatatable: function(options) {
             var _datatableView = new datatableView(options);
             _datatableView.render().promise().done(function() {
+                //TODO: Add component id into event name to avoid event conflict.
+                //Scenario: If mutli same components used in  same page, will cause event conflict
                 eventBus.trigger('component-datatable:renderDatatable');
             });
             return _datatableView.$el;
@@ -150,6 +152,8 @@ define(function(require, exports, module) {
         makeDateRangePicker: function(options) {
             var _dateRangePickerView = new dateRangePickerView(options);
             _dateRangePickerView.render().promise().done(function() {
+                //TODO: Add component id into event name to avoid event conflict.
+                //Scenario: If mutli same components used in  same page, will cause event conflict
                 eventBus.trigger('component-daterange-picker:renderDateRangePicker');
             });
             return _dateRangePickerView.$el;
