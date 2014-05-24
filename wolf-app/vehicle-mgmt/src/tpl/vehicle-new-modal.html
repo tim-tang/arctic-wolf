@@ -1,37 +1,43 @@
 <!-- Nifty Modal -->
-<div id="new-modal" class="modal fade colored-header in" role="dialog" style="display: none;"
-    aria-hidden="false">
+<div id="new-modal" class="modal fade colored-header in" role="dialog"
+style="display: none;" aria-hidden="false">
     <div class="modal-dialog colored-header custom-width">
         <div class="md-content">
             <div class="modal-header">
                 <h3>Create Vehicle</h3>
-                <button type="button" class="close md-close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <button type="button" class="close md-close" data-dismiss="modal"
+                aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body form">
                 <div class="form-group">
                     <label class="control-label">Vehicle Name</label>
-                    <input id="vehicle-name" type="email" class="form-control" placeholder="Vehilce Name" value="<%= vehicle['vehicle_name'] %>">
+                    <input id="vehicle-name" type="email" class="form-control"
+                    placeholder="Vehilce Name" value="<%= vehicle['vehicle_name'] %>">
                 </div>
                 <div class="form-group" id="vehicle-price-container">
                     <label class="control-label">Vehicle Price</label>
                 </div>
-
-                <select class="select2"> 
-                    <optgroup label="Alaskan/Hawan Time Zone">
-                        <option value="AK">Alaska</option>
-                        <option value="HI">Hawa</option>
-                    </optgroup>
-                </select>
+                <div class="form-group">
+                    <label class="control-label">Vehicle Brand</label>
+                    <div id='vehicle-brands-container'></div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Vehicle Model</label>
+                    <div id='vehicle-models-container'></div>
+                </div>
                 <div class="form-group">
                     <label class="control-label">Description</label>
-                    <textarea class="form-control"
-                        placeholder="This is the description" id="vehicle-desc" value="<%- vehicle['vehicle_desc']%>"></textarea>
+                    <textarea class="form-control" placeholder="This is the description"
+                    id="vehicle-desc" value="<%- vehicle['vehicle_desc']%>"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-                <button id="vehicle-create-action" class="btn btn-primary btn-flat md-close" data-dismiss="modal" type="button">Create</button>
-                <button class="btn btn-default btn-flat md-close" data-dismiss="modal" type="button">Cancel</button>
+                <button id="vehicle-create-action" class="btn btn-primary btn-flat md-close"
+                data-dismiss="modal" type="button">Create</button>
+                <button class="btn btn-default btn-flat md-close" data-dismiss="modal"
+                type="button">Cancel</button>
             </div>
         </div>
     </div>
 </div>
+
