@@ -18,25 +18,25 @@ define(function(require, exports, module) {
 
         initialize : function(options) {
             this.options = options;
-            eventBus.off('component-input:renderInput');
-            eventBus.on('component-input:renderInput', this.renderInput, this);
+            eventBus.off('component-input:renderInput:'+options["component_id"]);
+            eventBus.on('component-input:renderInput:'+options["component_id"], this.renderInput, this);
         },
 
         renderInput: function() {
             console.log(">>>>>>>>>>>>>>>>>>>>>>in renderSelect");
             var type = this.options["component_type"];
-            
+
             // Fetch component_id
             var component_id = this.options["component_id"];
             var container_id = this.options["container_id"];
 
             var _input = this.$el.find('input');
-            
+
             // If component_id is not null, then set id to this select
             if (component_id) {
                 _input.attr("id", component_id);
             }
-            
+
             if (!type || type === 'CHECKBOX')
                 this.makeCheckbox(_input);
             else if (type === 'TAGS')
@@ -45,7 +45,7 @@ define(function(require, exports, module) {
                 this.makeSlideRange(_input, this.options["options"]);
             else if (type === 'TOUCH_SPINE')
                 this.makeTouchspine(_input, this.options["options"]);
-                
+
             // If container_id is not null, then append this select to its container
             if(!container_id)
                 container_id = component_id + '-container';
@@ -55,7 +55,7 @@ define(function(require, exports, module) {
                 $(input_container).children('input').remove();
             this.$el.appendTo(input_container);
         },
-            
+
         // Checkbox
         makeCheckbox : function(input) {
             // Set type
@@ -63,7 +63,7 @@ define(function(require, exports, module) {
             this.$el.attr('class', 'switch');
             this.$el.bootstrapSwitch();
         },
-        
+
         // Tags
         makeTags : function(input) {
 			// Set type
@@ -77,7 +77,7 @@ define(function(require, exports, module) {
                 width: '100%'
             });
         },
-        
+
         // Slide Range
         makeSlideRange : function(input, options) {
             // Set type
@@ -96,7 +96,7 @@ define(function(require, exports, module) {
                 $(options.max_selector).html("¥"+e.value[1]);
             });
         },
-        
+
         // Touchspine
         makeTouchspine : function(input, options) {
              input.TouchSpin({
@@ -107,7 +107,7 @@ define(function(require, exports, module) {
                 prefix: options.prefix
             });
         },
-        
+
         serialize : function() {
             return {
                 options : _.clone(this.options)

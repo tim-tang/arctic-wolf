@@ -106,12 +106,9 @@ define(function(require, exports, module) {
          * - optgroups: optgroups of select, at least one optgroup required
          */
         makeSelect: function(options) {
-            var _selectView = new selectView(options);
-            _selectView.render().promise().done(function() {
-                options['el'] = _selectView.$el;
-                eventBus.trigger('component-select:renderSelect', options);
+            return (new selectView(options)).render().promise().done(function() {
+                eventBus.trigger('component-select:renderSelect:'+options["component_id"]);
             });
-            return _selectView.$el;
         },
 
         /*
@@ -122,11 +119,9 @@ define(function(require, exports, module) {
          * .......
          */
         makeInput: function(options) {
-            var _inputView = new inputView(options);
-            _inputView.render().promise().done(function() {
-                eventBus.trigger('component-input:renderInput');
+            return (new inputView(options)).render().promise().done(function() {
+                eventBus.trigger('component-input:renderInput:'+options["component_id"]);
             });
-            return _inputView.$el;
         },
 
         /*

@@ -45,34 +45,66 @@ define(function(require, exports, module) {
                     'prefix': '$'
                 }
             });
-            var vehicleBrands = {
-                "component_type": "SELECT2",
-                "component_id": "vehicle-brands",
-                "optgroups": [{
-                    "label": "Benz",
-                    "options": [{
-                        "value": "s600",
-                        "label": "S600"
-                    }, {
-                        "value": "s60",
-                        "label": "s600"
-                    }]
-                }]
-            };
-            componentFactory.makeComponent(vehicleBrands);
 
-            var vehicleModels = {
-                "component_type": "SELECT2",
-                "component_id": "vehicle-models",
-                "optgroups": [{
-                    "label": "S600",
-                    "options": [{
-                        "value": "s600",
-                        "label": "S600"
-                    }]
-                }]
+           var vehicleBrands = {
+               "component_type": "SELECT2",
+               "component_id": "vehicle-brands",
+               "optgroups": [{
+                   "label": "Benz",
+                   "options": [{
+                       "value": "s600",
+                       "label": "S600"
+                   }, {
+                       "value": "s60",
+                       "label": "s600"
+                   }]
+               }]
+           };
+           componentFactory.makeComponent(vehicleBrands);
+
+           var vehicleModels = {
+               "component_type": "SELECT2",
+               "component_id": "vehicle-models",
+               "optgroups": [{
+                   "label": "S600",
+                   "options": [{
+                       "value": "s600",
+                       "label": "S600"
+                   }]
+               }]
+           };
+           componentFactory.makeComponent(vehicleModels);
+
+           var emissions = {
+               "component_type": "SELECT2",
+               "component_id": "vehicle-emissions",
+               "optgroups": [{
+                   "options": [{
+                       "value": "1",
+                       "label": "国一"
+                   },{
+                       "value": "2",
+                       "label": "国二"
+                   },{
+                       "value": "3",
+                       "label": "国三"
+                   },{
+                       "value": "4",
+                       "label": "国四"
+                   },{
+                       "value": "5",
+                       "label": "国五"
+                   }]
+               }]
+           };
+           componentFactory.makeComponent(emissions);
+
+            var statusSwitch= {
+                "component_type": "CHECKBOX",
+                "component_id": "vehicle-switch"
             };
-            componentFactory.makeComponent(vehicleModels);
+            componentFactory.makeComponent(statusSwitch);
+
         },
 
         new_attributes: function() {
