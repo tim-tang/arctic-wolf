@@ -24,8 +24,13 @@ define(function(require, exports, module) {
 		events : {
 			//TODO:
 		},
+		
+		test : function(userGroupId) {
+			require('./user-group-details-app').run(viewManager, userGroupId);
+		},
 
 		initialize : function() {
+			eventBus.on('test', this.test, this);
 			eventBus.on('show-loading', this.show_loading, this);
 			eventBus.on('hide-loading', this.hide_loading, this);
 		},

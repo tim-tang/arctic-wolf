@@ -25,7 +25,8 @@ define(function(require, exports, module){
         },
         
         viewUserGroup: function(userGroupId) {
-            require('../user-group-details-app').run(viewManager, userGroupId);
+            // require('../user-group-details-app').run(viewManager, userGroupId);
+            eventBus.trigger('test', userGroupId);
         },
 
 		viewGeneralInfo: function() {
