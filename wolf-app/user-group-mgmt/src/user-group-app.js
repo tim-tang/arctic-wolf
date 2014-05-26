@@ -26,7 +26,6 @@ define(function(require, exports, module) {
 		},
 
 		initialize : function() {
-			eventBus.on('test', this.test, this);
 			eventBus.on('show-loading', this.show_loading, this);
 			eventBus.on('hide-loading', this.hide_loading, this);
 		},
@@ -53,6 +52,13 @@ define(function(require, exports, module) {
 	module.exports = {
 		run : function(viewManager) {
 			viewManager.show('#main-content', userGroupApp);
+		},
+		
+		invokeUserGroupRouter : function() {
+			var userGroupRouter = require('./router/user-group-router');
+			return new userGroupRouter('user-group-mgmt/', {
+				createTrailingSlashRoutes : true
+			});
 		}
 	};
 });

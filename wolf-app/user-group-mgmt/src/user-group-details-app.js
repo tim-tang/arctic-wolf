@@ -14,7 +14,7 @@ define(function(require, exports, module) {
 	var userGroupGeneralInfo = require('./view/tab/user-group-general-info');
 	
 	var userGroupModel = require('./model/user-group-model');
-    var userColl = require('app-user-mgmt').UserColl;
+    var userColl = require('app-user-expose').UserColl;
 	var userGroupHistoryColl = require('./collection/user-group-history-coll');
 
 	var userGroupDetailsApp = new Backbone.Layout({

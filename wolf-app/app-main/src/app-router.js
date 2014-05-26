@@ -9,9 +9,6 @@ define(function(require, exports, module) {
     var eventBus = appCore.Eventbus;
     var viewManager = appCore.ViewMgmt;
     var AppBaseRouter = require('./app-base-router');
-    
-    var userRouter = require('app-user-mgmt').UserRouter;
-    var userGroupRouter = require('app-user-group-mgmt').UserGroupRouter;
 
     var AppRouter = {};
     AppRouter.Router = AppBaseRouter.extend({
@@ -67,13 +64,12 @@ define(function(require, exports, module) {
             case "generic-filter/":
                 require('app-generic-filter').GenericFilterApp.run(viewManager);
                 break;
-                /*
             case "user-mgmt/":
-                userRouter.run(viewManager);
+                require('app-user-mgmt').UserMgmtApp.run(viewManager);
                 break;
             case "user-group-mgmt/":
-                userGroupRouter.run(viewManager);
-                break;*/
+                require('app-user-group-mgmt').UserGroupMgmtApp.run(viewManager);
+                break;
             case "role-mgmt/":
                 require('app-role-mgmt').RoleMgmtApp.run(viewManager);
                 break;
@@ -164,19 +160,15 @@ define(function(require, exports, module) {
         invokeUserGroupModule: function(subroute) {
             this.predict_layout_existence(function() {
                 if (!AppRouter.userGroupRouter) {
-                    AppRouter.userGroupRouter = new userGroupRouter('user-group-mgmt/', {
-                        createTrailingSlashRoutes : true
-                    });
+                    AppRouter.userGroupRouter = require('app-user-group-mgmt').UserGroupMgmtApp.invokeUserGroupRouter();
                 }
             });
         },
 
         invokeUserModule: function(subroute) {
-            this.predict_layout_existence(function() {
+			this.predict_layout_existence(function() {
                 if (!AppRouter.userRouter) {
-                    AppRouter.userRouter = new userRouter('user-mgmt/', {
-                        createTrailingSlashRoutes : true
-                    });
+                    AppRouter.userRouter = require('app-user-mgmt').UserMgmtApp.invokeUserRouter();
                 }
             });
         },

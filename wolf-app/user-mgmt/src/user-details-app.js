@@ -14,7 +14,7 @@
     var userGeneralInfo = require('./view/tab/user-general-info');
    	
    	var userModel = require('./model/user-model');
-    var userGroupColl = require('app-user-group-mgmt').UserGroupColl;
+    var userGroupColl = require('app-user-group-expose').UserGroupColl;
 	var userHistoryColl = require('./collection/user-history-coll');
     
 	var userDetailsApp = new Backbone.Layout({
