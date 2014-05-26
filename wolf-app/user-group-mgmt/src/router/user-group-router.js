@@ -22,11 +22,11 @@ define(function(require, exports, module){
 
         home: function() {
             eventBus.trigger('layout:switch-module-action');
+            require('../user-group-app').run(viewManager);
         },
         
         viewUserGroup: function(userGroupId) {
-            // require('../user-group-details-app').run(viewManager, userGroupId);
-            eventBus.trigger('test', userGroupId);
+            require('../user-group-details-app').run(viewManager, userGroupId);
         },
 
 		viewGeneralInfo: function() {

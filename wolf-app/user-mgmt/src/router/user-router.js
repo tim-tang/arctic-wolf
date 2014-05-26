@@ -22,6 +22,7 @@ define(function(require, exports, module) {
 
         home: function() {
             eventBus.trigger('layout:switch-module-action');
+            require('../user-app').run(viewManager);
         },
 
         viewuser: function(userId) {

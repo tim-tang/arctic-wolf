@@ -49,13 +49,6 @@ define(function(require, exports, module) {
 	module.exports = {
 		run : function(viewManager) {
 			viewManager.show('#main-content', userApp);
-		},
-
-		invokeUserRouter : function() {
-			var userRouter = require('./router/user-router');
-			return new userRouter('user-mgmt/', {
-				createTrailingSlashRoutes : true
-			});
 		}
 	};
 });
