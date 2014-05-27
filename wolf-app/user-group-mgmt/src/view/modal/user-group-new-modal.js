@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-	var componentFacade = require('app-common').ComponentFacade;
+	var componentFactory = require('app-common').GenericComponentFactory;
 
     var userGroupColl = require('../../collection/user-group-coll');
     var userGroupModel = require('../../model/user-group-model');
@@ -28,10 +28,9 @@ define(function(require, exports, module) {
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
             this.users = {
-				"selector_id": "users",
-				"container_id": "users-container",
-				"multiple": "multiple",
-				"selected": [],
+				"component_type" : "SELECT2",
+                "component_id" : "users",
+                "multiple" : "multiple",
 				"optgroups": [
 					{
 						"options": [
@@ -62,8 +61,11 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
-            componentFacade.init_switch('.switch');
-			componentFacade.init_multi_select('.multi-select', this.users);
+        	componentFactory.makeComponent({
+                'component_type' : 'CHECKBOX',
+                'component_id' : 'enabled'
+            });
+            componentFactory.makeComponent(this.users);
         },
 
         new_attributes: function() {

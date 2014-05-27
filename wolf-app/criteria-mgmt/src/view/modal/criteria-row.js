@@ -11,6 +11,7 @@ define(function(require, exports, module) {
 
     var eventBus = require('app-core').Eventbus;
     var componentFacade = require('app-common').ComponentFacade;
+    var componentFactory = require('app-common').GenericComponentFactory;
 
     var criteriaRow = Backbone.View.extend({
         manage: true,
@@ -31,6 +32,7 @@ define(function(require, exports, module) {
 
         	this.userAttrs = {
 				//"selector_id": "attributes",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -53,6 +55,7 @@ define(function(require, exports, module) {
 
 			this.userGroupAttrs = {
 				//"selector_id": "attributes",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -75,6 +78,7 @@ define(function(require, exports, module) {
 
 			this.vehicleAttrs = {
 				//"selector_id": "attributes",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -97,6 +101,7 @@ define(function(require, exports, module) {
 
 			this.operators_0 = {
 				//"selector_id": "operators",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -119,6 +124,7 @@ define(function(require, exports, module) {
 
 			this.operators_1 = {
 				//"selector_id": "operators",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -141,6 +147,7 @@ define(function(require, exports, module) {
 
 			this.operators_2 = {
 				//"selector_id": "operators",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -163,6 +170,7 @@ define(function(require, exports, module) {
 
 			this.logicOperators = {
 				//"selector_id": "operators",
+				"component_type" : "SELECT2",
 				"optgroups": [
 					{
 						"options": [
@@ -188,6 +196,7 @@ define(function(require, exports, module) {
 			// Attributes selector
 			if (this.objType == '1') {
 				componentFacade.init_select2('.select2', this.userAttrs, this, 0);
+				componentFactory.makeComponent(this.userAttrs);
 				attValue = this.userAttrs.optgroups[0].options[0].value;
 			} else if (this.objType == '2') {
 				componentFacade.init_select2('.select2', this.userGroupAttrs, this, 0);

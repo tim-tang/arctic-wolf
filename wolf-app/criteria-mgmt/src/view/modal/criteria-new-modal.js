@@ -11,7 +11,7 @@ define(function(require, exports, module) {
     var criteriaRow = require('./criteria-row');
 
     var eventBus = require('app-core').Eventbus;
-    var componentFacade = require('app-common').ComponentFacade;
+    var componentFactory = require('app-common').GenericComponentFactory;
 
     var criteriaModal = Backbone.View.extend({
         manage: true,
@@ -32,7 +32,8 @@ define(function(require, exports, module) {
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
             this.objectType = {
-				"selector_id": "object-type",
+				"component_type" : "SELECT2",
+                "component_id" : "object-type",
 				"optgroups": [
 					{
 						"options": [
@@ -61,9 +62,12 @@ define(function(require, exports, module) {
         },
 
         afterRender: function() {
-            componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', this.objectType);
-
+			componentFactory.makeComponent({
+                'component_type' : 'CHECKBOX',
+                'component_id' : 'enabled'
+            });
+            componentFactory.makeComponent(this.objectType);
+            
 			var objType = this.objectType.optgroups[0].options[0].value;
 			var criteriaRowView = new criteriaRow({objType: objType});
             this.insertView('#criteria-row-container', criteriaRowView).render();
@@ -99,7 +103,7 @@ define(function(require, exports, module) {
 
         resetObjectType: function(objType) {
 			$('#object-type-container').children().remove();
-			componentFacade.init_select2('.select2', this.objectType);
+			componentFactory.makeComponent(this.objectType);
 		},
 
 		resetCriteria: function(objType) {

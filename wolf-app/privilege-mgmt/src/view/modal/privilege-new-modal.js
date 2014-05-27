@@ -10,7 +10,7 @@ define(function(require, exports, module) {
     var privilegeColl = require('../../collection/privilege-coll');
     var privilegeModel = require('../../model/privilege-model');
 
-	var componentFacade = require('app-common').ComponentFacade;
+	var componentFactory = require('app-common').GenericComponentFactory;
 
     var privilegeModal = Backbone.View.extend({
         manage: true,
@@ -28,7 +28,8 @@ define(function(require, exports, module) {
         initialize: function() {
             //this.listenTo(this.model, 'change', this.test);
             this.privilegeType = {
-				"selector_id": "privilege-type",
+				"component_type" : "SELECT2",
+                "component_id" : "privilege-type",
 				"optgroups": [
 					{
 						"options": [
@@ -54,7 +55,8 @@ define(function(require, exports, module) {
 			};
 
 			this.criterias = {
-				"selector_id": "criteria",
+				"component_type" : "SELECT2",
+                "component_id" : "criteria",
 				"optgroups": [
 					{
 						"label": "Vehicle",
@@ -95,9 +97,12 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
-            componentFacade.init_switch('.switch');
-			componentFacade.init_select2('.select2', this.criterias);
-			componentFacade.init_select2('.select2', this.privilegeType);
+        	componentFactory.makeComponent({
+                'component_type' : 'CHECKBOX',
+                'component_id' : 'enabled'
+            });
+            componentFactory.makeComponent(this.criterias);
+            componentFactory.makeComponent(this.privilegeType);
         },
 
         new_attributes: function() {
