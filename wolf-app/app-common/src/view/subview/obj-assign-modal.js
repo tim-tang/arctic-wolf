@@ -8,7 +8,6 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
 
 	var eventBus = require('app-core').Eventbus;
-	var componentFacade = require('../../component-facade');
 	var componentFactory = require('../../generic-component-factory.js');
 
     var objAssignModal = Backbone.View.extend({
@@ -137,6 +136,31 @@ define(function(require, exports, module) {
                         ]
                     },
                 ]
+            },
+            {
+                "component_type": "MULTI_SELECT",
+                "component_id": "roles",
+                "container_id": "assign-obj-container",
+                "multiple": "multiple",
+                "selected": [],
+                "optgroups": [
+                    {
+                        "options": [
+                            {
+                                "value": "1",
+                                "label": "Administrator"
+                            },
+                            {
+                                "value": "2",
+                                "label": "Manager"
+                            },
+                            {
+                                "value": "3",
+                                "label": "Sale"
+                            }
+                        ]
+                    },
+                ]
             }];
         },
 
@@ -153,6 +177,8 @@ define(function(require, exports, module) {
                 componentFactory.makeComponent(this.assignObjects[1]);
             if(identity === 'users')
                 componentFactory.makeComponent(this.assignObjects[2]);
+            if(identity === 'roles')
+                componentFactory.makeComponent(this.assignObjects[3]);
 		},
 
         add_objects: function() {

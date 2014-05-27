@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 	var genericViewFactory = appCommon.GenericViewFactory;
 
 	var userColl = require('./collection/user-coll');
-	var userModal = require('./view/user-new-modal');
+	var userModal = require('./view/modal/user-new-modal');
 
 	var userApp = new Backbone.Layout({
 

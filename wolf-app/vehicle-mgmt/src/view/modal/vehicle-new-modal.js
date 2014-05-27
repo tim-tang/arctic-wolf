@@ -8,8 +8,8 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var vehicleModel = require('../model/vehicle-model');
-    var vehicleColl = require('../collection/vehicle-coll');
+    var vehicleModel = require('../../model/vehicle-model');
+    var vehicleColl = require('../../collection/vehicle-coll');
 
     var componentFactory = require('app-common').GenericComponentFactory;
 
@@ -17,7 +17,7 @@ define(function(require, exports, module) {
         manage: true,
         model: new vehicleModel(),
 
-        prefix: "vehicle-mgmt/src/tpl/",
+        prefix: "vehicle-mgmt/src/tpl/modal/",
         template: 'vehicle-new-modal.html',
 
         events: {

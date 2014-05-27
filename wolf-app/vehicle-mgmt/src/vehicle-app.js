@@ -4,11 +4,13 @@ define(function(require, exports, module) {
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 	var eventBus = require('app-core').Eventbus;
+	
 	var appCommon = require('app-common');
 	var commonLoading = appCommon.CommonLoading;
-	var vehicleModal = require('./view/vehicle-new-modal');
 	var genericViewFactory = appCommon.GenericViewFactory;
+	
     var vehicleColl = require('./collection/vehicle-coll');
+    var vehicleModal = require('./view/modal/vehicle-new-modal');
 
 	var vehicleApp = new Backbone.Layout({
 

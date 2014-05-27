@@ -70,25 +70,6 @@ define(function(require, exports, module) {
         afterRender: function() {
             //TODO:
         },
-        
-		// Load objects into datatable
-        init_datatable: function(tab_identify) {
-			var self = this;
-			// Initialze jquery datatable
-            componentFacade.init_datatable(this.datatable_id, {
-                data: this.model.get(tab_identify)['aaData'],
-                header: this.model.get(tab_identify)['aoColumns']
-            }, function(datatable) {
-                self.datatable = datatable;
-                $('#' + self.datatable_id).on('click', 'tbody tr', function(e) {
-                    $(this).toggleClass('row_selected');
-                    var selectedId = $(this).find("td:first").html().trim();
-                    var model = self.collection.get(selectedId);
-                    model.toggle_select();
-                });
-                eventBus.trigger('hide-loading');
-            });
-       	},
        	
 		// This trigger method is used to reverse control assign-modal
 		setSelectedObjectsForMultiSelect: function(view) {
@@ -105,6 +86,8 @@ define(function(require, exports, module) {
                 view.assignObjects[1].selected = selectedObjectsValue;
             if(this.identity === 'users')
 				view.assignObjects[2].selected = selectedObjectsValue;
+		    if(this.identity === 'roles')
+                view.assignObjects[3].selected = selectedObjectsValue;
 			// Render multiple select
 			view.renderMultiSelect(this.identity, this.source_collection);
 		},

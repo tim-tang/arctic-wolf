@@ -6,8 +6,8 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var criteriaColl = require('../collection/criteria-coll');
-    var criteriaModel = require('../model/criteria-model');
+    var criteriaColl = require('../../collection/criteria-coll');
+    var criteriaModel = require('../../model/criteria-model');
 
     var eventBus = require('app-core').Eventbus;
     var componentFacade = require('app-common').ComponentFacade;

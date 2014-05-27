@@ -3,7 +3,6 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var commonUtils = require('../../common-utils');
-    var componentFacade = require('../../component-facade');
     var eventBus = require('app-core').Eventbus;
 
     var objInfoViewMixin = {

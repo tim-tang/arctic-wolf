@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 	var genericViewFactory = appCommon.GenericViewFactory;
 
 	var privilegeColl = require('./collection/privilege-coll');
-	var privilegeModal = require('./view/privilege-new-modal');
+	var privilegeModal = require('./view/modal/privilege-new-modal');
 
 	var privilegeApp = new Backbone.Layout({
 		

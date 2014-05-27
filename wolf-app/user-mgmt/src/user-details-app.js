@@ -18,9 +18,7 @@
 	var userHistoryColl = require('./collection/user-history-coll');
     
 	var userDetailsApp = new Backbone.Layout({
-
-		// el: '#main-content',
-
+	    
         manage: true,
 
         prefix: "user-mgmt/src/tpl/",

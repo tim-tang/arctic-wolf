@@ -43,7 +43,6 @@ define(function(require, exports, module) {
 
             // If container_id is not null, then append this select to its container
             if(!container_id)
-                container_id = null;
                 container_id = component_id + '-container';
             var select_container = '#' + container_id;
             // Remove existing multi selector

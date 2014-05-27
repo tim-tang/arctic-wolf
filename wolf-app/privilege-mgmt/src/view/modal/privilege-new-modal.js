@@ -7,8 +7,8 @@ define(function(require, exports, module) {
 	var _ = require('underscore');
     var Backbone = require('backbone');
 
-    var privilegeColl = require('../collection/privilege-coll');
-    var privilegeModel = require('../model/privilege-model');
+    var privilegeColl = require('../../collection/privilege-coll');
+    var privilegeModel = require('../../model/privilege-model');
 
 	var componentFacade = require('app-common').ComponentFacade;
 

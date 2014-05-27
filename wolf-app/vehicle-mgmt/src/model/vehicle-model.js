@@ -7,8 +7,12 @@
 
         defaults: {
             vehicle_name: '',
-            vehicle_price: '168',
             vehicle_desc: '',
+            vehicle_brand: '',
+            vehicle_price: '',
+            vehicle_model: '',
+            vehicle_emission: '',
+            status: '',
             is_selected: false
         },
 

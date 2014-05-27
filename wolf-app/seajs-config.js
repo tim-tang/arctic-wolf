@@ -59,7 +59,9 @@ seajs.config({
         "app-user-group-expose": "wolf-app-path/user-group-mgmt/src/index-expose.js",
         "app-criteria-mgmt": "wolf-app-path/criteria-mgmt/src/index.js",
         "app-privilege-mgmt": "wolf-app-path/privilege-mgmt/src/index.js",
+        "app-privilege-expose": "wolf-app-path/privilege-mgmt/src/index-expose.js",
         "app-role-mgmt": "wolf-app-path/role-mgmt/src/index.js",
+        "app-role-expose": "wolf-app-path/role-mgmt/src/index-expose.js",
         "app-vehicle-mgmt": "wolf-app-path/vehicle-mgmt/src/index.js",
         "app-generic-filter": "wolf-app-path/generic-filter/src/index.js",
         "app-main": "wolf-app-path/app-main/src/index.js"

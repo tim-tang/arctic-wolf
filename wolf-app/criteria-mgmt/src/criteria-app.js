@@ -11,7 +11,7 @@ define(function(require, exports, module) {
 	var genericViewFactory = appCommon.GenericViewFactory;
 
 	var criteriaColl = require('./collection/criteria-coll');
-	var criteriaModal = require('./view/criteria-new-modal');
+	var criteriaModal = require('./view/modal/criteria-new-modal');
 
 	var criteriaApp = new Backbone.Layout({
 		
