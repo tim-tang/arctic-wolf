@@ -106,9 +106,11 @@ define(function(require, exports, module) {
          * - optgroups: optgroups of select, at least one optgroup required
          */
         makeSelect: function(options) {
-            return (new selectView(options)).render().promise().done(function() {
+            var _selectView = new selectView(options); 
+            _selectView.render().promise().done(function() {
                 eventBus.trigger('component-select:renderSelect:' + options["component_id"]);
             });
+            return _selectView.$el;
         },
 
         /*

@@ -10,7 +10,6 @@ define(function(require, exports, module) {
     var criteriaModel = require('../../model/criteria-model');
 
     var eventBus = require('app-core').Eventbus;
-    var componentFacade = require('app-common').ComponentFacade;
     var componentFactory = require('app-common').GenericComponentFactory;
 
     var criteriaRow = Backbone.View.extend({
@@ -21,6 +20,8 @@ define(function(require, exports, module) {
 		prefix: 'criteria-mgmt/src/tpl/modal/',
 
         template: 'criteria-row.html',
+        
+        criteriaRowID: 'criteriaRow',
 
         events: {
             'change select': 'changeSelectValue',
@@ -29,10 +30,12 @@ define(function(require, exports, module) {
         },
 
         initialize: function(options) {
-
+            this.criteriaRowID = this.criteriaRowID + this.options.criteriaRowID;
+            this.$el.attr('id', this.criteriaRowID);
+            
         	this.userAttrs = {
-				//"selector_id": "attributes",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #attributes-container",
 				"optgroups": [
 					{
 						"options": [
@@ -54,8 +57,8 @@ define(function(require, exports, module) {
 			};
 
 			this.userGroupAttrs = {
-				//"selector_id": "attributes",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #attributes-container",
 				"optgroups": [
 					{
 						"options": [
@@ -77,8 +80,8 @@ define(function(require, exports, module) {
 			};
 
 			this.vehicleAttrs = {
-				//"selector_id": "attributes",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #attributes-container",
 				"optgroups": [
 					{
 						"options": [
@@ -100,8 +103,8 @@ define(function(require, exports, module) {
 			};
 
 			this.operators_0 = {
-				//"selector_id": "operators",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #operators-container",
 				"optgroups": [
 					{
 						"options": [
@@ -123,8 +126,8 @@ define(function(require, exports, module) {
 			};
 
 			this.operators_1 = {
-				//"selector_id": "operators",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #operators-container",
 				"optgroups": [
 					{
 						"options": [
@@ -146,8 +149,8 @@ define(function(require, exports, module) {
 			};
 
 			this.operators_2 = {
-				//"selector_id": "operators",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #operators-container",
 				"optgroups": [
 					{
 						"options": [
@@ -169,8 +172,8 @@ define(function(require, exports, module) {
 			};
 
 			this.logicOperators = {
-				//"selector_id": "operators",
 				"component_type" : "SELECT2",
+				"container_id" : this.criteriaRowID + " #logic-operators-container",
 				"optgroups": [
 					{
 						"options": [
@@ -195,33 +198,32 @@ define(function(require, exports, module) {
         	var attValue = null;
 			// Attributes selector
 			if (this.objType == '1') {
-				componentFacade.init_select2('.select2', this.userAttrs, this, 0);
 				componentFactory.makeComponent(this.userAttrs);
 				attValue = this.userAttrs.optgroups[0].options[0].value;
 			} else if (this.objType == '2') {
-				componentFacade.init_select2('.select2', this.userGroupAttrs, this, 0);
+				componentFactory.makeComponent(this.userGroupAttrs);
 				attValue = this.userGroupAttrs.optgroups[0].options[0].value;
 			} else if (this.objType == '3') {
-				componentFacade.init_select2('.select2', this.vehicleAttrs, this, 0);
+				componentFactory.makeComponent(this.vehicleAttrs);
 				attValue = this.vehicleAttrs.optgroups[0].options[0].value;
 			}
 
 			// Operator selector
 			if (attValue == '1') {
 				// Assign operators for String
-				componentFacade.init_select2('.select2', this.operators_0, this, 1);
+				componentFactory.makeComponent(this.operators_0);
 			} else if (attValue == '2') {
 				// Assign operators for Numeric
-				componentFacade.init_select2('.select2', this.operators_1, this, 1);
+				componentFactory.makeComponent(this.operators_1);
 			} else if (attValue == '3') {
 				// Assign operators for Datetime
-				componentFacade.init_select2('.select2', this.operators_2, this, 1);
+				componentFactory.makeComponent(this.operators_2);
 				// Value input
 				//$("#value").remove();
 				//$("#value-div").append("<input class='form-control datetime' type='text' value='This is DatePicker' size='8'>");
 			}
 
-			componentFacade.init_select2('.select2', this.logicOperators, this, 3);
+			componentFactory.makeComponent(this.logicOperators);
        	},
 
 		changeSelectValue: function(select) {
@@ -233,13 +235,13 @@ define(function(require, exports, module) {
 				var attValue = select.val;
 				if (attValue == '1') {
 					// Assign operators for String
-					componentFacade.init_select2('.select2', this.operators_0, this, 1);
+					componentFactory.makeComponent(this.operators_0);
 				} else if (attValue == '2') {
 					// Assign operators for Numeric
-					componentFacade.init_select2('.select2', this.operators_1, this, 1);
+					componentFactory.makeComponent(this.operators_1);
 				} else if (attValue == '3') {
 					// Assign operators for Datetime
-					componentFacade.init_select2('.select2', this.operators_2, this, 1);
+					componentFactory.makeComponent(this.operators_2);
 					// Value input
 					//$("#value").remove();
 					//$("#value-div").append("<input class='form-control datetime' type='text' value='This is DatePicker' size='8'>");

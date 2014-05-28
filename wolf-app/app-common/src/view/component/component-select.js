@@ -28,7 +28,6 @@ define(function(require, exports, module) {
             // Fetch component_id
             var component_id = this.options["component_id"];
             var multiple = this.options["multiple"];
-            var container = this.options["container"];
             var container_id = this.options["container_id"];
 
             var _select = this.$el.find('select');
@@ -43,17 +42,13 @@ define(function(require, exports, module) {
                 _select.attr("multiple", "multiple");
 
             // If container_id is not null, then append this select to its container
-            if(!container) {
-	            if(!container_id)
-	                container_id = component_id + '-container';
-	            var select_container = '#' + container_id;
-	            // Remove existing multi selector
-	            if ($(select_container).children())
-	                $(select_container).children('select').remove();
-	            this.$el.appendTo(select_container);
-            } else {
-            	this.$el.appendTo(container);
-            }
+            if(!container_id)
+                container_id = component_id + '-container';
+            var select_container = '#' + container_id;
+            // Remove existing multi selector
+            if ($(select_container).children())
+                $(select_container).children('select').remove();
+            this.$el.appendTo(select_container);
 
             //TODO: refactor to use switch
             if (!type || type === 'SELECT2')

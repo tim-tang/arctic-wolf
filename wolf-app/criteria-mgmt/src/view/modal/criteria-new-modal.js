@@ -23,6 +23,8 @@ define(function(require, exports, module) {
         template: 'criteria-new-modal.html',
 
 		criteriaCount: 1,
+		
+		criteriaRowID: 0,
 
         events: {
             'click #criteria-create-action': 'create_criteria',
@@ -69,7 +71,7 @@ define(function(require, exports, module) {
             componentFactory.makeComponent(this.objectType);
             
 			var objType = this.objectType.optgroups[0].options[0].value;
-			var criteriaRowView = new criteriaRow({objType: objType});
+			var criteriaRowView = new criteriaRow({objType: objType, criteriaRowID : 0});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 	    },
 
@@ -81,7 +83,7 @@ define(function(require, exports, module) {
 		// Add & remove crireria row
         addCriteriaRow: function() {
 			var objType = $("#object-type-container").find('select').val();
-			var criteriaRowView = new criteriaRow({objType: objType});
+			var criteriaRowView = new criteriaRow({objType: objType, criteriaRowID : ++this.criteriaRowID});
             this.insertView('#criteria-row-container', criteriaRowView).render();
             this.criteriaCount++;
         },
@@ -107,11 +109,13 @@ define(function(require, exports, module) {
 		},
 
 		resetCriteria: function(objType) {
+		    this.criteriaRowID = 0;
+		    
 		    _.each(this.views["#criteria-row-container"], function(view) {
 			    view.$el.remove();
 		    });
 
-           	var criteriaRowView = new criteriaRow({objType: objType});
+           	var criteriaRowView = new criteriaRow({objType: objType, criteriaRowID : 0});
             this.insertView('#criteria-row-container', criteriaRowView).render();
 
             this.criteriaCount = 1;
