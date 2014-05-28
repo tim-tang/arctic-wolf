@@ -60,15 +60,15 @@ define(function(require, exports, module) {
                 layoutView = view;
             }
             currentView = view;
-            if (selector == '#security-container') {
-                if (!$(selector).exists()) {
+            if (selector === '#security-container') {
+                if (!$(selector) || $(selector).length === 0) {
                     $('<div id="security-container"></div>').appendTo('#main-body');
                 }
                 $('#main-body').addClass('texture');
             }
 
-            if (selector == '#layout-container') {
-                if (!$(selector).exists()) {
+            if (selector === '#layout-container') {
+                if (!$(selector) || $(selector).length === 0) {
                     $('<div id="layout-container"></div>').appendTo('#main-body');
                 }
             }
