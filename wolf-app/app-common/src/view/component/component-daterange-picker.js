@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('app-core').Eventbus;
 
-    var componentSelect = Backbone.View.extend({
+    var componentDateRangePicker = Backbone.View.extend({
 
         manage : true,
 
@@ -21,14 +21,14 @@ define(function(require, exports, module) {
             var component_id = this.options["component_id"];
             var container_id = this.options["container_id"];
 
-            // If container_id is not null, then append this select to its container
+            // If container_id is not null, then append this daterange to its container
             if(!container_id)
                 container_id = component_id + '-container';
-            var select_container = '#' + container_id;
-            // Remove existing multi selector
-            if ($(select_container).children())
-                $(select_container).children('div#' + component_id).remove();
-            this.$el.appendTo(select_container);
+            var daterange_container = '#' + container_id;
+            // Remove existing multi daterange
+            if ($(daterange_container).children())
+                $(daterange_container).children('div#' + component_id).remove();
+            this.$el.appendTo(daterange_container);
         },
 
         renderDateRangePicker : function() {
@@ -103,5 +103,5 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = componentSelect;
+    module.exports = componentDateRangePicker;
 });

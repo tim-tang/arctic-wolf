@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     require('switch');
     require('bt-touchspin');
 
-    var componentSelect = Backbone.View.extend({
+    var componentInput = Backbone.View.extend({
 
         manage : true,
 
@@ -117,5 +117,5 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = componentSelect;
+    module.exports = componentInput;
 });

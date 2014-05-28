@@ -6,6 +6,8 @@ define(function(require, exports, module) {
     var inputView = require('./view/component/component-input');
     var selectView = require('./view/component/component-select');
     var datatableView = require('./view/component/component-datatable');
+    var imageUploadView = require('./view/component/component-image-upload');
+    var dateTimePickerView = require('./view/component/component-datetime-picker');
     var dateRangePickerView = require('./view/component/component-daterange-picker');
 
     var genericComponentFactory = {
@@ -45,6 +47,12 @@ define(function(require, exports, module) {
                     break;
                 case 'DATE_RANGE_PICKER':
                     component = this.makeDateRangePicker(options);
+                    break;
+                case 'DATE_TIME_PICKER':
+                    component = this.makeDateTimePicker(options);
+                    break;
+				case 'IMAGE_UPLOAD':
+                    component = this.makeImageUpload(options);
                     break;
             }
             return component;
@@ -150,6 +158,24 @@ define(function(require, exports, module) {
         makeDateRangePicker: function(options) {
             return (new dateRangePickerView(options)).render().promise().done(function() {
                 eventBus.trigger('component-daterange-picker:renderDateRangePicker:' + options["component_id"]);
+            });
+        },
+        
+        /*
+         * Generate component 'DateUploadPicker'
+         */
+        makeDateTimePicker: function(options) {
+            return (new dateTimePickerView(options)).render().promise().done(function() {
+                eventBus.trigger('component-datetime-picker:renderDateTimePicker:' + options["component_id"]);
+            });
+        },
+        
+        /*
+         * Generate component 'ImageUpload'
+         */
+        makeImageUpload: function(options) {
+            return (new imageUploadView(options)).render().promise().done(function() {
+                eventBus.trigger('component-image-upload:renderImageUpload:' + options["component_id"]);
             });
         }
     };

@@ -5,7 +5,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
     var eventBus = require('app-core').Eventbus;
 
-    var componentSelect = Backbone.View.extend({
+    var componentDataTable = Backbone.View.extend({
 
         manage : true,
 
@@ -59,5 +59,5 @@ define(function(require, exports, module) {
         }
     });
 
-    module.exports = componentSelect;
+    module.exports = componentDataTable;
 });
