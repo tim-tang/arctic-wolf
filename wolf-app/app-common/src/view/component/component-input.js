@@ -7,6 +7,7 @@ define(function(require, exports, module) {
 
     require('select2');
     require('switch');
+    require('bt-touchspin');
 
     var componentSelect = Backbone.View.extend({
 

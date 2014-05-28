@@ -1,8 +1,6 @@
 define(function(require, exports, module) {
 
-    require('modalEffects');
-    require('bt-touchspin');
-    require('select2');
+    require('datetimepicker');
 
     var $ = require('$');
     var _ = require('underscore');
@@ -105,6 +103,7 @@ define(function(require, exports, module) {
             };
             componentFactory.makeComponent(statusSwitch);
 
+            $(".datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
         },
 
         new_attributes: function() {
