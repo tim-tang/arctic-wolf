@@ -129,9 +129,11 @@ define(function(require, exports, module) {
          * .......
          */
         makeInput: function(options) {
-            return (new inputView(options)).render().promise().done(function() {
+            var _inputView = new inputView(options);  
+            _inputView.render().promise().done(function() {
                 eventBus.trigger('component-input:renderInput:' + options["component_id"]);
             });
+            return _inputView.$el;
         },
 
         /*

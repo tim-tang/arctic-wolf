@@ -8,6 +8,7 @@ define(function(require, exports, module) {
     require('select2');
     require('switch');
     require('bt-touchspin');
+    require('bootstrap-slider');
 
     var componentInput = Backbone.View.extend({
 

@@ -4,7 +4,10 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var eventBus = require('app-core').Eventbus;
-
+    
+    require('moment');
+    require('daterangepicker');
+    
     var componentDateRangePicker = Backbone.View.extend({
 
         manage : true,
