@@ -20,8 +20,6 @@ define(function(require, exports, module) {
         },
 
         renderImageUpload: function() {
-            console.log(">>>>>>>>>>>>>>>>>>>>>>in renderImageUpload");
-        
         	var component_id = this.options["component_id"];
             var container_id = this.options["container_id"];
 
@@ -34,7 +32,7 @@ define(function(require, exports, module) {
                 $(datetime_container).children('div#' + component_id).remove();
             this.$el.appendTo(datetime_container);
         },
-                
+
         serialize : function() {
             return {
                 options : _.clone(this.options)

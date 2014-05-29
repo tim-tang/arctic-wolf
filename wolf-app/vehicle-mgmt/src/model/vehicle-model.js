@@ -6,7 +6,6 @@
         urlRoot: '/vehicles',
 
         defaults: {
-            vehicle_name: '',
             vehicle_desc: '',
             vehicle_brand: '',
             vehicle_price: '',

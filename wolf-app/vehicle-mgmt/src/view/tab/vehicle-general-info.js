@@ -3,7 +3,7 @@ define(function(require, exports, module) {
     var $ = require('$');
     var _ = require('underscore');
     var eventBus = require('app-core').Eventbus;
-    
+
     var appCommon = require('app-common');
     var BaseView = appCommon.BaseView;
     var commonUtils = appCommon.CommonUtils;
@@ -36,12 +36,6 @@ define(function(require, exports, module) {
             pageForm.children('.form-group').remove();
 
 			var mock_attr = [{
-                'id' : 6000,
-                'name' : 'vehicle_name',
-                'desc' : 'Vehicle Name',
-                'type' : 'text',
-                'element_type' : 'input'
-            }, {
                 'id' : 6001,
                 'name' : 'vehicle_desc',
                 'desc' : 'Vehicle Description',
