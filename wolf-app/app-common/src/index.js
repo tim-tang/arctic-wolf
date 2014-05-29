@@ -17,5 +17,5 @@ define(function(require, exports, module) {
 
     //---------------- Common Components ------------------//
     module.exports.GenericComponentFactory = require('./generic-component-factory');
-    module.exports.GenericLayoutFactory = require('./generic-layout-factory');
+    module.exports.GenericPageLayoutFactory = require('./generic-page-layout-factory');
 });

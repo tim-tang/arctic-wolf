@@ -4,17 +4,24 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var componentFactory = require('./generic-component-factory');
 
-    var genericLayoutFactory = {
+    var genericPageLayoutFactory = {
 
         makeLayout : function(options) {
             var layout = null;
             var layout_type = options['layout_type'];
             switch (layout_type) {
-                case '2_COLUMNS':
-                    layout = this.make2ColumnsLayout(options);
+            	case 'ONE_COLUMNS':
+                    layout = this.makeOneColumnsLayout(options);
                     break;
+                case 'TWO_COLUMNS':
+                    layout = this.makeTwoColumnsLayout(options);
+					break;
             }
             return layout;
+        },
+        
+        makeOneColumnsPageLayout : function(options) {
+        	
         },
 
         /*
@@ -32,7 +39,7 @@ define(function(require, exports, module) {
          * - attrs : all attributes which expceted to display, ie: mock_attr
          * - model : value of attributes, ie: this.model
          */
-        make2ColumnsLayout : function(options) {
+        makeTwoColumnsLayout : function(options) {
             var container = options['container'];
             var self = this;
             _.each(options['attrs'], function(attr) {
@@ -70,5 +77,5 @@ define(function(require, exports, module) {
             return container;
         },
     };
-    module.exports = genericLayoutFactory;
+    module.exports = genericPageLayoutFactory;
 });

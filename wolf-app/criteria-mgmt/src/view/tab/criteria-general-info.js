@@ -8,7 +8,7 @@ define(function(require, exports, module) {
     var BaseView = appCommon.BaseView;
     var commonUtils = appCommon.CommonUtils;
     var genericInfoViewMixin = appCommon.GenericInfoViewMixin;
-    var layoutFactory = require('app-common').GenericLayoutFactory;
+    var layoutFactory = require('app-common').GenericPageLayoutFactory;
 
     var criteriaModel = require('../../model/criteria-model');
 
@@ -62,7 +62,7 @@ define(function(require, exports, module) {
             }];
 
             pageForm = layoutFactory.makeLayout({
-                'layout_type' : '2_COLUMNS',
+                'layout_type' : 'TWO_COLUMNS',
                 'container' : pageForm,
                 'attrs' : mock_attr,
                 'model' : this.model
