@@ -10,6 +10,7 @@ define(function(require, exports, module) {
     var appCommon = require('app-common');
     var commonUtils = appCommon.CommonUtils;
 
+	var componentFactory = appCommon.GenericComponentFactory;
     var userColl = require('../../collection/user-coll');
     var userModel = require('../../model/user-model');
 
@@ -39,8 +40,15 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
+            // TODO: Refactor code to use component factory.
             commonUtils.init_switch();
             commonUtils.init_multi_select();
+
+			var imageUpload = {
+				"component_type" : "IMAGE_UPLOAD",
+				"component_id" : "user-image-upload"
+			};
+			componentFactory.makeComponent(imageUpload);
         },
 
         new_attributes: function() {
