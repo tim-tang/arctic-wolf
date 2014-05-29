@@ -91,10 +91,9 @@ define(function(require, exports, module) {
         },
 
         new_obj : function(event) {
-            if (event)
-                event.preventDefault();
-            // $('.modal-content').find('input:text, input:password, input:file, select, textarea').val('');
-            // $('.modal-content').find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
+            if (event) event.preventDefault();
+            // Show modal
+            $('#new-modal').modal('show');
         }
     };
 

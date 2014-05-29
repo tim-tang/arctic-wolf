@@ -7,7 +7,7 @@ define(function(require, exports, module) {
     var componentFactory = require('../../generic-component-factory');
     var assignObjModal = require('../../view/subview/obj-assign-modal');
 
-    var objDetailsViewMixin = {
+    var objAssignViewMixin = {
 		/*
 		 * Parameter 'options' should contain below varibles
 		 * - identity: indicator to assign which object, ie. - 'privileges',
@@ -107,5 +107,5 @@ define(function(require, exports, module) {
         }
 	};
 
-    module.exports = objDetailsViewMixin;
+    module.exports = objAssignViewMixin;
 });

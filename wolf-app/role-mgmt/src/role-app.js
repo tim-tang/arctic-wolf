@@ -29,7 +29,6 @@ define(function(require, exports, module) {
 		initialize : function() {
 			eventBus.on('show-loading', this.show_loading, this);
 			eventBus.on('hide-loading', this.hide_loading, this);
-			eventBus.on('role:view-role', this.view_role, this);
 		},
 
 		afterRender : function() {
@@ -50,12 +49,6 @@ define(function(require, exports, module) {
 		hide_loading : function() {
 			commonLoading.destroy();
 		},
-
-		view_role : function() {
-			var roleDetailsApp = new roleDetailsApp();
-			this.insertView('#role-home', roleModalView).render();
-			this.subviews.push(roleModalView);
-		}
 	});
 
 	module.exports = {
