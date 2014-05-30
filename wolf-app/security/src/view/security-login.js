@@ -2,6 +2,7 @@ define(function(require, exports, module) {
 
     var Backbone = require('backbone');
     var $ = require('$');
+    require('i18n');
     require('parsley');
     var securityFooter = require('./security-footer');
     var authenticationProvider = require('../authentication/authentication-provider');
@@ -20,6 +21,7 @@ define(function(require, exports, module) {
         afterRender: function() {
             var layoutFooterView = new securityFooter();
             this.insertView('.middle-login', layoutFooterView).render();
+            this.$el.i18n();
         },
 
         events: {

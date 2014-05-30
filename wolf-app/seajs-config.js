@@ -32,7 +32,8 @@ seajs.config({
         "switch": "bootstrap.switch/bootstrap-switch.min.js",
         "multi-select": "jquery.multiselect/js/jquery.multi-select.js",
         "bootstrap": "bootstrap/dist/js/bootstrap.min.js",
-        "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js"
+        "bt-touchspin": "bootstrap.touchspin/bootstrap-touchspin/bootstrap.touchspin.js",
+        "i18n": "i18next/1.7.3/i18next.amd.withJQuery-1.7.3.js"
     },
     debug: true,
     charset: 'utf-8'
