@@ -8,6 +8,7 @@ define(function(require, exports, module) {
     var Backbone = require('backbone');
 
 	var componentFactory = require('app-common').GenericComponentFactory;
+	var pageLayoutFactory = require('app-common').GenericPageLayoutFactory;
 
     var userGroupColl = require('../../collection/user-group-coll');
     var userGroupModel = require('../../model/user-group-model');
@@ -26,7 +27,6 @@ define(function(require, exports, module) {
         },
 
         initialize: function() {
-            //this.listenTo(this.model, 'change', this.test);
             this.users = {
 				"component_type" : "SELECT2",
                 "component_id" : "users",
@@ -66,6 +66,39 @@ define(function(require, exports, module) {
                 'component_id' : 'enabled'
             });
             componentFactory.makeComponent(this.users);
+            
+            var pageForm = $('.modal-body');
+            // Remove all attribute lines
+            pageForm.children('.form-group').remove();
+
+			var mock_attr = [{
+                'id' : 3000,
+                'name' : 'ug_name',
+                'desc' : 'Name',
+                'type' : 'text',
+                'component_type' : 'INPUT'
+            }, {
+                'id' : 3001,
+                'name' : 'ug_desc',
+                'desc' : 'Description',
+                'type' : 'text',
+                'component_type' : 'TEXTAREA'
+            }
+            
+            /*, {
+                'id' : 3003,
+                'name' : 'enabled',
+                'desc' : 'Enabled',
+                'type' : 'input',
+                'element_type' : 'CHECKBOX'
+            }*/];
+
+            pageForm = pageLayoutFactory.makeLayout({
+                'layout_type' : 'ONE_COLUMNS',
+                'container' : pageForm,
+                'attrs' : mock_attr,
+                'model' : this.model
+            });
         },
 
         new_attributes: function() {

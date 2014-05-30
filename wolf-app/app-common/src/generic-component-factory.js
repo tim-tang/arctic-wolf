@@ -36,7 +36,11 @@ define(function(require, exports, module) {
                 case 'MULTI_SELECT':
                     component = this.makeSelect(options);
                     break;
+                case 'TEXTAREA':
+                	component = this.makeTextarea(options);
+                	break;
                 case 'TAGS':
+                case 'INPUT':
                 case 'CHECKBOX':
                 case 'SLIDE_RANGE':
                 case 'TOUCH_SPINE':
@@ -179,7 +183,23 @@ define(function(require, exports, module) {
             return (new imageUploadView(options)).render().promise().done(function() {
                 eventBus.trigger('component-image-upload:renderImageUpload:' + options["component_id"]);
             });
-        }
+        },
+        
+		/*
+         * Generate element 'label'
+         *
+         * Parameter 'options' contain below varibles:
+         * - component_type: 'LABEL'
+         * - class: css point to label
+         * - text: text point to text of label to display
+         */
+        makeTextarea: function(options) {
+            var label = $('<textarea>');
+            label.attr('class', options['class'] ? options['class'] : 'form-control');
+            if (options['text']) label.text(options['text']);
+            return label;
+        },
+
     };
 
     module.exports = genericComponentFactory;

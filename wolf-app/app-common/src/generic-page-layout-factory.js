@@ -11,17 +11,38 @@ define(function(require, exports, module) {
             var layout_type = options['layout_type'];
             switch (layout_type) {
             	case 'ONE_COLUMNS':
-                    layout = this.makeOneColumnsLayout(options);
+                    layout = this.makeOneColumnLayout(options);
                     break;
                 case 'TWO_COLUMNS':
                     layout = this.makeTwoColumnsLayout(options);
-					break;
+                    break;
             }
             return layout;
         },
         
-        makeOneColumnsPageLayout : function(options) {
-        	
+        makeOneColumnLayout : function(options) {
+        	var container = options['container'];
+            var self = this;
+            _.each(options['attrs'], function(attr) {
+            	var attr_line_container = componentFactory.makeComponent({
+                    'component_type' : 'CONTAINER',
+                    'class' : 'form-group'
+                });
+                // Attribute name
+                attr_line_container.append(componentFactory.makeComponent({
+                    'component_type' : 'LABEL',
+                    'class' : 'control-label',
+                    'text' : attr['desc']
+                }));
+				// Attribute component
+                attr_line_container.append(componentFactory.makeComponent({
+                    'component_type' : attr['component_type'],
+                    'text' : attr['desc'] ? attr['desc'] : 'test'
+                }));
+                // Append to constainer
+                container.append(attr_line_container);
+            });
+            return container;
         },
 
         /*

@@ -40,10 +40,12 @@ define(function(require, exports, module) {
             }
 
             //TODO: refactor to use switch.
-            if (!type || type === 'CHECKBOX')
-                this.makeCheckbox(_input);
+            if (!type || type === 'INPUT')
+                this.makeInput(_input, this.options["options"]);
+            else if (type === 'CHECKBOX')
+                this.makeCheckbox(_input, this.options["options"]);
             else if (type === 'TAGS')
-                this.makeTags(_input);
+                this.makeTags(_input, this.options["options"]);
             else if (type === 'SLIDE_RANGE')
                 this.makeSlideRange(_input, this.options["options"]);
             else if (type === 'TOUCH_SPINE')
@@ -60,15 +62,21 @@ define(function(require, exports, module) {
         },
 
         // Checkbox
-        makeCheckbox : function(input) {
+        makeCheckbox : function(input, options) {
             // Set type
             input.attr('type', 'checkbox');
             this.$el.attr('class', 'switch');
             this.$el.bootstrapSwitch();
         },
+        
+        // Input
+        makeInput : function(input, options) {
+			input.attr('class', options && options['class'] ? options['class'] : 'form-control');
+			if(options && options['placeholder']) input.attr('placeholder', options['laceholder']);
+        },
 
         // Tags
-        makeTags : function(input) {
+        makeTags : function(input, options) {
 			// Set type
             input.attr('type', 'hidden');
             // Set CSS
