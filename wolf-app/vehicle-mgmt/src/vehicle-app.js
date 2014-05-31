@@ -53,6 +53,7 @@ define(function(require, exports, module) {
 		},
 
 		invokeVehicleRouter : function() {
+            $.i18n.setDefaultNamespace('vehicle-mgmt');
 			var vehicleRouter = require('./router/vehicle-router');
 			return new vehicleRouter('vehicle-mgmt/', {
 				createTrailingSlashRoutes : true

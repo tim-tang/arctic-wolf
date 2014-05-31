@@ -20,7 +20,6 @@ define(function(require, exports, module) {
         afterRender: function() {
             var layoutFooterView = new securityFooter();
             this.insertView('.middle-login', layoutFooterView).render();
-            //$.i18n.setDefaultNamespace('security');
             this.$el.i18n();
         },
 
