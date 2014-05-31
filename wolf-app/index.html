@@ -49,7 +49,9 @@
                 lng: language,
                 useLocalStorage: false,
                 debug: true,
-                ns: {namespaces: ['ns.security'], defaultNs: 'ns.security'}
+                fallbackLng: [],
+                ns: {namespaces: ['security', 'vehicle-mgmt'], defaultNs: 'security'}
+                //resGetPath: '__ns__/locales/__ns__-__lng__.json',
             }, function(){
                 app_main.AppMain.init();
             });

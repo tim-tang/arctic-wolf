@@ -4,11 +4,11 @@ define(function(require, exports, module) {
 	var _ = require('underscore');
 	var Backbone = require('backbone');
 	var eventBus = require('app-core').Eventbus;
-	
+
 	var appCommon = require('app-common');
 	var commonLoading = appCommon.CommonLoading;
 	var genericViewFactory = appCommon.GenericViewFactory;
-	
+
     var vehicleColl = require('./collection/vehicle-coll');
     var vehicleModal = require('./view/modal/vehicle-new-modal');
 
@@ -35,6 +35,7 @@ define(function(require, exports, module) {
 			this.insertView('#vehicle-home', vehicleMgmtView).render();
 			var vehicleModalView = new vehicleModal();
 			this.insertView('#vehicle-home', vehicleModalView).render();
+            this.$el.i18n();
 		},
 
 		show_loading : function() {
