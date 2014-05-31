@@ -40,25 +40,25 @@ define(function(require, exports, module) {
                 'name' : 'u_name',
                 'desc' : 'Name',
                 'type' : 'text',
-                'element_type' : 'input'
+                'component_type' : 'input'
             }, {
                 'id' : 2001,
                 'name' : 'u_desc',
                 'desc' : 'Description',
                 'type' : 'text',
-                'element_type' : 'textarea'
+                'component_type' : 'textarea'
             }, {
                 'id' : 2002,
                 'name' : 'u_email',
                 'desc' : 'Email',
                 'type' : 'text',
-                'element_type' : 'textarea'
+                'component_type' : 'textarea'
             }, {
                 'id' : 2003,
                 'name' : 'enabled',
                 'desc' : 'Enabled',
                 'type' : 'input',
-                'element_type' : 'checkbox'
+                'component_type' : 'checkbox'
             }];
 
             pageForm = layoutFactory.makeLayout({

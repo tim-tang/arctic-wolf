@@ -61,11 +61,12 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
+        	/*
         	componentFactory.makeComponent({
                 'component_type' : 'CHECKBOX',
                 'component_id' : 'enabled'
             });
-            componentFactory.makeComponent(this.users);
+            componentFactory.makeComponent(this.users);*/
             
             var pageForm = $('.modal-body');
             // Remove all attribute lines
@@ -90,7 +91,7 @@ define(function(require, exports, module) {
                 'name' : 'enabled',
                 'desc' : 'Enabled',
                 'type' : 'input',
-                'element_type' : 'CHECKBOX'
+                'component_type' : 'CHECKBOX'
             }*/];
 
             pageForm = pageLayoutFactory.makeLayout({

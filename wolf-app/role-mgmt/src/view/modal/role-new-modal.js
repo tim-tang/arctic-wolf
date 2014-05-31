@@ -11,6 +11,7 @@ define(function(require, exports, module) {
     var roleModel = require('../../model/role-model');
 
     var componentFactory = require('app-common').GenericComponentFactory;
+    var pageLayoutFactory = require('app-common').GenericPageLayoutFactory;
 
     var roleModal = Backbone.View.extend({
         manage : true,
@@ -81,11 +82,45 @@ define(function(require, exports, module) {
          },*/
 
         afterRender : function() {
-            componentFactory.makeComponent({
+            /*componentFactory.makeComponent({
                 'component_type' : 'CHECKBOX',
                 'component_id' : 'enabled'
             });
-            componentFactory.makeComponent(this.privileges);
+            componentFactory.makeComponent(this.privileges);*/
+            
+            var pageForm = $('.modal-body');
+            // Remove all attribute lines
+            pageForm.children('.form-group').remove();
+
+			var mock_attr = [{
+                'id' : 1000,
+                'name' : 'role_name',
+                'desc' : 'Name',
+                'type' : 'text',
+                'component_type' : 'INPUT'
+            }, {
+                'id' : 1001,
+                'name' : 'role_desc',
+                'desc' : 'Description',
+                'type' : 'text',
+                'component_type' : 'TEXTAREA'
+            }
+            
+            /*, {
+                'id' : 1002,
+                'name' : 'enabled',
+                'desc' : 'Enabled',
+                'type' : 'input',
+                'component_type' : 'CHECKBOX'
+            }
+            */];
+
+            pageForm = pageLayoutFactory.makeLayout({
+                'layout_type' : 'ONE_COLUMNS',
+                'container' : pageForm,
+                'attrs' : mock_attr,
+                'model' : this.model
+            });
         },
 
         new_attributes : function() {

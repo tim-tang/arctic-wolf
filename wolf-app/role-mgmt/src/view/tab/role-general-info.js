@@ -67,19 +67,19 @@ define(function(require, exports, module) {
                 'name' : 'role_name',
                 'desc' : 'Name',
                 'type' : 'text',
-                'element_type' : 'input'
+                'component_type' : 'input'
             }, {
                 'id' : 1001,
                 'name' : 'role_desc',
                 'desc' : 'Description',
                 'type' : 'text',
-                'element_type' : 'textarea'
+                'component_type' : 'textarea'
             }, {
                 'id' : 1002,
                 'name' : 'enabled',
                 'desc' : 'Enabled',
                 'type' : 'input',
-                'element_type' : 'checkbox'
+                'component_type' : 'checkbox'
             }];
 
             pageForm = layoutFactory.makeLayout({
