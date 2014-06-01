@@ -40,37 +40,37 @@ define(function(require, exports, module) {
                 'name' : 'vehicle_desc',
                 'desc' : 'Vehicle Description',
                 'type' : 'text',
-                'element_type' : 'textarea'
+                'component_type' : 'textarea'
             }, {
                 'id' : 6002,
                 'name' : 'vehicle_brand',
                 'desc' : 'Vehicle Brand',
                 'type' : 'text',
-                'element_type' : 'select'
+                'component_type' : 'select'
             }, {
                 'id' : 6003,
                 'name' : 'vehicle_price',
                 'desc' : 'Vehicle Price',
                 'type' : 'text',
-                'element_type' : 'select'
+                'component_type' : 'select'
             }, {
                 'id' : 6004,
                 'name' : 'vehicle_model',
                 'desc' : 'Vehicle Model',
                 'type' : 'text',
-                'element_type' : 'select'
+                'component_type' : 'select'
             }, {
                 'id' : 6005,
                 'name' : 'vehicle_emission',
                 'desc' : 'Vehicle Emission',
                 'type' : 'text',
-                'element_type' : 'select'
+                'component_type' : 'select'
             }, {
                 'id' : 6007,
                 'name' : 'status',
                 'desc' : 'Status',
                 'type' : 'input',
-                'element_type' : 'checkbox'
+                'component_type' : 'checkbox'
             }];
 
             pageForm = layoutFactory.makeLayout({

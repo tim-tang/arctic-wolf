@@ -11,6 +11,7 @@ define(function(require, exports, module) {
     var privilegeModel = require('../../model/privilege-model');
 
 	var componentFactory = require('app-common').GenericComponentFactory;
+	var pageLayoutFactory = require('app-common').GenericPageLayoutFactory;
 
     var privilegeModal = Backbone.View.extend({
         manage: true,
@@ -97,12 +98,52 @@ define(function(require, exports, module) {
 
 
         afterRender: function() {
+        	/*
         	componentFactory.makeComponent({
                 'component_type' : 'CHECKBOX',
                 'component_id' : 'enabled'
             });
             componentFactory.makeComponent(this.criterias);
-            componentFactory.makeComponent(this.privilegeType);
+            componentFactory.makeComponent(this.privilegeType);*/
+            
+            var pageForm = $('.modal-body');
+            // Remove all attribute lines
+            pageForm.children('.form-group').remove();
+            
+            var mock_attr = [{
+                'id' : 4000,
+                'name' : 'priv_name',
+                'desc' : 'Name',
+                'type' : 'text',
+                'component_type' : 'INPUT'
+            }, {
+                'id' : 4001,
+                'name' : 'priv_desc',
+                'desc' : 'Description',
+                'type' : 'text',
+                'component_type' : 'TEXTAREA'
+            }, {
+                'id' : 4002,
+                'name' : 'priv_type',
+                'desc' : 'Privilege Type',
+                'type' : 'text',
+                'component_type' : 'SELECT2'
+            }
+            /*, {
+                'id' : 4003,
+                'name' : 'enabled',
+                'desc' : 'Enabled',
+                'type' : 'input',
+                'component_type' : 'CHECKBOX'
+            }*/];
+
+            pageForm = pageLayoutFactory.makeLayout({
+                'layout_type' : 'ONE_COLUMNS',
+                'container' : pageForm,
+                'attrs' : mock_attr,
+                'model' : this.model
+            });
+
         },
 
         new_attributes: function() {
