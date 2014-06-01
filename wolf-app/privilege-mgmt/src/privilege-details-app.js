@@ -14,7 +14,7 @@
     var privilegeGeneralInfo = require('./view/tab/privilege-general-info');
    	
    	var privilegeModel = require('./model/privilege-model');
-    var roleColl = require('app-role-expose').RoleColl;
+    var roleColl = require('app-role-mgmt-expose').RoleColl;
 	var privilegeHistoryColl = require('./collection/privilege-history-coll');
     
 	var privilegeDetailsApp = new Backbone.Layout({

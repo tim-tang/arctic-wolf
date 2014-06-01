@@ -14,7 +14,7 @@
       "subroute": "subroute",
       "modalEffects": "modalEffects",
       "quicksearch": "quicksearch",
-      "app-user-group-expose": "app-user-group-expose"
+      "app-user-group-mgmt-expose": "app-user-group-mgmt-expose"
     },
     "output": [
       "index.js", "index-expose.js"

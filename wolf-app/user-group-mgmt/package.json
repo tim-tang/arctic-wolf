@@ -12,7 +12,7 @@
       "subroute": "subroute",
       "modalEffects": "modalEffects",
       "quicksearch": "quicksearch",
-      "app-user-expose": "app-user-expose"
+      "app-user-mgmt-expose": "app-user-mgmt-expose"
     },
     "output": [
       "index.js", "index-expose.js"

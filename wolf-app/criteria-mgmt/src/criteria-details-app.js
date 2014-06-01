@@ -14,7 +14,7 @@
     var criteriaGeneralInfo = require('./view/tab/criteria-general-info');
    	
    	var criteriaModel = require('./model/criteria-model');
-    var privilegeColl = require('app-privilege-expose').PrivilegeColl;
+    var privilegeColl = require('app-privilege-mgmt-expose').PrivilegeColl;
 	var criteriaHistoryColl = require('./collection/criteria-history-coll');
     
 	var criteriaDetailsApp = new Backbone.Layout({

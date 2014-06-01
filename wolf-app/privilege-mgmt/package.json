@@ -15,7 +15,7 @@
       "app-privilege-mgmt": "app-privilege-mgmt",
       "app-user-mgmt": "app-user-mgmt",
       "app-user-group-mgmt": "app-user-group-mgmt",
-      "app-role-expose": "app-role-expose"
+      "app-role-mgmt-expose": "app-role-mgmt-expose"
     },
     "output": [
       "index.js", "index-expose.js"

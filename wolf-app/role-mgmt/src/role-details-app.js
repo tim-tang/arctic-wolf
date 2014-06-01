@@ -14,9 +14,9 @@ define(function(require, exports, module) {
 	var roleGeneralInfo = require('./view/tab/role-general-info');
 	
 	var roleModel = require('./model/role-model');
-	var privilegeColl = require('app-privilege-expose').PrivilegeColl;
-    var userGroupColl = require('app-user-group-expose').UserGroupColl;
-    var userColl = require('app-user-expose').UserColl;
+	var privilegeColl = require('app-privilege-mgmt-expose').PrivilegeColl;
+    var userGroupColl = require('app-user-group-mgmt-expose').UserGroupColl;
+    var userColl = require('app-user-mgmt-expose').UserColl;
 	var roleHistoryColl = require('./collection/role-history-coll');
 
 	var roleDetailsApp = new Backbone.Layout({
