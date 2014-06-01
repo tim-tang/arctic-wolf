@@ -126,16 +126,19 @@ define(function(require, exports, module) {
                 'id' : 4002,
                 'name' : 'priv_type',
                 'desc' : 'Privilege Type',
-                'type' : 'text',
-                'component_type' : 'SELECT2'
-            }
-            /*, {
+                'component_options' : this.privilegeType
+            }, {
                 'id' : 4003,
+                'name' : 'criteria',
+                'desc' : 'Criteria',
+                'component_options' : this.criterias
+            }, {
+                'id' : 4004,
                 'name' : 'enabled',
                 'desc' : 'Enabled',
                 'type' : 'input',
                 'component_type' : 'CHECKBOX'
-            }*/];
+            }];
 
             pageForm = pageLayoutFactory.makeLayout({
                 'layout_type' : 'ONE_COLUMNS',
@@ -153,7 +156,7 @@ define(function(require, exports, module) {
                 priv_type: this.$('#privilege-type').val().trim(),
                 criteria: this.$('#criteria').val().trim(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
-            }
+            };
         },
 
         /**

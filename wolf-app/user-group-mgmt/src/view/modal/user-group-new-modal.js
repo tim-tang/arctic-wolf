@@ -84,15 +84,18 @@ define(function(require, exports, module) {
                 'desc' : 'Description',
                 'type' : 'text',
                 'component_type' : 'TEXTAREA'
-            }
-            
-            /*, {
+            }, {
+                'id' : 1002,
+                'name' : 'users',
+                'desc' : 'Users',
+                'component_options' : this.users
+            }, {
                 'id' : 3003,
                 'name' : 'enabled',
                 'desc' : 'Enabled',
                 'type' : 'input',
                 'component_type' : 'CHECKBOX'
-            }*/];
+            }];
 
             pageForm = pageLayoutFactory.makeLayout({
                 'layout_type' : 'ONE_COLUMNS',

@@ -34,10 +34,10 @@ define(function(require, exports, module) {
                     'class' : 'control-label',
                     'text' : attr['desc']
                 }));
+                var _options = attr['component_options'];
 				// Attribute component
-                attr_line_container.append(componentFactory.makeComponent({
-                    'component_type' : attr['component_type'],
-                    'text' : attr['desc'] ? attr['desc'] : 'test'
+                attr_line_container.append(componentFactory.makeComponent(_options ? _options : {
+                    'component_type' : attr['component_type']
                 }));
                 // Append to constainer
                 container.append(attr_line_container);
