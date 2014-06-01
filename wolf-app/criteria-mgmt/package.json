@@ -10,7 +10,8 @@
       "app-core": "app-core",
       "app-common": "app-common",
       "subroute": "subroute",
-      "modalEffects": "modalEffects"
+      "modalEffects": "modalEffects",
+      "app-privilege-expose": "app-privilege-expose"
     },
     "output": [
       "index.js"

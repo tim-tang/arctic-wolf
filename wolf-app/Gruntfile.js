@@ -58,8 +58,21 @@ module.exports = function(grunt) {
                     var module_name = fileChange.oldPath.replace('/dist/index-debug.js', '');
                     version = grunt.file.readJSON(module_name + '/package.json').version;
                     fileChange.oldPath = 'app-' + module_name.replace('app-', '') + '-debug';
+                    //console.log('DEBUG >> '+ fileChange.oldPath);
+                }
+                if (fileChange.oldPath.indexOf('index-expose-debug.js') > 0) {
+                    var module_name = fileChange.oldPath.replace('/dist/index-expose-debug.js', '');
+                    version = grunt.file.readJSON(module_name + '/package.json').version;
+                    fileChange.oldPath = 'app-' + module_name.replace('app-', '') + '-expose-debug';
+                }
+                if (fileChange.oldPath.indexOf('index-expose.js') > 0) {
+                    var module_name = fileChange.oldPath.replace('/dist/index-expose.js', '');
+                    if (grunt.file.isFile(module_name + '/package.json')) {
+                        version = grunt.file.readJSON(module_name + '/package.json').version;
+                    }
+                    fileChange.oldPath = 'app-' + module_name.replace('app-', '') + '-expose';
                 } else {
-                    var module_name = fileChange.oldPath.replace('/dist/index.js', '');
+                    var module_name = fileChange.oldPath.replace('/dist/index.js', '').replace('/dist/index-expose.js', '');
                     if (grunt.file.isFile(module_name + '/package.json')) {
                         version = grunt.file.readJSON(module_name + '/package.json').version;
                     }
@@ -128,6 +141,18 @@ module.exports = function(grunt) {
                     return commands.join('&&');
                 }
             }
+
+            //copyResource: {
+            //    command: function() {
+            //        var pkg = grunt.file.readJSON('package.json');
+            //        var modules = pkg.wolf_build_modules;
+            //        var commands = [];
+            //        modules.forEach(function(module) {
+            //            if (module !== 'app-tpl') commands.push('make -C ' + module + ' build');
+            //        });
+            //        return commands.join('&&');
+            //    }
+            //}
         }
     });
 

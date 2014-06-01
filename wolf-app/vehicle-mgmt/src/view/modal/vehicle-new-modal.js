@@ -1,6 +1,5 @@
 define(function(require, exports, module) {
 
-	require('datetimepicker');
 
 	var $ = require('$');
 	var _ = require('underscore');
@@ -108,7 +107,7 @@ define(function(require, exports, module) {
 				"component_id" : "on-board-date"
 			};
 			componentFactory.makeComponent(onBoardDate);
-			
+
 			var imageUpload = {
 				"component_type" : "IMAGE_UPLOAD",
 				"component_id" : "image-upload"

@@ -11,10 +11,11 @@
       "app-common": "app-common",
       "subroute": "subroute",
       "modalEffects": "modalEffects",
-      "quicksearch": "quicksearch"
+      "quicksearch": "quicksearch",
+      "app-user-expose": "app-user-expose"
     },
     "output": [
-      "index.js"
+      "index.js", "index-expose.js"
     ]
   }
 }

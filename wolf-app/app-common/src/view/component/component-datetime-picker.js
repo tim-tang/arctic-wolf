@@ -4,6 +4,7 @@ define(function(require, exports, module) {
     var _ = require('underscore');
     var Backbone = require('backbone');
     var eventBus = require('app-core').Eventbus;
+	require('datetimepicker');
 
     var componentDateTimePicker = Backbone.View.extend({
 
@@ -17,7 +18,7 @@ define(function(require, exports, module) {
             this.options = options;
             eventBus.off('component-datetime-picker:renderDateTimePicker:' + options["component_id"]);
             eventBus.on('component-datetime-picker:renderDateTimePicker:' + options["component_id"], this.renderDateTimePicker, this);
-            
+
             var component_id = this.options["component_id"];
             var container_id = this.options["container_id"];
 

@@ -13,10 +13,11 @@
       "app-role-mgmt": "app-role-mgmt",
       "subroute": "subroute",
       "modalEffects": "modalEffects",
-      "quicksearch": "quicksearch"
+      "quicksearch": "quicksearch",
+      "app-user-group-expose": "app-user-group-expose"
     },
     "output": [
-      "index.js"
+      "index.js", "index-expose.js"
     ]
   }
 }

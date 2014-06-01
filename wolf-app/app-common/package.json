@@ -20,7 +20,8 @@
       "bootstrap-slider": "bootstrap-slider",
       "modalEffects": "modalEffects",
       "bt-touchspin": "bt-touchspin",
-      "app-core": "app-core"
+      "app-core": "app-core",
+      "datetimepicker": "datetimepicker"
     },
     "output": [
       "index.js"

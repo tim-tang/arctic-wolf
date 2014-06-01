@@ -14,10 +14,11 @@
       "quicksearch": "quicksearch",
       "app-privilege-mgmt": "app-privilege-mgmt",
       "app-user-mgmt": "app-user-mgmt",
-      "app-user-group-mgmt": "app-user-group-mgmt"
+      "app-user-group-mgmt": "app-user-group-mgmt",
+      "app-role-expose": "app-role-expose"
     },
     "output": [
-      "index.js"
+      "index.js", "index-expose.js"
     ]
   }
 }
