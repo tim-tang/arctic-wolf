@@ -286,7 +286,7 @@ pre {
   border-top-right-radius: 4px;
 }
 .dropdown.profile_menu .dropdown-menu:before {
-  background: url(images/menu-tail-up.png) no-repeat;
+  background: url(../images/menu-tail-up.png) no-repeat;
   top: -10px;
   content: "";
   right: 10px;
@@ -296,7 +296,7 @@ pre {
   position: absolute;
 }
 .not-nav .dropdown-menu:before {
-  background: url(images/menu-tail-up.png) no-repeat;
+  background: url(../images/menu-tail-up.png) no-repeat;
   top: -10px;
   content: "";
   left: 13px;
@@ -344,7 +344,7 @@ pre {
   text-align: left;
   width: 206px;
   color: #2c3e50;
-  background: url(images/logo.png) no-repeat 0 11px;
+  background: url(../images/logo.png) no-repeat 0 11px;
   text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.2);
   font-weight: 300;
   font-size: 19px;
@@ -928,7 +928,7 @@ input::-webkit-input-speech-button {
   font-size: 21px;
 }
 .sidebar-logo {
-  background: #7761a7 url(images/logo.png) no-repeat 20px 8px;
+  background: #7761a7 url(../images/logo.png) no-repeat 20px 8px;
   padding: 15px 20px;
   display: block;
   height: 64px;
@@ -1033,7 +1033,7 @@ input::-webkit-input-speech-button {
 }
 .sb-collapsed .sidebar-logo {
   padding: 4px 0 5px;
-  background: url("images/logo.png") no-repeat scroll 23px -48px #7761a7;
+  background: url("../images/logo.png") no-repeat scroll 23px -48px #7761a7;
 }
 .sb-collapsed .sidebar-logo .logo a {
   content: " ";
@@ -1197,7 +1197,7 @@ input::-webkit-input-speech-button {
   color: #FFF;
 }
 #sub-menu-nav ul:after {
-  background: url(images/menu-tail-left.png) no-repeat right 10px;
+  background: url(../images/menu-tail-left.png) no-repeat right 10px;
   top: 0px;
   content: "";
   display: inline-block;
@@ -3355,7 +3355,7 @@ table.information > tbody > tr > td {
   outline: none;
 }
 .btn-group.btn-blurbg {
-  background: url("images/blur_bg.png") no-repeat;
+  background: url("../images/blur_bg.png") no-repeat;
   padding: 40px;
   margin-bottom: 20px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
@@ -3914,7 +3914,7 @@ fieldset[disabled] .btn-primary.active {
   background-color: #43a2ff;
 }
 .chat-wi .chat-conv .c-bubble span {
-  background: url(images/bubble-tail.png) no-repeat;
+  background: url(../images/bubble-tail.png) no-repeat;
   height: 21px;
   width: 12px;
   display: block;
@@ -3945,7 +3945,7 @@ fieldset[disabled] .btn-primary.active {
   left: 0;
 }
 .chat-wi .sent .c-bubble span {
-  background: url(images/bubble-tail-l-white.png) no-repeat;
+  background: url(../images/bubble-tail-l-white.png) no-repeat;
   left: -12px;
 }
 .chat-wi .chat-in {
@@ -6418,17 +6418,17 @@ h1:first-child {
   text-align: center;
 }
 .butpro .stat .equal {
-  background: url("images/stat-same.png") no-repeat scroll left center transparent;
+  background: url("../images/stat-same.png") no-repeat scroll left center transparent;
   font-size: 12px;
   padding: 0 0 0 19px;
 }
 .butpro .stat .up {
-  background: url("images/stat-up.png") no-repeat scroll left center transparent;
+  background: url("../images/stat-up.png") no-repeat scroll left center transparent;
   font-size: 12px;
   padding: 0 0 0 19px;
 }
 .butpro .stat .down {
-  background: url("images/stat-down.png") no-repeat scroll left center transparent;
+  background: url("../images/stat-down.png") no-repeat scroll left center transparent;
   font-size: 12px;
   padding: 0 0 0 19px;
 }
@@ -6835,7 +6835,7 @@ ul.timeline li > .date {
   color: #FFF;
 }
 .widget-block.weather-box .photo {
-  background: url("images/sunset2.jpg") no-repeat center center;
+  background: url("../images/sunset2.jpg") no-repeat center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7358,7 +7358,7 @@ ul.timeline li > .date {
   }
   .sidebar-logo {
     padding: 4px 0 5px;
-    background: url("images/logo.png") no-repeat scroll 23px -48px #7761a7;
+    background: url("../images/logo.png") no-repeat scroll 23px -48px #7761a7;
   }
   #head-nav.topbar .sidebar-logo {
     display: inline-block;
@@ -7443,7 +7443,7 @@ ul.timeline li > .date {
     color: #000;
   }
   .dropdown.profile_menu .dropdown-menu:before {
-    background: url(images/menu-tail-up.png) no-repeat;
+    background: url(../images/menu-tail-up.png) no-repeat;
     top: -10px;
     content: "";
     left: 10px;
@@ -7453,7 +7453,7 @@ ul.timeline li > .date {
     position: absolute;
   }
   .not-nav .dropdown-menu:before {
-    background: url(images/menu-tail-up.png) no-repeat;
+    background: url(../images/menu-tail-up.png) no-repeat;
     top: -10px;
     content: "";
     right: 13px;
@@ -7562,10 +7562,10 @@ ul.timeline li > .date {
   }
   .navbar-header {
     padding: 0 10px;
-    background: #7761a7 url(images/logo.png) no-repeat 15px 10px;
+    background: #7761a7 url(../images/logo.png) no-repeat 15px 10px;
   }
   #head-nav.topbar .navbar-header {
-    background: #7761a7 url(images/logo.png) no-repeat 30px 18px;
+    background: #7761a7 url(../images/logo.png) no-repeat 30px 18px;
     padding: 8px 0;
   }
   #head-nav.topbar .sidebar-logo {
@@ -7631,7 +7631,7 @@ ul.timeline li > .date {
     padding-bottom: 0;
   }
   .sb-collapsed .cl-sidebar .sidebar-logo {
-    background: url("images/logo.png") no-repeat scroll 15px 19px #7761a7;
+    background: url("../images/logo.png") no-repeat scroll 15px 19px #7761a7;
   }
   #cl-wrapper.fixed-menu .menu-space,
   #cl-wrapper.fixed-menu.sb-collapsed .menu-space {
