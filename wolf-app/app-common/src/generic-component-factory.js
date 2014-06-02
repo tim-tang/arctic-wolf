@@ -70,7 +70,10 @@ define(function(require, exports, module) {
          * - class: css point to div
          */
         makeContainer: function(options) {
-            if(options['class']) return $('<div>').attr('class', options['class']);
+        	var div = $('<div>');
+			if (options['component_id']) div.attr('id', options['component_id']);
+            if (options['class']) div.attr('class', options['class']);
+            return div;
         },
 
         /*
@@ -194,10 +197,11 @@ define(function(require, exports, module) {
          * - text: text point to text of label to display
          */
         makeTextarea: function(options) {
-            var label = $('<textarea>');
-            label.attr('class', options['class'] ? options['class'] : 'form-control');
-            if (options['text']) label.text(options['text']);
-            return label;
+            var textarea = $('<textarea>');
+            if (options['component_id']) textarea.attr('id', options['component_id']);
+            if (options['text']) textarea.text(options['text']);
+            textarea.attr('class', options['class'] ? options['class'] : 'form-control');
+            return textarea;
         },
 
     };

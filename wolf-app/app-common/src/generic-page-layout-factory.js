@@ -37,7 +37,8 @@ define(function(require, exports, module) {
                 var _options = attr['component_options'];
 				// Attribute component
                 attr_line_container.append(componentFactory.makeComponent(_options ? _options : {
-                    'component_type' : attr['component_type']
+                    'component_type' : attr['component_type'],
+                    'component_id' : attr['name']
                 }));
                 // Append to constainer
                 container.append(attr_line_container);

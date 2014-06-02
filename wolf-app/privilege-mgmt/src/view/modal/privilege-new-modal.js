@@ -27,7 +27,6 @@ define(function(require, exports, module) {
         },
 
         initialize: function() {
-            //this.listenTo(this.model, 'change', this.test);
             this.privilegeType = {
 				"component_type" : "SELECT2",
                 "component_id" : "privilege-type",
@@ -151,9 +150,9 @@ define(function(require, exports, module) {
 
         new_attributes: function() {
             return {
-                priv_name: this.$('#privilege-name').val().trim(),
-                priv_desc: this.$('#privilege-desc').val().trim(),
-                priv_type: this.$('#privilege-type').val().trim(),
+                priv_name: this.$('#priv_name').val().trim(),
+                priv_desc: this.$('#priv_desc').val().trim(),
+                priv_type: this.$('#priv_type').val().trim(),
                 criteria: this.$('#criteria').val().trim(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             };

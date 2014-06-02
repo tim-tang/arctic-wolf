@@ -107,8 +107,8 @@ define(function(require, exports, module) {
 
         new_attributes: function() {
             return {
-                ug_name: this.$('#ug-name').val().trim(),
-                ug_desc: this.$('#ug-desc').val().trim(),
+                ug_name: this.$('#ug_name').val().trim(),
+                ug_desc: this.$('#ug_desc').val().trim(),
                 users: this.$('#users').val(),
                 enabled: this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             };

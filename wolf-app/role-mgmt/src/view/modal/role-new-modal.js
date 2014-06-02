@@ -127,9 +127,9 @@ define(function(require, exports, module) {
 
         new_attributes : function() {
             return {
-                role_name : this.$('#role-name').val().trim(),
-                role_desc : this.$('#role-desc').val().trim(),
-                //privileges: this.$('#privileges').val(),
+                role_name : this.$('#role_name').val().trim(),
+                role_desc : this.$('#role_desc').val().trim(),
+                privileges: this.$('#privileges').val(),
                 enabled : this.$('#enabled').val().trim() === 'on' ? 'Yes' : 'No'
             };
         },
