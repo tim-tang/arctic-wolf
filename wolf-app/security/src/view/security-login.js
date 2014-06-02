@@ -48,6 +48,7 @@ define(function(require, exports, module) {
 
     module.exports = {
         run: function(selector, viewManager) {
+            $.i18n.setDefaultNamespace('security');
             viewManager.showLogin(selector, new securityLogin());
         }
     };

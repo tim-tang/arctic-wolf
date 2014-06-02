@@ -25,7 +25,6 @@ define(function(require, exports, module) {
         },
 
         beforeRender: function() {
-            //TODO:
         },
 
         afterRender: function() {
@@ -61,7 +60,6 @@ define(function(require, exports, module) {
         },
 
         invokeSecurityRouter: function() {
-            $.i18n.setDefaultNamespace('security');
             var securityRouter = require('./router/security-router');
             return new securityRouter('security/', {
                 createTrailingSlashRoutes: true

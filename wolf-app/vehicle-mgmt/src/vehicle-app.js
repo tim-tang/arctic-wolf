@@ -27,6 +27,10 @@ define(function(require, exports, module) {
 			//TODO:
 		},
 
+        beforeRender: function(){
+            //TODO:
+        },
+
 		afterRender : function() {
             var vehicleMgmtView = genericViewFactory.createView('OBJ_MGMT', {
                 'collection': vehicleColl,
@@ -49,11 +53,11 @@ define(function(require, exports, module) {
 
 	module.exports = {
 		run : function(viewManager) {
+            $.i18n.setDefaultNamespace('vehicle-mgmt');
 			viewManager.show('#main-content', vehicleApp);
 		},
 
 		invokeVehicleRouter : function() {
-            $.i18n.setDefaultNamespace('vehicle-mgmt');
 			var vehicleRouter = require('./router/vehicle-router');
 			return new vehicleRouter('vehicle-mgmt/', {
 				createTrailingSlashRoutes : true
