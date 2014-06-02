@@ -18,8 +18,7 @@ module.exports = function(grunt) {
      * Initialize module configurations.
      * - read module configuration from package.json
      * - build the correct format
-     */
-    (function(grunt) {
+     */ (function(grunt) {
         var appModules = [];
         var appTpls = [];
         pkg.wolf_build_modules.forEach(function(module) {
