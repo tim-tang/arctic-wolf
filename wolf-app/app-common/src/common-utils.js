@@ -15,6 +15,10 @@ define(function(require, exports, module) {
     require('multi-select');
 
     module.exports = {
+    	
+    	MSG_ERROR: 0,
+		MSG_ALERT: 1,
+		MSG_SUCCESS: 2,
 
         generate_datatable: function(header, data, datatable_id, fnDatatableCallback) {
             var datatable_div = datatable_id + '-div';
@@ -99,6 +103,30 @@ define(function(require, exports, module) {
                 }
             });
         },
+        
+        // Render pop-up message.
+        pop_msg: function(msg_label, msg, type) {
+		    // type = 0 - Error, 1 - Alert, 2 - Success
+		    var label_classes = "";
+		    var container_classes = "";
+		    switch(type) {
+		        case this.MSG_ERROR:
+		            container_classes = 'alert alert-danger';
+		            label_classes = 'fa fa-times-circle sign';
+		            break;
+		        case this.MSG_ALERT:
+		            container_classes = 'alert alert-warning';
+		            label_classes = 'fa fa-warning sign';
+		            break;
+		        case this.MSG_SUCCESS:
+		            container_classes = 'alert alert-success';
+		            label_classes = 'fa fa-check sign';
+		            break;
+		    }
+		    $('#' + msg_label).text(msg);
+		    $('#' + msg_label + '-container' + ' i').attr('class', label_classes);
+		    $('#' + msg_label + '-container').attr('class', container_classes).show();
+		},
 
         // Reset form
         // to call, use:

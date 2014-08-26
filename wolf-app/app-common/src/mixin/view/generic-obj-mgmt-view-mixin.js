@@ -68,11 +68,11 @@ define(function(require, exports, module) {
             var selectedModels = this.collection.selected();
             var selectedCount = selectedModels.length;
             if (selectedCount === 0) {
-                alert("Select one object to view!");
+			    commonUtils.pop_msg('mgmt-msg', 'Select one object to view!', commonUtils.MSG_ALERT);
             } else if (selectedCount === 1) {
                 Backbone.history.navigate(this.view_url + "/" + selectedModels[0].get('id'), true);
             } else {
-                alert("Selected more than one object!");
+				commonUtils.pop_msg('mgmt-msg', 'Selected more than one object!', commonUtils.MSG_ALERT);
             }
         },
 
