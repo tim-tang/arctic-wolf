@@ -102,8 +102,14 @@ define(function(require, exports, module) {
 		// Click delete link
         delete_obj: function(event) {
 			if (event) event.preventDefault();
-            _.invoke(this.collection.selected(), 'destroy');
-            commonUtils.remove_selected_row(this.datatable);
+			var selectedModels = this.collection.selected();
+            var selectedCount = selectedModels.length;
+            if (selectedCount === 0) {
+				commonUtils.pop_msg('assign-msg', 'No object selected!', commonUtils.MSG_ALERT);
+			} else {
+	            _.invoke(this.collection.selected(), 'destroy');
+	            commonUtils.remove_selected_row(this.datatable);
+			}
         }
 	};
 
